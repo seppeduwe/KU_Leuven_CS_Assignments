@@ -5,10 +5,15 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
+import javax.ejb.EJBException;
 import javax.ejb.Stateful;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import rental.CarRentalCompany;
 import rental.CarType;
 import rental.Quote;
-import rental.RentalStore;
 import rental.Reservation;
 import rental.ReservationConstraints;
 import rental.ReservationException;
@@ -16,33 +21,33 @@ import rental.ReservationException;
 @Stateful
 public class CarRentalSession implements CarRentalSessionRemote {
 
+    @PersistenceContext
+    EntityManager em;
+
     private String renter;
     private List<Quote> quotes = new LinkedList<Quote>();
 
     @Override
     public Set<String> getAllRentalCompanies() {
-        return new HashSet<String>(RentalStore.getRentals().keySet());
+        return new HashSet<String>(em.createNamedQuery("getAllCompanies").getResultList());
     }
-    
+
     @Override
     public List<CarType> getAvailableCarTypes(Date start, Date end) {
-        List<CarType> availableCarTypes = new LinkedList<CarType>();
-        for(String crc : getAllRentalCompanies()) {
-            for(CarType ct : RentalStore.getRentals().get(crc).getAvailableCarTypes(start, end)) {
-                if(!availableCarTypes.contains(ct))
-                    availableCarTypes.add(ct);
-            }
-        }
-        return availableCarTypes;
+        return em.createNamedQuery("getAvailableCarTypes", CarType.class)
+                .setParameter("givenStartDate", start)
+                .setParameter("givenEndDate", end)
+                .getResultList();
     }
 
     @Override
     public Quote createQuote(String company, ReservationConstraints constraints) throws ReservationException {
         try {
-            Quote out = RentalStore.getRental(company).createQuote(constraints, renter);
+            CarRentalCompany carRentalCompany = em.find(CarRentalCompany.class, company);
+            Quote out = carRentalCompany.createQuote(constraints, renter);
             quotes.add(out);
             return out;
-        } catch(Exception e) {
+        } catch (Exception e) {
             throw new ReservationException(e);
         }
     }
@@ -53,17 +58,20 @@ public class CarRentalSession implements CarRentalSessionRemote {
     }
 
     @Override
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public List<Reservation> confirmQuotes() throws ReservationException {
+
         List<Reservation> done = new LinkedList<Reservation>();
         try {
             for (Quote quote : quotes) {
-                done.add(RentalStore.getRental(quote.getRentalCompany()).confirmQuote(quote));
+                CarRentalCompany carRentalCompany = em.find(CarRentalCompany.class, quote.getRentalCompany());
+                done.add(carRentalCompany.confirmQuote(quote));
             }
         } catch (Exception e) {
-            for(Reservation r:done)
-                RentalStore.getRental(r.getRentalCompany()).cancelReservation(r);
-            throw new ReservationException(e);
+            throw new EJBException("Transaction failed: " + e.getMessage());
+            //throw new ReservationException(e);
         }
+
         return done;
     }
 
@@ -73,5 +81,14 @@ public class CarRentalSession implements CarRentalSessionRemote {
             throw new IllegalStateException("name already set");
         }
         renter = name;
+    }
+
+    @Override
+    public String getCheapestCarType(Date start, Date end) {
+        CarType carType = em.createNamedQuery("getCheapestCarType", CarType.class)
+                .setParameter("givenStartDate", start)
+                .setParameter("givenEndDate", end)
+                .setMaxResults(1).getSingleResult();
+        return carType.getName();
     }
 }
