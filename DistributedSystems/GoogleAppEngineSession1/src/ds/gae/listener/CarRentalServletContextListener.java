@@ -23,46 +23,36 @@ public class CarRentalServletContextListener implements ServletContextListener {
 	public void contextInitialized(ServletContextEvent arg0) {
 		// This will be invoked as part of a warming request, 
 		// or the first user request if no warming request was invoked.
-						
+
 		// check if dummy data is available, and add if necessary
 		if(!isDummyDataAvailable()) {
 			addDummyData();
 		}
 	}
-	
+
 	private boolean isDummyDataAvailable() {
 		// If the Hertz car rental company is in the datastore, we assume the dummy data is available
-
-		// FIXME: use persistence instead
-		return CarRentalModel.get().CRCS.containsKey("Hertz");
-
+		//return CarRentalModel.get().getRentalCompany("Hertz") != null;
+		return  CarRentalModel.get().getAllRentalCompanyNames().contains("Hertz");
 	}
-	
+
 	private void addDummyData() {
 		loadRental("Hertz","hertz.csv");
-        loadRental("Dockx","dockx.csv");
+		loadRental("Dockx","dockx.csv");
 	}
-	
+
 	private void loadRental(String name, String datafile) {
 		Logger.getLogger(CarRentalServletContextListener.class.getName()).log(Level.INFO, "loading {0} from file {1}", new Object[]{name, datafile});
-        try {
-        	
-            Set<Car> cars = loadData(name, datafile);
-            CarRentalCompany company = new CarRentalCompany(name, cars);
-            
-    		// FIXME: use persistence instead
-            CarRentalModel.get().CRCS.put(name, company);
-
-        } catch (NumberFormatException ex) {
-            Logger.getLogger(CarRentalServletContextListener.class.getName()).log(Level.SEVERE, "bad file", ex);
-        } catch (IOException ex) {
-            Logger.getLogger(CarRentalServletContextListener.class.getName()).log(Level.SEVERE, null, ex);
-        }
+		try {
+			CarRentalModel.get().addRentalCompany(new CarRentalCompany(name, loadData(name, datafile)));
+		} catch (NumberFormatException ex) {
+			Logger.getLogger(CarRentalServletContextListener.class.getName()).log(Level.SEVERE, "bad file", ex);
+		} catch (IOException ex) {
+			Logger.getLogger(CarRentalServletContextListener.class.getName()).log(Level.SEVERE, null, ex);
+		}
 	}
-	
+
 	public static Set<Car> loadData(String name, String datafile) throws NumberFormatException, IOException {
-		// FIXME: adapt the implementation of this method to your entity structure
-		
 		Set<Car> cars = new HashSet<Car>();
 		int carId = 1;
 
@@ -84,6 +74,9 @@ public class CarRentalServletContextListener implements ServletContextListener {
 					Float.parseFloat(csvReader.nextToken()),
 					Double.parseDouble(csvReader.nextToken()),
 					Boolean.parseBoolean(csvReader.nextToken()));
+			
+			// Or we can also use em.flush();
+			CarRentalModel.get().addCarType(type);
 			//create N new cars with given type, where N is the 5th field
 			for (int i = Integer.parseInt(csvReader.nextToken()); i > 0; i--) {
 				cars.add(new Car(carId++, type));

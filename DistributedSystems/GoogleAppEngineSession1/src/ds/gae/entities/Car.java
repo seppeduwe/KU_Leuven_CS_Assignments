@@ -4,18 +4,38 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import com.google.appengine.api.datastore.Key;
+import com.google.appengine.datanucleus.annotations.Unowned;
+@Entity
 public class Car {
 
-    private int id;
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Key key;
+	
+    private int carId;
+       
+    @Unowned
+    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.DETACH})
     private CarType type;
+    
+    @OneToMany(cascade = {CascadeType.REMOVE,CascadeType.PERSIST})
     private Set<Reservation> reservations;
-
+    
     /***************
      * CONSTRUCTOR *
      ***************/
-    
+    public Car(){}
     public Car(int uid, CarType type) {
-    	this.id = uid;
+    	this.carId = uid;
         this.type = type;
         this.reservations = new HashSet<Reservation>();
     }
@@ -25,7 +45,7 @@ public class Car {
      ******/
     
     public int getId() {
-    	return id;
+    	return carId;
     }
     
     /************
