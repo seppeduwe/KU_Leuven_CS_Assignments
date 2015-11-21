@@ -1,0 +1,47 @@
+procedure toKey(l, f) {
+  return l..tostring(f);
+}
+procedure toLink(g1, g2) {
+  return "g"..tostring(g1).."-"..tostring(g2);
+}
+procedure label(g) {
+  return g;
+}
+
+structure S : V_out {
+  Color = { blue; orange; yellow; green }
+  
+  Area = { 1..12 }
+
+  Border = { 1,2; 1,4; 1,5; 
+            2,3; 2,4; 
+            3,4; 3,7; 3,12;
+            4,5; 4,6; 4,7;
+            5,6; 5,8;
+            6,7; 6,8; 6,9; 6,10;
+            7,10; 7,11; 7,12;
+            8,9;
+            9,10;
+            10,11;
+            11,12;}
+  //idpd3
+  time = {1}
+  width = {0..80}
+  height = {0..80}
+  color = {"white"; "red"; "orange"; "green"; "blue"; "yellow"; "black"; "gray"}
+  x = {1,1; 2,3; 3,5; 4,3; 5,1; 6,3; 7,5; 8,1; 9,3; 10,5; 11,7; 12,7}
+  y = {1,1; 2,0; 3,1; 4,2; 5,3; 6,4; 7,3; 8,5; 9,6; 10,5; 11,4; 12,2}
+  toKey = procedure toKey
+  toLink = procedure toLink
+  color = {
+    blue, "blue";
+    orange, "orange";
+    yellow, "yellow";
+    green, "green"
+  }
+  toLabel = procedure label
+}
+
+procedure getExpectedModels() {
+	return 3;
+}

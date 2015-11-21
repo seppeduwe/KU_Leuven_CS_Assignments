@@ -1,0 +1,53 @@
+
+include "idpd3/idpd3_voc.idp"
+
+vocabulary V_out {
+  extern vocabulary idpd3::V_out
+  extern vocabulary V
+
+  toKey(index, index) : key
+  toQueen(index, index) : key
+  fout(index, index)
+}
+
+theory T_D3 : V_out {
+  {
+    fout(r, k) <- queen(r, k) & #{r1 : queen(r1, k) } > 1.
+    fout(r, k) <- queen(r, k) & #{k1 : queen(r, k1) } > 1.
+    fout(r, k) <- queen(r, k) & ?>1 r1, k1 : queen(r1, k1) & diag1(r, k) = diag1(r1, k1).
+    fout(r, k) <- queen(r, k) & ?>1 r1, k1 : queen(r1, k1) & diag2(r, k) = diag2(r1, k1).
+    fout(r, k) <- #{r1 : queen(r1, k) } = 0.
+    fout(r, k) <- #{k1 : queen(r, k1) } = 0.
+  }
+  {
+    d3_type(1, key) = rect     <- toKey(r, k) = key.
+    d3_rect_width(1, key) = 4  <- toKey(r, k) = key.
+    d3_rect_height(1, key) = 4 <- toKey(r, k) = key.
+    d3_color(1, key) = "white" <- toKey(r, k) = key & ~fout(r, k).
+    d3_color(1, key) = "red"   <- toKey(r, k) = key & fout(r, k).
+    d3_x(1, key) = 5*r <- toKey(r, k) = key.
+    d3_y(1, key) = 5*k <- toKey(r, k) = key.
+
+    d3_type(1, key) = circ     <- toQueen(r, k) = key & queen(r, k).
+    d3_x(1, key) = 5*r         <- toQueen(r, k) = key & queen(r, k).
+    d3_y(1, key) = 5*k         <- toQueen(r, k) = key & queen(r, k).
+    d3_circ_r(1, key) = 1      <- toQueen(r, k) = key & queen(r, k).
+    d3_color(1, key) = "black" <- toQueen(r, k) = key & queen(r, k).
+
+    d3_order(1, key) = 0       <- toKey(r, k) = key.
+    d3_order(1, key) = 1       <- toQueen(r, k) = key.
+
+    d3_link_width(a, b) = c <- false.
+    d3_link_from(a, b) = c <- false.
+    d3_link_to(a, b) = c <- false.
+  }
+  !t : ! x: d3_width(t) = x => ~?y : x<y.
+  !t : ! x: d3_height(t) = x => ~?y : x<y.
+}
+
+procedure toKey(r, k) {
+  return "s"..r.."-"..k;
+}
+procedure toQueen(r, k) {
+  return "q"..r.."-"..k;
+}

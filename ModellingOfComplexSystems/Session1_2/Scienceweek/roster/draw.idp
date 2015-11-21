@@ -1,0 +1,137 @@
+include "idpd3/idpd3_voc.idp"
+
+vocabulary V_out {
+    extern vocabulary idpd3::V_out
+    extern vocabulary V
+
+    type reason isa label
+    
+    textKey(label) : key
+    rectKey(label) : key
+    textKeyR(reason) : key
+    rectKeyR(reason) : key
+    rectSquare(group, day, hour) : key
+    textSquare(group, day, hour) : key
+
+    rectFout(reason, teacher) : key
+    textFout(reason, teacher) : key
+
+    toName(teacher) : label
+
+    indexX(reason, width)
+    indexC(reason, color)
+    dagen(day, label, width)
+    richting(group, label, height)
+    vakNaam(course, label)
+    
+    foutSum(reason, teacher)
+    fout(reason, teacher, day, hour)
+    foutRooster(reason, group, day, hour)
+}
+
+
+theory T_D3 : V_out {
+  {
+    fout("Degree", l, d, u) <- mustTeach(l, g, d, u) & taughtBy(g, v) = l & ~degree(l, v).
+    fout("Double", l, d, u) <- #{g : mustTeach(l, g, d, u)} > 1.
+    foutRooster("Wednesday afternoon", g, d, u) <- has(v, g, d, u) & d = wednesday & u > 4. 
+    foutRooster("Double", g, d, u) <- #{v : has(v, g, d, u)} > 1.
+    foutRooster("Not enough", g, d, u) <- has(v, g, d, u) & #{d1, u1 : has(v, g, d1, u1)} < hoursPerWeek(g, v).
+    foutRooster("Too much", g, d, u) <- has(v, g, d, u) & #{d1, u1 : has(v, g, d1, u1)} > hoursPerWeek(g, v).
+    foutSum(r, l) <- ?d, u : fout(r, l, d, u).
+    //Index background
+    d3_type(1, key) = rect     <- indexC(l, c) & key = rectKey(l).
+    d3_rect_width(1, key) = 20 <- indexC(l, c) & key = rectKey(l).
+    d3_rect_height(1, key) = 6 <- indexC(l, c) & key = rectKey(l).
+    d3_color(1, key) = c       <- indexC(l, c) & key = rectKey(l).
+    d3_x(1, key) = x + 10      <- indexX(l, x) & key = rectKey(l).
+    d3_y(1, key) = 4           <- indexC(l, c) & key = rectKey(l).
+    //Index text
+    d3_type(1, k) = text       <- indexC(l, c) & k = textKey(l).
+    d3_text_size(1, k) = 4     <- indexC(l, c) & k = textKey(l).
+    d3_text_label(1, k) = l    <- indexC(l, c) & k = textKey(l).
+    d3_color(1, k) = "black"   <- indexC(l, c) & k = textKey(l).
+    d3_x(1, k) = x + 10        <- indexX(l, x) & k = textKey(l).
+    d3_y(1, k) = 6             <- indexC(l, c) & k = textKey(l).
+    
+    d3_type(1, key) = rect     <- dagen(d, l, x) & key = rectKey(l).
+    d3_rect_width(1, key) = 18 <- dagen(d, l, x) & key = rectKey(l).
+    d3_rect_height(1, key) = 6 <- dagen(d, l, x) & key = rectKey(l).
+    d3_color(1, key) = "gray"  <- dagen(d, l, x) & key = rectKey(l).
+    d3_x(1, key) = x           <- dagen(d, l, x) & key = rectKey(l).
+    d3_y(1, key) = 18          <- dagen(d, l, x) & key = rectKey(l).
+
+    d3_type(1, k) = text       <- dagen(d, l, x) & k = textKey(l).
+    d3_text_size(1, k) = 4     <- dagen(d, l, x) & k = textKey(l).
+    d3_text_label(1, k) = l    <- dagen(d, l, x) & k = textKey(l).
+    d3_color(1, k) = "black"   <- dagen(d, l, x) & k = textKey(l).
+    d3_x(1, k) = x + 1         <- dagen(d, l, x) & k = textKey(l).
+    d3_y(1, k) = 20            <- dagen(d, l, x) & k = textKey(l).
+
+    d3_type(1, key) = rect     <- richting(g, l, y) & key = rectKey(l).
+    d3_rect_width(1, key) = 20 <- richting(g, l, y) & key = rectKey(l).
+    d3_rect_height(1, key) = 50<- richting(g, l, y) & key = rectKey(l).
+    d3_color(1, key) = "gray"  <- richting(g, l, y) & key = rectKey(l).
+    d3_x(1, key) = 1           <- richting(g, l, y) & key = rectKey(l).
+    d3_y(1, key) = y + 25      <- richting(g, l, y) & key = rectKey(l).
+
+    d3_type(1, k) = text       <- richting(g, l, y) & k = textKey(l).
+    d3_text_size(1, k) = 4     <- richting(g, l, y) & k = textKey(l).
+    d3_text_label(1, k) = l    <- richting(g, l, y) & k = textKey(l).
+    d3_color(1, k) = "black"   <- richting(g, l, y) & k = textKey(l).
+    d3_x(1, k) = 6             <- richting(g, l, y) & k = textKey(l).
+    d3_y(1, k) = y + 5         <- richting(g, l, y) & k = textKey(l).
+
+    d3_type(1, k) = rect       <- rectSquare(g, d, u) = k & has(v, g, d, u).
+    d3_rect_width(1, k) = 18   <- rectSquare(g, d, u) = k & has(v, g, d, u).
+    d3_rect_height(1, k) = 6   <- rectSquare(g, d, u) = k & has(v, g, d, u).
+    d3_color(1, k) = "gray"    <- rectSquare(g, d, u) = k & has(v, g, d, u)
+                                & taughtBy(g, v) = l & (!r : ~fout(r, l, d, u))
+                                & (!r : ~foutRooster(r, g, d, u)).
+    d3_color(1, k) = c         <- rectSquare(g, d, u) = k & has(v, g, d, u)
+                                & taughtBy(g, v) = l & fout(r, l, d, u)
+                                & indexC(r, c) & (!t : ~foutRooster(t, g, d, u)).
+    d3_color(1, k) = c         <- rectSquare(g, d, u) = k & has(v, g, d, u)
+                                & foutRooster(r, g, d, u) & indexC(r, c).
+    
+    d3_x(1, k) = x             <- rectSquare(g, d, u) = k & has(v, g, d, u) 
+                                & dagen(d, l, x).
+    d3_y(1, k) = 7 *u + yb - 4 <- rectSquare(g, d, u) = k & has(v, g, d, u) 
+                                & richting(g, l, yb).
+
+    d3_type(1, k) = text       <- textSquare(g, d, u) = k & has(v, g, d, u).
+    d3_text_size(1, k) = 4     <- textSquare(g, d, u) = k & has(v, g, d, u).
+    d3_text_label(1, k) = l    <- textSquare(g, d, u) = k & has(v, g, d, u)
+                                & vakNaam(v, l).
+    d3_color(1, k) = "black"   <- textSquare(g, d, u) = k & has(v, g, d, u).
+    d3_x(1, k) = x             <- textSquare(g, d, u) = k & has(v, g, d, u) 
+                                & dagen(d, l, x).
+    d3_y(1, k) = 7*u + yb - 2  <- textSquare(g, d, u) = k & has(v, g, d, u) 
+                                & richting(g, l, yb).
+
+    d3_type(1, key) = rect     <- key = rectFout(l, le) & foutSum(l, le).
+    d3_rect_width(1, key) = 20 <- key = rectFout(l, le) & foutSum(l, le).
+    d3_rect_height(1, key) = 7 <- key = rectFout(l, le) & foutSum(l, le).
+    d3_color(1, key) = c       <- indexC(l, c) & ? le : key = rectFout(l, le) & foutSum(l, le).
+    d3_x(1, key) = x           <- indexX(l, x) & ? le : key = rectFout(l, le) & foutSum(l, le).
+    d3_y(1, key) = 9           <- key = rectFout(l, le) & foutSum(l, le).
+    
+    d3_type(1, k) = text       <- k = textFout(l, le) & foutSum(l, le).
+    d3_text_size(1, k) = 4     <- k = textFout(l, le) & foutSum(l, le).
+    d3_text_label(1, k) = toName(le)
+                               <- k = textFout(l, le) & foutSum(l, le).
+    d3_color(1, k) = "black"   <- k = textFout(l, le) & foutSum(l, le).
+    d3_x(1, k) = x + 2         <- indexX(l, x) & k = textFout(l, le) & foutSum(l, le).
+    d3_y(1, k) = 14            <- k = textFout(l, le) & foutSum(l, le).
+
+    d3_link_from(a, b) = c <- false.
+    d3_link_to(a, b) = c <- false.
+    d3_link_width(a, b) = c <- false.
+    d3_node(a, b) <- false.
+    d3_isFixed(a, b) <- false.
+    d3_circ_r(a, b) = c <- false.
+
+    d3_width(t) = x <- ~?y : x<y.
+    d3_height(t) = x <- ~?y : x<y.
+  }
+}

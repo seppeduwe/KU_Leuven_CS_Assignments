@@ -1,0 +1,55 @@
+//This file contains two different correct solutions
+
+/*
+ *SOLUTION 1  
+ */
+vocabulary SchurVoc1{
+	type Partition isa int
+	type Number isa int
+	
+	In(Number):Partition
+}
+
+theory SchurTheo1: SchurVoc1{
+	! x[Number] y[Number]: In(x)=In(y) & Number(x+y) => In(x+y) ~= In(x).
+}
+
+structure SchurStruc1: SchurVoc1{
+	Number = {1..70}
+	Partition = {1..5}
+	In<ct> = {1->1; 8->1; 12->1; 14->1;	3->3; 5->3; 7->3; 11->3; 13->3; 15->3; 2->4; 6->4; 10->4;4->5}		
+}	
+
+
+/*
+ *SOLUTION 2 
+ */
+vocabulary SchurVoc2{
+	type Partition isa int
+	type Number isa int
+	GivenIn(Number,Partition)
+	
+	In(Number):Partition
+	
+}
+
+theory SchurTheo2: SchurVoc2{
+	! x[Number] y[Number]: In(x)=In(y) & Number(x+y) => In(x+y) ~= In(x).
+	! x[Number] y[Partition]:GivenIn(x,y) => In(x)=y. 
+}
+
+structure SchurStruc2: SchurVoc2{
+	Number = {1..70}
+	Partition = {1..5}
+	GivenIn = {1,1; 8,1; 12,1; 14,1; 3,3; 5,3; 7,3; 11,3; 13,3; 15,3; 2,4; 6,4; 10,4;4,5}		
+}	
+
+
+procedure main(){
+	print("Searching for a solution for the Schur Problem with the first theory")
+	print(modelexpand(SchurTheo1,SchurStruc1)[1])
+	print("Searching for a solution for the Schur Problem with the second theory")
+	print(modelexpand(SchurTheo2,SchurStruc2)[1])
+}	
+		
+		

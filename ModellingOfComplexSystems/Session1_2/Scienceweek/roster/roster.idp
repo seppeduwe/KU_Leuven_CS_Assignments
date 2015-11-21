@@ -1,0 +1,58 @@
+/*************
+  Lesrooster
+*************/
+
+vocabulary V{
+  type group         // The classgroups
+  type teacher	 // The teachers
+  type course			 // The courses
+  type sessions isa int   // The number of sessions of a course
+  type day           // The day of the week
+  type hour isa int   // The hour of a course (1 to 7)
+
+  monday:   day     // 
+  tuesday:   day    // 
+  wednesday:  day   // The different days in the week.
+  thursday: day     // 
+  friday:   day     // 
+
+  degree(teacher,course)
+    // degrees(t,c) declares that teacher t has a degree for the course c.
+  taughtBy(group,course) : teacher
+    // teaches(t,v) is the teacher that instructs the course for class c
+  mustTeach(teacher,group,day,hour)
+    // mustTeach(t,c,d,h) is true iff. teacher t instructs class c
+		// on the day d, at hour h.
+
+  hoursPerWeek(group,course) : sessions	
+    // The number of hours a cource must be taught each week.
+
+  has(course,group,day,hour)	
+    // has(c,g,d,h) is true iff. group g has course c at day d and hour h.
+
+}
+theory T:V{
+
+  // A course must be taught the correct number of hours per week.
+  //TODO
+
+  // A teacher can only teach one class at any time.
+  //TODO
+
+  // A teacher must have the right degree to teach a course.
+  //TODO
+
+  // No courses wednesday afternoon
+  //TODO
+
+  // A classgroup can only follow one class at any time.
+  //TODO
+  
+  // If a classgroup has a course at a certain time, that course's teacher must teach that group at that time.
+  //TODO
+}
+
+include "idpd3/run.idp"
+include "draw.idp"
+include "instance_1.idp"
+include "solution.aidp"
