@@ -2,26 +2,43 @@ package ds.gae;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 import com.google.appengine.api.datastore.Key;
 
 import ds.gae.entities.Car;
 import ds.gae.entities.CarRentalCompany;
 import ds.gae.entities.CarType;
+import ds.gae.entities.FailedQuote;
 import ds.gae.entities.Quote;
 import ds.gae.entities.Reservation;
 import ds.gae.entities.ReservationConstraints;
 
+@NamedQueries({	
+	@NamedQuery(name="getFailedQuotesByRenter", query
+			= "SELECT failedQuote "
+			+ "FROM FailedQuote failedQuote "
+			+ "WHERE failedQuote.carRenter = :carRenter"
+			)
+})
+
 public class CarRentalModel {
 	private static CarRentalModel instance;
 
+	private static Logger logger = Logger.getLogger(CarRentalCompany.class.getName());
+	
 	public static CarRentalModel get() {
 		if (instance == null)
 			instance = new CarRentalModel();
@@ -46,10 +63,12 @@ public class CarRentalModel {
 
 	}
 	public Set<String> getCarTypesNames(EntityManager em, String crcName) {
-		Set<String> names = (Set<String>) em.createNamedQuery("getCarTypesNames", String.class)
-				.setParameter("crcName", crcName)
-				.getResultList();
-		return names;
+		Collection<CarType> carTypes = getCarTypesOfCarRentalCompany(em,crcName);
+		Set<String> carTypeNames = new HashSet<String>();
+		for (CarType cartype : carTypes) {
+			carTypeNames.add(cartype.getName());
+		}
+		return carTypeNames;
 	}
 
 	/**
@@ -71,7 +90,6 @@ public class CarRentalModel {
 				.getResultList();
 		return names;
 	}
-
 
 	public CarRentalCompany getRentalCompany(String company) {
 		EntityManager em = EMF.get().createEntityManager();
@@ -164,7 +182,23 @@ public class CarRentalModel {
 	 * 			One of the quotes cannot be confirmed. 
 	 * 			Therefore none of the given quotes is confirmed.
 	 */
-	public List<Reservation> confirmQuotes(List<Quote> quotes) throws ReservationException {    	
+	public List<Reservation> confirmQuotes(List<Quote> quotes) throws ReservationException {    
+		Map<String, List<Quote>> groupedQuotes = groupQuotesByCompany(quotes);
+		List<Reservation> reservations = new ArrayList<Reservation>();
+		for (List<Quote> group : groupedQuotes.values()) {
+			try {
+				reservations.addAll(confirmQuotesInCompany(group));
+			} catch (ReservationException e) {
+				logger.log(Level.INFO, e.getMessage());
+				for (Quote quote: group){
+					addFailedQuote(new FailedQuote(quote,new Date()));
+				}
+			}
+		}
+		return reservations;
+	}
+
+	public List<Reservation> confirmQuotesInCompany(List<Quote> quotes) throws ReservationException {    
 		List<Reservation> reservations = new ArrayList<Reservation>();	
 		EntityManager em = EMF.get().createEntityManager();   	
 		EntityTransaction t = em.getTransaction();
@@ -186,6 +220,34 @@ public class CarRentalModel {
 			em.close();
 		}
 		return reservations;
+	}
+
+	protected Map<String, List<Quote>> groupQuotesByCompany(Collection<Quote> quotes) {
+		Map<String, List<Quote>> groupedQuotes = new HashMap<>();
+		for (Quote quote : quotes) {
+			List<Quote> group = groupedQuotes.get(quote.getRentalCompany());
+			if (group == null) {
+				group = new ArrayList<>();
+				groupedQuotes.put(quote.getRentalCompany(), group);
+			}
+			group.add(quote);
+		}
+		return groupedQuotes;
+	}
+
+
+	public void cancelReservation(Reservation res) {
+		EntityManager em = EMF.get().createEntityManager();
+		try {
+			cancelReservation(em, res);
+		} finally {
+			em.close();
+		}
+	}
+
+	protected void cancelReservation(EntityManager em, Reservation res) {
+		CarRentalCompany crc = getRentalCompany(em, res.getRentalCompany());
+		crc.cancelReservation(res);
 	}
 
 	/**
@@ -227,7 +289,17 @@ public class CarRentalModel {
 		}
 	}
 
-
+	public Key addCarType(CarType carType) {
+		EntityManager em = EMF.get().createEntityManager();
+		try {     
+			em.persist(carType);    
+		}
+		finally {
+			em.close();
+		}
+		return carType.getKey();
+	}
+	
 	public Collection<CarType> getCarTypesOfCarRentalCompany(EntityManager em,String crcName) {
 		return ( em.createNamedQuery("getCarTypesOfCarRentalCompany",Map.class)
 				.setParameter("crcName", crcName)
@@ -308,14 +380,42 @@ public class CarRentalModel {
 		return this.getReservations(renter).size() > 0;		
 	}
 
-	public Key addCarType(CarType carType) {
+	/***************
+	 * FAILED QUOTES *
+	 ***************/
+
+	/**
+	 * Add a failed quote.
+	 * 
+	 * @param	failedQuote
+	 * 			Object failedQuote
+	 * 
+	 */
+	public void addFailedQuote(FailedQuote failedQuote) {
 		EntityManager em = EMF.get().createEntityManager();
-		try {     
-			em.persist(carType);    
-		}
-		finally {
+		try {
+			addFailedQuote(em, failedQuote);
+		} finally {
 			em.close();
 		}
-		return carType.getKey();
+	}
+
+	private void addFailedQuote(EntityManager em, FailedQuote failedQuote) {
+		em.persist(failedQuote);
+	}
+
+	public List<FailedQuote> getFailedQuoteByRenter(String renter) {	
+		EntityManager em = EMF.get().createEntityManager();
+		try{
+			return getFailedQuoteByRenter(em,renter);
+		} finally {
+			em.close();
+		}
+	}
+
+	private List<FailedQuote> getFailedQuoteByRenter(EntityManager em,String renter){
+		return em.createNamedQuery("getFailedQuotesByRenter",FailedQuote.class)
+				.setParameter("carRenter", renter)
+				.getResultList();
 	}
 }

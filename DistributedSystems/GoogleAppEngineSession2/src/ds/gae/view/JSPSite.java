@@ -14,7 +14,7 @@ public enum JSPSite {
 	
 	RESERVATION_ERROR("Reservation Error", "/reservationError.jsp", false),
 	LOGIN("Login", "/login.jsp", false),
-	CONFIRM_QUOTES_RESPONSE("Confirm Quote Reply", "/confirmQuotesReply.jsp", false),	
+	CONFIRM_QUOTES_RESPONSE("Confirm Quote Reply", "/confirmQuotesReply.jsp", true),	
 	PERSIST_TEST_SERVLET("Persist Test", "/persTest", true),	
 	PERSIST_TEST("Persist Test", "/persTest.jsp", false);	
 

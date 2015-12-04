@@ -1,5 +1,6 @@
 package ds.gae.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -10,9 +11,9 @@ import javax.persistence.MappedSuperclass;
 
 import com.google.appengine.api.datastore.Key;
 
-@Entity
 @MappedSuperclass
-public class Quote {
+@Entity
+public class Quote implements Serializable{
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

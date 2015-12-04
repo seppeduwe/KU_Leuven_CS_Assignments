@@ -23,22 +23,12 @@ import ds.gae.ReservationException;
 @NamedQueries({	
 	@NamedQuery(name="getReservationsOfRenter", query
 			= "SELECT reservation "
-					+ "FROM Reservation reservation "
-					+ "WHERE reservation.carRenter = :renter"
+			+ "FROM Reservation reservation "
+			+ "WHERE reservation.carRenter = :renter"
 			),  
-	@NamedQuery(name="getAllRentalCompanyNames", query
+			@NamedQuery(name="getAllRentalCompanyNames", query
 			= "SELECT carRentalCompany.name "
 			+ "FROM CarRentalCompany carRentalCompany"
-			),
-	@NamedQuery(name="getCarTypesOfCarRentalCompany", query
-			= "SELECT carRentalCompany.carTypes "
-			+ "FROM CarRentalCompany carRentalCompany "
-			+ "WHERE carRentalCompany.name = :crcName"
-			),
-	@NamedQuery(name="getCarsByCarType", query
-			= "SELECT r.cars AS c "
-			+ "FROM CarRentalCompany r "
-			+ "WHERE r.name = :company"
 			)
 }) 
 @Entity
@@ -153,10 +143,6 @@ public class CarRentalCompany {
 		addCarType(car.getType());
 		cars.add(car);
 	}
-
-	/*public void setCars(Set<Car> cars) {
-		this.cars = cars;
-	}*/
 
 	protected void removeCar(Car car) {
 		cars.remove(car);

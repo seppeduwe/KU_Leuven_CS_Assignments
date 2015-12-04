@@ -22,11 +22,11 @@ public class PersistTestServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-
 		String companyName = "Hertz";
 		String userName = "Pieter A.";
 		
 		req.getSession().setAttribute("renter", userName);
+		
 		try {
 			boolean fullApplicationDeployed = new File(getServletContext().getRealPath(JSPSite.CREATE_QUOTES.url())).exists();
 			
@@ -35,7 +35,7 @@ public class PersistTestServlet extends HttpServlet {
 				ReservationConstraints c = new ReservationConstraints(
 						ViewTools.DATE_FORMAT.parse("01.02.2011"), 
 						ViewTools.DATE_FORMAT.parse("01.03.2011"), "Compact");
-				
+			
 				final Quote q = CarRentalModel.get().createQuote(companyName, userName, c);
 				CarRentalModel.get().confirmQuote(q);
 			}

@@ -33,7 +33,7 @@ public class CarRentalServletContextListener implements ServletContextListener {
 	private boolean isDummyDataAvailable() {
 		// If the Hertz car rental company is in the datastore, we assume the dummy data is available
 		//return CarRentalModel.get().getRentalCompany("Hertz") != null;
-		return  CarRentalModel.get().getAllRentalCompanyNames().contains("Hertz");
+		return CarRentalModel.get().getAllRentalCompanyNames().contains("Hertz");
 	}
 
 	private void addDummyData() {

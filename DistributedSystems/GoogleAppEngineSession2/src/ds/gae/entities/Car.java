@@ -10,10 +10,20 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.datanucleus.annotations.Unowned;
+
+@NamedQueries({	
+	@NamedQuery(name="getCarsByCarType", query
+			= "SELECT r.cars AS c "
+			+ "FROM CarRentalCompany r "
+			+ "WHERE r.name = :company"
+			)
+}) 
 @Entity
 public class Car {
 
