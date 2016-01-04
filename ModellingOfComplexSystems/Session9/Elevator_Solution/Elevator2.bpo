@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="CTXHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="door_states" org.eventb.core.type="ℙ(door_states)"/>
+<org.eventb.core.poIdentifier name="closed" org.eventb.core.type="door_states"/>
+<org.eventb.core.poIdentifier name="opened" org.eventb.core.type="door_states"/>
+<org.eventb.core.poPredicate name="door_statet" org.eventb.core.predicate="partition(door_states,{opened},{closed})" org.eventb.core.source="/Elevator/Doors.buc|org.eventb.core.contextFile#Doors|org.eventb.core.axiom#*"/>
+<org.eventb.core.poIdentifier name="floors" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.poPredicate name="door_stateu" org.eventb.core.predicate="floors=−2 ‥ 5" org.eventb.core.source="/Elevator/Floors.buc|org.eventb.core.contextFile#Floors|org.eventb.core.axiom#("/>
+<org.eventb.core.poIdentifier name="move_states" org.eventb.core.type="ℙ(move_states)"/>
+<org.eventb.core.poIdentifier name="moving" org.eventb.core.type="move_states"/>
+<org.eventb.core.poIdentifier name="stopped" org.eventb.core.type="move_states"/>
+<org.eventb.core.poPredicate name="move_statet" org.eventb.core.predicate="partition(move_states,{moving},{stopped})" org.eventb.core.source="/Elevator/Moving.buc|org.eventb.core.contextFile#Moving|org.eventb.core.axiom#*"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.parentSet="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="current_floor" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="door_state" org.eventb.core.type="door_states"/>
+<org.eventb.core.poIdentifier name="goal" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="move_state" org.eventb.core.type="move_states"/>
+<org.eventb.core.poPredicate name="current_floos" org.eventb.core.predicate="current_floor∈floors" org.eventb.core.source="/Elevator/Elevator0.bum|org.eventb.core.machineFile#Elevator0|org.eventb.core.invariant#)"/>
+<org.eventb.core.poPredicate name="current_floot" org.eventb.core.predicate="door_state∈door_states" org.eventb.core.source="/Elevator/Elevator1.bum|org.eventb.core.machineFile#Elevator1|org.eventb.core.invariant#+"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poSequent name="INITIALISATION/safety/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#EVTALLHYPcurrent_floos"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="¬(closed=opened∧stopped=moving)" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.invariant#0"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Elevator/Elevator1.bum|org.eventb.core.machineFile#Elevator1|org.eventb.core.event#'"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.event#'"/>
+<org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.invariant#0"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poSequent#INITIALISATION\/safety\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD1"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="INITIALISATION/goal_type/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#EVTALLHYPcurrent_floos"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="0∈floors" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.invariant#3"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Elevator/Elevator1.bum|org.eventb.core.machineFile#Elevator1|org.eventb.core.event#'"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.event#'"/>
+<org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.invariant#3"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poSequent#INITIALISATION\/goal_type\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD2"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="INITIALISATION/move_when_necessary/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#EVTALLHYPcurrent_floos"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="stopped=moving⇒0≠0" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.invariant#6"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Elevator/Elevator1.bum|org.eventb.core.machineFile#Elevator1|org.eventb.core.event#'"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.event#'"/>
+<org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.invariant#6"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poSequent#INITIALISATION\/move_when_necessary\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD3"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poPredicateSet name="EVTIDENTcurrent_floos" org.eventb.core.parentSet="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="current_floor'" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="door_state'" org.eventb.core.type="door_states"/>
+<org.eventb.core.poIdentifier name="goal'" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="move_state'" org.eventb.core.type="move_states"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPcurrent_floos" org.eventb.core.parentSet="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#EVTIDENTcurrent_floos" org.eventb.core.poStamp="0"/>
+<org.eventb.core.poSequent name="set_goal/goal_type/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#EVTALLHYPcurrent_floot"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="floor∈floors" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.invariant#3"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.event#1"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.invariant#3"/>
+<org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poSequent#set_goal\/goal_type\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD2"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="set_goal/move_when_necessary/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#EVTALLHYPcurrent_floot"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="move_state=moving⇒floor≠current_floor" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.invariant#6"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.event#1"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.invariant#6"/>
+<org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poSequent#set_goal\/move_when_necessary\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD3"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poPredicateSet name="EVTIDENTcurrent_floot" org.eventb.core.parentSet="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="goal'" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="floor" org.eventb.core.type="ℤ"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPcurrent_floot" org.eventb.core.parentSet="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#EVTIDENTcurrent_floot" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="floor∈floors" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.event#1|org.eventb.core.guard#'"/>
+<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="floor≠current_floor" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.event#1|org.eventb.core.guard#)"/>
+<org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="move_state=stopped" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.event#1|org.eventb.core.guard#+"/>
+<org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="goal=current_floor" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.event#1|org.eventb.core.guard#,"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poSequent name="start_moving/safety/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#EVTALLHYPcurrent_floou"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="¬(door_state=opened∧moving=moving)" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.invariant#0"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.event#4"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.invariant#0"/>
+<org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poSequent#start_moving\/safety\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD1"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="start_moving/move_when_necessary/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#EVTALLHYPcurrent_floou"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="moving=moving⇒goal≠current_floor" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.invariant#6"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.event#4"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.invariant#6"/>
+<org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poSequent#start_moving\/move_when_necessary\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD3"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poPredicateSet name="EVTIDENTcurrent_floou" org.eventb.core.parentSet="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="move_state'" org.eventb.core.type="move_states"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPcurrent_floou" org.eventb.core.parentSet="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#EVTIDENTcurrent_floou" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="door_state=closed" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.event#4|org.eventb.core.guard#'"/>
+<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="goal≠current_floor" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.event#4|org.eventb.core.guard#("/>
+<org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="move_state=stopped" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.event#4|org.eventb.core.guard#*"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poSequent name="reach_goal/safety/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#EVTALLHYPcurrent_floov"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="¬(door_state=opened∧stopped=moving)" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.invariant#0"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Elevator/Elevator1.bum|org.eventb.core.machineFile#Elevator1|org.eventb.core.event#,"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.event#5"/>
+<org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.invariant#0"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poSequent#reach_goal\/safety\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD1"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="reach_goal/move_when_necessary/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#EVTALLHYPcurrent_floov"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="stopped=moving⇒goal≠goal" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.invariant#6"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Elevator/Elevator1.bum|org.eventb.core.machineFile#Elevator1|org.eventb.core.event#,"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.event#5"/>
+<org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.invariant#6"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poSequent#reach_goal\/move_when_necessary\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD3"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="reach_goal/floor_type/GRD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Guard strengthening (split)" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#EVTALLHYPcurrent_floov"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="goal∈floors" org.eventb.core.source="/Elevator/Elevator0.bum|org.eventb.core.machineFile#Elevator0|org.eventb.core.event#*|org.eventb.core.guard#)"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Elevator/Elevator1.bum|org.eventb.core.machineFile#Elevator1|org.eventb.core.event#,"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Elevator/Elevator0.bum|org.eventb.core.machineFile#Elevator0|org.eventb.core.event#*|org.eventb.core.guard#)"/>
+<org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.event#5"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poSequent#reach_goal\/floor_type\/GRD|org.eventb.core.poPredicateSet#SEQHYP"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="reach_goal/not_same_floor/GRD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Guard strengthening (split)" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#EVTALLHYPcurrent_floov"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="goal≠current_floor" org.eventb.core.source="/Elevator/Elevator0.bum|org.eventb.core.machineFile#Elevator0|org.eventb.core.event#*|org.eventb.core.guard#*"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Elevator/Elevator1.bum|org.eventb.core.machineFile#Elevator1|org.eventb.core.event#,"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Elevator/Elevator0.bum|org.eventb.core.machineFile#Elevator0|org.eventb.core.event#*|org.eventb.core.guard#*"/>
+<org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.event#5"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poSequent#reach_goal\/not_same_floor\/GRD|org.eventb.core.poPredicateSet#SEQHYP"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="reach_goal/door_closed/GRD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Guard strengthening (split)" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#EVTALLHYPcurrent_floov"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="door_state=closed" org.eventb.core.source="/Elevator/Elevator1.bum|org.eventb.core.machineFile#Elevator1|org.eventb.core.event#,|org.eventb.core.guard#("/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Elevator/Elevator1.bum|org.eventb.core.machineFile#Elevator1|org.eventb.core.event#,"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Elevator/Elevator1.bum|org.eventb.core.machineFile#Elevator1|org.eventb.core.event#,|org.eventb.core.guard#("/>
+<org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.event#5"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poSequent#reach_goal\/door_closed\/GRD|org.eventb.core.poPredicateSet#SEQHYP"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="reach_goal/go_to_floor/SIM" org.eventb.core.accurate="true" org.eventb.core.poDesc="Action simulation" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#EVTALLHYPcurrent_floov"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="goal=goal" org.eventb.core.source="/Elevator/Elevator0.bum|org.eventb.core.machineFile#Elevator0|org.eventb.core.event#*|org.eventb.core.action#'"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Elevator/Elevator1.bum|org.eventb.core.machineFile#Elevator1|org.eventb.core.event#,"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Elevator/Elevator0.bum|org.eventb.core.machineFile#Elevator0|org.eventb.core.event#*|org.eventb.core.action#'"/>
+<org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.event#5"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poSequent#reach_goal\/go_to_floor\/SIM|org.eventb.core.poPredicateSet#SEQHYP"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poPredicateSet name="EVTIDENTcurrent_floov" org.eventb.core.parentSet="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="current_floor'" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="floor" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="move_state'" org.eventb.core.type="move_states"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPcurrent_floov" org.eventb.core.parentSet="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#EVTIDENTcurrent_floov" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="goal≠current_floor" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.event#5|org.eventb.core.guard#("/>
+<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="move_state=moving" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.event#5|org.eventb.core.guard#)"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poSequent name="open_door/safety/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#EVTALLHYPcurrent_floow"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="¬(opened=opened∧move_state=moving)" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.invariant#0"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Elevator/Elevator1.bum|org.eventb.core.machineFile#Elevator1|org.eventb.core.event#-"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.event#7"/>
+<org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.invariant#0"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poSequent#open_door\/safety\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD1"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poPredicateSet name="EVTIDENTcurrent_floow" org.eventb.core.parentSet="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="door_state'" org.eventb.core.type="door_states"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPcurrent_floow" org.eventb.core.parentSet="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#EVTIDENTcurrent_floow" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="door_state=closed" org.eventb.core.source="/Elevator/Elevator1.bum|org.eventb.core.machineFile#Elevator1|org.eventb.core.event#-|org.eventb.core.guard#'"/>
+<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="move_state=stopped" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.event#7|org.eventb.core.guard#("/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poSequent name="close_door/safety/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#EVTALLHYPcurrent_floox"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="¬(closed=opened∧move_state=moving)" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.invariant#0"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Elevator/Elevator1.bum|org.eventb.core.machineFile#Elevator1|org.eventb.core.event#evt1"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.event#8"/>
+<org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.invariant#0"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poSequent#close_door\/safety\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD1"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poPredicateSet name="EVTIDENTcurrent_floox" org.eventb.core.parentSet="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="door_state'" org.eventb.core.type="door_states"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPcurrent_floox" org.eventb.core.parentSet="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#EVTIDENTcurrent_floox" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="door_state=opened" org.eventb.core.source="/Elevator/Elevator1.bum|org.eventb.core.machineFile#Elevator1|org.eventb.core.event#evt1|org.eventb.core.guard#'"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/Elevator/Elevator2.bpo|org.eventb.core.poFile#Elevator2|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="move_state∈move_states" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.invariant#\/"/>
+<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="¬(door_state=opened∧move_state=moving)" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.invariant#0"/>
+<org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="goal∈floors" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.invariant#3"/>
+<org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="move_state=moving⇒goal≠current_floor" org.eventb.core.source="/Elevator/Elevator2.bum|org.eventb.core.machineFile#Elevator2|org.eventb.core.invariant#6"/>
+</org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>

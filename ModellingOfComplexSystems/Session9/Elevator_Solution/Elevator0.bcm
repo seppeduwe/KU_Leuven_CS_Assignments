@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.scMachineFile org.eventb.core.accurate="true" org.eventb.core.configuration="org.eventb.core.fwd">
+<org.eventb.core.scSeesContext name="'" org.eventb.core.scTarget="/Elevator/Floors.bcc" org.eventb.core.source="/Elevator/Elevator0.bum|org.eventb.core.machineFile#Elevator0|org.eventb.core.seesContext#+"/>
+<org.eventb.core.scInternalContext name="Floors">
+<org.eventb.core.scAxiom name="'" org.eventb.core.label="floors" org.eventb.core.predicate="floors=−2 ‥ 5" org.eventb.core.source="/Elevator/Floors.buc|org.eventb.core.contextFile#Floors|org.eventb.core.axiom#(" org.eventb.core.theorem="false"/>
+<org.eventb.core.scConstant name="floors" org.eventb.core.source="/Elevator/Floors.buc|org.eventb.core.contextFile#Floors|org.eventb.core.constant#'" org.eventb.core.type="ℙ(ℤ)"/>
+</org.eventb.core.scInternalContext>
+<org.eventb.core.scInvariant name="Floort" org.eventb.core.label="floor_type" org.eventb.core.predicate="current_floor∈floors" org.eventb.core.source="/Elevator/Elevator0.bum|org.eventb.core.machineFile#Elevator0|org.eventb.core.invariant#)" org.eventb.core.theorem="false"/>
+<org.eventb.core.scVariable name="current_floor" org.eventb.core.abstract="false" org.eventb.core.concrete="true" org.eventb.core.source="/Elevator/Elevator0.bum|org.eventb.core.machineFile#Elevator0|org.eventb.core.variable#(" org.eventb.core.type="ℤ"/>
+<org.eventb.core.scEvent name="current_floos" org.eventb.core.accurate="true" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="INITIALISATION" org.eventb.core.source="/Elevator/Elevator0.bum|org.eventb.core.machineFile#Elevator0|org.eventb.core.event#'">
+<org.eventb.core.scAction name="'" org.eventb.core.assignment="current_floor ≔ 0" org.eventb.core.label="start" org.eventb.core.source="/Elevator/Elevator0.bum|org.eventb.core.machineFile#Elevator0|org.eventb.core.event#'|org.eventb.core.action#'"/>
+</org.eventb.core.scEvent>
+<org.eventb.core.scEvent name="current_floot" org.eventb.core.accurate="true" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="go_to" org.eventb.core.source="/Elevator/Elevator0.bum|org.eventb.core.machineFile#Elevator0|org.eventb.core.event#*">
+<org.eventb.core.scGuard name="'" org.eventb.core.label="floor_type" org.eventb.core.predicate="floor∈floors" org.eventb.core.source="/Elevator/Elevator0.bum|org.eventb.core.machineFile#Elevator0|org.eventb.core.event#*|org.eventb.core.guard#)" org.eventb.core.theorem="false"/>
+<org.eventb.core.scGuard name="(" org.eventb.core.label="not_same_floor" org.eventb.core.predicate="floor≠current_floor" org.eventb.core.source="/Elevator/Elevator0.bum|org.eventb.core.machineFile#Elevator0|org.eventb.core.event#*|org.eventb.core.guard#*" org.eventb.core.theorem="false"/>
+<org.eventb.core.scParameter name="floor" org.eventb.core.source="/Elevator/Elevator0.bum|org.eventb.core.machineFile#Elevator0|org.eventb.core.event#*|org.eventb.core.parameter#(" org.eventb.core.type="ℤ"/>
+<org.eventb.core.scAction name="floos" org.eventb.core.assignment="current_floor ≔ floor" org.eventb.core.label="go_to_floor" org.eventb.core.source="/Elevator/Elevator0.bum|org.eventb.core.machineFile#Elevator0|org.eventb.core.event#*|org.eventb.core.action#'"/>
+</org.eventb.core.scEvent>
+</org.eventb.core.scMachineFile>

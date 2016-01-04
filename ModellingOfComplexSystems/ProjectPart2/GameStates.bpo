@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="states" org.eventb.core.type="ℙ(states)"/>
+<org.eventb.core.poIdentifier name="closed_to_win" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="lost" org.eventb.core.type="states"/>
+<org.eventb.core.poIdentifier name="monster_turn" org.eventb.core.type="states"/>
+<org.eventb.core.poIdentifier name="next_state" org.eventb.core.type="ℙ(states×states)"/>
+<org.eventb.core.poIdentifier name="open_to_lose" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="over" org.eventb.core.type="ℙ(states)"/>
+<org.eventb.core.poIdentifier name="player_turn" org.eventb.core.type="states"/>
+<org.eventb.core.poIdentifier name="playing" org.eventb.core.type="ℙ(states)"/>
+<org.eventb.core.poIdentifier name="won" org.eventb.core.type="states"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poSequent name="next_over/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Theorem" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Saving_Arkham/GameStates.bpo|org.eventb.core.poFile#GameStates|org.eventb.core.poPredicateSet#HYP,"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀x⦂states·x∈over⇒x∈dom(next_state)∧next_state∈states ⇸ states" org.eventb.core.source="/Saving_Arkham/GameStates.buc|org.eventb.core.contextFile#GameStates|org.eventb.core.axiom#5"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Saving_Arkham/GameStates.buc|org.eventb.core.contextFile#GameStates|org.eventb.core.axiom#5"/>
+<org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/Saving_Arkham/GameStates.bpo|org.eventb.core.poFile#GameStates|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/Saving_Arkham/GameStates.bpo|org.eventb.core.poFile#GameStates|org.eventb.core.poPredicateSet#HYP,"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="next_over/THM" org.eventb.core.accurate="true" org.eventb.core.poDesc="Theorem" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Saving_Arkham/GameStates.bpo|org.eventb.core.poFile#GameStates|org.eventb.core.poPredicateSet#HYP,"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀x⦂states·x∈over⇒next_state(x)∈over" org.eventb.core.source="/Saving_Arkham/GameStates.buc|org.eventb.core.contextFile#GameStates|org.eventb.core.axiom#5"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Saving_Arkham/GameStates.buc|org.eventb.core.contextFile#GameStates|org.eventb.core.axiom#5"/>
+<org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/Saving_Arkham/GameStates.bpo|org.eventb.core.poFile#GameStates|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/Saving_Arkham/GameStates.bpo|org.eventb.core.poFile#GameStates|org.eventb.core.poPredicateSet#HYP,"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="next_playing/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Theorem" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Saving_Arkham/GameStates.bpo|org.eventb.core.poFile#GameStates|org.eventb.core.poPredicateSet#HYP-"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀x⦂states·x∈playing⇒x∈dom(next_state)∧next_state∈states ⇸ states" org.eventb.core.source="/Saving_Arkham/GameStates.buc|org.eventb.core.contextFile#GameStates|org.eventb.core.axiom#axm1"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Saving_Arkham/GameStates.buc|org.eventb.core.contextFile#GameStates|org.eventb.core.axiom#axm1"/>
+<org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/Saving_Arkham/GameStates.bpo|org.eventb.core.poFile#GameStates|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/Saving_Arkham/GameStates.bpo|org.eventb.core.poFile#GameStates|org.eventb.core.poPredicateSet#HYP-"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="next_playing/THM" org.eventb.core.accurate="true" org.eventb.core.poDesc="Theorem" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Saving_Arkham/GameStates.bpo|org.eventb.core.poFile#GameStates|org.eventb.core.poPredicateSet#HYP-"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀x⦂states·x∈playing⇒next_state(x)∈playing" org.eventb.core.source="/Saving_Arkham/GameStates.buc|org.eventb.core.contextFile#GameStates|org.eventb.core.axiom#axm1"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Saving_Arkham/GameStates.buc|org.eventb.core.contextFile#GameStates|org.eventb.core.axiom#axm1"/>
+<org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/Saving_Arkham/GameStates.bpo|org.eventb.core.poFile#GameStates|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/Saving_Arkham/GameStates.bpo|org.eventb.core.poFile#GameStates|org.eventb.core.poPredicateSet#HYP-"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="function/THM" org.eventb.core.accurate="true" org.eventb.core.poDesc="Theorem" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Saving_Arkham/GameStates.bpo|org.eventb.core.poFile#GameStates|org.eventb.core.poPredicateSet#HYP."/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="next_state∈states → states" org.eventb.core.source="/Saving_Arkham/GameStates.buc|org.eventb.core.contextFile#GameStates|org.eventb.core.axiom#axm2"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Saving_Arkham/GameStates.buc|org.eventb.core.contextFile#GameStates|org.eventb.core.axiom#axm2"/>
+<org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/Saving_Arkham/GameStates.bpo|org.eventb.core.poFile#GameStates|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/Saving_Arkham/GameStates.bpo|org.eventb.core.poFile#GameStates|org.eventb.core.poPredicateSet#HYP."/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="diff1/THM" org.eventb.core.accurate="true" org.eventb.core.poDesc="Theorem" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Saving_Arkham/GameStates.bpo|org.eventb.core.poFile#GameStates|org.eventb.core.poPredicateSet#HYP\/"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="states ∖ over=playing" org.eventb.core.source="/Saving_Arkham/GameStates.buc|org.eventb.core.contextFile#GameStates|org.eventb.core.axiom#3"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Saving_Arkham/GameStates.buc|org.eventb.core.contextFile#GameStates|org.eventb.core.axiom#3"/>
+<org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/Saving_Arkham/GameStates.bpo|org.eventb.core.poFile#GameStates|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/Saving_Arkham/GameStates.bpo|org.eventb.core.poFile#GameStates|org.eventb.core.poPredicateSet#HYP\/"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="diff2/THM" org.eventb.core.accurate="true" org.eventb.core.poDesc="Theorem" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Saving_Arkham/GameStates.bpo|org.eventb.core.poFile#GameStates|org.eventb.core.poPredicateSet#HYP0"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="states ∖ playing=over" org.eventb.core.source="/Saving_Arkham/GameStates.buc|org.eventb.core.contextFile#GameStates|org.eventb.core.axiom#4"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Saving_Arkham/GameStates.buc|org.eventb.core.contextFile#GameStates|org.eventb.core.axiom#4"/>
+<org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/Saving_Arkham/GameStates.bpo|org.eventb.core.poFile#GameStates|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/Saving_Arkham/GameStates.bpo|org.eventb.core.poFile#GameStates|org.eventb.core.poPredicateSet#HYP0"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poPredicateSet name="HYP," org.eventb.core.parentSet="/Saving_Arkham/GameStates.bpo|org.eventb.core.poFile#GameStates|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="partition(states,{player_turn},{monster_turn},{won},{lost})" org.eventb.core.source="/Saving_Arkham/GameStates.buc|org.eventb.core.contextFile#GameStates|org.eventb.core.axiom#,"/>
+<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="open_to_lose=3" org.eventb.core.source="/Saving_Arkham/GameStates.buc|org.eventb.core.contextFile#GameStates|org.eventb.core.axiom#axm4"/>
+<org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="closed_to_win=2" org.eventb.core.source="/Saving_Arkham/GameStates.buc|org.eventb.core.contextFile#GameStates|org.eventb.core.axiom#axm3"/>
+<org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="playing={player_turn,monster_turn}" org.eventb.core.source="/Saving_Arkham/GameStates.buc|org.eventb.core.contextFile#GameStates|org.eventb.core.axiom#\/"/>
+<org.eventb.core.poPredicate name="PRD4" org.eventb.core.predicate="over={won,lost}" org.eventb.core.source="/Saving_Arkham/GameStates.buc|org.eventb.core.contextFile#GameStates|org.eventb.core.axiom#0"/>
+<org.eventb.core.poPredicate name="PRD5" org.eventb.core.predicate="next_state={player_turn ↦ monster_turn,monster_turn ↦ player_turn,lost ↦ lost,won ↦ won}" org.eventb.core.source="/Saving_Arkham/GameStates.buc|org.eventb.core.contextFile#GameStates|org.eventb.core.axiom#2"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="HYP-" org.eventb.core.parentSet="/Saving_Arkham/GameStates.bpo|org.eventb.core.poFile#GameStates|org.eventb.core.poPredicateSet#HYP," org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicate name="PRD6" org.eventb.core.predicate="∀x⦂states·x∈over⇒next_state(x)∈over" org.eventb.core.source="/Saving_Arkham/GameStates.buc|org.eventb.core.contextFile#GameStates|org.eventb.core.axiom#5"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="HYP." org.eventb.core.parentSet="/Saving_Arkham/GameStates.bpo|org.eventb.core.poFile#GameStates|org.eventb.core.poPredicateSet#HYP-" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicate name="PRD7" org.eventb.core.predicate="∀x⦂states·x∈playing⇒next_state(x)∈playing" org.eventb.core.source="/Saving_Arkham/GameStates.buc|org.eventb.core.contextFile#GameStates|org.eventb.core.axiom#axm1"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="HYP/" org.eventb.core.parentSet="/Saving_Arkham/GameStates.bpo|org.eventb.core.poFile#GameStates|org.eventb.core.poPredicateSet#HYP." org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicate name="PRD8" org.eventb.core.predicate="next_state∈states → states" org.eventb.core.source="/Saving_Arkham/GameStates.buc|org.eventb.core.contextFile#GameStates|org.eventb.core.axiom#axm2"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="HYP0" org.eventb.core.parentSet="/Saving_Arkham/GameStates.bpo|org.eventb.core.poFile#GameStates|org.eventb.core.poPredicateSet#HYP\/" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicate name="PRD9" org.eventb.core.predicate="states ∖ over=playing" org.eventb.core.source="/Saving_Arkham/GameStates.buc|org.eventb.core.contextFile#GameStates|org.eventb.core.axiom#3"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/Saving_Arkham/GameStates.bpo|org.eventb.core.poFile#GameStates|org.eventb.core.poPredicateSet#HYP0" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicate name="PRD10" org.eventb.core.predicate="states ∖ playing=over" org.eventb.core.source="/Saving_Arkham/GameStates.buc|org.eventb.core.contextFile#GameStates|org.eventb.core.axiom#4"/>
+</org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>

@@ -1,0 +1,111 @@
+structure NotOK1 : Arkham {
+    number = {0..20}
+
+    Time = {0..4}
+    district = {Merchant_District; River_District}
+    building = {Shop}
+    Has_Connection = {(Shop, Merchant_District); (Merchant_District, River_District)}
+    I_Location = Shop
+    Closed_To_Win = 1
+    Open_To_Lose = 2
+    C_Open_Gate={(0,Shop)}
+    Move_To<ct> = {(0,Shop)}
+    Start = 0
+}
+
+structure NotOK2 : Arkham {
+    number = {0..20}
+    Time = {0..4}
+    district = {Merchant_District; River_District}
+    building = {Shop}
+    Has_Connection = {(Shop, Merchant_District); (Merchant_District, River_District)}
+    I_Location = Shop
+    Closed_To_Win = 1
+    Open_To_Lose = 2
+    C_Open_Gate={(0,Shop)}
+    Move_To<ct> = {(0,Merchant_District);(1,River_District)}
+    Start = 0
+}
+
+structure NotOK3 : Arkham {
+    number = {0..20}
+
+    Time = {0..6}
+    district = {Merchant_District; River_District}
+    building = {Shop}
+    Has_Connection = {(Shop, Merchant_District); (Merchant_District, River_District)}
+    I_Location = Shop
+    Closed_To_Win = 1
+    Open_To_Lose = 2
+    C_Open_Gate={(0,Shop)}
+    Monsters_In<ct> = {(0,Shop,1)}
+    Start = 0
+}
+
+
+structure OK1 : Arkham {
+    number = {0..20}
+
+    Time = {0..3}
+    district = {Merchant_District}
+    building = {Shop}
+    Has_Connection = {(Shop, Merchant_District)}
+    I_Location = Shop
+    Closed_To_Win = 1
+    Open_To_Lose = 1
+    C_Open_Gate={(0,Shop)}
+    Start = 0
+}
+
+structure OK2 : Arkham {
+    number = {0..20}
+
+    Time = {0..11}
+    district = {Merchant_District; River_District; Easttown}
+    building = {Shop}
+    Has_Connection = {(Shop, Merchant_District); (Merchant_District, River_District); (River_District, Easttown); (Easttown, Merchant_District)}
+    I_Location = Shop
+    Closed_To_Win = 1
+    Open_To_Lose = 2
+    C_Open_Gate={(0,Shop)}
+    Start = 0
+    GameState<ct> = {(11, won())}
+    
+    Move_To = { 0,"Merchant_District"; 2,"Easttown"; 4,"River_District"; 6,"Merchant_District"; 8,"Shop"; 10,"Merchant_District" }
+    Monsters_In = { 0,"Easttown"->0; 0,"Merchant_District"->0; 0,"River_District"->0; 0,"Shop"->0; 1,"Easttown"->0; 1,"Merchant_District"->0; 1,"River_District"->0; 1,"Shop"->0; 2,"Easttown"->0; 2,"Merchant_District"->0; 2,"River_District"->0; 2,"Shop"->1; 3,"Easttown"->0; 3,"Merchant_District"->0; 3,"River_District"->0; 3,"Shop"->1; 4,"Easttown"->0; 4,"Merchant_District"->1; 4,"River_District"->0; 4,"Shop"->1; 5,"Easttown"->0; 5,"Merchant_District"->1; 5,"River_District"->0; 5,"Shop"->1; 6,"Easttown"->0; 6,"Merchant_District"->1; 6,"River_District"->1; 6,"Shop"->1; 7,"Easttown"->0; 7,"Merchant_District"->1; 7,"River_District"->0; 7,"Shop"->1; 8,"Easttown"->0; 8,"Merchant_District"->1; 8,"River_District"->1; 8,"Shop"->1; 9,"Easttown"->0; 9,"Merchant_District"->0; 9,"River_District"->1; 9,"Shop"->1; 10,"Easttown"->1; 10,"Merchant_District"->1; 10,"River_District"->0; 10,"Shop"->1; 11,"Easttown"->1; 11,"Merchant_District"->1; 11,"River_District"->0; 11,"Shop"->1}
+}
+
+procedure check(){
+    structures = { 
+		{NotOK1, 	"NotOK1",	0},
+		{NotOK2, 	"NotOK2",	0},
+		{NotOK3, 	"NotOK3",	0},
+		{OK1, 	"OK1",	1},		
+		{OK2, 	"OK2",	1},
+	}
+		
+	for i = 1, #structures do
+		local current = structures[i]
+		local struc=current[1]
+		local name = current[2]
+		local nbExpectedModels = current[3]
+		verify(T, struc, name, nbExpectedModels)
+	end
+}
+
+procedure verify(theo, struc, name, nbExpectedModels){
+	stdoptions.nbmodels = nbExpectedModels + 1
+    S = calculatedefinitions(merge(TimeTheo, T), struc)
+    S = propagate(T,S)
+	local sols = modelexpand(theo, S)
+	if #sols > nbExpectedModels then
+		print(">>>verification of "..name.." failed! Found too many models!")
+		return
+	end
+	if #sols < nbExpectedModels then
+		print(">>>verification of "..name.." failed! Found too few models!")
+		return
+	end
+	print(">>>verification of "..name.." succesful! ")
+}
+

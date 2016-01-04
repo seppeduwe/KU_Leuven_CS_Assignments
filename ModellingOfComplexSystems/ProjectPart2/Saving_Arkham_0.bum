@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd" version="5">
+<org.eventb.core.event name="'" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="INITIALISATION"/>
+<org.eventb.core.event name="evt1" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="end_game"/>
+<org.eventb.core.event name="evt3" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="game_over"/>
+<org.eventb.core.variable name="evt4" org.eventb.core.identifier="game_over"/>
+<org.eventb.core.event name="evt5" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="open_gate">
+<org.eventb.core.parameter name="'" org.eventb.core.identifier="building"/>
+</org.eventb.core.event>
+<org.eventb.core.seesContext name="evt6" org.eventb.core.target="Arkham"/>
+<org.eventb.core.variable name="evt7" org.eventb.core.identifier="open_gates"/>
+<org.eventb.core.variable name="evt8" org.eventb.core.identifier="closed_gates"/>
+<org.eventb.core.invariant name="evt9" org.eventb.core.label="game_over_type" org.eventb.core.predicate="game_over ∈ BOOL"/>
+<org.eventb.core.invariant name="evt:" org.eventb.core.label="open_gates_type" org.eventb.core.predicate="open_gates ⊆ buildings"/>
+<org.eventb.core.invariant name="evt?" org.eventb.core.label="finite_gates" org.eventb.core.predicate="finite(open_gates)" org.eventb.core.theorem="true"/>
+<org.eventb.core.invariant name="evt;" org.eventb.core.label="closed_gates_type" org.eventb.core.predicate="closed_gates ⊆ buildings"/>
+<org.eventb.core.invariant name="evt@" org.eventb.core.label="finite_closed" org.eventb.core.predicate="finite(closed_gates)" org.eventb.core.theorem="true"/>
+<org.eventb.core.event name="evt&gt;" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="close_gate">
+<org.eventb.core.parameter name="(" org.eventb.core.identifier="building"/>
+</org.eventb.core.event>
+</org.eventb.core.machineFile>
