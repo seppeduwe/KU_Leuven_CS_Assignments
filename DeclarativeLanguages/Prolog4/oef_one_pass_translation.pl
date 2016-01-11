@@ -35,7 +35,7 @@ translate(InL, OutL) :-
 
 map([],[],_,_).
 map([def(A) | InL], [asgn(A,N) | OutL], Table, N) :-
-    member(asgn(A,N), Table),!,
+    member(asgn(A,N), Table),
     N1 is N + 1,
     map(InL,OutL,Table,N1).
 map([use(A)|InL], [use(NB)|OutL], Table, N) :-

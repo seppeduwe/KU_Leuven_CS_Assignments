@@ -32,9 +32,7 @@ visit_store(DO,Guest,Store,Ilist,shopat(Guest,Store,BuyList),IReduced) :-
     buy_elements(Ilist,BuyList,IReduced).
 
 buyable_ingredients_at_shop(Guest,Store,Ilist,DO,BuyableSet) :-
-    findall(I, 
-            (member(I,Ilist), sells(Store,I), dislike_shop_check(Guest,I,DO)),
-            BuyableList),
+    findall(I, (member(I,Ilist), sells(Store,I), dislike_shop_check(Guest,I,DO)), BuyableList),
     list_to_set(BuyableList,BuyableSet).
 
 guestList(GL) :-
@@ -89,10 +87,7 @@ all_needed_ingredients_rec([order(_,Drinks)|R],Ret,CurrIngr) :-
     all_needed_ingredients_rec(R,Ret,NewIngredients).
 
 dislikes_orders_check(DO) :-
-    findall(((G1,Drinks1),(G2,Drinks2)),
-            ( member(order(G1,Drinks1),DO), member(order(G2,Drinks2),DO), 
-                dislikes(G1,G2), length(Drinks1,L1), length(Drinks2,L2), L1 =< L2 ),
-            ViolList),
+    findall(((G1,Drinks1),(G2,Drinks2)),(member(order(G1,Drinks1),DO), member(order(G2,Drinks2),DO), dislikes(G1,G2), length(Drinks1,L1), length(Drinks2,L2), L1 =< L2), ViolList),
     length(ViolList,0).
 
 carry_capacity_check(DO) :-

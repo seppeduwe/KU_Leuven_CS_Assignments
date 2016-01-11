@@ -47,11 +47,9 @@ even(I) :-
   X is I mod 2,
   X == 0.
 
-% check_color_constraint/2: given a node and its neighbors, checks whether, if there are X  
-% connections of a particular color, that there are at least X connections of other colors
+% check_color_constraint/2: given a node and its neighbors, checks whether, if there are X connections of a particular color, that there are at least X connections of other colors
 check_color_constraint(Node,Neighbors) :-
-  % find colors of all adjacent edges to the node
-  findall(Type,(highway(Node,_,Type);highway(_,Node,Type)),Ts1), 
+  findall(Type,(highway(Node,_,Type);highway(_,Node,Type)),Ts1), % find colors of all adjacent edges to the node
   sort(Ts1,Types),
   checkTypes(Types,Node,Neighbors).
 
