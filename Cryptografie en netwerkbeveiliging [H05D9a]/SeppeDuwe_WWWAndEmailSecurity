@@ -1,0 +1,237 @@
+- Find out what we were able to see. How does the HTTP protocol work? If interested, have a look at IETF RFC 2246, and try to `dissect' the sniffed SSL/TLS session: where are the handshake messages? when does the data communication start? etc. 
+We see two TCP sessions between a web browser(/client) (134.58.189.76) and webserver(/server) (134.58.189.80). First plain http and the other one secured with SSL/TLS. Detailed packet information can be found on http://www.duwe.be/WWWAndEmailSecurity.
+
+* Plain http session
+ The first steps are to establishing a reliable TCP connection (using Three-way handshake) between my computer and the Web Server. Then the GET-method (packet 4) is used to retrieve information (webpage) from the given server. And the server respons with the context of that page (packet 5).
+
+TCP Structure
+    0                   1                   2                   3   
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |          Source Port          |       Destination Port        |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                        Sequence Number                        |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                    Acknowledgment Number                      |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |  Data |           |U|A|P|R|S|F|                               |
+   | Offset| Reserved  |R|C|S|S|Y|I|            Window             |
+   |       |           |G|K|H|T|N|N|                               |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |           Checksum            |         Urgent Pointer        |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                    Options                    |    Padding    |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                             data                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+Packet 1 shows a SYN from client to server. The TCP segment's ISN is 109930. Directly to the right of the ISN is a 4 byte value of zeroes. This is where the acknowledgement number would reside, if the ACK flag were set.
+
+Packet 2 shows a SYN ACK from server to client. Server sets a Initial Response Number of 1021278297 and an ACK value of 109931. ACK 109931 indicates that the next real byte of application data server expects to receive from client will be number 109931. That ACK value also indicates server received a “byte of data” implied in the SYN packet client sent, whose ISN was 109930. No bytes of data were actually sent. This is an example of a sequence number being “consumed” in the three-way handshake.
+
+Packet 3 shows the completion of the three-way handshake. Client sends an ACK 1021278298, which acknowledges receipt of the one “byte of data” implied in the SYN ACK packet server sent, whose IRN was 1021278297. 1021278298 indicates that the first real byte of data client expects to receive from server will be number 1021278298. Again, no bytes of application data have actually been sent by either party. This is another example of a sequence number being “consumed” in the three-way handshake.
+
+Packet 4 shows the first real bytes of application data sent from client to server. Client sends a GET request to server. Client still sends ACK 1021278298 because that is the sequence number of the first real byte of application data server expects to receive from client. The sequence number for client starts at 109931, meaning the first byte of application data in packet 4 is numbered 109931, but this packet has 282 Bytes of data in it. We add the amount of data sent to the current sequence number, then we get the next expected sequence number, 110213. 
+GET / HTTP/1.0
+Connection: Keep-Alive
+User-Agent: Mozilla/4.5 [en] (WinNT; I)
+Host: manhattan.esat.kuleuven.ac.be:2001
+Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, image/png, */*
+Accept-Encoding: gzip
+Accept-Language: en
+Accept-Charset: iso-8859-1,*,utf-8
+
+Packet 5 Server responds to the request from client. Since server has not sent data yet, its sequence number is still at 1021278298. However in order to acknowledge receipt of the 282 bytes from client, it sends an acknowledgement number of 110213. This packet contains 323 bytes of data, not including the IP and TCP headers. The next expected sequence number for server will be 1021278621.
+HTTP/1.1 200 OK
+Date: Fri, 11 Dec 1998 13:33:39 GMT
+Server: Apache/1.3.2 Ben-SSL/1.27 (Unix)
+Last-Modified: Tue, 08 Dec 1998 15:33:57 GMT
+ETag: "74861-1c-366d46e5"
+Accept-Ranges: bytes
+Content-Length: 28
+Keep-Alive: timeout=15, max=100
+Connection: Keep-Alive
+Content-Type: text/html
+
+plain-http demo index.html
+
+Packet 6 Shows client acknowledges bytes 1021278298 through 1021278621 by sending an ACK 1021278621. Note that the sequence number of the segment in packet 6 is the same as in packet 5 because the ACK does not occupy sequence number space.
+
+* ssl-no-clientauth
+Packet 1-3 Three-way handshake same as with plain http session. Because SSL 'runs' on top of TCP/transport layer. (Client Seq=110129, Server Seq=1304476668)
+
+TLS Handshake
+
+              +-----+                              +-----+
+              |     |                              |     |
+              |     |        ClientHello           |     |
+              |     o----------------------------> |     |
+              |     |                              |     |
+      CLIENT  |     |        ServerHello           |     |  SERVER
+              |     |       [Certificate]          |     |
+              |     |    [ServerKeyExchange]       |     |
+              |     |    [CertificateRequest]      |     |
+              |     |      ServerHelloDone         |     |
+              |     | <----------------------------o     |
+              |     |                              |     |
+              |     |       [Certificate]          |     |
+              |     |     ClientKeyExchange        |     |
+              |     |    [CertificateVerify]       |     |
+              |     |   ** ChangeCipherSpec **     |     |
+              |     |         Finished             |     |
+              |     o----------------------------> |     |
+              |     |                              |     |
+              |     |   ** ChangeCipherSpec **     |     |
+              |     |         Finished             |     |
+              |     | <----------------------------o     |
+              |     |                              |     |
+              +-----+                              +-----+
+Packet 4 Handshake Message: Client Hello. Sends the cipher specs and a challenge. Supported cipher specs by the client: TLS_RSA_EXPORT_WITH_RC4_40_MD5 and TLS_RSA_EXPORT_WITH_RC2_CBC_40_MD5. 
+Packet 5 Handshake Message: Server Hello. The Server generates its own random value, contains its own date and time. Session ID: the server generates a new session ID. Cipher Suite: Cipher suite 'TLS_RSA_EXPORT_WITH_RC4_40_MD5' selected by the Server out of the cipher suites proposed by the Client. Compression Method: Currently, no compression methods are supported.
+Packet 6 Client to server Acknowledgement 
+Packet 7 Server to client:
+ - Certificate: This message contains a chain of public key certificates. Certificate chains allows TLS to support certificate hierarchies and PKIs. Certificate: emailAddress=joris.claessens@esat.kuleuven.ac.be, commonName=COSIC Demo SSL Server, organizationalUnitName=COSIC, organizationName=COSIC PKI Demo, localityName=Leuven, stateOrProvinceName=Vlaams-Brabant, validity= notBefore: 98-12-08 10:20:32 (UTC) notAfter: 00-12-07 10:20:32 (UTC).
+ - Server Key Exchange: Transfers the keys exchange algorithm parameters that the client needs from the server in order to get the symmetric encryption working thereafter. RSA Server Params: Modules length=64, Exponent length=3, Signature length=256
+ - ServerHelloDone: This message finishes the server part of the handshake negotiation. It does not carry any additional information
+Packet 8 Client to server Acknowledgement.
+Packet 9 Client to server Client Key Exchange: This provides the server with the necessary data to generate the keys for the symmetric encryption (RSA Encrypted PreMaster Secret).
+Packet 10 Server to client Acknowledgement.
+Packet 11 Client to server ChangeCipherSpec: It makes the previously negotiated parameters effective, so communication becomes encrypted.
+Packet 12 Server to client ChangeCipherSpec.
+Packet 13 Client to server: Actual Encrypted Application Data.
+Packet 14 Server tot client Acknowledgement.
+Packet 15 Server to client: Actual Encrypted Application Data.
+Packet 16 Client to server Acknowledgement.
+
+- Would you send your credit card number to a server over an unsecured session?
+When sending my credit card number to a remote server 'Eve' can sniff all data from the network and read my secret information (or alter it).
+
+- Do you think it is possible for an attacker to actively modify the exchanged data, instead of just passively monitoring it?
+Over an unsecured session: Yes. 
+When using cryptographic protection like SSL/TLS: Data flow between client and server is encrypted. The server uses the private key associated with their certificate to establish a valid connection. The server keeps the key secret, so the man-in-the-middle can’t use the site’s real certificate, trying to use a certificate that is not validated will be caught by modern browsers. 
+
+- With your favorite browser, connect to https://www.cosic.esat.kuleuven.be/cns/task (this page). 
+-- How do you know you have established a secure connection?  
+When accessing this site, a "lock" sign in the address bar appear. 
+-- With whom?
+ Certificate holder:
+ CN = www.cosic.esat.kuleuven.be
+ OU = Afdeling ESAT - SCD / COSIC
+ O = Katholieke Universiteit te Leuven
+ L = Leuven
+ ST = Vlaams-Brabant
+ C = BE
+-- How can you trust that you are really communicating with the web server you intended to communicate. 
+We are confident that we are connected to the esat website, if we assume as the root CA has not issued fake certificates for this address. We need to trust the company that issued the certificate.
+
+- Look at the certificate of the https server.
+-- What is the purpose of this certificate?
+To bind a cryptographic key to an organization. Via this way a secure connection can be used.
+-- How can you be sure that this certificate is just not presented by another web server?
+The Common Name in the certificate must be the same as the Web address we access when connecting to a secure site.
+-- Is the certificate still valid? Do you only check the validity period indicated in the certificate?
+The certificate is still valid, otherwise the browser would alert me when visiting this site. The browser will look at the certificate properties and perform basic validation such as validity period, valid until Wednesday January 23 2019.
+-- Who issued it? 
+Terena issued this certificate, which is likewise issued by DigiCert.
+-- What is a 'fingerprint'? What could be its purpose?
+In public-key cryptography, a public key fingerprint is a short sequence of bytes used to identify a longer public key. Fingerprints are created by applying a cryptographic hash function to a public key. Since fingerprints are shorter than the keys they refer to, they can be used to simplify certain key management tasks. One application of these fingerprints is to validate Extended Validation certificates. In this case, the SHA-1 fingerprint of the root EV CA certificate is hard-coded in the browser. Apart from this, these fingerprints are mostly used for identifying the certificates (for organising them).
+-- How does your browser check the certificate? 
+The validation occurs from the server certificate to the highest certificate in the chain. The web browser downloads the web server's certificate, which contains the public key of the web server. This certificate is signed with the private key of a trusted certificate authority. The web browser comes installed with the public keys of all of the major certificate authorities. It uses this public key to verify that the web server's certificate was indeed signed by the trusted certificate authority. The browser will look at the certificate properties and perform basic validation such as making sure the host name matches the Issued to field, the Issued By field contains a Trusted Certificate Authority, expiration date looks good in the Valid From field, etc. Additionally each certificate contains URLs that point to Certificate Revocation Lists (CRL Distribution Points), the client will attempt to download the list from such URL and ensure the certificate at hand has not been revoked.
+
+- Look at the 'root' certificates in your browser.
+-- Why does your browser need these? 
+The purpose of the root certificate is to establish a digital chain of trust. The root is the trust anchor. The Web browser will inherently trust all certificates that have been signed by any root that has been embedded in the browser itself.
+--Which one was specifically needed for this session?
+DigiCert Assured ID Root CA
+--How can you be sure the root certificates are correct?
+The fingerprints of the root EV CA certificates are hard-coded in the browser. We could also confirm the fingerprint of the certificate by asking the certificate holder. 
+--What would be the problem if they are not? 
+A malicious person can create a SSL certificate and sign it with the modified or added root certificate, because all root certificates are trusted, the browser will accept it. An attacker could exploit this to pass all traffic from the browser though a proxy server he/she controls and perform man-in-the-middle interception using the new root CA certificate added to the system.
+
+- Briefly explain the essential difference between the CACERT and the COSIC certificates. 
+CAcert.org is a community-driven certificate authority that issues free public key certificates to the public. CAcert automatically signs certificates for email addresses which are verified as belonging to the requester and for domains for which certain email addresses are verified as belonging to the requester. Robot CAs (CAcert) are considered significantly less 'secure/trusted' than other CAs, which typically require multiple forms of photograph identification. To create higher-trust certificates, users can participate in a web of trust system whereby users physically meet and verify each other's identities.
+Difference: CAcert root certificates aren’t currently trusted in any major browsers, so we need to manually import/approve the CAcert root certificate in the system/browser. While COSIC root certificate is shipped with the browser. Because CACert is using Web of trust principle, we must complete a face-to-face validation for a certificate that lasts more than 6 months. COSIC certificates using a chain hierarchy of trust, CAcert maintains the number of assurance points for each account (more assurance points allows users more privileges). No EV SSL Certificates are offered by CAert. CAcert is free.
+
+- S/MIME 
+-- Analyze the procedure that is followed.
+Entering the necessary details (name, email, country, key size, revocation password) for generating the certificate. Receiving mail and install the certificate.
+-- What is the goal of the procedure? Why?
+To verify that you're the owner of that email address. 
+-- What information is verified by the CA? How?
+Email address, by sending an email to this email address.
+-- If you see a certificate like this, what exactly do(n't) you trust? The name and affiliation? The email address? Can you derive the person's name from the email address?
+This is a basic ("class 1") personal certificate which verifies the owner's "identity" only insofar as it declares that the sender is the owner of the "From:" email address in the sense that the sender can receive email sent to that address, and so merely proves that an email received really did come from the "From:" address given. It does not verify the person's name or business name. (But for KU Leuven email addresses we know that it has to be in the format firstname.lastname@student.kuleuven.be, so we can derive the name from the email address. The actual name isn't even in the certificate we use.) If a sender wishes to enable email recipients to verify the sender's identity in the sense that a received certificate name carries the sender's name or an organization's name, the sender needs to obtain a certificate ("class 2") from a CA who carries out a more in-depth identity verification process, and this involves making inquiries about the would-be certificate holder.
+-- What procedure would be required for a more trustworthy certificate?
+More forms of identification before issuing the certificate. Like photograph identification, by phone, other documents.... (Class 2 certificate)
+-- Where is your private key stored?
+In the browser, with the other certificates. Backup certificate and use it for example with Thunderbird.
+-- How is it protected? Why should it be protected?
+It is protected with a password/passphrase. Firefox uses a master password. Some other browsers let the operating system handles this. e.g. under MacOS X Chrome uses the OS-provided Keychain system for private key storage. (Access rights only for the owner.) Otherwise everyone that can access it, can make a digital signature and send emails in our name. Or decrypt my received emails.
+-- Is this secure enough?
+Ideally, you would keep the private key on a removable, write-protected disk, and you would use it on a single-user machine not connected to a network. But for the majority this will be fine. 
+After importing the private key in Thunderbird, there is no additional password required to sign the email. If someone gains access to my emails, in an unguarded moment, he can create a certificate in my name.
+-- Do you think there is a better solution?
+S/MIME functionality is built into the majority of modern email software and interoperates between them, so after obtaining and configuring own certificate, as a end-user, it is easy to use. Of course there are still obstacles: Not all email software handles S/MIME signatures, resulting in an attachment called smime.p7s that may confuse some people. Not properly suited for use via webmail clients. ...
+Alternative is PGP (but therefore not better): relies on Web of Trust (you can trust a public key because it has been signed by many people). S/MIME uses hierarchically validated certifier for key exchange.
+
+Use your requested certificate to send S/MIME secured email to your colleagues.
+-- Examine an S/MIME email. How does it look like?
+ From user perspective it looks the same as an unsigned mail, except from the signature and/or padlock symbol.
+Only signed mail
+  ...
+  --------------ms090100040700050602060406
+  Content-Type: text/plain; charset=utf-8; format=flowed
+  Content-Transfer-Encoding: quoted-printable
+  < Content email omitted >
+  --------------ms090100040700050602060406
+  Content-Type: application/pkcs7-signature; name="smime.p7s"
+  Content-Transfer-Encoding: base64
+  Content-Disposition: attachment; filename="smime.p7s"
+  Content-Description: S/MIME-cryptografische ondertekening
+  
+  MIAGCSqGSIb3DQEHAqCAMIACAQExDzANBglghkgBZQMEAgEFADCABgkqhkiG9w0BBwEAAKCC
+  ...
+  --------------ms090100040700050602060406--
+
+Encrypted mail, All data encrypted except the header 
+  Content-Type: application/pkcs7-mime; smime-type=enveloped-data;
+    name="smime.p7m"
+  Content-Transfer-Encoding: base64
+  Content-Disposition: attachment;
+    filename="smime.p7m"
+  ...
+  MIAGCSqGSIb3DQEHA6CAMIACAQAxggHNMIIByQIBADCBsDCBmzELMAkGA1UEBhMCR0IxGzAZBgNV
+  BAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4GA1UEBxMHU2FsZm9yZDEaMBgGA1UEChMRQ09NT0RP
+  IENBIExpbWl0ZWQxQTA/BgNVBAMTOENPTU9ETyBTSEEtMjU2IENsaWVudCBBdXRoZW50aWNhdGlv
+  ....
+-- How can you be sure that it is coming from whom you think it is coming?
+A digitally signed message can come only from the owner of the digital ID used to sign it. This provides verification of the sender's authenticity. When sending a encrypted message, without signing, the sender ensures that the intended recipient is the only one who can read it, but not who send it.
+-- How is the email protected?
+The email is protected against: authentication, message integrity, non-repudiation of origin (using digital signatures), privacy and data security (using encryption). S/MIME specifies the MIME type application/pkcs7-mime (smime-type "enveloped-data") for data enveloping (encrypting) where the whole (prepared) MIME entity to be enveloped is encrypted and packed into an object which subsequently is inserted into an application/pkcs7-mime MIME entity.
+-- What exactly is protected? The body and/or the headers? What are the consequences of this? 
+S/MIME secures message body parts, at the exclusion of the message header fields, so the headers (such as from, to and subject) are not protected. S/MIME provides an alternative solution to secure header fields: "the sending client MAY wrap a full MIME message in a wrapper in order to apply S/MIME security services to header fields".
+
+- PGP
+-- You can choose the length of your keys (e.g., 768, 1024, 2048 or 4096 bits. What will you choose? 
+An PGP primary key (which is signed by many other people) are desirable to keep for an extended period of time, perhaps 10 years or more. In this context, the hassle of replacing all those signatures may be quite high and it is more desirable to have a long-term future-proof key length. During encryption, only the RSA portion of the encryption process is affected by key size. The RSA portion is only used for encrypting the session key used by the symmetrical algorithm (IDEA, 3DES, CAST etcetera). The main body of the message is totally unaffected by the choice of RSA key size. And after all, a 4096-bit key is what Bruce Schneier is using these days.
+-- Where and how are your public/private keys stored?
+Keys are stored in encrypted form. PGP stores the keys in two files on the hard disk; one for public keys and one for private keys, called keyrings. pubring.gpg and secring.gpg reside in the homedir/appdata.
+-- How is your private key protected? Why should it be protected?
+The private key is encrypted on the disk using a hash of the passphrase as the secret key. Otherwise everyone that can access it, have my digital ID (Can make a digital signature and send emails in my name, decrypt mails, SSH login,...).
+-- Look at your public key ring. What information can you find in there?
+All the stored public keys (and sub keys) with all the details (expire date,...). 
+ C:/Users/Seppe Duwe/AppData/Roaming/gnupg/pubring.gpg
+ -----------------------------------------------------
+ pub   4096R/A8D97561 2016-05-23 [expires: 2017-05-23]
+ uid       [ultimate] Seppe Duwe (KU Leuven CW) <seppe.duwe@student.kuleuven.be>
+ sub   2048R/47EF5352 2016-05-23 [expires: 2017-05-23]
+ ...
+-- How can you be sure that it is Benedikt's public key?
+You can't be sure. No one of the persons I trust have signed this key. Actually nobody have signed the key. (The communication between the browser and web server is secured, and the fingerprint is verified with a colleague of me, 
+so we know that the public key is not modified during transmission).
+-- If you think you cannot be sure, what would you do/check in order to be more confident?
+Verify the key's fingerprint with the key's owner. This may be done in person or over the phone or through any other means as long as can be guaranteed that I am communicating with the key's true owner. If the fingerprint I get is the same as the fingerprint the key's owner gets, then we can be sure that I have a correct copy of the key.
+-- Compare the hierarchical certificate-based mapping of identities to public keys, to the web of trust system.
+The web of trust system is a decentralized trust model, allows users to choose who they trust (you can trust a public key because it has been signed by many people). Is different to the centralized trust model of a public key infrastructure (PKI) which uses self-signed certificates and third party attestations of those certificates. The link, https://www.cosic.esat.kuleuven.be/cns/task/reflecting-pgp-2.txt, of the next question explains the difference well.
+-- Think about this email and one of the answers.
+Web of trust or CA neither of these systems are perfect. It is still difficult to verify/trust the person behind the certificate holder. Web of trust: "Many of the keys now on the keyservers are only self-signed, and don't contribute to the Web of Trust at all".
