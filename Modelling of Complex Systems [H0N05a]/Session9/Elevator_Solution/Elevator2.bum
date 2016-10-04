@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd" version="5">
+<org.eventb.core.event name="'" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="INITIALISATION">
+<org.eventb.core.action name="'" org.eventb.core.assignment="move_state ≔ stopped" org.eventb.core.label="not_moving"/>
+<org.eventb.core.action name="(" org.eventb.core.assignment="goal ≔ 0" org.eventb.core.label="no_goal"/>
+</org.eventb.core.event>
+<org.eventb.core.refinesMachine name="(" org.eventb.core.target="Elevator1"/>
+<org.eventb.core.seesContext name=")" org.eventb.core.target="Doors"/>
+<org.eventb.core.seesContext name="*" org.eventb.core.target="Floors"/>
+<org.eventb.core.seesContext name="+" org.eventb.core.target="Moving"/>
+<org.eventb.core.variable name="," org.eventb.core.identifier="current_floor"/>
+<org.eventb.core.variable name="2" org.eventb.core.identifier="goal"/>
+<org.eventb.core.variable name="-" org.eventb.core.identifier="door_state"/>
+<org.eventb.core.variable name="." org.eventb.core.identifier="move_state"/>
+<org.eventb.core.invariant name="/" org.eventb.core.label="move_type" org.eventb.core.predicate="move_state ∈ move_states"/>
+<org.eventb.core.invariant name="0" org.eventb.core.label="safety" org.eventb.core.predicate="¬ (door_state = opened ∧ move_state = moving )"/>
+<org.eventb.core.event name="1" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="set_goal">
+<org.eventb.core.guard name="'" org.eventb.core.label="floor_type" org.eventb.core.predicate="floor ∈ floors"/>
+<org.eventb.core.parameter name="(" org.eventb.core.identifier="floor"/>
+<org.eventb.core.guard name=")" org.eventb.core.label="not_current_floor" org.eventb.core.predicate="floor ≠ current_floor"/>
+<org.eventb.core.action name="*" org.eventb.core.assignment="goal ≔ floor" org.eventb.core.label="set_goal"/>
+<org.eventb.core.guard name="+" org.eventb.core.label="elevator_stopped" org.eventb.core.predicate="move_state = stopped"/>
+<org.eventb.core.guard name="," org.eventb.core.label="no_goal" org.eventb.core.predicate="goal = current_floor"/>
+</org.eventb.core.event>
+<org.eventb.core.invariant name="3" org.eventb.core.label="goal_type" org.eventb.core.predicate="goal ∈ floors"/>
+<org.eventb.core.event name="4" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="start_moving">
+<org.eventb.core.guard name="'" org.eventb.core.label="doors_closed" org.eventb.core.predicate="door_state = closed"/>
+<org.eventb.core.guard name="(" org.eventb.core.label="not_arrived" org.eventb.core.predicate="goal ≠ current_floor"/>
+<org.eventb.core.action name=")" org.eventb.core.assignment="move_state ≔ moving" org.eventb.core.label="go"/>
+<org.eventb.core.guard name="*" org.eventb.core.label="not_moving" org.eventb.core.predicate="move_state = stopped"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="5" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="reach_goal">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="go_to"/>
+<org.eventb.core.guard name="(" org.eventb.core.label="goal_not_reached" org.eventb.core.predicate="goal ≠ current_floor"/>
+<org.eventb.core.guard name=")" org.eventb.core.label="elevator_moving" org.eventb.core.predicate="move_state = moving"/>
+<org.eventb.core.action name="*" org.eventb.core.assignment="current_floor ≔ goal" org.eventb.core.label="reach_floor"/>
+<org.eventb.core.action name="+" org.eventb.core.assignment="move_state ≔ stopped" org.eventb.core.label="stop"/>
+<org.eventb.core.witness name="," org.eventb.core.label="floor" org.eventb.core.predicate="floor = goal"/>
+</org.eventb.core.event>
+<org.eventb.core.invariant name="6" org.eventb.core.label="move_when_necessary" org.eventb.core.predicate="move_state = moving ⇒ goal ≠ current_floor"/>
+<org.eventb.core.event name="7" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="open_door">
+<org.eventb.core.guard name="(" org.eventb.core.label="not_moving" org.eventb.core.predicate="move_state = stopped"/>
+<org.eventb.core.refinesEvent name="*" org.eventb.core.target="open_door"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="8" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="close_door">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="close_door"/>
+</org.eventb.core.event>
+</org.eventb.core.machineFile>

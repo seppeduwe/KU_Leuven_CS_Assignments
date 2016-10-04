@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd" version="5">
+<org.eventb.core.event name="'" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="INITIALISATION">
+<org.eventb.core.action name="'" org.eventb.core.assignment="door_state ≔ closed" org.eventb.core.label="init_door"/>
+</org.eventb.core.event>
+<org.eventb.core.refinesMachine name="(" org.eventb.core.target="Elevator0"/>
+<org.eventb.core.variable name=")" org.eventb.core.identifier="current_floor"/>
+<org.eventb.core.variable name="*" org.eventb.core.identifier="door_state"/>
+<org.eventb.core.invariant name="+" org.eventb.core.label="door_states_type" org.eventb.core.predicate="door_state ∈ door_states"/>
+<org.eventb.core.event name="," org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="go_to">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="go_to"/>
+<org.eventb.core.guard name="(" org.eventb.core.label="door_closed" org.eventb.core.predicate="door_state = closed"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="-" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="open_door">
+<org.eventb.core.guard name="'" org.eventb.core.label="door_closed" org.eventb.core.predicate="door_state = closed"/>
+<org.eventb.core.action name="(" org.eventb.core.assignment="door_state ≔ opened" org.eventb.core.label="open"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="evt1" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="close_door">
+<org.eventb.core.guard name="'" org.eventb.core.label="door_opened" org.eventb.core.predicate="door_state = opened"/>
+<org.eventb.core.action name="(" org.eventb.core.assignment="door_state ≔ closed" org.eventb.core.label="close"/>
+</org.eventb.core.event>
+<org.eventb.core.seesContext name="evt2" org.eventb.core.target="Floors"/>
+<org.eventb.core.seesContext name="evt3" org.eventb.core.target="Doors"/>
+</org.eventb.core.machineFile>

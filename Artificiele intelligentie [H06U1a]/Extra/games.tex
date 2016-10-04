@@ -1,0 +1,85 @@
+\documentclass[11pt] {article}
+\usepackage{amsthm}
+\usepackage{graphicx, amsmath, amssymb}
+\usepackage{amsfonts, enumerate}
+\usepackage{algorithmic, algorithm}
+\usepackage[usenames]{color}
+
+\setlength{\textwidth}{6in} 
+\addtolength{\hoffset}{-0.5in}
+\setlength{\topmargin}{-0.2in}
+\setlength{\textheight}{9in}
+
+\newcommand{\algorithmicinput}{\textbf{Input:}}
+\newcommand{\algorithmicoutput}{\textbf{Output:}}
+\newcommand{\algorithmicinit}{\textbf{Initialize:}}
+\newcommand{\INPUT}{\item[\algorithmicinput]}
+\newcommand{\OUTPUT}{\item[\algorithmicoutput]}
+\newcommand{\INIT}{\item[\algorithmicinit]}
+\newcommand{\algorithmicalgo}{\textbf{Algorithm}}
+\newcommand{\ALGO}{\item[\algorithmicalgo]}
+
+\begin{document}
+\pagestyle{empty}
+
+
+\begin{center}
+\LARGE
+\textbf{AI algorithms: Games}\\
+\end{center}
+\vspace{1cm}
+
+\noindent \large{MINI-MAX}\\
+\textcolor{red}{\large{Alpha-Beta}}\\
+
+\begin{algorithmic}
+\INPUT
+\STATE A game \emph{board} and a rule set $R$ defining legal moves
+\STATE A \emph{depthbound}, i.e. the number of turns you wish to think ahead
+\STATE \textcolor{red}{Ancestor $\alpha$ and $\beta$: $parent\alpha$ and $parent\beta$ (init: lowest and highest board evaluation)}\\
+
+\OUTPUT 
+\STATE The next best move $m$
+\end{algorithmic}
+\begin{algorithmic}
+\ALGO($board$,$depth$\textcolor{red}{,$parent\alpha$,$parent\beta$}):
+\textcolor{red}{
+\STATE $\alpha$ $\leftarrow$ 0 (lowest board evaluation)
+\STATE $\beta$ $\leftarrow$ infinity (highest board evaluation)
+}
+\IF{$depth$=$depthbound$} 
+\STATE return an evaluation of $board$
+\ELSE
+\IF{is\_max\_level($depth$)}
+\FORALL{legal move $m$ on $board$ given $R$}
+\STATE $newboard$ $\leftarrow$ do move $m$ on $board$
+\STATE $value_m$ $\leftarrow$ recurse($newboard$,$depth+1$\textcolor{red}{,$parent\alpha$,$parent\beta$})
+\STATE \textcolor{red}{$\alpha$ $\leftarrow$ max($\alpha$,$value_m$)}
+\STATE \textcolor{red}{$parent\alpha$ $\leftarrow$ max($\alpha$,$parent\alpha$)}
+\textcolor{red}{
+\IF{$parent\beta$ $\leq$ $\alpha$}
+\STATE return $m$ with $min(value_m)$ (stop loop)
+\ENDIF
+}
+\ENDFOR
+\STATE return $m$ with $max(value_m)$
+\ENDIF
+\IF{is\_min\_level($depth$)}
+\FORALL{legal move $m$ on $board$}
+\STATE $newboard$ $\leftarrow$ do move $m$ on $board$
+\STATE $value_m$ $\leftarrow$ recurse($newboard$,$depth+1$\textcolor{red}{,$parent\alpha$,$parent\beta$})
+\STATE \textcolor{red}{$\beta$ $\leftarrow$ min($\beta$,$value_m$)}
+\STATE \textcolor{red}{$parent\beta$ $\leftarrow$ min($\beta$,$parent\beta$)}
+\textcolor{red}{
+\IF{$parent\alpha$ $\geq$ $\beta$}
+\STATE return $m$ with $min(value_m)$ (stop loop)
+\ENDIF
+}
+\ENDFOR
+\STATE return $m$ with $min(value_m)$
+\ENDIF
+\ENDIF
+
+\end{algorithmic}
+
+\end{document}

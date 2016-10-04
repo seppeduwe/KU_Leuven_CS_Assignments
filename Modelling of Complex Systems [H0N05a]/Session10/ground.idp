@@ -1,0 +1,34 @@
+vocabulary V{
+    type Color isa string
+    type Area isa int
+    Border(Area,Area)
+    Coloring(Area,Color)
+}
+theory T:V{
+    
+    ? x : Coloring(2,"B") | Coloring(1,x).
+    
+    (! area : ? col : Coloring(area,col) &
+
+    (~? x : ? c: ? c2 : (c~=c2 & Coloring(x,c2)) & Coloring(x,c) )).
+    
+
+    ~(? x1 x2 c: Border(x1,x2) & Coloring(x1,c) & Coloring(x2,c)).
+}
+structure S:V{
+    Area={1;2;3;4}
+    Color={R;G;B}
+    Border={
+        (1,2);
+        (2,3);
+        (3,4);
+        (1,3)
+    }
+    Coloring<cf> = {1,R}
+    Coloring<ct> = {2,B}
+}
+
+procedure main(){
+    stdoptions.cpsupport = false
+    printgrounding(T,S)
+}

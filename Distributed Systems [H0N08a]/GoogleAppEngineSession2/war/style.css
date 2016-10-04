@@ -1,0 +1,42 @@
+BODY { background-color:#E0E0E0; font-family:Verdana,Arial; font-size:10pt; padding: 0; margin: 0; }
+
+#mainWrapper { background-color:#E0E0E0; margin: 0 auto; width:999px; padding: 0; }
+#headerWrapper { background-color: #1E9BB7; height: 100px;}
+
+#navigationWrapper { background-color: #FFFFFF; height: 35px; }
+#navigationWrapper  ul { list-style-type: none; margin: 0; padding: 0;}
+#navigationWrapper  ul li { float: left; padding: 0 auto; margin-right: 1px;}
+#navigationWrapper  ul li a, #navigationWrapper  ul li a:visited  { display: block; text-align: center;  line-height: 35px; text-decoration: none; width: 150px; font-weight: bold; color: black;}
+ { display: block; text-align: center;  line-height: 35px; text-decoration: none; width: 150px; font-weight: bold; color: black;}
+#navigationWrapper  ul li a:hover, #navigationWrapper  ul li a:active, #navigationWrapper  ul li a.selected { background-color: #338093; color: white;}
+
+#contentWrapper { background-color:#FFFFFF; height: 1000px; padding: 2px 5px 2px 15px; margin-top: 10px; }
+#userProfile { display: block; }
+#userProfile  span{ float: right; font-size: 0.8em; }
+
+DIV.groupLabel{display: block; clear: both; margin-bottom: 0.5em;	}
+/*DIV.group { display: block; float:left;}*/
+
+DIV.form, DIV.formsubmit, TABLE, INPUT, SELECT { margin-right: 22px; }  /* for all form-alike fields */
+
+DIV.form {float: left; display: inline; }
+DIV.form SPAN { display: block; text-align: right;}
+DIV.formsubmit { display: block; clear: both; padding-top: 8px; text-align: right; } 
+
+H1 { margin: 0; padding: 20px 30px; color: white;} 
+H2 { display: block; clear: both; font-size: 1.3em; padding-top: 25px; text-decoration: none; margin-left: -10px; 
+	border: 1px solid black; padding: 2px 5px; margin-top: 30px;}
+H3 { font-size: 1em;  	}
+.groupLabel {  }
+
+TABLE { border-spacing: 15px 5px; }
+TH { border-bottom: 1px dotted black; padding: 0 20px 0 5px; text-align: left; font-weight: normal;}
+TD.numbers { text-align: right; }
+TH.numbers { text-align: right; padding: 0 5px 0 20px; }
+TD { text-align: left; padding: 0 5px; }
+
+.frameDiv { display: inline; float:left; padding-left: 25px; }
+
+#confirmSubmitButton { size: 350px; width: 100%; height: 30px; }
+
+P.stress { font-weight: bold;}

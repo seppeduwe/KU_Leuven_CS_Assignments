@@ -1,0 +1,23 @@
+structure S : V_out {
+
+row = {1..9}
+column = {1..9}
+block = {1..9}
+number = {1..9}
+
+solution<ct> = { 1,1->1;2,2->2;3,3->3;1,4->2;2,5->3;3,6->4;1,7->3;2,8->4;3,9->5; 4,1->6;5,2->7;6,3->8;4,4->4;5,5->5;6,6->6;4,7->5;5,8->6;6,9->7; 7,1->8;8,2->9;9,3->1;7,4->9;8,5->1;9,6->2;7,7->7;8,8->8;9,9->4 }
+//idpd3
+time = {1}
+width = {0..50}
+height = {0..50}
+order = {-1..1}
+
+toKey = procedure toKey
+toText = procedure toText
+toString = procedure toString
+color = {"white"; "black"; "red"}
+}
+
+procedure getExpectedModels() {
+    return 1;
+}

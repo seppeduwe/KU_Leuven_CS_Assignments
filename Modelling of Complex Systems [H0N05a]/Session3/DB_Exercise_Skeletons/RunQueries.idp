@@ -1,0 +1,37 @@
+include <table_utils>
+
+procedure runTrueFalseQueries(queries){
+	for index = 1, #queries do
+		result = query(queries[index],database)
+		print("Query "..index.." evaluates to ",result)
+	end
+	
+}
+
+procedure displayQueryAnswers(queries){
+	for index = 1, #queries do
+		print("Running query "..index)
+		result = query(queries[index],database)
+	
+		print("Result is:")
+		print(result)
+	end
+}
+
+procedure testIntegrityConstraints(constraints){
+	//We assume that database is two-valued. Hence: all we should check is: is database a model of every constraint.
+	
+	for index = 1, #constraints do
+		print("Testing constraint "..index)
+		stdoptions.nbmodels=1
+		result = ( #modelexpand(constraints[index],database) > 0)
+		//Alternatively to using the sat-inferences, we could use modelexpand and check if the result has at least one model
+		//(in our case: exactly one model)
+		if result then
+			print("Database satisfies constraint "..index)
+		else
+			print("Database does not satisfy constraint "..index)
+		end
+	end
+	
+}

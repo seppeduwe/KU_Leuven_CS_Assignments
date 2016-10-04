@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="1">
+<org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.poStamp="1">
+<org.eventb.core.poIdentifier name="drinks" org.eventb.core.type="ℙ(drinks)"/>
+<org.eventb.core.poIdentifier name="cola" org.eventb.core.type="drinks"/>
+<org.eventb.core.poIdentifier name="fanta" org.eventb.core.type="drinks"/>
+<org.eventb.core.poIdentifier name="no_drink" org.eventb.core.type="drinks"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/BeverageVendingMachine/Beverages.bpo|org.eventb.core.poFile#Beverages|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="1">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="partition(drinks,{cola},{fanta},{no_drink})" org.eventb.core.source="/BeverageVendingMachine/Beverages.buc|org.eventb.core.contextFile#Beverages|org.eventb.core.axiom#*"/>
+</org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>
