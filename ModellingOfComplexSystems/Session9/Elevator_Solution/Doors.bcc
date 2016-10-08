@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<org.eventb.core.scContextFile org.eventb.core.accurate="true" org.eventb.core.configuration="org.eventb.core.fwd">
-<org.eventb.core.scAxiom name="'" org.eventb.core.label="state_partition" org.eventb.core.predicate="partition(door_states,{opened},{closed})" org.eventb.core.source="/Elevator/Doors.buc|org.eventb.core.contextFile#Doors|org.eventb.core.axiom#*" org.eventb.core.theorem="false"/>
-<org.eventb.core.scConstant name="closed" org.eventb.core.source="/Elevator/Doors.buc|org.eventb.core.contextFile#Doors|org.eventb.core.constant#)" org.eventb.core.type="door_states"/>
-<org.eventb.core.scCarrierSet name="door_states" org.eventb.core.source="/Elevator/Doors.buc|org.eventb.core.contextFile#Doors|org.eventb.core.carrierSet#'" org.eventb.core.type="ℙ(door_states)"/>
-<org.eventb.core.scConstant name="opened" org.eventb.core.source="/Elevator/Doors.buc|org.eventb.core.contextFile#Doors|org.eventb.core.constant#(" org.eventb.core.type="door_states"/>
-</org.eventb.core.scContextFile>

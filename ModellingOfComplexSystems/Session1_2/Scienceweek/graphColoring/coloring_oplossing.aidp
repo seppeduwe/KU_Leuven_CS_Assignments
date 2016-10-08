@@ -1,8 +1,0 @@
-theory T_exp : V {
-  // Two adjacent countries can not have the same color
-  !a1, a2:Border(a1,a2) | Border(a2,a1) => Coloring(a1) ~= Coloring(a2).
-}
-
-procedure name(){
-	return "Coloring"
-}

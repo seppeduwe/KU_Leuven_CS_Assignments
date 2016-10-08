@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<org.eventb.core.scContextFile org.eventb.core.accurate="true" org.eventb.core.configuration="org.eventb.core.fwd">
-<org.eventb.core.scAxiom name="'" org.eventb.core.label="floors" org.eventb.core.predicate="floors=−2 ‥ 5" org.eventb.core.source="/Elevator/Floors.buc|org.eventb.core.contextFile#Floors|org.eventb.core.axiom#(" org.eventb.core.theorem="false"/>
-<org.eventb.core.scConstant name="floors" org.eventb.core.source="/Elevator/Floors.buc|org.eventb.core.contextFile#Floors|org.eventb.core.constant#'" org.eventb.core.type="ℙ(ℤ)"/>
-</org.eventb.core.scContextFile>

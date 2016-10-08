@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<org.eventb.core.scContextFile org.eventb.core.accurate="true" org.eventb.core.configuration="org.eventb.core.fwd">
-<org.eventb.core.scAxiom name="'" org.eventb.core.label="size_type" org.eventb.core.predicate="nb_spaces∈ℕ1" org.eventb.core.source="/ParkingLot/ParkingLotContext.buc|org.eventb.core.contextFile#ParkingLotContext|org.eventb.core.axiom#(" org.eventb.core.theorem="false"/>
-<org.eventb.core.scConstant name="nb_spaces" org.eventb.core.source="/ParkingLot/ParkingLotContext.buc|org.eventb.core.contextFile#ParkingLotContext|org.eventb.core.constant#'" org.eventb.core.type="ℤ"/>
-</org.eventb.core.scContextFile>

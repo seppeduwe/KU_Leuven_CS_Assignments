@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<org.eventb.core.scContextFile org.eventb.core.accurate="true" org.eventb.core.configuration="org.eventb.core.fwd">
-<org.eventb.core.scAxiom name="'" org.eventb.core.label="states_partition" org.eventb.core.predicate="partition(move_states,{moving},{stopped})" org.eventb.core.source="/Elevator/Moving.buc|org.eventb.core.contextFile#Moving|org.eventb.core.axiom#*" org.eventb.core.theorem="false"/>
-<org.eventb.core.scCarrierSet name="move_states" org.eventb.core.source="/Elevator/Moving.buc|org.eventb.core.contextFile#Moving|org.eventb.core.carrierSet#'" org.eventb.core.type="ℙ(move_states)"/>
-<org.eventb.core.scConstant name="moving" org.eventb.core.source="/Elevator/Moving.buc|org.eventb.core.contextFile#Moving|org.eventb.core.constant#(" org.eventb.core.type="move_states"/>
-<org.eventb.core.scConstant name="stopped" org.eventb.core.source="/Elevator/Moving.buc|org.eventb.core.contextFile#Moving|org.eventb.core.constant#)" org.eventb.core.type="move_states"/>
-</org.eventb.core.scContextFile>

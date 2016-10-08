@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<org.eventb.core.scContextFile org.eventb.core.accurate="true" org.eventb.core.configuration="org.eventb.core.fwd">
-<org.eventb.core.scAxiom name="'" org.eventb.core.label="monster_pool" org.eventb.core.predicate="monster_pool={1}" org.eventb.core.source="/Saving_Arkham/Monsters_For_LTL_CTL.buc|org.eventb.core.contextFile#Monsters_For_LTL_CTL|org.eventb.core.axiom#(" org.eventb.core.theorem="false"/>
-<org.eventb.core.scConstant name="monster_pool" org.eventb.core.source="/Saving_Arkham/Monsters_For_LTL_CTL.buc|org.eventb.core.contextFile#Monsters_For_LTL_CTL|org.eventb.core.constant#'" org.eventb.core.type="ℙ(ℤ)"/>
-</org.eventb.core.scContextFile>
