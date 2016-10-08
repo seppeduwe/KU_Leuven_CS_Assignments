@@ -1,0 +1,46 @@
+include "idpd3/idpd3_voc.idp"
+
+/**
+ * This is the vocabulary for the transformation of the current state to a visualisation.
+ * The library does a modelexpand with the two-valued state as input and the fully unknown visualisation.
+ * The first model is chosen as visualisation.
+ */ 
+vocabulary V_out {
+    extern vocabulary idpd3::V_out
+    extern vocabulary V
+    
+    toKey(disc) : key
+    height(Time, disc) : disc
+    toColor(disc) : color
+}
+
+/**
+ * The transformation theory that visualises the current state.
+ */	
+theory T_D3 : V_out {
+    {
+        height(t, s) = 1 <- ~?y : onTopOf(t, s, y).
+        height(t, s) = x <- ? y : onTopOf(t, s, y) & height(t, y) + 1 = x.
+    }
+    {
+        d3_type(t, toKey(l)) = rect. 
+        d3_x(t, toKey(s)) = 4 <- onPosition(t-1, s, left). 
+        d3_x(t, toKey(s)) = 12 <- onPosition(t-1, s, middle). 
+        d3_x(t, toKey(s)) = 20 <- onPosition(t-1, s, right). 
+        d3_y(t, toKey(s)) = 10 - height(t-1, s). 
+        d3_rect_width(t, toKey(s)) = 2*s. 
+        d3_rect_height(t, toKey(s)) = 1. 
+        d3_color(t, toKey(1)) = "green".
+        d3_color(t, toKey(2)) = "red".
+        d3_color(t, toKey(3)) = "blue".
+        
+        d3_circ_r(t, k) = r <- false.
+        d3_text_label(t, k) = c <- false.
+    }
+    !t : ! x: d3_width(t) = x => ~?y : x<y.
+    !t : ! x: d3_height(t) = x => ~?y : x<y.
+}
+
+procedure toString(disc) {
+    return tostring(disc);
+}

@@ -1,0 +1,136 @@
+include "idpd3/idpd3_voc.idp"
+
+procedure locationToKey(l) {
+    return "l_" .. l;
+}
+
+procedure locationLink(l1, l2) {
+    return "ll_" .. l1 .. "_" .. l2;
+}
+
+procedure locationToLabel(l, l1, n) {
+    if(l == l1) then
+        return "P " .. l .." " .. n;
+    else
+    	return l .. " " .. n;
+    end
+}
+
+procedure numberToLabel(n) {
+    return "" .. n;
+}
+procedure timeToLabel(n) {
+    return "Time: " .. n;
+}
+procedure cluesToLabel(n) {
+    return "Clues: " .. n;
+}
+procedure openToLabel(n, m) {
+    return "Open: " .. n .. " of " .. m;
+}
+procedure closeToLabel(n, m) {
+    return "Closed: " .. n .. " of " .. m;
+}
+procedure monstersToLabel(n) {
+    return "#monsters: " .. n;
+}
+procedure stateToLabel(st) {
+    return ""..tostring(st);
+}
+
+vocabulary V_out {
+    extern vocabulary idpd3::V_out
+    extern vocabulary Arkham
+    
+    
+    locationToKey(location) : key
+    locationLink(location, location) : key
+    detective : key
+    bluesClues : key
+    stateKey : key
+    timeKey : key
+    openKey : key
+    closedKey : key
+    monsterKey : key
+    
+    stateToLabel(state) : label
+    numberToLabel(number) : label
+    timeToLabel(number) : label
+    cluesToLabel(number) : label
+    openToLabel(number, number) : label
+    closeToLabel(number, number) : label
+    monstersToLabel(number) : label
+    locationToLabel(location, location, number) : label
+    
+}
+
+theory T_out : V_out {
+    {
+        
+        !l[location], t[time] : d3_type(t, locationToKey(l)) = text.
+        !l[location], t[time] : d3_text_label(t, locationToKey(l)) = locationToLabel(l, Location(t), Monsters_In(t, l)).
+        !l[location], t[time] : d3_text_size(t, locationToKey(l)) = 4.
+        !l[location], t[time] : d3_color(t, locationToKey(l)) = "darkgreen" <- Closed_Gate(t, l) & Location(t) = l.
+        !l[location], t[time] : d3_color(t, locationToKey(l)) = "green" <- Closed_Gate(t, l) & ~Location(t) = l.
+        !l[location], t[time] : d3_color(t, locationToKey(l)) = "darkred" <- Open_Gate(t, l) & Location(t) = l.
+        !l[location], t[time] : d3_color(t, locationToKey(l)) = "red" <- Open_Gate(t, l) & ~Location(t) = l.
+        !l[location], t[time] : d3_color(t, locationToKey(l)) = "purple" <- ~Closed_Gate(t, l) & ~Open_Gate(t, l) & Location(t) = l.
+        !l[location], t[time] : d3_color(t, locationToKey(l)) = "black" <- ~Closed_Gate(t, l) & ~Open_Gate(t, l) & ~Location(t) = l.
+        !l[location], t[time] : d3_node(t, locationToKey(l)).
+        
+        !l1[location], l2[location], t[time] : d3_type(t, locationLink(l1, l2)) = link <- Has_Connection(l1, l2).
+        !l1[location], l2[location], t[time] : d3_link_from(t, locationLink(l1, l2)) = locationToKey(l1).
+        !l1[location], l2[location], t[time] : d3_link_to(t, locationLink(l1, l2)) = locationToKey(l2).
+        !l1[location], l2[location], t[time] : d3_color(t, locationLink(l1, l2)) = "black".
+        !l1[location], l2[location], t[time] : d3_link_width(t, locationLink(l1, l2)) = 2.
+        
+        
+        !t[time] : d3_type(t, timeKey) = text.
+        !t[time] : d3_text_size(t, timeKey) = 3.
+        !t[time] : d3_text_label(t, timeKey) = timeToLabel(t).
+        !t[time] : d3_x(t, timeKey) = 70.
+        !t[time] : d3_y(t, timeKey) = 5.
+        !t[time] : d3_color(t, timeKey) = "black".
+        
+        !t[time] : d3_type(t, stateKey) = text.
+        !t[time] : d3_text_size(t, stateKey) = 3.
+        !t[time] : d3_text_label(t, stateKey) = stateToLabel(GameState(t)).
+        !t[time] : d3_x(t, stateKey) = 70.
+        !t[time] : d3_y(t, stateKey) = 10.
+        !t[time] : d3_color(t, stateKey) = "black".
+        
+        !t[time] : d3_type(t, bluesClues) = text.
+        !t[time] : d3_text_size(t, bluesClues) = 3.
+        !t[time] : d3_text_label(t, bluesClues) = cluesToLabel(Clues(t)).
+        !t[time] : d3_x(t, bluesClues) = 70.
+        !t[time] : d3_y(t, bluesClues) = 15.
+        !t[time] : d3_color(t, bluesClues) = "black".
+        
+        
+        !t[time] : d3_type(t, openKey) = text.
+        !t[time] : d3_text_size(t, openKey) = 3.
+        !t[time] : d3_text_label(t, openKey) = openToLabel(#{b : Open_Gate(t,b)}, Open_To_Lose).
+        !t[time] : d3_x(t, openKey) = 70.
+        !t[time] : d3_y(t, openKey) = 20.
+        !t[time] : d3_color(t, openKey) = "red".
+        
+        
+        !t[time] : d3_type(t, closedKey) = text.
+        !t[time] : d3_text_size(t, closedKey) = 3.
+        !t[time] : d3_text_label(t, closedKey) = closeToLabel(#{b : Closed_Gate(t,b)}, Closed_To_Win).
+        !t[time] : d3_x(t, closedKey) = 70.
+        !t[time] : d3_y(t, closedKey) = 25.
+        !t[time] : d3_color(t, closedKey) = "green".
+
+        !t[time], x[key], y[width] : d3_x(t, x) = y <- false.
+        !t[time], x[key], y[height] : d3_y(t, x) = y <- false.
+        !t[time], x[key], y[width] : d3_circ_r(t, x) = y <- false.
+        !t[time], x[key], y[width] : d3_text_size(t, x) = y <- false.
+        !t[time], x[key], y[width] : d3_rect_width(t, x) = y <- false.
+        !t[time], x[key], y[height] : d3_rect_height(t, x) = y <- false.
+        
+        !t[time] : d3_width(t) = MAX[:width].
+        !t[time] : d3_height(t) = MAX[:height].
+        //d3_isFixed(time, key)
+    }
+}

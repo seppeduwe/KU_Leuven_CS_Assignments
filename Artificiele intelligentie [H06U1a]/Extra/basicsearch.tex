@@ -1,0 +1,74 @@
+\documentclass[11pt] {article}
+\usepackage{amsthm}
+\usepackage{graphicx, amsmath, amssymb}
+\usepackage{amsfonts, enumerate}
+\usepackage{algorithmic, algorithm}
+\usepackage[usenames]{color}
+
+\setlength{\textwidth}{6in} 
+\addtolength{\hoffset}{-0.5in}
+\setlength{\topmargin}{-0.2in}
+\setlength{\textheight}{9in}
+
+\newcommand{\algorithmicinput}{\textbf{Input:}}
+\newcommand{\algorithmicoutput}{\textbf{Output:}}
+\newcommand{\algorithmicinit}{\textbf{Initialize:}}
+\newcommand{\INPUT}{\item[\algorithmicinput]}
+\newcommand{\OUTPUT}{\item[\algorithmicoutput]}
+\newcommand{\INIT}{\item[\algorithmicinit]}
+\newcommand{\algorithmicalgo}{\textbf{Algorithm:}}
+\newcommand{\ALGO}{\item[\algorithmicalgo]}
+
+\begin{document}
+\pagestyle{empty}
+
+
+\begin{center}
+\LARGE
+\textbf{AI algorithms: Basic Search}\\
+\end{center}
+\vspace{1cm}
+
+\noindent \textcolor{blue}{depth-first search}\\
+\textcolor{red}{breadth-first search}\\
+\textcolor[rgb]{1,0,1}{non-deterministic search}\\
+\textcolor{green}{iterative deepening search}\\
+\textcolor[rgb]{1,0.5,0}{bidirectional search}\\
+
+\begin{algorithmic}
+\INPUT
+\STATE A graph of nodes, a start node $S$ and a goal node $G$
+\STATE A queue Q of possible paths
+
+\OUTPUT 
+\STATE A path from $S$ to $G$
+\end{algorithmic}
+\begin{algorithmic}
+\ALGO
+\STATE $Q$ $\leftarrow$ $S$
+\STATE \textcolor[rgb]{1,0.5,0}{Q2 $\leftarrow$ $G$}
+\textcolor{green}{
+\STATE $depth$ $\leftarrow$ initial depth
+}
+\WHILE{$Q$ not empty AND $G$ not reached \textcolor[rgb]{1,0.5,0}{/ Q and Q2 not empty AND don't share a node}}
+\STATE $p$ $\leftarrow$ get (and remove) first path from $Q$
+\textcolor{green}{
+\IF{$p$ length $<$ $depth$}
+\STATE \textcolor{black}{$P$ $\leftarrow$ all paths to children of $p$}
+\STATE \textcolor{black}{Remove all paths from $P$ containing loops}
+\STATE \textcolor{black}{Add paths of $P$ to} \textcolor{blue}{front} \textcolor{black}{of $Q$}
+\STATE \hspace{3.1cm} \textcolor{red}{back}
+\STATE \hspace{3.1cm} \textcolor[rgb]{1,0,1}{random place}
+\STATE \hspace{3.1cm} \textcolor{green}{front}
+\STATE \hspace{3.1cm} \textcolor[rgb]{1,0.5,0}{back}
+\ENDIF
+}
+\ENDWHILE
+\IF{$G$ reached \textcolor[rgb]{1,0.5,0}{/ Q and Q2 share a node}}
+\STATE Succes
+\ELSE
+\STATE Failure \textcolor{green}{/ Repeat with $depth$ + 1}
+\ENDIF
+\end{algorithmic}
+
+\end{document}

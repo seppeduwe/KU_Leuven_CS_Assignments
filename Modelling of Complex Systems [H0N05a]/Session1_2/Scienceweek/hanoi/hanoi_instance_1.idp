@@ -1,0 +1,30 @@
+structure  S : V_out {
+	disc = {1..3}
+	maxDisc = 3
+	Time = {0..7}
+	position = {left;right;middle}
+	end = 7
+	left = left
+	right = right
+	middle = middle
+    
+  //idpd3
+  time = {1..8}
+  key = {1..3}
+  color = {"green"; "red"; "blue"}
+  width = {0..30}
+  height = {0..30}
+  
+  toKey = procedure toString
+  toColor = {
+    1, "red";
+    2, "blue"; 
+    3, "green"
+  }
+}
+
+procedure getExpectedModels() {
+  return 1;
+}
+	
+

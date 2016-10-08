@@ -1,0 +1,74 @@
+/**
+ * DATABANK ALS LOGISCHE STRUCTUUR
+ */
+ 
+ vocabulary Sigma{
+ 	/*
+ 	 * The assignment uses untyped first order logic. This is why we use a type "object" representing all object in the domain. 
+ 	 * In real applications, we would make types like  person, instructor, student, course etc.
+ 	 * It is a good idea to try this.
+ 	 * 
+ 	 * constructed from already includes UNA and DCA!!!!!!
+ 	 */
+ 	type domain constructed from  { A, AA, AAA, Ann, B, Bill, C, CS148, CS230, CS238, D, F, Flo, Hec, Jack, Jill, M100, M200, May, Pat, Ray, Sam, Sue, Tom }
+
+ 	Instructor(domain,domain)
+ 	Prerequ(domain,domain)
+ 	Enrolled(domain,domain)
+ 	Grade(domain,domain, domain)
+ 	PassGrade(domain)
+
+ }
+ 
+ 
+ 
+ structure database: Sigma{
+ 	
+ 	Instructor={
+ 		Ray(), CS230();
+		Hec(), CS230();
+		Sue(), M100();
+		Sue(), M200();
+		Pat(), CS238();
+ 	}
+ 	Prerequ={
+ 		CS230(), CS238(); 
+		CS148(), CS230();
+		M100(), M200();
+ 	}
+ 	Enrolled={
+		Jill(),  CS230();
+		Jack(),  CS230();
+		Sam(),  CS230();
+		Bill(),  CS230();
+		May(),  CS238();
+		Ann(),  CS238();
+		Tom(),  M100();
+		Ann(),  M100();
+		Jill(),  M200();
+		Sam(),  M200();
+		Flo(),  M200();
+	}
+	Grade={
+		Sam(), CS148(), AAA();
+		Bill(), CS148(), D();
+		Jill(), CS148(), A();
+		Jack(), CS148(), C();
+		Flo(), CS230(), AA();
+		May(), CS230(), AA();
+		Bill(), CS230(), F();
+		Ann(), CS230(), C();
+		Jill(), M100(), B();
+		Sam(), M100(), AA();
+		Flo(), M100(), D();
+		Flo(), M100(), B()
+	}
+	PassGrade={
+		AAA();
+		AA();
+		A();
+		B();
+		C();
+	}
+	
+ }

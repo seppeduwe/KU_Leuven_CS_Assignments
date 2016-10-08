@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.scContextFile org.eventb.core.accurate="true" org.eventb.core.configuration="org.eventb.core.fwd">
+<org.eventb.core.scAxiom name="'" org.eventb.core.label="drinks_partition" org.eventb.core.predicate="partition(drinks,{cola},{fanta},{no_drink})" org.eventb.core.source="/BeverageVendingMachine/Beverages.buc|org.eventb.core.contextFile#Beverages|org.eventb.core.axiom#*" org.eventb.core.theorem="false"/>
+<org.eventb.core.scConstant name="cola" org.eventb.core.source="/BeverageVendingMachine/Beverages.buc|org.eventb.core.contextFile#Beverages|org.eventb.core.constant#(" org.eventb.core.type="drinks"/>
+<org.eventb.core.scCarrierSet name="drinks" org.eventb.core.source="/BeverageVendingMachine/Beverages.buc|org.eventb.core.contextFile#Beverages|org.eventb.core.carrierSet#'" org.eventb.core.type="ℙ(drinks)"/>
+<org.eventb.core.scConstant name="fanta" org.eventb.core.source="/BeverageVendingMachine/Beverages.buc|org.eventb.core.contextFile#Beverages|org.eventb.core.constant#)" org.eventb.core.type="drinks"/>
+<org.eventb.core.scConstant name="no_drink" org.eventb.core.source="/BeverageVendingMachine/Beverages.buc|org.eventb.core.contextFile#Beverages|org.eventb.core.constant#+" org.eventb.core.type="drinks"/>
+</org.eventb.core.scContextFile>

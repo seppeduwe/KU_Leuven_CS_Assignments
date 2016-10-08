@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="2">
+<org.eventb.core.poPredicateSet name="CTXHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="locations" org.eventb.core.type="ℙ(locations)"/>
+<org.eventb.core.poIdentifier name="Bank" org.eventb.core.type="locations"/>
+<org.eventb.core.poIdentifier name="Downtown" org.eventb.core.type="locations"/>
+<org.eventb.core.poIdentifier name="Easttown" org.eventb.core.type="locations"/>
+<org.eventb.core.poIdentifier name="Library" org.eventb.core.type="locations"/>
+<org.eventb.core.poIdentifier name="Merchant_District" org.eventb.core.type="locations"/>
+<org.eventb.core.poIdentifier name="Rivertown" org.eventb.core.type="locations"/>
+<org.eventb.core.poIdentifier name="Shop" org.eventb.core.type="locations"/>
+<org.eventb.core.poIdentifier name="Station" org.eventb.core.type="locations"/>
+<org.eventb.core.poIdentifier name="building_to_district" org.eventb.core.type="ℙ(locations×locations)"/>
+<org.eventb.core.poIdentifier name="buildings" org.eventb.core.type="ℙ(locations)"/>
+<org.eventb.core.poIdentifier name="connected" org.eventb.core.type="ℙ(locations×locations)"/>
+<org.eventb.core.poIdentifier name="district_to_district" org.eventb.core.type="ℙ(locations×locations)"/>
+<org.eventb.core.poIdentifier name="districts" org.eventb.core.type="ℙ(locations)"/>
+<org.eventb.core.poPredicate name="district_to_districu" org.eventb.core.predicate="partition(locations,{Rivertown},{Easttown},{Downtown},{Merchant_District},{Shop},{Library},{Bank},{Station})" org.eventb.core.source="/Saving_Arkham/Arkham.buc|org.eventb.core.contextFile#Arkham|org.eventb.core.axiom#_1ya_UWNcEeWa3o_jWazSHQ"/>
+<org.eventb.core.poPredicate name="district_to_districv" org.eventb.core.predicate="districts={Rivertown,Easttown,Downtown,Merchant_District}" org.eventb.core.source="/Saving_Arkham/Arkham.buc|org.eventb.core.contextFile#Arkham|org.eventb.core.axiom#_rlpCQGNcEeWa3o_jWazSHQ"/>
+<org.eventb.core.poPredicate name="district_to_districw" org.eventb.core.predicate="buildings={Shop,Library,Bank,Station}" org.eventb.core.source="/Saving_Arkham/Arkham.buc|org.eventb.core.contextFile#Arkham|org.eventb.core.axiom#_1ya_UGNcEeWa3o_jWazSHQ"/>
+<org.eventb.core.poPredicate name="district_to_districx" org.eventb.core.predicate="building_to_district={Shop ↦ Merchant_District,Bank ↦ Downtown,Station ↦ Easttown,Library ↦ Rivertown}" org.eventb.core.source="/Saving_Arkham/Arkham.buc|org.eventb.core.contextFile#Arkham|org.eventb.core.axiom#_rlpCQGNcEeWa3o_jWazSHZ"/>
+<org.eventb.core.poPredicate name="district_to_districy" org.eventb.core.predicate="district_to_district={Rivertown ↦ Easttown,Easttown ↦ Downtown,Downtown ↦ Merchant_District,Merchant_District ↦ Rivertown}" org.eventb.core.source="/Saving_Arkham/Arkham.buc|org.eventb.core.contextFile#Arkham|org.eventb.core.axiom#_rlpCQGNcEeWa3o_jWazSHX"/>
+<org.eventb.core.poPredicate name="district_to_districz" org.eventb.core.predicate="connected=building_to_district∪building_to_district∼∪district_to_district∪district_to_district∼" org.eventb.core.source="/Saving_Arkham/Arkham.buc|org.eventb.core.contextFile#Arkham|org.eventb.core.axiom#_rlpCQGNcEeWa3o_jWazSH\\"/>
+<org.eventb.core.poPredicate name="district_to_distric{" org.eventb.core.predicate="finite(buildings)" org.eventb.core.source="/Saving_Arkham/Arkham.buc|org.eventb.core.contextFile#Arkham|org.eventb.core.axiom#_rlpCQGNcEeWa3o_jWazSHf"/>
+<org.eventb.core.poPredicate name="district_to_distric|" org.eventb.core.predicate="locations=districts∪buildings" org.eventb.core.source="/Saving_Arkham/Arkham.buc|org.eventb.core.contextFile#Arkham|org.eventb.core.axiom#_rlpCQGNcEeWa3o_jWazSHg"/>
+<org.eventb.core.poPredicate name="district_to_distric}" org.eventb.core.predicate="finite(locations)" org.eventb.core.source="/Saving_Arkham/Arkham.buc|org.eventb.core.contextFile#Arkham|org.eventb.core.axiom#_rlpCQGNcEeWa3o_jWazSHh"/>
+<org.eventb.core.poPredicate name="district_to_distric~" org.eventb.core.predicate="finite(locations × districts)" org.eventb.core.source="/Saving_Arkham/Arkham.buc|org.eventb.core.contextFile#Arkham|org.eventb.core.axiom#_rlpCQGNcEeWa3o_jWazSHi"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.parentSet="/Saving_Arkham/Saving_Arkham_0.bpo|org.eventb.core.poFile#Saving_Arkham_0|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="closed_gates" org.eventb.core.type="ℙ(locations)"/>
+<org.eventb.core.poIdentifier name="game_over" org.eventb.core.type="BOOL"/>
+<org.eventb.core.poIdentifier name="open_gates" org.eventb.core.type="ℙ(locations)"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poSequent name="finite_gates/THM" org.eventb.core.accurate="true" org.eventb.core.poDesc="Theorem" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Saving_Arkham/Saving_Arkham_0.bpo|org.eventb.core.poFile#Saving_Arkham_0|org.eventb.core.poPredicateSet#HYPArkhao"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="finite(open_gates)" org.eventb.core.source="/Saving_Arkham/Saving_Arkham_0.bum|org.eventb.core.machineFile#Saving_Arkham_0|org.eventb.core.invariant#evt?"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Saving_Arkham/Saving_Arkham_0.bum|org.eventb.core.machineFile#Saving_Arkham_0|org.eventb.core.invariant#evt?"/>
+<org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/Saving_Arkham/Saving_Arkham_0.bpo|org.eventb.core.poFile#Saving_Arkham_0|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/Saving_Arkham/Saving_Arkham_0.bpo|org.eventb.core.poFile#Saving_Arkham_0|org.eventb.core.poPredicateSet#HYPArkhao"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="finite_closed/THM" org.eventb.core.accurate="true" org.eventb.core.poDesc="Theorem" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Saving_Arkham/Saving_Arkham_0.bpo|org.eventb.core.poFile#Saving_Arkham_0|org.eventb.core.poPredicateSet#HYPArkhaq"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="finite(closed_gates)" org.eventb.core.source="/Saving_Arkham/Saving_Arkham_0.bum|org.eventb.core.machineFile#Saving_Arkham_0|org.eventb.core.invariant#evt@"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Saving_Arkham/Saving_Arkham_0.bum|org.eventb.core.machineFile#Saving_Arkham_0|org.eventb.core.invariant#evt@"/>
+<org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/Saving_Arkham/Saving_Arkham_0.bpo|org.eventb.core.poFile#Saving_Arkham_0|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/Saving_Arkham/Saving_Arkham_0.bpo|org.eventb.core.poFile#Saving_Arkham_0|org.eventb.core.poPredicateSet#HYPArkhaq"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="INITIALISATION/open_gates_type/INV" org.eventb.core.accurate="false" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="2">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Saving_Arkham/Saving_Arkham_0.bpo|org.eventb.core.poFile#Saving_Arkham_0|org.eventb.core.poPredicateSet#EVTALLHYPclosed_gatet"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="open_gates'⊆buildings" org.eventb.core.source="/Saving_Arkham/Saving_Arkham_0.bum|org.eventb.core.machineFile#Saving_Arkham_0|org.eventb.core.invariant#evt:"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Saving_Arkham/Saving_Arkham_0.bum|org.eventb.core.machineFile#Saving_Arkham_0|org.eventb.core.event#'"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Saving_Arkham/Saving_Arkham_0.bum|org.eventb.core.machineFile#Saving_Arkham_0|org.eventb.core.invariant#evt:"/>
+<org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/Saving_Arkham/Saving_Arkham_0.bpo|org.eventb.core.poFile#Saving_Arkham_0|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/Saving_Arkham/Saving_Arkham_0.bpo|org.eventb.core.poFile#Saving_Arkham_0|org.eventb.core.poSequent#INITIALISATION\/open_gates_type\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Saving_Arkham/Saving_Arkham_0.bpo|org.eventb.core.poFile#Saving_Arkham_0|org.eventb.core.poPredicateSet#HYPArkhao|org.eventb.core.poPredicate#PRD1"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="INITIALISATION/closed_gates_type/INV" org.eventb.core.accurate="false" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="2">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Saving_Arkham/Saving_Arkham_0.bpo|org.eventb.core.poFile#Saving_Arkham_0|org.eventb.core.poPredicateSet#EVTALLHYPclosed_gatet"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="closed_gates'⊆buildings" org.eventb.core.source="/Saving_Arkham/Saving_Arkham_0.bum|org.eventb.core.machineFile#Saving_Arkham_0|org.eventb.core.invariant#evt;"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Saving_Arkham/Saving_Arkham_0.bum|org.eventb.core.machineFile#Saving_Arkham_0|org.eventb.core.event#'"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Saving_Arkham/Saving_Arkham_0.bum|org.eventb.core.machineFile#Saving_Arkham_0|org.eventb.core.invariant#evt;"/>
+<org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/Saving_Arkham/Saving_Arkham_0.bpo|org.eventb.core.poFile#Saving_Arkham_0|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/Saving_Arkham/Saving_Arkham_0.bpo|org.eventb.core.poFile#Saving_Arkham_0|org.eventb.core.poSequent#INITIALISATION\/closed_gates_type\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Saving_Arkham/Saving_Arkham_0.bpo|org.eventb.core.poFile#Saving_Arkham_0|org.eventb.core.poPredicateSet#HYPArkhaq|org.eventb.core.poPredicate#PRD3"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poPredicateSet name="EVTIDENTclosed_gatet" org.eventb.core.parentSet="/Saving_Arkham/Saving_Arkham_0.bpo|org.eventb.core.poFile#Saving_Arkham_0|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="game_over'" org.eventb.core.type="BOOL"/>
+<org.eventb.core.poIdentifier name="closed_gates'" org.eventb.core.type="ℙ(locations)"/>
+<org.eventb.core.poIdentifier name="open_gates'" org.eventb.core.type="ℙ(locations)"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPclosed_gatet" org.eventb.core.parentSet="/Saving_Arkham/Saving_Arkham_0.bpo|org.eventb.core.poFile#Saving_Arkham_0|org.eventb.core.poPredicateSet#EVTIDENTclosed_gatet" org.eventb.core.poStamp="0"/>
+<org.eventb.core.poPredicateSet name="EVTALLHYPclosed_gateu" org.eventb.core.parentSet="/Saving_Arkham/Saving_Arkham_0.bpo|org.eventb.core.poFile#Saving_Arkham_0|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="1"/>
+<org.eventb.core.poPredicateSet name="EVTALLHYPclosed_gatev" org.eventb.core.parentSet="/Saving_Arkham/Saving_Arkham_0.bpo|org.eventb.core.poFile#Saving_Arkham_0|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="1"/>
+<org.eventb.core.poPredicateSet name="EVTALLHYPclosed_gatew" org.eventb.core.parentSet="/Saving_Arkham/Saving_Arkham_0.bpo|org.eventb.core.poFile#Saving_Arkham_0|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="1"/>
+<org.eventb.core.poPredicateSet name="EVTALLHYPclosed_gatex" org.eventb.core.parentSet="/Saving_Arkham/Saving_Arkham_0.bpo|org.eventb.core.poFile#Saving_Arkham_0|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="1"/>
+<org.eventb.core.poPredicateSet name="HYPArkhao" org.eventb.core.parentSet="/Saving_Arkham/Saving_Arkham_0.bpo|org.eventb.core.poFile#Saving_Arkham_0|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="game_over∈BOOL" org.eventb.core.source="/Saving_Arkham/Saving_Arkham_0.bum|org.eventb.core.machineFile#Saving_Arkham_0|org.eventb.core.invariant#evt9"/>
+<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="open_gates⊆buildings" org.eventb.core.source="/Saving_Arkham/Saving_Arkham_0.bum|org.eventb.core.machineFile#Saving_Arkham_0|org.eventb.core.invariant#evt:"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="HYPArkhaq" org.eventb.core.parentSet="/Saving_Arkham/Saving_Arkham_0.bpo|org.eventb.core.poFile#Saving_Arkham_0|org.eventb.core.poPredicateSet#HYPArkhao" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="finite(open_gates)" org.eventb.core.source="/Saving_Arkham/Saving_Arkham_0.bum|org.eventb.core.machineFile#Saving_Arkham_0|org.eventb.core.invariant#evt?"/>
+<org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="closed_gates⊆buildings" org.eventb.core.source="/Saving_Arkham/Saving_Arkham_0.bum|org.eventb.core.machineFile#Saving_Arkham_0|org.eventb.core.invariant#evt;"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/Saving_Arkham/Saving_Arkham_0.bpo|org.eventb.core.poFile#Saving_Arkham_0|org.eventb.core.poPredicateSet#HYPArkhaq" org.eventb.core.poStamp="1">
+<org.eventb.core.poPredicate name="PRD4" org.eventb.core.predicate="finite(closed_gates)" org.eventb.core.source="/Saving_Arkham/Saving_Arkham_0.bum|org.eventb.core.machineFile#Saving_Arkham_0|org.eventb.core.invariant#evt@"/>
+</org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>

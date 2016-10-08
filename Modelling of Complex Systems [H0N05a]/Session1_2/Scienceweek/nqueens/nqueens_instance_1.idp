@@ -1,0 +1,20 @@
+structure S : V_out {
+  index = {1..8}
+  diag = {1..15}
+
+
+  //idpd3
+  time={1}
+  width={0..45}
+  height={0..45}
+  order = {-1..1}
+
+  toKey = procedure toKey
+  toQueen = procedure toQueen
+
+  color = {"black"; "white"; "red"}
+}
+
+procedure getExpectedModels() {
+  return 5;
+}

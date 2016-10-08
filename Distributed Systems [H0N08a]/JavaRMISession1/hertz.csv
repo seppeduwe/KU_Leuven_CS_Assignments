@@ -1,0 +1,8 @@
+#type name,nb of seats,trunk space in liters,price per day,smoking,number of cars of this type
+Compact,4,200,44,TRUE,25
+Economy,4,150,30,TRUE,22
+Mini,2,100,25,TRUE,2
+Standard,5,400,60,FALSE,10
+Premium,5,600,100,FALSE,7
+Special,5,750,1200,FALSE,1
+MPV,7,2000,200,TRUE,7

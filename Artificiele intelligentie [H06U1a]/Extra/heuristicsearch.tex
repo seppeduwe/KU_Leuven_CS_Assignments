@@ -1,0 +1,64 @@
+\documentclass[11pt] {article}
+\usepackage{amsthm}
+\usepackage{graphicx, amsmath, amssymb}
+\usepackage{amsfonts, enumerate}
+\usepackage{algorithmic, algorithm}
+\usepackage[usenames]{color}
+
+\setlength{\textwidth}{6in} 
+\addtolength{\hoffset}{-0.5in}
+\setlength{\topmargin}{-0.2in}
+\setlength{\textheight}{9in}
+
+\newcommand{\algorithmicinput}{\textbf{Input:}}
+\newcommand{\algorithmicoutput}{\textbf{Output:}}
+\newcommand{\algorithmicinit}{\textbf{Initialize:}}
+\newcommand{\INPUT}{\item[\algorithmicinput]}
+\newcommand{\OUTPUT}{\item[\algorithmicoutput]}
+\newcommand{\INIT}{\item[\algorithmicinit]}
+\newcommand{\algorithmicalgo}{\textbf{Algorithm:}}
+\newcommand{\ALGO}{\item[\algorithmicalgo]}
+
+\begin{document}
+\pagestyle{empty}
+
+
+\begin{center}
+\LARGE
+\textbf{AI algorithms: Heuristic Search}\\
+\end{center}
+\vspace{1cm}
+
+\noindent \textcolor{blue}{hill climbing 1}\\
+\textcolor{red}{hill climbing 2}\\
+\textcolor{green}{greedy search}\\
+
+\begin{algorithmic}
+\INPUT
+\STATE A graph of nodes, a start node $S$ and a goal node $G$
+\STATE A queue Q of possible paths
+\STATE A heuristic function $H$ of the distance to $G$
+
+\OUTPUT 
+\STATE A path from $S$ to $G$
+\end{algorithmic}
+
+\begin{algorithmic}
+\ALGO
+\STATE $Q$ $\leftarrow$ $S$
+\WHILE{$Q$ not empty AND $G$ not reached}
+\STATE $p$ $\leftarrow$ get (and remove) first path from $Q$
+\STATE $P$ $\leftarrow$ all paths to children of $p$
+\STATE Remove all paths from $P$ containing loops
+\STATE \textcolor{blue}{Sort $P$ according to $H$}
+\STATE Add \textcolor{red}{best of all} paths of $P$ to front of $Q$
+\STATE \textcolor{green}{Sort $Q$ according to $H$}
+\ENDWHILE
+\IF{$G$ reached}
+\STATE Succes
+\ELSE
+\STATE Failure
+\ENDIF
+\end{algorithmic}
+
+\end{document}
