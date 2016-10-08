@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<org.eventb.core.poFile org.eventb.core.poStamp="0">
-<org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.poStamp="0">
-<org.eventb.core.poIdentifier name="monster_pool" org.eventb.core.type="ℙ(ℤ)"/>
-</org.eventb.core.poPredicateSet>
-<org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/Saving_Arkham/Monsters_For_LTL_CTL.bpo|org.eventb.core.poFile#Monsters_For_LTL_CTL|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="0">
-<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="monster_pool={1}" org.eventb.core.source="/Saving_Arkham/Monsters_For_LTL_CTL.buc|org.eventb.core.contextFile#Monsters_For_LTL_CTL|org.eventb.core.axiom#("/>
-</org.eventb.core.poPredicateSet>
-</org.eventb.core.poFile>

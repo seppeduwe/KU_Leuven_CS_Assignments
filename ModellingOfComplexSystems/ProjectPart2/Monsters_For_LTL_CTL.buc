@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<org.eventb.core.contextFile org.eventb.core.configuration="org.eventb.core.fwd" version="3">
-<org.eventb.core.constant name="'" org.eventb.core.identifier="monster_pool"/>
-<org.eventb.core.axiom name="(" org.eventb.core.label="monster_pool" org.eventb.core.predicate="monster_pool = {1}"/>
-</org.eventb.core.contextFile>

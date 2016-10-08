@@ -1,8 +1,0 @@
-#type name,nb of seats,trunk space in liters,price per day,smoking,number of cars of this type
-Compact,4,200,60,TRUE,15
-Sedan,5,500,90,TRUE,3
-Break,5,1000,115,FALSE,8
-Top,5,700,380,FALSE,8
-SUV,5,1000,420,FALSE,8
-Eco,4,150,45,TRUE,3
-Special,5,750,1200,FALSE,1
