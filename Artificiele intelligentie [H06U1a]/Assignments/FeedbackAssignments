@@ -1,0 +1,16 @@
+StripsAssignment: 
+Op basis van complexiteit en originaliteit zou je voor die opgave 4/5 krijgen.
+
+Alleen zijn er 2 fouten in je oplossing:
+- operator 6 heeft een 'self-threat': bedreigt zijn eigen establish link.
+  self-threats zijn geen threats (bestaan niet).
+- er is een ontbrekende threat voor de conditie at(studentroom) in je F operator.
+
+Je resultaat voor het werkje is 3/5.
+
+VersionSpaceAssignment:
+ Ergens bovenaan pagina 3 iets vergeten door te strepen, maar had dit wel gedaan in de volgende stappen
+ Resultaat: 4,5/5
+
+ConstraintProcessingAssignment:
+ Resultaat: 4/5 
