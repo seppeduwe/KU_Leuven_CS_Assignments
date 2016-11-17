@@ -1,0 +1,14 @@
+PREFIX : <http://dbpedia.org/resource/> 
+PREFIX dbo: <http://dbpedia.org/ontology/> 
+PREFIX dbc: <http://dbpedia.org/resource/Category:> 
+PREFIX dcterms: <http://purl.org/dc/terms/> 
+PREFIX dbp: <http://dbpedia.org/property/> 
+
+SELECT ?URI ?name ?birthDate ?deathDate WHERE { 
+	?URI dcterms:subject dbc:Nobel_laureates_in_Physics . 
+	?URI dbo:birthDate ?birthDate . 
+	?URI dbp:name ?name . 
+	FILTER (lang(?name) = "en") .  
+	OPTIONAL { ?URI dbo:deathDate ?deathDate } 
+} 
+ORDER BY asc(?birthDate)

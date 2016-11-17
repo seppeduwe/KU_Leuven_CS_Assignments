@@ -1,0 +1,15 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX dbo: <http://dbpedia.org/ontology/> 
+PREFIX : <http://dbpedia.org/resource/> 
+
+SELECT ?label ?abstract 
+WHERE { 
+	?movie rdf:type dbo:Film .
+	:Batman_Begins rdfs:label ?label.
+	?movie rdfs:label ?label .
+	?movie dbo:abstract ?abstract
+	FILTER (lang(?abstract) = "en" && (lang(?label) = "en")) 
+}
+
+# Other possibility: FILTER (regex (?label, "Batman Begins", "i") 
