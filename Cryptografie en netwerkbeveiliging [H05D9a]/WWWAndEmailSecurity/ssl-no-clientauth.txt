@@ -1,0 +1,1404 @@
+No.     Time           Source                Destination           Protocol Length Info
+      1 0.000000       134.58.189.76         134.58.189.80         TCP      44     3183 → 2010 [SYN] Seq=110129 Win=8192 Len=0 MSS=1460
+
+Frame 1: 44 bytes on wire (352 bits), 44 bytes captured (352 bits)
+    Encapsulation type: Raw IP (7)
+    Arrival Time: May 21, 2016 14:31:09.000000000 Romance (zomertijd)
+    [Time shift for this packet: 0.000000000 seconds]
+    Epoch Time: 1463833869.000000000 seconds
+    [Time delta from previous captured frame: 0.000000000 seconds]
+    [Time delta from previous displayed frame: 0.000000000 seconds]
+    [Time since reference or first frame: 0.000000000 seconds]
+    Frame Number: 1
+    Frame Length: 44 bytes (352 bits)
+    Capture Length: 44 bytes (352 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: raw:ip:tcp]
+    [Coloring Rule Name: TCP SYN/FIN]
+    [Coloring Rule String: tcp.flags & 0x02 || tcp.flags.fin == 1]
+Raw packet data
+Internet Protocol Version 4, Src: 134.58.189.76, Dst: 134.58.189.80
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes
+    Differentiated Services Field: 0x10 (DSCP: Unknown, ECN: Not-ECT)
+        0001 00.. = Differentiated Services Codepoint: Unknown (4)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 44
+    Identification: 0x364d (13901)
+    Flags: 0x02 (Don't Fragment)
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    Fragment offset: 0
+    Time to live: 128
+    Protocol: TCP (6)
+    Header checksum: 0x3d5d [validation disabled]
+        [Good: False]
+        [Bad: False]
+    Source: 134.58.189.76
+    Destination: 134.58.189.80
+    [Source GeoIP: Unknown]
+    [Destination GeoIP: Unknown]
+Transmission Control Protocol, Src Port: 3183 (3183), Dst Port: 2010 (2010), Seq: 110129, Len: 0
+    Source Port: 3183
+    Destination Port: 2010
+    [Stream index: 0]
+    [TCP Segment Len: 0]
+    Sequence number: 110129
+    Acknowledgment number: 0
+    Header Length: 24 bytes
+    Flags: 0x002 (SYN)
+        000. .... .... = Reserved: Not set
+        ...0 .... .... = Nonce: Not set
+        .... 0... .... = Congestion Window Reduced (CWR): Not set
+        .... .0.. .... = ECN-Echo: Not set
+        .... ..0. .... = Urgent: Not set
+        .... ...0 .... = Acknowledgment: Not set
+        .... .... 0... = Push: Not set
+        .... .... .0.. = Reset: Not set
+        .... .... ..1. = Syn: Set
+            [Expert Info (Chat/Sequence): Connection establish request (SYN): server port 2010]
+                [Connection establish request (SYN): server port 2010]
+                [Severity level: Chat]
+                [Group: Sequence]
+        .... .... ...0 = Fin: Not set
+        [TCP Flags: **********S*]
+    Window size value: 8192
+    [Calculated window size: 8192]
+    Checksum: 0x2e99 [validation disabled]
+        [Good Checksum: False]
+        [Bad Checksum: False]
+    Urgent pointer: 0
+    Options: (4 bytes), Maximum segment size
+        Maximum segment size: 1460 bytes
+            Kind: Maximum Segment Size (2)
+            Length: 4
+            MSS Value: 1460
+
+No.     Time           Source                Destination           Protocol Length Info
+      2 0.000001       134.58.189.80         134.58.189.76         TCP      44     2010 → 3183 [SYN, ACK] Seq=1304476668 Ack=110130 Win=32736 Len=0 MSS=1460
+
+Frame 2: 44 bytes on wire (352 bits), 44 bytes captured (352 bits)
+    Encapsulation type: Raw IP (7)
+    Arrival Time: May 21, 2016 14:31:09.000001000 Romance (zomertijd)
+    [Time shift for this packet: 0.000000000 seconds]
+    Epoch Time: 1463833869.000001000 seconds
+    [Time delta from previous captured frame: 0.000001000 seconds]
+    [Time delta from previous displayed frame: 0.000001000 seconds]
+    [Time since reference or first frame: 0.000001000 seconds]
+    Frame Number: 2
+    Frame Length: 44 bytes (352 bits)
+    Capture Length: 44 bytes (352 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: raw:ip:tcp]
+    [Coloring Rule Name: TCP SYN/FIN]
+    [Coloring Rule String: tcp.flags & 0x02 || tcp.flags.fin == 1]
+Raw packet data
+Internet Protocol Version 4, Src: 134.58.189.80, Dst: 134.58.189.76
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes
+    Differentiated Services Field: 0x00 (DSCP: CS0, ECN: Not-ECT)
+        0000 00.. = Differentiated Services Codepoint: Default (0)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 44
+    Identification: 0x1f54 (8020)
+    Flags: 0x00
+        0... .... = Reserved bit: Not set
+        .0.. .... = Don't fragment: Not set
+        ..0. .... = More fragments: Not set
+    Fragment offset: 0
+    Time to live: 64
+    Protocol: TCP (6)
+    Header checksum: 0xd466 [validation disabled]
+        [Good: False]
+        [Bad: False]
+    Source: 134.58.189.80
+    Destination: 134.58.189.76
+    [Source GeoIP: Unknown]
+    [Destination GeoIP: Unknown]
+Transmission Control Protocol, Src Port: 2010 (2010), Dst Port: 3183 (3183), Seq: 1304476668, Ack: 110130, Len: 0
+    Source Port: 2010
+    Destination Port: 3183
+    [Stream index: 0]
+    [TCP Segment Len: 0]
+    Sequence number: 1304476668
+    Acknowledgment number: 110130
+    Header Length: 24 bytes
+    Flags: 0x012 (SYN, ACK)
+        000. .... .... = Reserved: Not set
+        ...0 .... .... = Nonce: Not set
+        .... 0... .... = Congestion Window Reduced (CWR): Not set
+        .... .0.. .... = ECN-Echo: Not set
+        .... ..0. .... = Urgent: Not set
+        .... ...1 .... = Acknowledgment: Set
+        .... .... 0... = Push: Not set
+        .... .... .0.. = Reset: Not set
+        .... .... ..1. = Syn: Set
+            [Expert Info (Chat/Sequence): Connection establish acknowledge (SYN+ACK): server port 2010]
+                [Connection establish acknowledge (SYN+ACK): server port 2010]
+                [Severity level: Chat]
+                [Group: Sequence]
+        .... .... ...0 = Fin: Not set
+        [TCP Flags: *******A**S*]
+    Window size value: 32736
+    [Calculated window size: 32736]
+    Checksum: 0xc4ea [validation disabled]
+        [Good Checksum: False]
+        [Bad Checksum: False]
+    Urgent pointer: 0
+    Options: (4 bytes), Maximum segment size
+        Maximum segment size: 1460 bytes
+            Kind: Maximum Segment Size (2)
+            Length: 4
+            MSS Value: 1460
+    [SEQ/ACK analysis]
+        [This is an ACK to the segment in frame: 1]
+        [The RTT to ACK the segment was: 0.000001000 seconds]
+        [iRTT: 0.000002000 seconds]
+
+No.     Time           Source                Destination           Protocol Length Info
+      3 0.000002       134.58.189.76         134.58.189.80         TCP      40     3183 → 2010 [ACK] Seq=110130 Ack=1304476669 Win=8760 Len=0
+
+Frame 3: 40 bytes on wire (320 bits), 40 bytes captured (320 bits)
+    Encapsulation type: Raw IP (7)
+    Arrival Time: May 21, 2016 14:31:09.000002000 Romance (zomertijd)
+    [Time shift for this packet: 0.000000000 seconds]
+    Epoch Time: 1463833869.000002000 seconds
+    [Time delta from previous captured frame: 0.000001000 seconds]
+    [Time delta from previous displayed frame: 0.000001000 seconds]
+    [Time since reference or first frame: 0.000002000 seconds]
+    Frame Number: 3
+    Frame Length: 40 bytes (320 bits)
+    Capture Length: 40 bytes (320 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: raw:ip:tcp]
+    [Coloring Rule Name: TCP]
+    [Coloring Rule String: tcp]
+Raw packet data
+Internet Protocol Version 4, Src: 134.58.189.76, Dst: 134.58.189.80
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes
+    Differentiated Services Field: 0x10 (DSCP: Unknown, ECN: Not-ECT)
+        0001 00.. = Differentiated Services Codepoint: Unknown (4)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 40
+    Identification: 0x374d (14157)
+    Flags: 0x02 (Don't Fragment)
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    Fragment offset: 0
+    Time to live: 128
+    Protocol: TCP (6)
+    Header checksum: 0x3c61 [validation disabled]
+        [Good: False]
+        [Bad: False]
+    Source: 134.58.189.76
+    Destination: 134.58.189.80
+    [Source GeoIP: Unknown]
+    [Destination GeoIP: Unknown]
+Transmission Control Protocol, Src Port: 3183 (3183), Dst Port: 2010 (2010), Seq: 110130, Ack: 1304476669, Len: 0
+    Source Port: 3183
+    Destination Port: 2010
+    [Stream index: 0]
+    [TCP Segment Len: 0]
+    Sequence number: 110130
+    Acknowledgment number: 1304476669
+    Header Length: 20 bytes
+    Flags: 0x010 (ACK)
+        000. .... .... = Reserved: Not set
+        ...0 .... .... = Nonce: Not set
+        .... 0... .... = Congestion Window Reduced (CWR): Not set
+        .... .0.. .... = ECN-Echo: Not set
+        .... ..0. .... = Urgent: Not set
+        .... ...1 .... = Acknowledgment: Set
+        .... .... 0... = Push: Not set
+        .... .... .0.. = Reset: Not set
+        .... .... ..0. = Syn: Not set
+        .... .... ...0 = Fin: Not set
+        [TCP Flags: *******A****]
+    Window size value: 8760
+    [Calculated window size: 8760]
+    [Window size scaling factor: -2 (no window scaling used)]
+    Checksum: 0x3a50 [validation disabled]
+        [Good Checksum: False]
+        [Bad Checksum: False]
+    Urgent pointer: 0
+    [SEQ/ACK analysis]
+        [This is an ACK to the segment in frame: 2]
+        [The RTT to ACK the segment was: 0.000001000 seconds]
+        [iRTT: 0.000002000 seconds]
+
+No.     Time           Source                Destination           Protocol Length Info
+      4 0.000003       134.58.189.76         134.58.189.80         SSLv2    73     Client Hello
+
+Frame 4: 73 bytes on wire (584 bits), 73 bytes captured (584 bits)
+    Encapsulation type: Raw IP (7)
+    Arrival Time: May 21, 2016 14:31:09.000003000 Romance (zomertijd)
+    [Time shift for this packet: 0.000000000 seconds]
+    Epoch Time: 1463833869.000003000 seconds
+    [Time delta from previous captured frame: 0.000001000 seconds]
+    [Time delta from previous displayed frame: 0.000001000 seconds]
+    [Time since reference or first frame: 0.000003000 seconds]
+    Frame Number: 4
+    Frame Length: 73 bytes (584 bits)
+    Capture Length: 73 bytes (584 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: raw:ip:tcp:ssl]
+    [Coloring Rule Name: TCP]
+    [Coloring Rule String: tcp]
+Raw packet data
+Internet Protocol Version 4, Src: 134.58.189.76, Dst: 134.58.189.80
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes
+    Differentiated Services Field: 0x10 (DSCP: Unknown, ECN: Not-ECT)
+        0001 00.. = Differentiated Services Codepoint: Unknown (4)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 73
+    Identification: 0x384d (14413)
+    Flags: 0x02 (Don't Fragment)
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    Fragment offset: 0
+    Time to live: 128
+    Protocol: TCP (6)
+    Header checksum: 0x3b40 [validation disabled]
+        [Good: False]
+        [Bad: False]
+    Source: 134.58.189.76
+    Destination: 134.58.189.80
+    [Source GeoIP: Unknown]
+    [Destination GeoIP: Unknown]
+Transmission Control Protocol, Src Port: 3183 (3183), Dst Port: 2010 (2010), Seq: 110130, Ack: 1304476669, Len: 33
+    Source Port: 3183
+    Destination Port: 2010
+    [Stream index: 0]
+    [TCP Segment Len: 33]
+    Sequence number: 110130
+    [Next sequence number: 110163]
+    Acknowledgment number: 1304476669
+    Header Length: 20 bytes
+    Flags: 0x018 (PSH, ACK)
+        000. .... .... = Reserved: Not set
+        ...0 .... .... = Nonce: Not set
+        .... 0... .... = Congestion Window Reduced (CWR): Not set
+        .... .0.. .... = ECN-Echo: Not set
+        .... ..0. .... = Urgent: Not set
+        .... ...1 .... = Acknowledgment: Set
+        .... .... 1... = Push: Set
+        .... .... .0.. = Reset: Not set
+        .... .... ..0. = Syn: Not set
+        .... .... ...0 = Fin: Not set
+        [TCP Flags: *******AP***]
+    Window size value: 8760
+    [Calculated window size: 8760]
+    [Window size scaling factor: -2 (no window scaling used)]
+    Checksum: 0xb059 [validation disabled]
+        [Good Checksum: False]
+        [Bad Checksum: False]
+    Urgent pointer: 0
+    [SEQ/ACK analysis]
+        [iRTT: 0.000002000 seconds]
+        [Bytes in flight: 33]
+Secure Sockets Layer
+    SSLv2 Record Layer: Client Hello
+        [Version: SSL 2.0 (0x0002)]
+        Length: 31
+        Handshake Message Type: Client Hello (1)
+        Version: SSL 3.0 (0x0300)
+        Cipher Spec Length: 6
+        Session ID Length: 0
+        Challenge Length: 16
+        Cipher Specs (2 specs)
+            Cipher Spec: TLS_RSA_EXPORT_WITH_RC4_40_MD5 (0x000003)
+            Cipher Spec: TLS_RSA_EXPORT_WITH_RC2_CBC_40_MD5 (0x000006)
+        Challenge
+
+No.     Time           Source                Destination           Protocol Length Info
+      5 0.000004       134.58.189.80         134.58.189.76         SSLv3    1064   Server Hello
+
+Frame 5: 1064 bytes on wire (8512 bits), 1064 bytes captured (8512 bits)
+    Encapsulation type: Raw IP (7)
+    Arrival Time: May 21, 2016 14:31:09.000004000 Romance (zomertijd)
+    [Time shift for this packet: 0.000000000 seconds]
+    Epoch Time: 1463833869.000004000 seconds
+    [Time delta from previous captured frame: 0.000001000 seconds]
+    [Time delta from previous displayed frame: 0.000001000 seconds]
+    [Time since reference or first frame: 0.000004000 seconds]
+    Frame Number: 5
+    Frame Length: 1064 bytes (8512 bits)
+    Capture Length: 1064 bytes (8512 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: raw:ip:tcp:ssl]
+    [Coloring Rule Name: TCP]
+    [Coloring Rule String: tcp]
+Raw packet data
+Internet Protocol Version 4, Src: 134.58.189.80, Dst: 134.58.189.76
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes
+    Differentiated Services Field: 0x10 (DSCP: Unknown, ECN: Not-ECT)
+        0001 00.. = Differentiated Services Codepoint: Unknown (4)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 1064
+    Identification: 0x1f55 (8021)
+    Flags: 0x02 (Don't Fragment)
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    Fragment offset: 0
+    Time to live: 64
+    Protocol: TCP (6)
+    Header checksum: 0x9059 [validation disabled]
+        [Good: False]
+        [Bad: False]
+    Source: 134.58.189.80
+    Destination: 134.58.189.76
+    [Source GeoIP: Unknown]
+    [Destination GeoIP: Unknown]
+Transmission Control Protocol, Src Port: 2010 (2010), Dst Port: 3183 (3183), Seq: 1304476669, Ack: 110163, Len: 1024
+    Source Port: 2010
+    Destination Port: 3183
+    [Stream index: 0]
+    [TCP Segment Len: 1024]
+    Sequence number: 1304476669
+    [Next sequence number: 1304477693]
+    Acknowledgment number: 110163
+    Header Length: 20 bytes
+    Flags: 0x018 (PSH, ACK)
+        000. .... .... = Reserved: Not set
+        ...0 .... .... = Nonce: Not set
+        .... 0... .... = Congestion Window Reduced (CWR): Not set
+        .... .0.. .... = ECN-Echo: Not set
+        .... ..0. .... = Urgent: Not set
+        .... ...1 .... = Acknowledgment: Set
+        .... .... 1... = Push: Set
+        .... .... .0.. = Reset: Not set
+        .... .... ..0. = Syn: Not set
+        .... .... ...0 = Fin: Not set
+        [TCP Flags: *******AP***]
+    Window size value: 32736
+    [Calculated window size: 32736]
+    [Window size scaling factor: -2 (no window scaling used)]
+    Checksum: 0x9b45 [validation disabled]
+        [Good Checksum: False]
+        [Bad Checksum: False]
+    Urgent pointer: 0
+    [SEQ/ACK analysis]
+        [This is an ACK to the segment in frame: 4]
+        [The RTT to ACK the segment was: 0.000001000 seconds]
+        [iRTT: 0.000002000 seconds]
+        [Bytes in flight: 1024]
+    TCP segment data (945 bytes)
+Secure Sockets Layer
+    SSLv3 Record Layer: Handshake Protocol: Server Hello
+        Content Type: Handshake (22)
+        Version: SSL 3.0 (0x0300)
+        Length: 74
+        Handshake Protocol: Server Hello
+            Handshake Type: Server Hello (2)
+            Length: 70
+            Version: SSL 3.0 (0x0300)
+            Random
+                GMT Unix Time: Dec 11, 1998 16:10:35.000000000 Romance (standaardtijd)
+                Random Bytes: 6f1e4c4bddd0c437d4e110ec52689ed5a36cf1eedb88c166...
+            Session ID Length: 32
+            Session ID: 7488d44580a084d5ee236c5696f7f61e2bc1a52dcac947ec...
+            Cipher Suite: TLS_RSA_EXPORT_WITH_RC4_40_MD5 (0x0003)
+            Compression Method: null (0)
+
+No.     Time           Source                Destination           Protocol Length Info
+      6 0.000005       134.58.189.76         134.58.189.80         TCP      40     3183 → 2010 [ACK] Seq=110163 Ack=1304477693 Win=7736 Len=0
+
+Frame 6: 40 bytes on wire (320 bits), 40 bytes captured (320 bits)
+    Encapsulation type: Raw IP (7)
+    Arrival Time: May 21, 2016 14:31:09.000005000 Romance (zomertijd)
+    [Time shift for this packet: 0.000000000 seconds]
+    Epoch Time: 1463833869.000005000 seconds
+    [Time delta from previous captured frame: 0.000001000 seconds]
+    [Time delta from previous displayed frame: 0.000001000 seconds]
+    [Time since reference or first frame: 0.000005000 seconds]
+    Frame Number: 6
+    Frame Length: 40 bytes (320 bits)
+    Capture Length: 40 bytes (320 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: raw:ip:tcp]
+    [Coloring Rule Name: TCP]
+    [Coloring Rule String: tcp]
+Raw packet data
+Internet Protocol Version 4, Src: 134.58.189.76, Dst: 134.58.189.80
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes
+    Differentiated Services Field: 0x10 (DSCP: Unknown, ECN: Not-ECT)
+        0001 00.. = Differentiated Services Codepoint: Unknown (4)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 40
+    Identification: 0x394d (14669)
+    Flags: 0x02 (Don't Fragment)
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    Fragment offset: 0
+    Time to live: 128
+    Protocol: TCP (6)
+    Header checksum: 0x3a61 [validation disabled]
+        [Good: False]
+        [Bad: False]
+    Source: 134.58.189.76
+    Destination: 134.58.189.80
+    [Source GeoIP: Unknown]
+    [Destination GeoIP: Unknown]
+Transmission Control Protocol, Src Port: 3183 (3183), Dst Port: 2010 (2010), Seq: 110163, Ack: 1304477693, Len: 0
+    Source Port: 3183
+    Destination Port: 2010
+    [Stream index: 0]
+    [TCP Segment Len: 0]
+    Sequence number: 110163
+    Acknowledgment number: 1304477693
+    Header Length: 20 bytes
+    Flags: 0x010 (ACK)
+        000. .... .... = Reserved: Not set
+        ...0 .... .... = Nonce: Not set
+        .... 0... .... = Congestion Window Reduced (CWR): Not set
+        .... .0.. .... = ECN-Echo: Not set
+        .... ..0. .... = Urgent: Not set
+        .... ...1 .... = Acknowledgment: Set
+        .... .... 0... = Push: Not set
+        .... .... .0.. = Reset: Not set
+        .... .... ..0. = Syn: Not set
+        .... .... ...0 = Fin: Not set
+        [TCP Flags: *******A****]
+    Window size value: 7736
+    [Calculated window size: 7736]
+    [Window size scaling factor: -2 (no window scaling used)]
+    Checksum: 0x3a2f [validation disabled]
+        [Good Checksum: False]
+        [Bad Checksum: False]
+    Urgent pointer: 0
+    [SEQ/ACK analysis]
+        [This is an ACK to the segment in frame: 5]
+        [The RTT to ACK the segment was: 0.000001000 seconds]
+        [iRTT: 0.000002000 seconds]
+
+No.     Time           Source                Destination           Protocol Length Info
+      7 0.000006       134.58.189.80         134.58.189.76         SSLv3    451    Certificate
+
+Frame 7: 451 bytes on wire (3608 bits), 451 bytes captured (3608 bits)
+    Encapsulation type: Raw IP (7)
+    Arrival Time: May 21, 2016 14:31:09.000006000 Romance (zomertijd)
+    [Time shift for this packet: 0.000000000 seconds]
+    Epoch Time: 1463833869.000006000 seconds
+    [Time delta from previous captured frame: 0.000001000 seconds]
+    [Time delta from previous displayed frame: 0.000001000 seconds]
+    [Time since reference or first frame: 0.000006000 seconds]
+    Frame Number: 7
+    Frame Length: 451 bytes (3608 bits)
+    Capture Length: 451 bytes (3608 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: raw:ip:tcp:ssl:pkcs-1:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:x509sat:pkcs-1:pkcs-1:ssl]
+    [Coloring Rule Name: TCP]
+    [Coloring Rule String: tcp]
+Raw packet data
+Internet Protocol Version 4, Src: 134.58.189.80, Dst: 134.58.189.76
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes
+    Differentiated Services Field: 0x10 (DSCP: Unknown, ECN: Not-ECT)
+        0001 00.. = Differentiated Services Codepoint: Unknown (4)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 451
+    Identification: 0x1f56 (8022)
+    Flags: 0x02 (Don't Fragment)
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    Fragment offset: 0
+    Time to live: 64
+    Protocol: TCP (6)
+    Header checksum: 0x92bd [validation disabled]
+        [Good: False]
+        [Bad: False]
+    Source: 134.58.189.80
+    Destination: 134.58.189.76
+    [Source GeoIP: Unknown]
+    [Destination GeoIP: Unknown]
+Transmission Control Protocol, Src Port: 2010 (2010), Dst Port: 3183 (3183), Seq: 1304477693, Ack: 110163, Len: 411
+    Source Port: 2010
+    Destination Port: 3183
+    [Stream index: 0]
+    [TCP Segment Len: 411]
+    Sequence number: 1304477693
+    [Next sequence number: 1304478104]
+    Acknowledgment number: 110163
+    Header Length: 20 bytes
+    Flags: 0x018 (PSH, ACK)
+        000. .... .... = Reserved: Not set
+        ...0 .... .... = Nonce: Not set
+        .... 0... .... = Congestion Window Reduced (CWR): Not set
+        .... .0.. .... = ECN-Echo: Not set
+        .... ..0. .... = Urgent: Not set
+        .... ...1 .... = Acknowledgment: Set
+        .... .... 1... = Push: Set
+        .... .... .0.. = Reset: Not set
+        .... .... ..0. = Syn: Not set
+        .... .... ...0 = Fin: Not set
+        [TCP Flags: *******AP***]
+    Window size value: 32736
+    [Calculated window size: 32736]
+    [Window size scaling factor: -2 (no window scaling used)]
+    Checksum: 0x1030 [validation disabled]
+        [Good Checksum: False]
+        [Bad Checksum: False]
+    Urgent pointer: 0
+    [SEQ/ACK analysis]
+        [iRTT: 0.000002000 seconds]
+        [Bytes in flight: 411]
+    TCP segment data (64 bytes)
+[2 Reassembled TCP Segments (1009 bytes): #5(945), #7(64)]
+    [Frame: 5, payload: 0-944 (945 bytes)]
+    [Frame: 7, payload: 945-1008 (64 bytes)]
+    [Segment count: 2]
+    [Reassembled TCP length: 1009]
+    [Reassembled TCP Data: 16030003ec0b0003e80003e50003e2308203de308202c602...]
+Secure Sockets Layer
+    SSLv3 Record Layer: Handshake Protocol: Certificate
+        Content Type: Handshake (22)
+        Version: SSL 3.0 (0x0300)
+        Length: 1004
+        Handshake Protocol: Certificate
+            Handshake Type: Certificate (11)
+            Length: 1000
+            Certificates Length: 997
+            Certificates (997 bytes)
+                Certificate Length: 994
+                Certificate: 308203de308202c6020100300d06092a864886f70d010104... (pkcs-9-at-emailAddress=joris.claessens@esat.kuleuven.ac.be,id-at-commonName=COSIC Demo SSL Server,id-at-organizationalUnitName=COSIC,id-at-organizationName=COSIC PKI Demo,id
+                    signedCertificate
+                        serialNumber: 0
+                        signature (md5WithRSAEncryption)
+                            Algorithm Id: 1.2.840.113549.1.1.4 (md5WithRSAEncryption)
+                        issuer: rdnSequence (0)
+                            rdnSequence: 7 items (pkcs-9-at-emailAddress=joris.claessens@esat.kuleuven.ac.be,id-at-commonName=COSIC Demo SSL Server,id-at-organizationalUnitName=COSIC,id-at-organizationName=COSIC PKI Demo,id-at-localityName=Leuven,id-at-stateOrProvinc
+                                RDNSequence item: 1 item (id-at-countryName=BE)
+                                    RelativeDistinguishedName item (id-at-countryName=BE)
+                                        Id: 2.5.4.6 (id-at-countryName)
+                                        CountryName: BE
+                                RDNSequence item: 1 item (id-at-stateOrProvinceName=Vlaams-Brabant)
+                                    RelativeDistinguishedName item (id-at-stateOrProvinceName=Vlaams-Brabant)
+                                        Id: 2.5.4.8 (id-at-stateOrProvinceName)
+                                        DirectoryString: printableString (1)
+                                            printableString: Vlaams-Brabant
+                                RDNSequence item: 1 item (id-at-localityName=Leuven)
+                                    RelativeDistinguishedName item (id-at-localityName=Leuven)
+                                        Id: 2.5.4.7 (id-at-localityName)
+                                        DirectoryString: printableString (1)
+                                            printableString: Leuven
+                                RDNSequence item: 1 item (id-at-organizationName=COSIC PKI Demo)
+                                    RelativeDistinguishedName item (id-at-organizationName=COSIC PKI Demo)
+                                        Id: 2.5.4.10 (id-at-organizationName)
+                                        DirectoryString: printableString (1)
+                                            printableString: COSIC PKI Demo
+                                RDNSequence item: 1 item (id-at-organizationalUnitName=COSIC)
+                                    RelativeDistinguishedName item (id-at-organizationalUnitName=COSIC)
+                                        Id: 2.5.4.11 (id-at-organizationalUnitName)
+                                        DirectoryString: printableString (1)
+                                            printableString: COSIC
+                                RDNSequence item: 1 item (id-at-commonName=COSIC Demo SSL Server)
+                                    RelativeDistinguishedName item (id-at-commonName=COSIC Demo SSL Server)
+                                        Id: 2.5.4.3 (id-at-commonName)
+                                        DirectoryString: printableString (1)
+                                            printableString: COSIC Demo SSL Server
+                                RDNSequence item: 1 item (pkcs-9-at-emailAddress=joris.claessens@esat.kuleuven.ac.be)
+                                    RelativeDistinguishedName item (pkcs-9-at-emailAddress=joris.claessens@esat.kuleuven.ac.be)
+                                        Id: 1.2.840.113549.1.9.1 (pkcs-9-at-emailAddress)
+                                        IA5String: joris.claessens@esat.kuleuven.ac.be
+                        validity
+                            notBefore: utcTime (0)
+                                utcTime: 98-12-08 10:20:32 (UTC)
+                            notAfter: utcTime (0)
+                                utcTime: 00-12-07 10:20:32 (UTC)
+                        subject: rdnSequence (0)
+                            rdnSequence: 7 items (pkcs-9-at-emailAddress=joris.claessens@esat.kuleuven.ac.be,id-at-commonName=COSIC Demo SSL Server,id-at-organizationalUnitName=COSIC,id-at-organizationName=COSIC PKI Demo,id-at-localityName=Leuven,id-at-stateOrProvinc
+                                RDNSequence item: 1 item (id-at-countryName=BE)
+                                    RelativeDistinguishedName item (id-at-countryName=BE)
+                                        Id: 2.5.4.6 (id-at-countryName)
+                                        CountryName: BE
+                                RDNSequence item: 1 item (id-at-stateOrProvinceName=Vlaams-Brabant)
+                                    RelativeDistinguishedName item (id-at-stateOrProvinceName=Vlaams-Brabant)
+                                        Id: 2.5.4.8 (id-at-stateOrProvinceName)
+                                        DirectoryString: printableString (1)
+                                            printableString: Vlaams-Brabant
+                                RDNSequence item: 1 item (id-at-localityName=Leuven)
+                                    RelativeDistinguishedName item (id-at-localityName=Leuven)
+                                        Id: 2.5.4.7 (id-at-localityName)
+                                        DirectoryString: printableString (1)
+                                            printableString: Leuven
+                                RDNSequence item: 1 item (id-at-organizationName=COSIC PKI Demo)
+                                    RelativeDistinguishedName item (id-at-organizationName=COSIC PKI Demo)
+                                        Id: 2.5.4.10 (id-at-organizationName)
+                                        DirectoryString: printableString (1)
+                                            printableString: COSIC PKI Demo
+                                RDNSequence item: 1 item (id-at-organizationalUnitName=COSIC)
+                                    RelativeDistinguishedName item (id-at-organizationalUnitName=COSIC)
+                                        Id: 2.5.4.11 (id-at-organizationalUnitName)
+                                        DirectoryString: printableString (1)
+                                            printableString: COSIC
+                                RDNSequence item: 1 item (id-at-commonName=COSIC Demo SSL Server)
+                                    RelativeDistinguishedName item (id-at-commonName=COSIC Demo SSL Server)
+                                        Id: 2.5.4.3 (id-at-commonName)
+                                        DirectoryString: printableString (1)
+                                            printableString: COSIC Demo SSL Server
+                                RDNSequence item: 1 item (pkcs-9-at-emailAddress=joris.claessens@esat.kuleuven.ac.be)
+                                    RelativeDistinguishedName item (pkcs-9-at-emailAddress=joris.claessens@esat.kuleuven.ac.be)
+                                        Id: 1.2.840.113549.1.9.1 (pkcs-9-at-emailAddress)
+                                        IA5String: joris.claessens@esat.kuleuven.ac.be
+                        subjectPublicKeyInfo
+                            algorithm (rsaEncryption)
+                                Algorithm Id: 1.2.840.113549.1.1.1 (rsaEncryption)
+                            Padding: 0
+                            subjectPublicKey: 3082010a0282010100c7088ff708a909df8182baf96d2f0f...
+                    algorithmIdentifier (md5WithRSAEncryption)
+                        Algorithm Id: 1.2.840.113549.1.1.4 (md5WithRSAEncryption)
+                    Padding: 0
+                    encrypted: aa1361b567320e6bc6c7cfa5d3a03e45a98a3a751af7ecaf...
+Secure Sockets Layer
+    SSLv3 Record Layer: Handshake Protocol: Server Key Exchange
+        Content Type: Handshake (22)
+        Version: SSL 3.0 (0x0300)
+        Length: 333
+        Handshake Protocol: Server Key Exchange
+            Handshake Type: Server Key Exchange (12)
+            Length: 329
+            RSA-EXPORT Server Params
+                Modulus Length: 64
+                Modulus: d2681da51dd643ff555dff51e0827060f669763c26764b3c...
+                Exponent Length: 3
+                Exponent: 010001
+                Signature Length: 256
+                Signature: aea2d923c49a8248ae381fd81414a4c9cd0131e4f42aca40...
+    SSLv3 Record Layer: Handshake Protocol: Server Hello Done
+        Content Type: Handshake (22)
+        Version: SSL 3.0 (0x0300)
+        Length: 4
+        Handshake Protocol: Server Hello Done
+            Handshake Type: Server Hello Done (14)
+            Length: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+      8 0.000007       134.58.189.76         134.58.189.80         TCP      40     3183 → 2010 [ACK] Seq=110163 Ack=1304478104 Win=7325 Len=0
+
+Frame 8: 40 bytes on wire (320 bits), 40 bytes captured (320 bits)
+    Encapsulation type: Raw IP (7)
+    Arrival Time: May 21, 2016 14:31:09.000007000 Romance (zomertijd)
+    [Time shift for this packet: 0.000000000 seconds]
+    Epoch Time: 1463833869.000007000 seconds
+    [Time delta from previous captured frame: 0.000001000 seconds]
+    [Time delta from previous displayed frame: 0.000001000 seconds]
+    [Time since reference or first frame: 0.000007000 seconds]
+    Frame Number: 8
+    Frame Length: 40 bytes (320 bits)
+    Capture Length: 40 bytes (320 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: raw:ip:tcp]
+    [Coloring Rule Name: TCP]
+    [Coloring Rule String: tcp]
+Raw packet data
+Internet Protocol Version 4, Src: 134.58.189.76, Dst: 134.58.189.80
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes
+    Differentiated Services Field: 0x10 (DSCP: Unknown, ECN: Not-ECT)
+        0001 00.. = Differentiated Services Codepoint: Unknown (4)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 40
+    Identification: 0x3a4d (14925)
+    Flags: 0x02 (Don't Fragment)
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    Fragment offset: 0
+    Time to live: 128
+    Protocol: TCP (6)
+    Header checksum: 0x3961 [validation disabled]
+        [Good: False]
+        [Bad: False]
+    Source: 134.58.189.76
+    Destination: 134.58.189.80
+    [Source GeoIP: Unknown]
+    [Destination GeoIP: Unknown]
+Transmission Control Protocol, Src Port: 3183 (3183), Dst Port: 2010 (2010), Seq: 110163, Ack: 1304478104, Len: 0
+    Source Port: 3183
+    Destination Port: 2010
+    [Stream index: 0]
+    [TCP Segment Len: 0]
+    Sequence number: 110163
+    Acknowledgment number: 1304478104
+    Header Length: 20 bytes
+    Flags: 0x010 (ACK)
+        000. .... .... = Reserved: Not set
+        ...0 .... .... = Nonce: Not set
+        .... 0... .... = Congestion Window Reduced (CWR): Not set
+        .... .0.. .... = ECN-Echo: Not set
+        .... ..0. .... = Urgent: Not set
+        .... ...1 .... = Acknowledgment: Set
+        .... .... 0... = Push: Not set
+        .... .... .0.. = Reset: Not set
+        .... .... ..0. = Syn: Not set
+        .... .... ...0 = Fin: Not set
+        [TCP Flags: *******A****]
+    Window size value: 7325
+    [Calculated window size: 7325]
+    [Window size scaling factor: -2 (no window scaling used)]
+    Checksum: 0x3a2f [validation disabled]
+        [Good Checksum: False]
+        [Bad Checksum: False]
+    Urgent pointer: 0
+    [SEQ/ACK analysis]
+        [This is an ACK to the segment in frame: 7]
+        [The RTT to ACK the segment was: 0.000001000 seconds]
+        [iRTT: 0.000002000 seconds]
+
+No.     Time           Source                Destination           Protocol Length Info
+      9 0.000008       134.58.189.76         134.58.189.80         SSLv3    113    Client Key Exchange
+
+Frame 9: 113 bytes on wire (904 bits), 113 bytes captured (904 bits)
+    Encapsulation type: Raw IP (7)
+    Arrival Time: May 21, 2016 14:31:09.000008000 Romance (zomertijd)
+    [Time shift for this packet: 0.000000000 seconds]
+    Epoch Time: 1463833869.000008000 seconds
+    [Time delta from previous captured frame: 0.000001000 seconds]
+    [Time delta from previous displayed frame: 0.000001000 seconds]
+    [Time since reference or first frame: 0.000008000 seconds]
+    Frame Number: 9
+    Frame Length: 113 bytes (904 bits)
+    Capture Length: 113 bytes (904 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: raw:ip:tcp:ssl]
+    [Coloring Rule Name: TCP]
+    [Coloring Rule String: tcp]
+Raw packet data
+Internet Protocol Version 4, Src: 134.58.189.76, Dst: 134.58.189.80
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes
+    Differentiated Services Field: 0x10 (DSCP: Unknown, ECN: Not-ECT)
+        0001 00.. = Differentiated Services Codepoint: Unknown (4)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 113
+    Identification: 0x3b4d (15181)
+    Flags: 0x02 (Don't Fragment)
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    Fragment offset: 0
+    Time to live: 128
+    Protocol: TCP (6)
+    Header checksum: 0x3818 [validation disabled]
+        [Good: False]
+        [Bad: False]
+    Source: 134.58.189.76
+    Destination: 134.58.189.80
+    [Source GeoIP: Unknown]
+    [Destination GeoIP: Unknown]
+Transmission Control Protocol, Src Port: 3183 (3183), Dst Port: 2010 (2010), Seq: 110163, Ack: 1304478104, Len: 73
+    Source Port: 3183
+    Destination Port: 2010
+    [Stream index: 0]
+    [TCP Segment Len: 73]
+    Sequence number: 110163
+    [Next sequence number: 110236]
+    Acknowledgment number: 1304478104
+    Header Length: 20 bytes
+    Flags: 0x018 (PSH, ACK)
+        000. .... .... = Reserved: Not set
+        ...0 .... .... = Nonce: Not set
+        .... 0... .... = Congestion Window Reduced (CWR): Not set
+        .... .0.. .... = ECN-Echo: Not set
+        .... ..0. .... = Urgent: Not set
+        .... ...1 .... = Acknowledgment: Set
+        .... .... 1... = Push: Set
+        .... .... .0.. = Reset: Not set
+        .... .... ..0. = Syn: Not set
+        .... .... ...0 = Fin: Not set
+        [TCP Flags: *******AP***]
+    Window size value: 7325
+    [Calculated window size: 7325]
+    [Window size scaling factor: -2 (no window scaling used)]
+    Checksum: 0x1062 [validation disabled]
+        [Good Checksum: False]
+        [Bad Checksum: False]
+    Urgent pointer: 0
+    [SEQ/ACK analysis]
+        [iRTT: 0.000002000 seconds]
+        [Bytes in flight: 73]
+Secure Sockets Layer
+    SSLv3 Record Layer: Handshake Protocol: Client Key Exchange
+        Content Type: Handshake (22)
+        Version: SSL 3.0 (0x0300)
+        Length: 68
+        Handshake Protocol: Client Key Exchange
+            Handshake Type: Client Key Exchange (16)
+            Length: 64
+            RSA Encrypted PreMaster Secret
+                Encrypted PreMaster: 38bb53c07804814c61e681dfee066dae65baefb9c51f2824...
+
+No.     Time           Source                Destination           Protocol Length Info
+     10 0.000009       134.58.189.80         134.58.189.76         TCP      40     2010 → 3183 [ACK] Seq=1304478104 Ack=110236 Win=32736 Len=0
+
+Frame 10: 40 bytes on wire (320 bits), 40 bytes captured (320 bits)
+    Encapsulation type: Raw IP (7)
+    Arrival Time: May 21, 2016 14:31:09.000009000 Romance (zomertijd)
+    [Time shift for this packet: 0.000000000 seconds]
+    Epoch Time: 1463833869.000009000 seconds
+    [Time delta from previous captured frame: 0.000001000 seconds]
+    [Time delta from previous displayed frame: 0.000001000 seconds]
+    [Time since reference or first frame: 0.000009000 seconds]
+    Frame Number: 10
+    Frame Length: 40 bytes (320 bits)
+    Capture Length: 40 bytes (320 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: raw:ip:tcp]
+    [Coloring Rule Name: TCP]
+    [Coloring Rule String: tcp]
+Raw packet data
+Internet Protocol Version 4, Src: 134.58.189.80, Dst: 134.58.189.76
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes
+    Differentiated Services Field: 0x10 (DSCP: Unknown, ECN: Not-ECT)
+        0001 00.. = Differentiated Services Codepoint: Unknown (4)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 40
+    Identification: 0x1f57 (8023)
+    Flags: 0x02 (Don't Fragment)
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    Fragment offset: 0
+    Time to live: 64
+    Protocol: TCP (6)
+    Header checksum: 0x9457 [validation disabled]
+        [Good: False]
+        [Bad: False]
+    Source: 134.58.189.80
+    Destination: 134.58.189.76
+    [Source GeoIP: Unknown]
+    [Destination GeoIP: Unknown]
+Transmission Control Protocol, Src Port: 2010 (2010), Dst Port: 3183 (3183), Seq: 1304478104, Ack: 110236, Len: 0
+    Source Port: 2010
+    Destination Port: 3183
+    [Stream index: 0]
+    [TCP Segment Len: 0]
+    Sequence number: 1304478104
+    Acknowledgment number: 110236
+    Header Length: 20 bytes
+    Flags: 0x010 (ACK)
+        000. .... .... = Reserved: Not set
+        ...0 .... .... = Nonce: Not set
+        .... 0... .... = Congestion Window Reduced (CWR): Not set
+        .... .0.. .... = ECN-Echo: Not set
+        .... ..0. .... = Urgent: Not set
+        .... ...1 .... = Acknowledgment: Set
+        .... .... 0... = Push: Not set
+        .... .... .0.. = Reset: Not set
+        .... .... ..0. = Syn: Not set
+        .... .... ...0 = Fin: Not set
+        [TCP Flags: *******A****]
+    Window size value: 32736
+    [Calculated window size: 32736]
+    [Window size scaling factor: -2 (no window scaling used)]
+    Checksum: 0xd6a2 [validation disabled]
+        [Good Checksum: False]
+        [Bad Checksum: False]
+    Urgent pointer: 0
+    [SEQ/ACK analysis]
+        [This is an ACK to the segment in frame: 9]
+        [The RTT to ACK the segment was: 0.000001000 seconds]
+        [iRTT: 0.000002000 seconds]
+
+No.     Time           Source                Destination           Protocol Length Info
+     11 0.000010       134.58.189.76         134.58.189.80         SSLv3    107    Change Cipher Spec, Encrypted Handshake Message
+
+Frame 11: 107 bytes on wire (856 bits), 107 bytes captured (856 bits)
+    Encapsulation type: Raw IP (7)
+    Arrival Time: May 21, 2016 14:31:09.000010000 Romance (zomertijd)
+    [Time shift for this packet: 0.000000000 seconds]
+    Epoch Time: 1463833869.000010000 seconds
+    [Time delta from previous captured frame: 0.000001000 seconds]
+    [Time delta from previous displayed frame: 0.000001000 seconds]
+    [Time since reference or first frame: 0.000010000 seconds]
+    Frame Number: 11
+    Frame Length: 107 bytes (856 bits)
+    Capture Length: 107 bytes (856 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: raw:ip:tcp:ssl]
+    [Coloring Rule Name: TCP]
+    [Coloring Rule String: tcp]
+Raw packet data
+Internet Protocol Version 4, Src: 134.58.189.76, Dst: 134.58.189.80
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes
+    Differentiated Services Field: 0x10 (DSCP: Unknown, ECN: Not-ECT)
+        0001 00.. = Differentiated Services Codepoint: Unknown (4)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 107
+    Identification: 0x3c4d (15437)
+    Flags: 0x02 (Don't Fragment)
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    Fragment offset: 0
+    Time to live: 128
+    Protocol: TCP (6)
+    Header checksum: 0x371e [validation disabled]
+        [Good: False]
+        [Bad: False]
+    Source: 134.58.189.76
+    Destination: 134.58.189.80
+    [Source GeoIP: Unknown]
+    [Destination GeoIP: Unknown]
+Transmission Control Protocol, Src Port: 3183 (3183), Dst Port: 2010 (2010), Seq: 110236, Ack: 1304478104, Len: 67
+    Source Port: 3183
+    Destination Port: 2010
+    [Stream index: 0]
+    [TCP Segment Len: 67]
+    Sequence number: 110236
+    [Next sequence number: 110303]
+    Acknowledgment number: 1304478104
+    Header Length: 20 bytes
+    Flags: 0x018 (PSH, ACK)
+        000. .... .... = Reserved: Not set
+        ...0 .... .... = Nonce: Not set
+        .... 0... .... = Congestion Window Reduced (CWR): Not set
+        .... .0.. .... = ECN-Echo: Not set
+        .... ..0. .... = Urgent: Not set
+        .... ...1 .... = Acknowledgment: Set
+        .... .... 1... = Push: Set
+        .... .... .0.. = Reset: Not set
+        .... .... ..0. = Syn: Not set
+        .... .... ...0 = Fin: Not set
+        [TCP Flags: *******AP***]
+    Window size value: 7325
+    [Calculated window size: 7325]
+    [Window size scaling factor: -2 (no window scaling used)]
+    Checksum: 0x989e [validation disabled]
+        [Good Checksum: False]
+        [Bad Checksum: False]
+    Urgent pointer: 0
+    [SEQ/ACK analysis]
+        [iRTT: 0.000002000 seconds]
+        [Bytes in flight: 67]
+Secure Sockets Layer
+    SSLv3 Record Layer: Change Cipher Spec Protocol: Change Cipher Spec
+        Content Type: Change Cipher Spec (20)
+        Version: SSL 3.0 (0x0300)
+        Length: 1
+        Change Cipher Spec Message
+    SSLv3 Record Layer: Handshake Protocol: Encrypted Handshake Message
+        Content Type: Handshake (22)
+        Version: SSL 3.0 (0x0300)
+        Length: 56
+        Handshake Protocol: Encrypted Handshake Message
+
+No.     Time           Source                Destination           Protocol Length Info
+     12 0.000011       134.58.189.80         134.58.189.76         SSLv3    107    Change Cipher Spec, Encrypted Handshake Message
+
+Frame 12: 107 bytes on wire (856 bits), 107 bytes captured (856 bits)
+    Encapsulation type: Raw IP (7)
+    Arrival Time: May 21, 2016 14:31:09.000011000 Romance (zomertijd)
+    [Time shift for this packet: 0.000000000 seconds]
+    Epoch Time: 1463833869.000011000 seconds
+    [Time delta from previous captured frame: 0.000001000 seconds]
+    [Time delta from previous displayed frame: 0.000001000 seconds]
+    [Time since reference or first frame: 0.000011000 seconds]
+    Frame Number: 12
+    Frame Length: 107 bytes (856 bits)
+    Capture Length: 107 bytes (856 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: raw:ip:tcp:ssl]
+    [Coloring Rule Name: TCP]
+    [Coloring Rule String: tcp]
+Raw packet data
+Internet Protocol Version 4, Src: 134.58.189.80, Dst: 134.58.189.76
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes
+    Differentiated Services Field: 0x10 (DSCP: Unknown, ECN: Not-ECT)
+        0001 00.. = Differentiated Services Codepoint: Unknown (4)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 107
+    Identification: 0x1f58 (8024)
+    Flags: 0x02 (Don't Fragment)
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    Fragment offset: 0
+    Time to live: 64
+    Protocol: TCP (6)
+    Header checksum: 0x9413 [validation disabled]
+        [Good: False]
+        [Bad: False]
+    Source: 134.58.189.80
+    Destination: 134.58.189.76
+    [Source GeoIP: Unknown]
+    [Destination GeoIP: Unknown]
+Transmission Control Protocol, Src Port: 2010 (2010), Dst Port: 3183 (3183), Seq: 1304478104, Ack: 110303, Len: 67
+    Source Port: 2010
+    Destination Port: 3183
+    [Stream index: 0]
+    [TCP Segment Len: 67]
+    Sequence number: 1304478104
+    [Next sequence number: 1304478171]
+    Acknowledgment number: 110303
+    Header Length: 20 bytes
+    Flags: 0x018 (PSH, ACK)
+        000. .... .... = Reserved: Not set
+        ...0 .... .... = Nonce: Not set
+        .... 0... .... = Congestion Window Reduced (CWR): Not set
+        .... .0.. .... = ECN-Echo: Not set
+        .... ..0. .... = Urgent: Not set
+        .... ...1 .... = Acknowledgment: Set
+        .... .... 1... = Push: Set
+        .... .... .0.. = Reset: Not set
+        .... .... ..0. = Syn: Not set
+        .... .... ...0 = Fin: Not set
+        [TCP Flags: *******AP***]
+    Window size value: 32736
+    [Calculated window size: 32736]
+    [Window size scaling factor: -2 (no window scaling used)]
+    Checksum: 0x9926 [validation disabled]
+        [Good Checksum: False]
+        [Bad Checksum: False]
+    Urgent pointer: 0
+    [SEQ/ACK analysis]
+        [This is an ACK to the segment in frame: 11]
+        [The RTT to ACK the segment was: 0.000001000 seconds]
+        [iRTT: 0.000002000 seconds]
+        [Bytes in flight: 67]
+Secure Sockets Layer
+    SSLv3 Record Layer: Change Cipher Spec Protocol: Change Cipher Spec
+        Content Type: Change Cipher Spec (20)
+        Version: SSL 3.0 (0x0300)
+        Length: 1
+        Change Cipher Spec Message
+    SSLv3 Record Layer: Handshake Protocol: Encrypted Handshake Message
+        Content Type: Handshake (22)
+        Version: SSL 3.0 (0x0300)
+        Length: 56
+        Handshake Protocol: Encrypted Handshake Message
+
+No.     Time           Source                Destination           Protocol Length Info
+     13 0.000012       134.58.189.76         134.58.189.80         SSLv3    343    Application Data
+
+Frame 13: 343 bytes on wire (2744 bits), 343 bytes captured (2744 bits)
+    Encapsulation type: Raw IP (7)
+    Arrival Time: May 21, 2016 14:31:09.000012000 Romance (zomertijd)
+    [Time shift for this packet: 0.000000000 seconds]
+    Epoch Time: 1463833869.000012000 seconds
+    [Time delta from previous captured frame: 0.000001000 seconds]
+    [Time delta from previous displayed frame: 0.000001000 seconds]
+    [Time since reference or first frame: 0.000012000 seconds]
+    Frame Number: 13
+    Frame Length: 343 bytes (2744 bits)
+    Capture Length: 343 bytes (2744 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: raw:ip:tcp:ssl]
+    [Coloring Rule Name: TCP]
+    [Coloring Rule String: tcp]
+Raw packet data
+Internet Protocol Version 4, Src: 134.58.189.76, Dst: 134.58.189.80
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes
+    Differentiated Services Field: 0x10 (DSCP: Unknown, ECN: Not-ECT)
+        0001 00.. = Differentiated Services Codepoint: Unknown (4)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 343
+    Identification: 0x3d4d (15693)
+    Flags: 0x02 (Don't Fragment)
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    Fragment offset: 0
+    Time to live: 128
+    Protocol: TCP (6)
+    Header checksum: 0x3532 [validation disabled]
+        [Good: False]
+        [Bad: False]
+    Source: 134.58.189.76
+    Destination: 134.58.189.80
+    [Source GeoIP: Unknown]
+    [Destination GeoIP: Unknown]
+Transmission Control Protocol, Src Port: 3183 (3183), Dst Port: 2010 (2010), Seq: 110303, Ack: 1304478171, Len: 303
+    Source Port: 3183
+    Destination Port: 2010
+    [Stream index: 0]
+    [TCP Segment Len: 303]
+    Sequence number: 110303
+    [Next sequence number: 110606]
+    Acknowledgment number: 1304478171
+    Header Length: 20 bytes
+    Flags: 0x018 (PSH, ACK)
+        000. .... .... = Reserved: Not set
+        ...0 .... .... = Nonce: Not set
+        .... 0... .... = Congestion Window Reduced (CWR): Not set
+        .... .0.. .... = ECN-Echo: Not set
+        .... ..0. .... = Urgent: Not set
+        .... ...1 .... = Acknowledgment: Set
+        .... .... 1... = Push: Set
+        .... .... .0.. = Reset: Not set
+        .... .... ..0. = Syn: Not set
+        .... .... ...0 = Fin: Not set
+        [TCP Flags: *******AP***]
+    Window size value: 8760
+    [Calculated window size: 8760]
+    [Window size scaling factor: -2 (no window scaling used)]
+    Checksum: 0xefc0 [validation disabled]
+        [Good Checksum: False]
+        [Bad Checksum: False]
+    Urgent pointer: 0
+    [SEQ/ACK analysis]
+        [This is an ACK to the segment in frame: 12]
+        [The RTT to ACK the segment was: 0.000001000 seconds]
+        [iRTT: 0.000002000 seconds]
+        [Bytes in flight: 303]
+Secure Sockets Layer
+    SSLv3 Record Layer: Application Data Protocol: spdy
+        Content Type: Application Data (23)
+        Version: SSL 3.0 (0x0300)
+        Length: 298
+        Encrypted Application Data: 3aac9257eee872f1d2940fd370e220e20abda46adc437cea...
+
+No.     Time           Source                Destination           Protocol Length Info
+     14 0.000013       134.58.189.80         134.58.189.76         TCP      40     2010 → 3183 [ACK] Seq=1304478171 Ack=110606 Win=32736 Len=0
+
+Frame 14: 40 bytes on wire (320 bits), 40 bytes captured (320 bits)
+    Encapsulation type: Raw IP (7)
+    Arrival Time: May 21, 2016 14:31:09.000013000 Romance (zomertijd)
+    [Time shift for this packet: 0.000000000 seconds]
+    Epoch Time: 1463833869.000013000 seconds
+    [Time delta from previous captured frame: 0.000001000 seconds]
+    [Time delta from previous displayed frame: 0.000001000 seconds]
+    [Time since reference or first frame: 0.000013000 seconds]
+    Frame Number: 14
+    Frame Length: 40 bytes (320 bits)
+    Capture Length: 40 bytes (320 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: raw:ip:tcp]
+    [Coloring Rule Name: TCP]
+    [Coloring Rule String: tcp]
+Raw packet data
+Internet Protocol Version 4, Src: 134.58.189.80, Dst: 134.58.189.76
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes
+    Differentiated Services Field: 0x10 (DSCP: Unknown, ECN: Not-ECT)
+        0001 00.. = Differentiated Services Codepoint: Unknown (4)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 40
+    Identification: 0x1f62 (8034)
+    Flags: 0x02 (Don't Fragment)
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    Fragment offset: 0
+    Time to live: 64
+    Protocol: TCP (6)
+    Header checksum: 0x944c [validation disabled]
+        [Good: False]
+        [Bad: False]
+    Source: 134.58.189.80
+    Destination: 134.58.189.76
+    [Source GeoIP: Unknown]
+    [Destination GeoIP: Unknown]
+Transmission Control Protocol, Src Port: 2010 (2010), Dst Port: 3183 (3183), Seq: 1304478171, Ack: 110606, Len: 0
+    Source Port: 2010
+    Destination Port: 3183
+    [Stream index: 0]
+    [TCP Segment Len: 0]
+    Sequence number: 1304478171
+    Acknowledgment number: 110606
+    Header Length: 20 bytes
+    Flags: 0x010 (ACK)
+        000. .... .... = Reserved: Not set
+        ...0 .... .... = Nonce: Not set
+        .... 0... .... = Congestion Window Reduced (CWR): Not set
+        .... .0.. .... = ECN-Echo: Not set
+        .... ..0. .... = Urgent: Not set
+        .... ...1 .... = Acknowledgment: Set
+        .... .... 0... = Push: Not set
+        .... .... .0.. = Reset: Not set
+        .... .... ..0. = Syn: Not set
+        .... .... ...0 = Fin: Not set
+        [TCP Flags: *******A****]
+    Window size value: 32736
+    [Calculated window size: 32736]
+    [Window size scaling factor: -2 (no window scaling used)]
+    Checksum: 0xd4ed [validation disabled]
+        [Good Checksum: False]
+        [Bad Checksum: False]
+    Urgent pointer: 0
+    [SEQ/ACK analysis]
+        [This is an ACK to the segment in frame: 13]
+        [The RTT to ACK the segment was: 0.000001000 seconds]
+        [iRTT: 0.000002000 seconds]
+
+No.     Time           Source                Destination           Protocol Length Info
+     15 0.000014       134.58.189.80         134.58.189.76         SSLv3    391    Application Data
+
+Frame 15: 391 bytes on wire (3128 bits), 391 bytes captured (3128 bits)
+    Encapsulation type: Raw IP (7)
+    Arrival Time: May 21, 2016 14:31:09.000014000 Romance (zomertijd)
+    [Time shift for this packet: 0.000000000 seconds]
+    Epoch Time: 1463833869.000014000 seconds
+    [Time delta from previous captured frame: 0.000001000 seconds]
+    [Time delta from previous displayed frame: 0.000001000 seconds]
+    [Time since reference or first frame: 0.000014000 seconds]
+    Frame Number: 15
+    Frame Length: 391 bytes (3128 bits)
+    Capture Length: 391 bytes (3128 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: raw:ip:tcp:ssl]
+    [Coloring Rule Name: TCP]
+    [Coloring Rule String: tcp]
+Raw packet data
+Internet Protocol Version 4, Src: 134.58.189.80, Dst: 134.58.189.76
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes
+    Differentiated Services Field: 0x10 (DSCP: Unknown, ECN: Not-ECT)
+        0001 00.. = Differentiated Services Codepoint: Unknown (4)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 391
+    Identification: 0x1f63 (8035)
+    Flags: 0x02 (Don't Fragment)
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    Fragment offset: 0
+    Time to live: 64
+    Protocol: TCP (6)
+    Header checksum: 0x92ec [validation disabled]
+        [Good: False]
+        [Bad: False]
+    Source: 134.58.189.80
+    Destination: 134.58.189.76
+    [Source GeoIP: Unknown]
+    [Destination GeoIP: Unknown]
+Transmission Control Protocol, Src Port: 2010 (2010), Dst Port: 3183 (3183), Seq: 1304478171, Ack: 110606, Len: 351
+    Source Port: 2010
+    Destination Port: 3183
+    [Stream index: 0]
+    [TCP Segment Len: 351]
+    Sequence number: 1304478171
+    [Next sequence number: 1304478522]
+    Acknowledgment number: 110606
+    Header Length: 20 bytes
+    Flags: 0x018 (PSH, ACK)
+        000. .... .... = Reserved: Not set
+        ...0 .... .... = Nonce: Not set
+        .... 0... .... = Congestion Window Reduced (CWR): Not set
+        .... .0.. .... = ECN-Echo: Not set
+        .... ..0. .... = Urgent: Not set
+        .... ...1 .... = Acknowledgment: Set
+        .... .... 1... = Push: Set
+        .... .... .0.. = Reset: Not set
+        .... .... ..0. = Syn: Not set
+        .... .... ...0 = Fin: Not set
+        [TCP Flags: *******AP***]
+    Window size value: 32736
+    [Calculated window size: 32736]
+    [Window size scaling factor: -2 (no window scaling used)]
+    Checksum: 0x41ab [validation disabled]
+        [Good Checksum: False]
+        [Bad Checksum: False]
+    Urgent pointer: 0
+    [SEQ/ACK analysis]
+        [iRTT: 0.000002000 seconds]
+        [Bytes in flight: 351]
+Secure Sockets Layer
+    SSLv3 Record Layer: Application Data Protocol: spdy
+        Content Type: Application Data (23)
+        Version: SSL 3.0 (0x0300)
+        Length: 346
+        Encrypted Application Data: d95850962fdacf37ee14755e293d32e6314432267295529e...
+
+No.     Time           Source                Destination           Protocol Length Info
+     16 0.000015       134.58.189.76         134.58.189.80         TCP      40     3183 → 2010 [ACK] Seq=110606 Ack=1304478522 Win=8409 Len=0
+
+Frame 16: 40 bytes on wire (320 bits), 40 bytes captured (320 bits)
+    Encapsulation type: Raw IP (7)
+    Arrival Time: May 21, 2016 14:31:09.000015000 Romance (zomertijd)
+    [Time shift for this packet: 0.000000000 seconds]
+    Epoch Time: 1463833869.000015000 seconds
+    [Time delta from previous captured frame: 0.000001000 seconds]
+    [Time delta from previous displayed frame: 0.000001000 seconds]
+    [Time since reference or first frame: 0.000015000 seconds]
+    Frame Number: 16
+    Frame Length: 40 bytes (320 bits)
+    Capture Length: 40 bytes (320 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: raw:ip:tcp]
+    [Coloring Rule Name: TCP]
+    [Coloring Rule String: tcp]
+Raw packet data
+Internet Protocol Version 4, Src: 134.58.189.76, Dst: 134.58.189.80
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes
+    Differentiated Services Field: 0x10 (DSCP: Unknown, ECN: Not-ECT)
+        0001 00.. = Differentiated Services Codepoint: Unknown (4)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 40
+    Identification: 0x3e4d (15949)
+    Flags: 0x02 (Don't Fragment)
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    Fragment offset: 0
+    Time to live: 128
+    Protocol: TCP (6)
+    Header checksum: 0x3561 [validation disabled]
+        [Good: False]
+        [Bad: False]
+    Source: 134.58.189.76
+    Destination: 134.58.189.80
+    [Source GeoIP: Unknown]
+    [Destination GeoIP: Unknown]
+Transmission Control Protocol, Src Port: 3183 (3183), Dst Port: 2010 (2010), Seq: 110606, Ack: 1304478522, Len: 0
+    Source Port: 3183
+    Destination Port: 2010
+    [Stream index: 0]
+    [TCP Segment Len: 0]
+    Sequence number: 110606
+    Acknowledgment number: 1304478522
+    Header Length: 20 bytes
+    Flags: 0x010 (ACK)
+        000. .... .... = Reserved: Not set
+        ...0 .... .... = Nonce: Not set
+        .... 0... .... = Congestion Window Reduced (CWR): Not set
+        .... .0.. .... = ECN-Echo: Not set
+        .... ..0. .... = Urgent: Not set
+        .... ...1 .... = Acknowledgment: Set
+        .... .... 0... = Push: Not set
+        .... .... .0.. = Reset: Not set
+        .... .... ..0. = Syn: Not set
+        .... .... ...0 = Fin: Not set
+        [TCP Flags: *******A****]
+    Window size value: 8409
+    [Calculated window size: 8409]
+    [Window size scaling factor: -2 (no window scaling used)]
+    Checksum: 0x3296 [validation disabled]
+        [Good Checksum: False]
+        [Bad Checksum: False]
+    Urgent pointer: 0
+    [SEQ/ACK analysis]
+        [This is an ACK to the segment in frame: 15]
+        [The RTT to ACK the segment was: 0.000001000 seconds]
+        [iRTT: 0.000002000 seconds]

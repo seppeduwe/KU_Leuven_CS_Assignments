@@ -1,0 +1,378 @@
+No.     Time           Source                Destination           Protocol Length Info
+      1 0.000000       134.58.189.76         134.58.189.80         TCP      44     3158 → 2001 [SYN] Seq=0 Win=8192 Len=0 MSS=1460
+
+Frame 1: 44 bytes on wire (352 bits), 44 bytes captured (352 bits)
+    Encapsulation type: Raw IP (7)
+    Arrival Time: May 20, 2016 16:49:52.000000000 Romance (zomertijd)
+    [Time shift for this packet: 0.000000000 seconds]
+    Epoch Time: 1463755792.000000000 seconds
+    [Time delta from previous captured frame: 0.000000000 seconds]
+    [Time delta from previous displayed frame: 0.000000000 seconds]
+    [Time since reference or first frame: 0.000000000 seconds]
+    Frame Number: 1
+    Frame Length: 44 bytes (352 bits)
+    Capture Length: 44 bytes (352 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: raw:ip:tcp]
+    [Coloring Rule Name: TCP SYN/FIN]
+    [Coloring Rule String: tcp.flags & 0x02 || tcp.flags.fin == 1]
+Raw packet data
+Internet Protocol Version 4, Src: 134.58.189.76, Dst: 134.58.189.80
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes
+    Differentiated Services Field: 0x10 (DSCP: Unknown, ECN: Not-ECT)
+    Total Length: 44
+    Identification: 0xd840 (55360)
+    Flags: 0x02 (Don't Fragment)
+    Fragment offset: 0
+    Time to live: 128
+    Protocol: TCP (6)
+    Header checksum: 0x9b69 [validation disabled]
+    Source: 134.58.189.76
+    Destination: 134.58.189.80
+    [Source GeoIP: Unknown]
+    [Destination GeoIP: Unknown]
+Transmission Control Protocol, Src Port: 3158 (3158), Dst Port: 2001 (2001), Seq: 0, Len: 0
+    Source Port: 3158
+    Destination Port: 2001
+    [Stream index: 0]
+    [TCP Segment Len: 0]
+    Sequence number: 0    (relative sequence number)
+    Acknowledgment number: 0
+    Header Length: 24 bytes
+    Flags: 0x002 (SYN)
+    Window size value: 8192
+    [Calculated window size: 8192]
+    Checksum: 0x2f82 [validation disabled]
+        [Good Checksum: False]
+        [Bad Checksum: False]
+    Urgent pointer: 0
+    Options: (4 bytes), Maximum segment size
+
+No.     Time           Source                Destination           Protocol Length Info
+      2 0.000001       134.58.189.80         134.58.189.76         TCP      44     2001 → 3158 [SYN, ACK] Seq=0 Ack=1 Win=32736 Len=0 MSS=1460
+
+Frame 2: 44 bytes on wire (352 bits), 44 bytes captured (352 bits)
+    Encapsulation type: Raw IP (7)
+    Arrival Time: May 20, 2016 16:49:52.000001000 Romance (zomertijd)
+    [Time shift for this packet: 0.000000000 seconds]
+    Epoch Time: 1463755792.000001000 seconds
+    [Time delta from previous captured frame: 0.000001000 seconds]
+    [Time delta from previous displayed frame: 0.000001000 seconds]
+    [Time since reference or first frame: 0.000001000 seconds]
+    Frame Number: 2
+    Frame Length: 44 bytes (352 bits)
+    Capture Length: 44 bytes (352 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: raw:ip:tcp]
+    [Coloring Rule Name: TCP SYN/FIN]
+    [Coloring Rule String: tcp.flags & 0x02 || tcp.flags.fin == 1]
+Raw packet data
+Internet Protocol Version 4, Src: 134.58.189.80, Dst: 134.58.189.76
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes
+    Differentiated Services Field: 0x00 (DSCP: CS0, ECN: Not-ECT)
+    Total Length: 44
+    Identification: 0x1241 (4673)
+    Flags: 0x00
+    Fragment offset: 0
+    Time to live: 64
+    Protocol: TCP (6)
+    Header checksum: 0xe179 [validation disabled]
+    Source: 134.58.189.80
+    Destination: 134.58.189.76
+    [Source GeoIP: Unknown]
+    [Destination GeoIP: Unknown]
+Transmission Control Protocol, Src Port: 2001 (2001), Dst Port: 3158 (3158), Seq: 0, Ack: 1, Len: 0
+    Source Port: 2001
+    Destination Port: 3158
+    [Stream index: 0]
+    [TCP Segment Len: 0]
+    Sequence number: 0    (relative sequence number)
+    Acknowledgment number: 1    (relative ack number)
+    Header Length: 24 bytes
+    Flags: 0x012 (SYN, ACK)
+    Window size value: 32736
+    [Calculated window size: 32736]
+    Checksum: 0x1a58 [validation disabled]
+        [Good Checksum: False]
+        [Bad Checksum: False]
+    Urgent pointer: 0
+    Options: (4 bytes), Maximum segment size
+    [SEQ/ACK analysis]
+        [This is an ACK to the segment in frame: 1]
+        [The RTT to ACK the segment was: 0.000001000 seconds]
+        [iRTT: 0.000002000 seconds]
+
+No.     Time           Source                Destination           Protocol Length Info
+      3 0.000002       134.58.189.76         134.58.189.80         TCP      40     3158 → 2001 [ACK] Seq=1 Ack=1 Win=8760 Len=0
+
+Frame 3: 40 bytes on wire (320 bits), 40 bytes captured (320 bits)
+    Encapsulation type: Raw IP (7)
+    Arrival Time: May 20, 2016 16:49:52.000002000 Romance (zomertijd)
+    [Time shift for this packet: 0.000000000 seconds]
+    Epoch Time: 1463755792.000002000 seconds
+    [Time delta from previous captured frame: 0.000001000 seconds]
+    [Time delta from previous displayed frame: 0.000001000 seconds]
+    [Time since reference or first frame: 0.000002000 seconds]
+    Frame Number: 3
+    Frame Length: 40 bytes (320 bits)
+    Capture Length: 40 bytes (320 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: raw:ip:tcp]
+    [Coloring Rule Name: TCP]
+    [Coloring Rule String: tcp]
+Raw packet data
+Internet Protocol Version 4, Src: 134.58.189.76, Dst: 134.58.189.80
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes
+    Differentiated Services Field: 0x10 (DSCP: Unknown, ECN: Not-ECT)
+    Total Length: 40
+    Identification: 0xd940 (55616)
+    Flags: 0x02 (Don't Fragment)
+    Fragment offset: 0
+    Time to live: 128
+    Protocol: TCP (6)
+    Header checksum: 0x9a6d [validation disabled]
+    Source: 134.58.189.76
+    Destination: 134.58.189.80
+    [Source GeoIP: Unknown]
+    [Destination GeoIP: Unknown]
+Transmission Control Protocol, Src Port: 3158 (3158), Dst Port: 2001 (2001), Seq: 1, Ack: 1, Len: 0
+    Source Port: 3158
+    Destination Port: 2001
+    [Stream index: 0]
+    [TCP Segment Len: 0]
+    Sequence number: 1    (relative sequence number)
+    Acknowledgment number: 1    (relative ack number)
+    Header Length: 20 bytes
+    Flags: 0x010 (ACK)
+    Window size value: 8760
+    [Calculated window size: 8760]
+    [Window size scaling factor: -2 (no window scaling used)]
+    Checksum: 0x8fbd [validation disabled]
+        [Good Checksum: False]
+        [Bad Checksum: False]
+    Urgent pointer: 0
+    [SEQ/ACK analysis]
+        [This is an ACK to the segment in frame: 2]
+        [The RTT to ACK the segment was: 0.000001000 seconds]
+        [iRTT: 0.000002000 seconds]
+
+No.     Time           Source                Destination           Protocol Length Info
+      4 0.000003       134.58.189.76         134.58.189.80         HTTP     322    GET / HTTP/1.0 
+
+Frame 4: 322 bytes on wire (2576 bits), 322 bytes captured (2576 bits)
+    Encapsulation type: Raw IP (7)
+    Arrival Time: May 20, 2016 16:49:52.000003000 Romance (zomertijd)
+    [Time shift for this packet: 0.000000000 seconds]
+    Epoch Time: 1463755792.000003000 seconds
+    [Time delta from previous captured frame: 0.000001000 seconds]
+    [Time delta from previous displayed frame: 0.000001000 seconds]
+    [Time since reference or first frame: 0.000003000 seconds]
+    Frame Number: 4
+    Frame Length: 322 bytes (2576 bits)
+    Capture Length: 322 bytes (2576 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: raw:ip:tcp:http]
+    [Coloring Rule Name: HTTP]
+    [Coloring Rule String: http || tcp.port == 80 || http2]
+Raw packet data
+Internet Protocol Version 4, Src: 134.58.189.76, Dst: 134.58.189.80
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes
+    Differentiated Services Field: 0x10 (DSCP: Unknown, ECN: Not-ECT)
+    Total Length: 322
+    Identification: 0xda40 (55872)
+    Flags: 0x02 (Don't Fragment)
+    Fragment offset: 0
+    Time to live: 128
+    Protocol: TCP (6)
+    Header checksum: 0x9853 [validation disabled]
+    Source: 134.58.189.76
+    Destination: 134.58.189.80
+    [Source GeoIP: Unknown]
+    [Destination GeoIP: Unknown]
+Transmission Control Protocol, Src Port: 3158 (3158), Dst Port: 2001 (2001), Seq: 1, Ack: 1, Len: 282
+    Source Port: 3158
+    Destination Port: 2001
+    [Stream index: 0]
+    [TCP Segment Len: 282]
+    Sequence number: 1    (relative sequence number)
+    [Next sequence number: 283    (relative sequence number)]
+    Acknowledgment number: 1    (relative ack number)
+    Header Length: 20 bytes
+    Flags: 0x018 (PSH, ACK)
+    Window size value: 8760
+    [Calculated window size: 8760]
+    [Window size scaling factor: -2 (no window scaling used)]
+    Checksum: 0xba15 [validation disabled]
+        [Good Checksum: False]
+        [Bad Checksum: False]
+    Urgent pointer: 0
+    [SEQ/ACK analysis]
+        [iRTT: 0.000002000 seconds]
+        [Bytes in flight: 282]
+Hypertext Transfer Protocol
+    GET / HTTP/1.0\r\n
+        [Expert Info (Chat/Sequence): GET / HTTP/1.0\r\n]
+            [GET / HTTP/1.0\r\n]
+            [Severity level: Chat]
+            [Group: Sequence]
+        Request Method: GET
+        Request URI: /
+        Request Version: HTTP/1.0
+    Connection: Keep-Alive\r\n
+    User-Agent: Mozilla/4.5 [en] (WinNT; I)\r\n
+    Host: manhattan.esat.kuleuven.ac.be:2001\r\n
+    Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, image/png, */*\r\n
+    Accept-Encoding: gzip\r\n
+    Accept-Language: en\r\n
+    Accept-Charset: iso-8859-1,*,utf-8\r\n
+    \r\n
+    [Full request URI: http://manhattan.esat.kuleuven.ac.be:2001/]
+    [HTTP request 1/1]
+    [Response in frame: 5]
+
+No.     Time           Source                Destination           Protocol Length Info
+      5 0.000004       134.58.189.80         134.58.189.76         HTTP     363    HTTP/1.1 200 OK  (text/html)
+
+Frame 5: 363 bytes on wire (2904 bits), 363 bytes captured (2904 bits)
+    Encapsulation type: Raw IP (7)
+    Arrival Time: May 20, 2016 16:49:52.000004000 Romance (zomertijd)
+    [Time shift for this packet: 0.000000000 seconds]
+    Epoch Time: 1463755792.000004000 seconds
+    [Time delta from previous captured frame: 0.000001000 seconds]
+    [Time delta from previous displayed frame: 0.000001000 seconds]
+    [Time since reference or first frame: 0.000004000 seconds]
+    Frame Number: 5
+    Frame Length: 363 bytes (2904 bits)
+    Capture Length: 363 bytes (2904 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: raw:ip:tcp:http:data-text-lines]
+    [Coloring Rule Name: HTTP]
+    [Coloring Rule String: http || tcp.port == 80 || http2]
+Raw packet data
+Internet Protocol Version 4, Src: 134.58.189.80, Dst: 134.58.189.76
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes
+    Differentiated Services Field: 0x10 (DSCP: Unknown, ECN: Not-ECT)
+    Total Length: 363
+    Identification: 0x1242 (4674)
+    Flags: 0x02 (Don't Fragment)
+    Fragment offset: 0
+    Time to live: 64
+    Protocol: TCP (6)
+    Header checksum: 0xa029 [validation disabled]
+    Source: 134.58.189.80
+    Destination: 134.58.189.76
+    [Source GeoIP: Unknown]
+    [Destination GeoIP: Unknown]
+Transmission Control Protocol, Src Port: 2001 (2001), Dst Port: 3158 (3158), Seq: 1, Ack: 283, Len: 323
+    Source Port: 2001
+    Destination Port: 3158
+    [Stream index: 0]
+    [TCP Segment Len: 323]
+    Sequence number: 1    (relative sequence number)
+    [Next sequence number: 324    (relative sequence number)]
+    Acknowledgment number: 283    (relative ack number)
+    Header Length: 20 bytes
+    Flags: 0x018 (PSH, ACK)
+    Window size value: 32736
+    [Calculated window size: 32736]
+    [Window size scaling factor: -2 (no window scaling used)]
+    Checksum: 0x622b [validation disabled]
+        [Good Checksum: False]
+        [Bad Checksum: False]
+    Urgent pointer: 0
+    [SEQ/ACK analysis]
+        [This is an ACK to the segment in frame: 4]
+        [The RTT to ACK the segment was: 0.000001000 seconds]
+        [iRTT: 0.000002000 seconds]
+        [Bytes in flight: 323]
+Hypertext Transfer Protocol
+    HTTP/1.1 200 OK\r\n
+        [Expert Info (Chat/Sequence): HTTP/1.1 200 OK\r\n]
+            [HTTP/1.1 200 OK\r\n]
+            [Severity level: Chat]
+            [Group: Sequence]
+        Request Version: HTTP/1.1
+        Status Code: 200
+        Response Phrase: OK
+    Date: Fri, 11 Dec 1998 13:33:39 GMT\r\n
+    Server: Apache/1.3.2 Ben-SSL/1.27 (Unix)\r\n
+    Last-Modified: Tue, 08 Dec 1998 15:33:57 GMT\r\n
+    ETag: "74861-1c-366d46e5"\r\n
+    Accept-Ranges: bytes\r\n
+    Content-Length: 28\r\n
+    Keep-Alive: timeout=15, max=100\r\n
+    Connection: Keep-Alive\r\n
+    Content-Type: text/html\r\n
+    \r\n
+    [HTTP response 1/1]
+    [Time since request: 0.000001000 seconds]
+    [Request in frame: 4]
+Line-based text data: text/html
+    plain-http demo index.html\n
+    \n
+
+No.     Time           Source                Destination           Protocol Length Info
+      6 0.000005       134.58.189.76         134.58.189.80         TCP      40     3158 → 2001 [ACK] Seq=283 Ack=324 Win=8437 Len=0
+
+Frame 6: 40 bytes on wire (320 bits), 40 bytes captured (320 bits)
+    Encapsulation type: Raw IP (7)
+    Arrival Time: May 20, 2016 16:49:52.000005000 Romance (zomertijd)
+    [Time shift for this packet: 0.000000000 seconds]
+    Epoch Time: 1463755792.000005000 seconds
+    [Time delta from previous captured frame: 0.000001000 seconds]
+    [Time delta from previous displayed frame: 0.000001000 seconds]
+    [Time since reference or first frame: 0.000005000 seconds]
+    Frame Number: 6
+    Frame Length: 40 bytes (320 bits)
+    Capture Length: 40 bytes (320 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: raw:ip:tcp]
+    [Coloring Rule Name: TCP]
+    [Coloring Rule String: tcp]
+Raw packet data
+Internet Protocol Version 4, Src: 134.58.189.76, Dst: 134.58.189.80
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes
+    Differentiated Services Field: 0x10 (DSCP: Unknown, ECN: Not-ECT)
+    Total Length: 40
+    Identification: 0xdb40 (56128)
+    Flags: 0x02 (Don't Fragment)
+    Fragment offset: 0
+    Time to live: 128
+    Protocol: TCP (6)
+    Header checksum: 0x986d [validation disabled]
+    Source: 134.58.189.76
+    Destination: 134.58.189.80
+    [Source GeoIP: Unknown]
+    [Destination GeoIP: Unknown]
+Transmission Control Protocol, Src Port: 3158 (3158), Dst Port: 2001 (2001), Seq: 283, Ack: 324, Len: 0
+    Source Port: 3158
+    Destination Port: 2001
+    [Stream index: 0]
+    [TCP Segment Len: 0]
+    Sequence number: 283    (relative sequence number)
+    Acknowledgment number: 324    (relative ack number)
+    Header Length: 20 bytes
+    Flags: 0x010 (ACK)
+    Window size value: 8437
+    [Calculated window size: 8437]
+    [Window size scaling factor: -2 (no window scaling used)]
+    Checksum: 0x8ea3 [validation disabled]
+        [Good Checksum: False]
+        [Bad Checksum: False]
+    Urgent pointer: 0
+    [SEQ/ACK analysis]
+        [This is an ACK to the segment in frame: 5]
+        [The RTT to ACK the segment was: 0.000001000 seconds]
+        [iRTT: 0.000002000 seconds]
