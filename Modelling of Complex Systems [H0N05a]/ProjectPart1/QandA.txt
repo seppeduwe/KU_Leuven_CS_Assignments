@@ -1,0 +1,60 @@
+
+Q: I was wondering if you can say something more about the use of directions, and how they are defined.
+A: The game is played on a two-dimensional grid (with standard coordinate system). Hence, "right" means "the direction in which x-coordinates increase" and "up" means "the direction in which y-coordinates increase". These directions can be useful when you try to model which stones are attacked. 
+
+
+****************************************************
+
+Q: I have some questions about the predicates possible(t,p) and attacked(t,p).possible(t,p) is defined in terms of the at(t,p,c) predicate according to the assignment, but it is also defined in terms of the attacked(t,p) predicate I presume because there needs to be at least 1 disc attacked for it to be possible to play a disc at another position.And the attacked(t,p) predicate needs to be defined in terms of the play(t,p,c) predicate. So for a position p to be attacked at time t, a disc needs to be played at a position p2 at time t and position p needs to be ‘trapped’ between position p2 and another position p3.So “possible” is defined in terms of the “at” and “attacked” predicates and “attacked” is defined in terms of the “play” predicate and another predicate, say “trapped”. But there also needs to be a constraint like “! t [Time] p [position] c [player_color] : play(t,p,c) => possible(t,p).” I think, that means that a disc can only be played at a position p at time t if it is possible to play at that position p at time t.  So “play” is defined in terms of “possible”, but don’t we have some kind of loop then ?
+A: Almost correct, possible should not be defined in terms of attacked. The point is: * Attacked means: "the current moves attacks this stone"* Possible means: "if I would play here, I would attack at least one stone". So attacked only holds for stones attacked by the current move (i.e., this is defined in terms of play and at), while possible should refer to all valid positions (i.e., this is defined in terms of at and probably some auxiliary predicate, such as the "trapped" you suggest)
+****************************************************
+Q: I also have a question about the visualisation itself. Do we define the moves that are going to be visualised in the Structure like this: play = { 1,pos(4,2),white;2,pos(2,1),black;3,pos(1,2),white; … } or how does it work exactly?
+A: For the visualisation, you just give a complete (two-valued) structure to the procedure visualise. Such a structure interprets the "play" predicate. In principle, you should not go manually make structures for visualisation. You should only use the visualisation to get a quick view on what is happening in models of your theory. 
+****************************************************
+Q: I have another question about the verifications, what exactly needs to be done in the procedures verificationXproc(struc)? Do we just need to print whether the verification is true or how do we verify the verifications?
+A: You shouold indeed print whether the verification is satisfied. I.e., as output we expect some text of the form "Verification X is satisfied" or "Verification X is not satisfied". In order to do this, you should probably make use of some model expansion call. You should interpret the result of this call yourself. How you do this is up to you to discover.Hint: it will not be the same for all verificationsHint: it might have something to do with your theory having or not having models. 
+****************************************************
+Q: Regarding the verifications, is this "given structure" a sigma-structure (ie the verification must check whether a given model satisfies the set of claims), or a tau-structure (ie a partial structure is given containing an initial game state, and the verification must check that the claims hold for all possible games that can be played from this initial state)?
+A: Well, the input structure is certainly a tau-structure as you call it. It is a partial structure. However, the verifications take different shapes, some verifications are of the form "it is possible that", some are of the form "it should always hold that", some of the form "it cannot be the case that"... It is up to you to think of a meaningful way to implement these verifications. 
+
+****************************************************
+Q: If a game ends and both players have the same amount of discs, do both players win or are there no winners? Does it even matter how we implement this?
+A: This is indeed a bit underspecified in the assignment. First of all, by a symmetry argument, either both players or no players should win in this case. Secondly, at some point the assignment says "we want you to implement this predicate in such a way thatthere is a winner at time t if and only if the game is over at time t (seedescription of gameOver below". Following this, there should be at least one winner if the game is over, hence the only viable option left is that both players win. 
+****************************************************
+Q: (related to the previous question): In other words: should the theory specify that there exists a time t where GameOver(t) or winner(t, c) holds?
+A: No, it should not. In cases in which the time domain is taken too small, it might be that the game is never over (i.e., that there is no winner)
+
+****************************************************
+Q: "gameOver(t) holds if the game is over at time t; we want you to implement this exactly as follows: if one player has to pass at time point t and there are no possible moves for the other player at time point t + 1, then the game is "over" at time points t + 1 and later."  It seems that there is a contradiction in the description and I would like to know how to implement the predicate: at time t or (t+1)?
+A: This is indeed a bit ambiguous. 
+Best read our assignment as follows:"gameOver(t+1) holds if the game is over at time t+1; we want you to implement this exactly as follows: if one player has to pass at time point t and there are no possible moves for the other player at time point t + 1, then the game is "over" at time points t + 1 and later." 
+
+****************************************************
+Q: I find the first verification a little ambiguous, so I want to be certain. I assume it means there cannot be an increase of white discs between time points t and Next(t) AND ALSO an increase between time points Next(t) and Next(Next(t)). Am I correct?
+A: Yes
+****************************************************
+Q:Are you allowed to give a hint on how to tackle Verification 3 ("At any point in time, the set of all discs on the board is a connected set (in other words: any disc on the board is reachable, using horizontal, vertical or diagonal steps, from any other disc on the board using only positions occupied by discs)") ?
+A: Maybe you can introduce an auxiliary predicate for this verification. 
+****************************************************
+Q: I get errors about XSB support. Is this because I'm running IDP on windows? Is there anything I can do to fix this? Also: IDP seems to run a lot slower on my own machine (Windows) then on the departmental PCs. Can I do something about it? 
+A: XSB is a tool that is used to optimize performance of IDP. Unfortunately, our Windows releases do not support usage of this tool. As such* You can freely ignore any warnings about xsb* It is normal that your code runs slower on a machine without xsb than on a machine with xsb. * You cannot fix this. It is a good idea to test you code on a departmental machine at least once. 
+
+****************************************************
+Q: Model expansion and verifications are very slow with my theory (some even take 10 minutes!). Is this a problem.
+A: In this project, the goal is not to optimize your theory so that IDP can do very efficient reasoning. The goal is to represent the knowledge in a readable manner. Hence, you should not care if certain verifications take 10 minutes. We will not grade on this aspect. 
+****************************************************
+Q: I have a function for which I put as definition { !x: f(x) <- f2(x) } and f is empty while f2 is not, how is that possible?
+A: First of all, f is probably a predicate in this case (given the syntax you are using). Secondly, the only way I see this to be possible is if f and f2 range over a different type. In that case, f is defined to be true for all elements x for which f2 is true AND that are in the type of f. 
+****************************************************
+Q: Do we always have to specify what the variable is exactly, so "!t [Time]:" or is just "!t:" good enough?I sometimes get "Warning: Derived sort player_color for variable c2.", but not for all variables, on what occasions does this happen?
+A: IDP tries to automatically figure out which type each variable has. Sometimes, he derives a type and is very sure that this is the right type. Sometimes, do to sub- or supertyping, IDP dervies a type, but is not very sure that this is the only possible option. In that case, IDP will give you a warning "derived sort ...". In such cases, it is best to make the type explicit. If you get no warnings, you can be sure that the right type is derived. Also, the assignment specifies that you should make your theory warning-free, hence it is obliged to make typing explicit for all locations where you are getting warnings. 
+****************************************************
+Q: I don't see a TimeTheory, like in the exercises, do we need to write it ourselves?
+A: No, you can assume that all structures interpret Time in a correct manner. 
+****************************************************
+Q: Some grading will be done on how clean the code is. What is found more clean: with or without quantification of variables?
+A: With variables! By far. You will make less mistakes if you quantify your variables explictly. Also, if you quantify them, you are saying what you mean (better knowledge representation). Lastly, you will get of rid of warnings if you do this (and the assignment says you should get rid of warnings). 
+
+****************************************************
+Q: Does gameOver have to be a fluent?
+A: GameOver is kind of a special predicate, it is a derived predicate in terms of play (GameOver on time t+1 is defined in terms of Play at time t and Play at time t+1). However, it also possesses some form of inertia: once the game is over, it stays over. I don't think it is really a good idea to work with C_GameOver and CN_GameOver predicates. It is easier to define it directly.  Especially since GameOver at t+1 needs to know play at time t+1. 

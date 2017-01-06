@@ -1,0 +1,65 @@
+Q : Is it ok to just delete the 'pos' parameter in the Move event in Game_1?
+
+A : Yes, this is covered by the witness hence it should be removed.
+
+--------------------------------------------------------------------------------------------
+
+Q : Is it possible some of the LTL/CTL verifications fail?
+
+A : Yes.
+
+--------------------------------------------------------------------------------------------
+
+Q : Must all LTL/CTL verifications be checkable with ProB?
+
+A : No, it's possible that due to certain implementation choices a check will time out in ProB, this is fine.
+
+--------------------------------------------------------------------------------------------
+
+Q : Since there isn't a variable storing which moves have been checked the game can go on forever by simply rechecking the same position over and over, is this intended or can I add a variable to prevent this?
+
+A : Yes this is intended, and no you can not add an additional variable.
+
+--------------------------------------------------------------------------------------------
+
+Q : Is it possible that at the end of a Checking phase the reachable set is not empty, thus preventing the player from passing, even if no discs can be captured?
+
+A : No this should not be possible. This is possibly due to incomplete guards in the CheckReachable and CheckNoValidEnd events. In these events you have to take into account that the given position may be on the edge of the board, and that there is not following position in the given direction. Hence if the next position in the given direction is off the board than the CheckNoValidEnd event should fire for this given position, and the CheckReachable should not be able to fire. If you do this correctly the Reachable set will be empty after the checking process completes.
+
+--------------------------------------------------------------------------------------------
+
+Q : Is it allowed to add extra Event Parameters to an event?
+
+A : No, as stated in the assignment.
+
+--------------------------------------------------------------------------------------------
+
+Q : Can I store intermediate results in the guards or actions to split up some the statements?
+
+A : No this is not possible in Event-B.
+
+--------------------------------------------------------------------------------------------
+
+Q : Once the game has ended, is the GameOver event the only one that can still occur?
+
+A : Yes.
+
+--------------------------------------------------------------------------------------------
+
+Q : Can the event "Endgame" happen while a player is checking a position?
+
+A : No.
+
+--------------------------------------------------------------------------------------------
+
+Q : CTL does not seem to work with [E] to denote an event E occurring. LTL does work with this notation though.
+
+A : Correct, this only works for LTL.
+
+--------------------------------------------------------------------------------------------
+
+Q : 'EF'  CTL statements seem to not work in ProB.
+
+A : Correct, there is a problem with these in ProB.
+
+--------------------------------------------------------------------------------------------

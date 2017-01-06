@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.psFile>
+<org.eventb.core.psStatus name="Board_Dom/THM" org.eventb.core.confidence="1000" org.eventb.core.poStamp="104" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="INITIALISATION/Board_Type/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="104" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="INITIALISATION/CurrentMove/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="104" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="INITIALISATION/Captured/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="INITIALISATION/NeedsChecking/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="INITIALISATION/currentRestricted/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="INITIALISATION/currentRestricted1/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="INITIALISATION/NeverEmpty/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="INITIALISATION/Reachable/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="Move/Board_Type/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="108" org.eventb.core.psBroken="true" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="Move/Captured/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="108" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="Move/currentRestricted/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="108" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="Move/currentRestricted1/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="108" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="Move/NeverEmpty/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="108" org.eventb.core.psBroken="true" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="Move/updates_board_with_captured_discs/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="108" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="CheckMove/CurrentMove/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="115" org.eventb.core.psManual="true"/>
+<org.eventb.core.psStatus name="CheckMove/NeedsChecking/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="115" org.eventb.core.psBroken="true" org.eventb.core.psManual="true"/>
+<org.eventb.core.psStatus name="CheckMove/currentRestricted/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="115" org.eventb.core.psManual="true"/>
+<org.eventb.core.psStatus name="CheckMove/currentRestricted1/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="115" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="CheckReachable/position_has_disc_of_opponents_colour/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="104" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="CheckReachable/NeedsChecking/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="109" org.eventb.core.psBroken="true" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="CheckReachable/currentRestricted1/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="109" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="CheckReachable/Reachable/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="109" org.eventb.core.psBroken="true" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="CheckNoValidEnd/NeedsChecking/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="112" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="CheckNoValidEnd/currentRestricted1/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="112" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="CheckNoValidEnd/Reachable/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="112" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="CheckEndChain/Captured/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="106" org.eventb.core.psBroken="true" org.eventb.core.psManual="true"/>
+<org.eventb.core.psStatus name="CheckEndChain/NeedsChecking/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="104" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="CheckEndChain/currentRestricted/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="106" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="CheckEndChain/currentRestricted1/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="104" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="CheckEndChain/Reachable/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="104" org.eventb.core.psManual="false"/>
+</org.eventb.core.psFile>

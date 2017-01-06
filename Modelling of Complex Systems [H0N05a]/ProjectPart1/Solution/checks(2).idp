@@ -1,0 +1,412 @@
+/*contains our checks*/
+vocabulary checkVoc{
+	extern vocabulary reversiVoc
+	
+	//COPIES OF STUFF GIVEN TO STUDENTS
+	check_at(Time,position,player_color)	
+	check_c_at(Time,position,player_color)	
+	check_cn_at(Time,position,player_color)	
+	check_turn(Time,player_color)
+
+	check_winner(Time,player_color)
+	check_possible(Time,position) 
+	check_attacked(Time,position)
+
+	check_gameOver(Time) // The game ended
+	//NOT GIVEN TO STUDENTS
+
+	aux_someMovePossible(Time) // some move is possible
+	aux_empty(Time,position) //this square is empty
+
+
+	aux_nextSq(position,direction,position)
+
+	aux_someVisible(Time,position,direction,player_color)
+	//At Time, If I look from position in direction, than I can find a stone with color color without every passing an empty square. 
+
+	aux_attackedIn(Time,position,direction)
+	//position is attacked with a directional attack
+
+	aux_sameColor(Time,position,position) //these two have the same color now
+	aux_other(player_color):player_color
+}
+
+theory checkDefs: checkVoc{
+ 	//We will only execute our checks on valid initial positions:
+ 	!p[position]: #{c[player_color]: init_at(p,c)} =< 1. 
+
+	//Turns alternate. They keep on alternating as well after the game is finished. 
+	{
+		check_turn(Start,black).
+		! t[Time] c: check_turn(Next(t),c) <- check_turn(t,aux_other(c)).
+	}
+	//Definition of a helper predicate: can I reach (from p) using only positions with stones on them a stone of color c? 
+	{
+		! t p d c p': aux_someVisible(t,p,d,c) <- aux_nextSq(p,d,p') & at(t,p',c). 
+		! t p d c p': aux_someVisible(t,p,d,c) <- aux_nextSq(p,d,p') & ~aux_empty(t,p') & aux_someVisible(t,p',d,c).
+	}
+	
+	//The above helper predicate allows to define possible moves. A move is possible if it would strike at least one other stone. 	
+	{
+		! t p: check_possible(t,p) <-
+			aux_empty(t,p) & 
+			? c: 
+			turn(t,c)
+			& ?d p':
+				aux_someVisible(t,p,d,c) & 
+				aux_nextSq(p,d,p') & 
+				at(t,p',aux_other(c)).
+	 }
+	 
+	 {
+		!t: aux_someMovePossible(t) <- ?p: possible(t,p).
+	}
+	
+	//Definition of the attacked predicate: a stone is attacked if it is a member of a group trapped between the newly played stone and another stone of that color
+	{
+		! c played d p t : aux_attackedIn(t,p,d) <- 
+			play(t,played,c) &
+			aux_nextSq(played,d,p) & 
+			at(t,p,aux_other(c)) & 
+			aux_someVisible(t,p,d,c).
+		!  p' d p t : aux_attackedIn(t,p,d) <-
+			aux_attackedIn(t,p',d) & 
+			aux_nextSq(p',d,p) & 
+			aux_sameColor(t,p,p').
+			
+		! t p:check_attacked(t,p) <- ? d: aux_attackedIn(t,p,d).
+	}
+	
+	//Given the attacked predicate, we can define causality: it is caused that attacked stones swap color. 
+	{
+		! t p c: check_c_at(t,p,c) <- play(t,p,c). 
+		! t p c: check_c_at(t,p,c) <- attacked(t,p) & at(t,p,aux_other(c)).
+		
+		! t p c: check_cn_at(t,p,c) <- attacked(t,p) & at(t,p,c).
+	}
+	
+	//Given the caused predicates, we define the state (at) with the standard LTC rules
+	
+	{
+		! p c: check_at(Start,p,c) <- init_at(p,c).
+		! p c t: check_at(Next(t),p,c) <- at(t,p,c) & ~cn_at(t,p,c). 
+		! t p c: check_at(Next(t),p,c) <- c_at(t,p,c). 
+	}
+	
+	//The game is over if no moves are possible for two consequetive turns. The game stays over afterwards
+	{
+		! t: check_gameOver(Next(t)) <- ~aux_someMovePossible(t) & ~aux_someMovePossible(Next(t)).
+		! t: check_gameOver(Next(t)) <- check_gameOver(t).
+	}
+	
+	
+	//If the game is over, a winner can be determined by counting the stones. 
+	{
+		! t c: check_winner(t,c) <- gameOver(t) & #{p[position]: at(t,p,c)} >= #{p[position]: at(t,p,aux_other(c))}.
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		
+	
+	//HELPER PREDICATES:
+	
+	{
+		//compute the next square in a given direction from a given square (if it exists)
+		!x[xco] y[yco]: aux_nextSq(pos(x,y),U,pos(x,y+1)).
+		!x[xco] y[yco]: aux_nextSq(pos(x,y),UR,pos(x+1,y+1)).
+		!x[xco] y[yco]: aux_nextSq(pos(x,y),R,pos(x+1,y)).
+		!x[xco] y[yco]: aux_nextSq(pos(x,y),DR,pos(x+1,y-1)).
+		!x[xco] y[yco]: aux_nextSq(pos(x,y),D,pos(x,y-1)).
+		!x[xco] y[yco]: aux_nextSq(pos(x,y),DL,pos(x-1,y-1)).
+		!x[xco] y[yco]: aux_nextSq(pos(x,y),L,pos(x-1,y)).
+		!x[xco] y[yco]: aux_nextSq(pos(x,y),UL,pos(x-1,y+1)).
+		
+			
+		//A function that swaps the two colors
+		aux_other(black) = white.
+		aux_other(white) = black.
+		}
+	
+
+	{
+		//A slot is empty if there is no stone on it
+		! t p: aux_empty(t,p) <- ~?c: at(t,p,c).
+		//Two positions have the same color if they both have a stone and the stones have the same color 
+		! t p p' c: aux_sameColor(t,p,p') <- at(t,p,c) & at(t,p',c).
+	}
+	
+
+	
+}
+
+
+theory unsat_1: checkVoc{
+	// obligation to play if possible
+	~(! t: aux_someMovePossible(t) => ?1 p c: play(t,p,c)).
+}
+
+theory unsat_2: checkVoc{
+	
+	// obligation to play if possible
+	~(! t p c: play(t,p,c) => possible(t,p)).
+}
+
+theory unsat_3   : checkVoc{
+ ? t p c: ~( check_c_at(t,p,c) <=> 	c_at(t,p,c)).
+}
+
+theory unsat_4   : checkVoc{
+ ? t p c: ~( check_cn_at(t,p,c) <=> 	cn_at(t,p,c)).
+}
+
+theory unsat_5   : checkVoc{
+	//I only check that the "turn" predicate conforms to mine on time points before the game is over. Afterwards, turn could be implemented differently (I don"t care)
+	? t c p: check_possible(t,p) & ~(turn(t,c)  <=> check_turn(t,c)).
+
+//Only check situations in which the initial turn matches ours.
+	turn(0,c) <=> check_turn(0,c).
+	
+
+}
+theory unsat_6   : checkVoc{
+	?t c: ~(check_winner(t,c) <=> winner(t,c)).
+
+}
+theory unsat_7   : checkVoc{
+	?t p: ~(check_possible(t,p) <=> possible(t,p)).
+}
+theory unsat_8   : checkVoc{
+	?t p: ~(check_attacked(t,p) <=> attacked(t,p)).
+}
+
+theory unsat_9   : checkVoc{
+	?t: ~(check_gameOver(t) <=> gameOver(t)).
+}
+
+theory unsat_10   : checkVoc{
+ 	~(!t p c: play(t,p,c) => turn(t,c)).
+}
+
+theory sat_1 : checkVoc{
+? t: Time(t+2)  &  (?p c: play(t,p,c)) & (~?p c:play(t+1,p,c)) & (?p c: play(t+2,p,c)).
+
+}
+
+theory sat_2 : checkVoc{
+ //This is verification 5
+	?t: ! p c: at(t,p,c) => c=white.
+}
+
+theory sat_3 : checkVoc{
+ //This is verification 6
+ 	?t:winner(t,black).
+
+}
+
+theory sat_4 : checkVoc{
+ //This is verification 5, but with an extra non-empty demand
+	?t: ! p c: at(t,p,c) => c=white.
+	? p c t: at(t,p,c).
+}
+
+theory sat_5 : checkVoc{
+	? p c: play(5,p,c).
+
+}
+
+theory sat_6 : checkVoc{
+	? t: gameOver(t) & #{p[position]: at(t,p,white) } = #{p[position]: at(t,p,black) } .
+
+}
+
+theory sat_7 : checkVoc{
+	? t[Time]: Time(t+1) & #{p[position]: ~(at(t,p,white) <=> at(t+1,p,white))} > 3.
+
+}
+
+theory sat_8 : checkVoc{
+
+}
+
+procedure doourchecks(){
+/*THE UNSAT THEORIES*/
+	theories = {
+		{unsat_1, "Player passes while there are possible moves"},
+{unsat_2, "Player plays on impossible location"},
+//We do not test c_at and cn_at since it might be the case that students define the time jump on a different moment
+//{unsat_3 ,"c_at is badly defined"},
+//{unsat_4 ,"cn_at is badly defined"},
+{unsat_5 ,"turn is badly defined"},
+{unsat_6 ,"winner is badly defined"},
+{unsat_7 ,"possible is badly defined"},
+{unsat_8 ,"attacked is badly defined"},
+{unsat_9 ,"gameOver is badly defined"},
+{unsat_10 ,"play when it is not your turn"},
+	}
+		
+	MaxPoints = 0
+	TotalPoints = 0 
+	
+	MaxUNSATPointsTheo = 0
+	TotalUNSATPointsTheo = 0 
+		
+	basetheo = merge(reversiTheory, checkDefs)
+	for i = 1, #theories do
+		MaxUNSATPointsTheo = MaxUNSATPointsTheo + 1
+		local th = merge(theories[i][1],basetheo)
+		local issat = sat(th,testStruc) or sat(th,testStrucLong)
+		if issat then 
+			print("---FAIL: "..getname(theories[i][1])..": "..theories[i][2])
+		else
+			//print("+verification of "..getname(theories[i]).." succeeded! ")
+			TotalUNSATPointsTheo = TotalUNSATPointsTheo + 1
+		end
+	end
+
+	print("SCORE(UNSATS):  "..TotalUNSATPointsTheo)
+	print("MaxPoints(UNSATS):  "..MaxUNSATPointsTheo)
+
+	MaxSATPointsTheo = 0
+	TotalSATPointsTheo = 0 
+
+theories = {
+{ sat_1, "A player can pass before the game is finished " },
+{ sat_2, "Get in a postiion with only white on the board " },
+{ sat_3, "Black can win " },
+{ sat_4, "Get in a non-empty postiion with only white on the board " },
+{ sat_5, "A game can last for more than 7 turns " },
+{ sat_6, "The game can end in a draw " },
+{ sat_7, "A player can gain 4 stones in one turn " },
+}
+
+	for i = 1, #theories do
+		MaxSATPointsTheo = MaxSATPointsTheo + 1
+		local th = merge(theories[i][1],reversiTheory)
+		local issat = sat(th,testStruc) and sat(th,testStrucLong)
+		if not issat then 
+			print("---FAIL: "..getname(theories[i][1])..": "..theories[i][2])
+		else
+			//print("+verification of "..getname(theories[i]).." succeeded! ")
+			TotalSATPointsTheo = TotalSATPointsTheo + 1
+		end
+	end
+
+	print("SCORE(Theo: SATS):  "..TotalSATPointsTheo)
+	print("MaxPoints(Theo: SATS):  "..MaxSATPointsTheo)
+
+Satstructures= {
+		{Sat1,		"Sat1"},
+		{Sat2,		"Sat2"},
+}
+	MaxSATPointsStruc = 0
+	TotalSATPointsStruc = 0 
+for i = 1, #Satstructures do
+		MaxSATPointsStruc = MaxSATPointsStruc + 1
+		local issat = sat(reversiTheory,Satstructures[i][1])
+		if not issat then 
+			print("---FAIL: STUCTURE"..Satstructures[i][2])
+		else
+			//print("+verification of "..getname(theories[i]).." succeeded! ")
+			TotalSATPointsStruc = TotalSATPointsStruc + 1
+		end
+	end
+
+	print("SCORE(Struc: SATS):  "..TotalSATPointsStruc)
+	print("MaxPoints(Struc: SATS):  "..MaxSATPointsStruc)
+
+	UnsatScore = 6 - MaxUNSATPointsTheo + TotalUNSATPointsTheo
+	SatScore = 6 -(MaxSATPointsStruc + MaxSATPointsTheo) + (TotalSATPointsTheo + TotalSATPointsStruc) 
+	
+	print("--------------------------------")
+	print("--------------------------------")
+	print("--------------------------------")
+	print(">> Unsatscore: "..UnsatScore.." / 6")
+	print(">> SatScore: "..SatScore.." / 6")
+	print("--------------------------------")
+	print("--------------------------------")
+	print("--------------------------------")
+	if UnsatScore > SatScore then
+		print(">> FINALE SCORE: "..SatScore.." / 6")
+	else
+		print(">> FINALE SCORE: "..UnsatScore.." / 6")
+	end
+
+}
+
+
+structure testStrucLong:reversiVoc{
+//this is an example board you can play around with
+Time = {0..10}
+Start = 0
+Next = {0->1;1->2;2->3;3->4;4->5;5->6;6->7;7->8;8->9;9->10;}
+ xco = {1..8}
+ yco = {1}
+}
+
+
+structure testStruc:reversiVoc{
+//this is an example board you can play around with
+Time = {0..10}
+Start = 0
+Next = {0->1;1->2;2->3;3->4;4->5;5->6;6->7;7->8;8->9;9->10;}
+ xco = {1..3}
+ yco = {1..3}
+}
+
+structure Sat1:reversiVoc{
+//this is an example board you can play around with
+Time = {0..10}
+Start = 0
+Next = {0->1;1->2;2->3;3->4;4->5;5->6;6->7;7->8;8->9;9->10;}
+ xco = {1..3}
+ yco = {1..3}
+  init_at = {
+ 	pos(2,2),white(); 
+ 	pos(2,3),black(); 
+ 	pos(3,2),black(); 
+ 	pos(3,3),white(); 
+ }
+ at<ct> = { 
+ 	10, pos(1,3), white();
+ 	10, pos(2,3), white();
+ 	10, pos(3,3), white();
+ 	10, pos(2,2), white();
+ 	10, pos(3,2), white();
+ 	10, pos(1,3), white();
+ 	10, pos(1,1), white();
+ 	10, pos(2,1), white();
+ 	10, pos(3,1), white();
+}
+}
+
+structure Sat2:reversiVoc{
+//this is an example board you can play around with
+Time = {0..10}
+Start = 0
+Next = {0->1;1->2;2->3;3->4;4->5;5->6;6->7;7->8;8->9;9->10;}
+ xco = {1..3}
+ yco = {1..3}
+  init_at = {
+ 	pos(2,2),black(); 
+ 	pos(3,3),white(); 
+ }
+ at<ct> = { 
+ 	10, pos(2,2),white();  	10, pos(1,1),white();  	10, pos(3,3),white(); 
+	}
+	
+	
+ at<cf> = { 
+ 	10, pos(1,2),white();  	10, pos(2,1),white();  	10, pos(2,3),white(); 
+	} 	
+}

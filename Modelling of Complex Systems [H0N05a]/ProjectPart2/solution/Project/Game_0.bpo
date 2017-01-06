@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="141">
+<org.eventb.core.poPredicateSet name="CTXHYP" org.eventb.core.poStamp="125">
+<org.eventb.core.poIdentifier name="Colours" org.eventb.core.type="ℙ(Colours)"/>
+<org.eventb.core.poIdentifier name="Directions" org.eventb.core.type="ℙ(Directions)"/>
+<org.eventb.core.poIdentifier name="Black" org.eventb.core.type="Colours"/>
+<org.eventb.core.poIdentifier name="Down" org.eventb.core.type="Directions"/>
+<org.eventb.core.poIdentifier name="DownLeft" org.eventb.core.type="Directions"/>
+<org.eventb.core.poIdentifier name="DownRight" org.eventb.core.type="Directions"/>
+<org.eventb.core.poIdentifier name="Left" org.eventb.core.type="Directions"/>
+<org.eventb.core.poIdentifier name="Neighbour" org.eventb.core.type="ℙ(ℤ×ℤ×Directions×ℤ×ℤ)"/>
+<org.eventb.core.poIdentifier name="Next" org.eventb.core.type="ℙ(Colours×Colours)"/>
+<org.eventb.core.poIdentifier name="NextTo" org.eventb.core.type="ℙ(ℤ×ℤ×ℤ×ℤ)"/>
+<org.eventb.core.poIdentifier name="Positions" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+<org.eventb.core.poIdentifier name="Right" org.eventb.core.type="Directions"/>
+<org.eventb.core.poIdentifier name="Up" org.eventb.core.type="Directions"/>
+<org.eventb.core.poIdentifier name="UpLeft" org.eventb.core.type="Directions"/>
+<org.eventb.core.poIdentifier name="UpRight" org.eventb.core.type="Directions"/>
+<org.eventb.core.poIdentifier name="White" org.eventb.core.type="Colours"/>
+<org.eventb.core.poIdentifier name="xCoords" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.poIdentifier name="xDir" org.eventb.core.type="ℙ(Directions×ℤ)"/>
+<org.eventb.core.poIdentifier name="xOf" org.eventb.core.type="ℙ(ℤ×ℤ×ℤ)"/>
+<org.eventb.core.poIdentifier name="yCoords" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.poIdentifier name="yDir" org.eventb.core.type="ℙ(Directions×ℤ)"/>
+<org.eventb.core.poIdentifier name="yOf" org.eventb.core.type="ℙ(ℤ×ℤ×ℤ)"/>
+<org.eventb.core.poPredicate name="Directiont" org.eventb.core.predicate="xCoords=1 ‥ 4" org.eventb.core.source="/Project/Game.buc|org.eventb.core.contextFile#Game|org.eventb.core.axiom#)"/>
+<org.eventb.core.poPredicate name="Directionu" org.eventb.core.predicate="yCoords=1 ‥ 4" org.eventb.core.source="/Project/Game.buc|org.eventb.core.contextFile#Game|org.eventb.core.axiom#*"/>
+<org.eventb.core.poPredicate name="Directionv" org.eventb.core.predicate="partition(Colours,{White},{Black})" org.eventb.core.source="/Project/Game.buc|org.eventb.core.contextFile#Game|org.eventb.core.axiom#2"/>
+<org.eventb.core.poPredicate name="Directionw" org.eventb.core.predicate="Positions=xCoords × yCoords" org.eventb.core.source="/Project/Game.buc|org.eventb.core.contextFile#Game|org.eventb.core.axiom#7"/>
+<org.eventb.core.poPredicate name="Directionx" org.eventb.core.predicate="xOf={p⦂ℤ×ℤ,x⦂ℤ·p∈Positions∧(∃y⦂ℤ·y∈yCoords∧p=x ↦ y) ∣ p ↦ x}" org.eventb.core.source="/Project/Game.buc|org.eventb.core.contextFile#Game|org.eventb.core.axiom#:"/>
+<org.eventb.core.poPredicate name="Directiony" org.eventb.core.predicate="yOf={p⦂ℤ×ℤ,y⦂ℤ·p∈Positions∧(∃x⦂ℤ·x∈xCoords∧p=x ↦ y) ∣ p ↦ y}" org.eventb.core.source="/Project/Game.buc|org.eventb.core.contextFile#Game|org.eventb.core.axiom#axm1"/>
+<org.eventb.core.poPredicate name="Directionz" org.eventb.core.predicate="xOf∈Positions → xCoords" org.eventb.core.source="/Project/Game.buc|org.eventb.core.contextFile#Game|org.eventb.core.axiom#axm5"/>
+<org.eventb.core.poPredicate name="Direction{" org.eventb.core.predicate="Next={White ↦ Black,Black ↦ White}" org.eventb.core.source="/Project/Game.buc|org.eventb.core.contextFile#Game|org.eventb.core.axiom#axm3"/>
+<org.eventb.core.poPredicate name="Direction|" org.eventb.core.predicate="Next∈Colours ⤖ Colours" org.eventb.core.source="/Project/Game.buc|org.eventb.core.contextFile#Game|org.eventb.core.axiom#axm4"/>
+<org.eventb.core.poPredicate name="Direction}" org.eventb.core.predicate="NextTo={x1⦂ℤ,y1⦂ℤ,x2⦂ℤ,y2⦂ℤ·x1∈xCoords∧x2∈xCoords∧y1∈yCoords∧y2∈yCoords∧((x1=x2∧(y1=y2+1∨y1+1=y2))∨(y1=y2∧(x1=x2+1∨x1+1=x2))) ∣ x1 ↦ y1 ↦ x2 ↦ y2}" org.eventb.core.source="/Project/Game.buc|org.eventb.core.contextFile#Game|org.eventb.core.axiom#axm6"/>
+<org.eventb.core.poPredicate name="Direction~" org.eventb.core.predicate="partition(Directions,{Up},{Down},{Left},{Right},{UpLeft},{UpRight},{DownRight},{DownLeft})" org.eventb.core.source="/Project/Game.buc|org.eventb.core.contextFile#Game|org.eventb.core.axiom#axmB"/>
+<org.eventb.core.poPredicate name="Directioo'" org.eventb.core.predicate="xDir={Up ↦ 0,Down ↦ 0,Left ↦ −1,Right ↦ 1,UpLeft ↦ −1,UpRight ↦ 1,DownLeft ↦ −1,DownRight ↦ 1}" org.eventb.core.source="/Project/Game.buc|org.eventb.core.contextFile#Game|org.eventb.core.axiom#axmG"/>
+<org.eventb.core.poPredicate name="Directioo(" org.eventb.core.predicate="yDir={Up ↦ 1,Down ↦ −1,Left ↦ 0,Right ↦ 0,UpLeft ↦ 1,UpRight ↦ 1,DownLeft ↦ −1,DownRight ↦ −1}" org.eventb.core.source="/Project/Game.buc|org.eventb.core.contextFile#Game|org.eventb.core.axiom#axm7"/>
+<org.eventb.core.poPredicate name="Directioo)" org.eventb.core.predicate="xDir∈Directions → {−1,0,1}" org.eventb.core.source="/Project/Game.buc|org.eventb.core.contextFile#Game|org.eventb.core.axiom#axmI"/>
+<org.eventb.core.poPredicate name="Directioo*" org.eventb.core.predicate="yDir∈Directions → {−1,0,1}" org.eventb.core.source="/Project/Game.buc|org.eventb.core.contextFile#Game|org.eventb.core.axiom#axm8"/>
+<org.eventb.core.poPredicate name="Directioo+" org.eventb.core.predicate="Neighbour={x1⦂ℤ,y1⦂ℤ,d⦂Directions,x2⦂ℤ,y2⦂ℤ·(x1∈xCoords∧x2∈xCoords∧y1∈yCoords∧y2∈yCoords∧d∈Directions)∧x1+xDir(d)=x2∧y1+yDir(d)=y2 ∣ x1 ↦ y1 ↦ d ↦ x2 ↦ y2}" org.eventb.core.source="/Project/Game.buc|org.eventb.core.contextFile#Game|org.eventb.core.axiom#axmH"/>
+<org.eventb.core.poPredicate name="Directioo," org.eventb.core.predicate="Neighbour⊆xCoords × yCoords × Directions × xCoords × yCoords" org.eventb.core.source="/Project/Game.buc|org.eventb.core.contextFile#Game|org.eventb.core.axiom#axmJ"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.parentSet="/Project/Game_0.bpo|org.eventb.core.poFile#Game_0|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="125">
+<org.eventb.core.poIdentifier name="CurrentPlayer" org.eventb.core.type="Colours"/>
+<org.eventb.core.poIdentifier name="FilledPos" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+<org.eventb.core.poIdentifier name="GameOver" org.eventb.core.type="BOOL"/>
+<org.eventb.core.poIdentifier name="PreviousPassed" org.eventb.core.type="BOOL"/>
+<org.eventb.core.poIdentifier name="Winners" org.eventb.core.type="ℙ(Colours)"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poSequent name="INITIALISATION/FilledPos/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="125">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Project/Game_0.bpo|org.eventb.core.poFile#Game_0|org.eventb.core.poPredicateSet#EVTALLHYPPreviousPassee"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="{2 ↦ 3,3 ↦ 3,2 ↦ 2,3 ↦ 2}⊆Positions" org.eventb.core.source="/Project/Game_0.bum|org.eventb.core.machineFile#Game_0|org.eventb.core.invariant#8"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Project/Game_0.bum|org.eventb.core.machineFile#Game_0|org.eventb.core.event#'"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Project/Game_0.bum|org.eventb.core.machineFile#Game_0|org.eventb.core.invariant#8"/>
+<org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/Project/Game_0.bpo|org.eventb.core.poFile#Game_0|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/Project/Game_0.bpo|org.eventb.core.poFile#Game_0|org.eventb.core.poSequent#INITIALISATION\/FilledPos\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Project/Game_0.bpo|org.eventb.core.poFile#Game_0|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD4"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="INITIALISATION/FilledPos_NotEmpty/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="125">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Project/Game_0.bpo|org.eventb.core.poFile#Game_0|org.eventb.core.poPredicateSet#EVTALLHYPPreviousPassee"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="{2 ↦ 3,3 ↦ 3,2 ↦ 2,3 ↦ 2}≠(∅ ⦂ ℙ(ℤ×ℤ))" org.eventb.core.source="/Project/Game_0.bum|org.eventb.core.machineFile#Game_0|org.eventb.core.invariant#9"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Project/Game_0.bum|org.eventb.core.machineFile#Game_0|org.eventb.core.event#'"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Project/Game_0.bum|org.eventb.core.machineFile#Game_0|org.eventb.core.invariant#9"/>
+<org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/Project/Game_0.bpo|org.eventb.core.poFile#Game_0|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/Project/Game_0.bpo|org.eventb.core.poFile#Game_0|org.eventb.core.poSequent#INITIALISATION\/FilledPos_NotEmpty\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Project/Game_0.bpo|org.eventb.core.poFile#Game_0|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD5"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poPredicateSet name="EVTIDENTPreviousPassee" org.eventb.core.parentSet="/Project/Game_0.bpo|org.eventb.core.poFile#Game_0|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="125">
+<org.eventb.core.poIdentifier name="CurrentPlayer'" org.eventb.core.type="Colours"/>
+<org.eventb.core.poIdentifier name="PreviousPassed'" org.eventb.core.type="BOOL"/>
+<org.eventb.core.poIdentifier name="GameOver'" org.eventb.core.type="BOOL"/>
+<org.eventb.core.poIdentifier name="Winners'" org.eventb.core.type="ℙ(Colours)"/>
+<org.eventb.core.poIdentifier name="FilledPos'" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPPreviousPassee" org.eventb.core.parentSet="/Project/Game_0.bpo|org.eventb.core.poFile#Game_0|org.eventb.core.poPredicateSet#EVTIDENTPreviousPassee" org.eventb.core.poStamp="125"/>
+<org.eventb.core.poSequent name="Move/FilledPos/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="139">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Project/Game_0.bpo|org.eventb.core.poFile#Game_0|org.eventb.core.poPredicateSet#EVTALLHYPPreviousPassef"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="FilledPos∪{pos}⊆Positions" org.eventb.core.source="/Project/Game_0.bum|org.eventb.core.machineFile#Game_0|org.eventb.core.invariant#8"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Project/Game_0.bum|org.eventb.core.machineFile#Game_0|org.eventb.core.event#."/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Project/Game_0.bum|org.eventb.core.machineFile#Game_0|org.eventb.core.invariant#8"/>
+<org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/Project/Game_0.bpo|org.eventb.core.poFile#Game_0|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Project/Game_0.bpo|org.eventb.core.poFile#Game_0|org.eventb.core.poSequent#Move\/FilledPos\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Project/Game_0.bpo|org.eventb.core.poFile#Game_0|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD4"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="Move/FilledPos_NotEmpty/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="139">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Project/Game_0.bpo|org.eventb.core.poFile#Game_0|org.eventb.core.poPredicateSet#EVTALLHYPPreviousPassef"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="FilledPos∪{pos}≠(∅ ⦂ ℙ(ℤ×ℤ))" org.eventb.core.source="/Project/Game_0.bum|org.eventb.core.machineFile#Game_0|org.eventb.core.invariant#9"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Project/Game_0.bum|org.eventb.core.machineFile#Game_0|org.eventb.core.event#."/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Project/Game_0.bum|org.eventb.core.machineFile#Game_0|org.eventb.core.invariant#9"/>
+<org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/Project/Game_0.bpo|org.eventb.core.poFile#Game_0|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Project/Game_0.bpo|org.eventb.core.poFile#Game_0|org.eventb.core.poSequent#Move\/FilledPos_NotEmpty\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Project/Game_0.bpo|org.eventb.core.poFile#Game_0|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD5"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="Move/concludes_players_turn/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of action" org.eventb.core.poStamp="139">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Project/Game_0.bpo|org.eventb.core.poFile#Game_0|org.eventb.core.poPredicateSet#EVTALLHYPPreviousPassef"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="CurrentPlayer∈dom(Next)∧Next∈Colours ⇸ Colours" org.eventb.core.source="/Project/Game_0.bum|org.eventb.core.machineFile#Game_0|org.eventb.core.event#.|org.eventb.core.action#)"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Project/Game_0.bum|org.eventb.core.machineFile#Game_0|org.eventb.core.event#.|org.eventb.core.action#)"/>
+<org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/Project/Game_0.bpo|org.eventb.core.poFile#Game_0|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Project/Game_0.bpo|org.eventb.core.poFile#Game_0|org.eventb.core.poPredicateSet#EVTALLHYPPreviousPassef"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poPredicateSet name="EVTIDENTPreviousPassef" org.eventb.core.parentSet="/Project/Game_0.bpo|org.eventb.core.poFile#Game_0|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="139">
+<org.eventb.core.poIdentifier name="pos" org.eventb.core.type="ℤ×ℤ"/>
+<org.eventb.core.poIdentifier name="CurrentPlayer'" org.eventb.core.type="Colours"/>
+<org.eventb.core.poIdentifier name="PreviousPassed'" org.eventb.core.type="BOOL"/>
+<org.eventb.core.poIdentifier name="FilledPos'" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPPreviousPassef" org.eventb.core.parentSet="/Project/Game_0.bpo|org.eventb.core.poFile#Game_0|org.eventb.core.poPredicateSet#EVTIDENTPreviousPassef" org.eventb.core.poStamp="139">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="pos∉FilledPos" org.eventb.core.source="/Project/Game_0.bum|org.eventb.core.machineFile#Game_0|org.eventb.core.event#.|org.eventb.core.guard#("/>
+<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="GameOver=FALSE" org.eventb.core.source="/Project/Game_0.bum|org.eventb.core.machineFile#Game_0|org.eventb.core.event#.|org.eventb.core.guard#+"/>
+<org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="pos∈Positions" org.eventb.core.source="/Project/Game_0.bum|org.eventb.core.machineFile#Game_0|org.eventb.core.event#.|org.eventb.core.guard#,"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poSequent name="Pass/signifies_end_player_turn/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of action" org.eventb.core.poStamp="139">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Project/Game_0.bpo|org.eventb.core.poFile#Game_0|org.eventb.core.poPredicateSet#EVTALLHYPPreviousPasseg"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="CurrentPlayer∈dom(Next)∧Next∈Colours ⇸ Colours" org.eventb.core.source="/Project/Game_0.bum|org.eventb.core.machineFile#Game_0|org.eventb.core.event#\/|org.eventb.core.action#'"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Project/Game_0.bum|org.eventb.core.machineFile#Game_0|org.eventb.core.event#\/|org.eventb.core.action#'"/>
+<org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/Project/Game_0.bpo|org.eventb.core.poFile#Game_0|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Project/Game_0.bpo|org.eventb.core.poFile#Game_0|org.eventb.core.poPredicateSet#EVTALLHYPPreviousPasseg"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poPredicateSet name="EVTIDENTPreviousPasseg" org.eventb.core.parentSet="/Project/Game_0.bpo|org.eventb.core.poFile#Game_0|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="137">
+<org.eventb.core.poIdentifier name="CurrentPlayer'" org.eventb.core.type="Colours"/>
+<org.eventb.core.poIdentifier name="PreviousPassed'" org.eventb.core.type="BOOL"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPPreviousPasseg" org.eventb.core.parentSet="/Project/Game_0.bpo|org.eventb.core.poFile#Game_0|org.eventb.core.poPredicateSet#EVTIDENTPreviousPasseg" org.eventb.core.poStamp="139">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="GameOver=FALSE" org.eventb.core.source="/Project/Game_0.bum|org.eventb.core.machineFile#Game_0|org.eventb.core.event#\/|org.eventb.core.guard#)"/>
+<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="PreviousPassed=FALSE" org.eventb.core.source="/Project/Game_0.bum|org.eventb.core.machineFile#Game_0|org.eventb.core.event#\/|org.eventb.core.guard#+"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poSequent name="EndGame/decides_the_winner/FIS" org.eventb.core.accurate="true" org.eventb.core.poDesc="Feasibility of action" org.eventb.core.poStamp="141">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Project/Game_0.bpo|org.eventb.core.poFile#Game_0|org.eventb.core.poPredicateSet#EVTALLHYPPreviousPasseh"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="ℙ(Colours) ∖ {∅ ⦂ ℙ(Colours)}≠(∅ ⦂ ℙ(ℙ(Colours)))" org.eventb.core.source="/Project/Game_0.bum|org.eventb.core.machineFile#Game_0|org.eventb.core.event#3|org.eventb.core.action#)"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Project/Game_0.bum|org.eventb.core.machineFile#Game_0|org.eventb.core.event#3|org.eventb.core.action#)"/>
+<org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/Project/Game_0.bpo|org.eventb.core.poFile#Game_0|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Project/Game_0.bpo|org.eventb.core.poFile#Game_0|org.eventb.core.poPredicateSet#EVTALLHYPPreviousPasseh"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poPredicateSet name="EVTIDENTPreviousPasseh" org.eventb.core.parentSet="/Project/Game_0.bpo|org.eventb.core.poFile#Game_0|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="141">
+<org.eventb.core.poIdentifier name="GameOver'" org.eventb.core.type="BOOL"/>
+<org.eventb.core.poIdentifier name="Winners'" org.eventb.core.type="ℙ(Colours)"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPPreviousPasseh" org.eventb.core.parentSet="/Project/Game_0.bpo|org.eventb.core.poFile#Game_0|org.eventb.core.poPredicateSet#EVTIDENTPreviousPasseh" org.eventb.core.poStamp="141">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="GameOver=FALSE" org.eventb.core.source="/Project/Game_0.bum|org.eventb.core.machineFile#Game_0|org.eventb.core.event#3|org.eventb.core.guard#'"/>
+<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="PreviousPassed=TRUE" org.eventb.core.source="/Project/Game_0.bum|org.eventb.core.machineFile#Game_0|org.eventb.core.event#3|org.eventb.core.guard#*"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPPreviousPassei" org.eventb.core.parentSet="/Project/Game_0.bpo|org.eventb.core.poFile#Game_0|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="138">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="GameOver=TRUE" org.eventb.core.source="/Project/Game_0.bum|org.eventb.core.machineFile#Game_0|org.eventb.core.event#4|org.eventb.core.guard#'"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/Project/Game_0.bpo|org.eventb.core.poFile#Game_0|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="125">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="CurrentPlayer∈Colours" org.eventb.core.source="/Project/Game_0.bum|org.eventb.core.machineFile#Game_0|org.eventb.core.invariant#+"/>
+<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="PreviousPassed∈BOOL" org.eventb.core.source="/Project/Game_0.bum|org.eventb.core.machineFile#Game_0|org.eventb.core.invariant#0"/>
+<org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="GameOver∈BOOL" org.eventb.core.source="/Project/Game_0.bum|org.eventb.core.machineFile#Game_0|org.eventb.core.invariant#2"/>
+<org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="Winners⊆Colours" org.eventb.core.source="/Project/Game_0.bum|org.eventb.core.machineFile#Game_0|org.eventb.core.invariant#6"/>
+<org.eventb.core.poPredicate name="PRD4" org.eventb.core.predicate="FilledPos⊆Positions" org.eventb.core.source="/Project/Game_0.bum|org.eventb.core.machineFile#Game_0|org.eventb.core.invariant#8"/>
+<org.eventb.core.poPredicate name="PRD5" org.eventb.core.predicate="FilledPos≠(∅ ⦂ ℙ(ℤ×ℤ))" org.eventb.core.source="/Project/Game_0.bum|org.eventb.core.machineFile#Game_0|org.eventb.core.invariant#9"/>
+</org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>

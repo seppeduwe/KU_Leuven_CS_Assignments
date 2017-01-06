@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.psFile>
+<org.eventb.core.psStatus name="Board_Dom/THM" org.eventb.core.confidence="1000" org.eventb.core.poStamp="193" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="INITIALISATION/Board_Type/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="193" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="INITIALISATION/CurrentMove/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="193" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="INITIALISATION/Captured/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="193" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="INITIALISATION/NeedsChecking/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="193" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="INITIALISATION/currentRestricted/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="193" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="INITIALISATION/currentRestricted1/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="193" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="INITIALISATION/NeverEmpty/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="193" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="INITIALISATION/Reachable/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="193" org.eventb.core.psManual="false"/>
+</org.eventb.core.psFile>

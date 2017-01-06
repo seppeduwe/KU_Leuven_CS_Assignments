@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.psFile>
+<org.eventb.core.psStatus name="INITIALISATION/FilledPos/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="125" org.eventb.core.psBroken="true" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="INITIALISATION/FilledPos_NotEmpty/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="125" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="Move/FilledPos/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="139" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="Move/FilledPos_NotEmpty/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="139" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="Move/concludes_players_turn/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="139" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="Pass/signifies_end_player_turn/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="139" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="EndGame/decides_the_winner/FIS" org.eventb.core.confidence="1000" org.eventb.core.poStamp="141" org.eventb.core.psManual="false"/>
+</org.eventb.core.psFile>

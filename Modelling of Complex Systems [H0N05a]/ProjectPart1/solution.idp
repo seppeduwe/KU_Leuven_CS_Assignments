@@ -1,0 +1,340 @@
+/*
+Skeleton for reversi
+*/
+
+
+
+
+vocabulary reversiVoc{
+	type Time isa nat
+    Start : Time
+    partial Next(Time) : Time
+    
+    //Coordinates
+	type xco isa int
+	type yco isa int
+	type position constructed from {pos(xco,yco)}
+	
+	//directions can be useful to reason with
+	type direction constructed from {U,UR,R,DR,D,DL,L,UL}
+	
+	//The two colors in the game
+	type player_color constructed from {black,white}
+	
+	//at(t,p,c) holds if at timepoint t, there is a stone of color c on position p
+	at(Time,position,player_color)	
+	
+	//init- and cause predicates for at
+	init_at(position,player_color)
+	c_at(Time,position,player_color)	
+	cn_at(Time,position,player_color)	
+	
+	//turn(t,c) holds if it is the turn of the player playing c at time point t. This should always alternate. 
+	turn(Time,player_color)
+	
+	//play(t,p,c) holds if at time point t a stone of color c is added to position p
+	play(Time,position,player_color)
+	
+	//winner(t,c) holds if the player with color c has won the game at time point t (or at some earlier point in time)	
+	winner(Time,player_color)
+	
+	//possible(t,p) holds if it is allowed to play a stone on position p at time t. 
+	possible(Time,position) 
+	
+	//attacked(t,p) holds iff the stone on position p is attacked by the current move 
+	attacked(Time,position)
+	
+	// The game ended
+	gameOver(Time) 
+	
+	//YOU WILL NEED EXTRA PREDICATES. Put them here. 	
+    i_turn(player_color)   
+ 	//Discs with a direction
+	inDirection(position,position,direction)
+    //Discs on a line between 2 positions
+    between(position,position,position)
+    //Trapped discs (with player_color)
+    discsTrapped(Time,position,position,position,player_color)
+    //If player can't play, we say that the player passes.
+    passes(Time,player_color)
+}
+
+theory reversiTheory: reversiVoc{
+	//Example constraint: there can be at most one color of stone at each location:
+	! t[Time] p[position]: #{c[player_color]:at(t,p,c)} =< 1.
+       
+     /****************
+     *   Directions  *
+     ****************/
+    {
+		//Left
+        ! x1[xco],x2[xco],y1[yco],y2[yco]: inDirection(pos(x1,y1),pos(x2,y1),L) <- x1>x2.  
+        //Right
+        ! x1[xco],x2[xco],y1[yco],y2[yco]: inDirection(pos(x1,y1),pos(x2,y1),R) <- x1<x2.   
+        //Up
+        ! x1[xco],x2[xco],y1[yco],y2[yco]: inDirection(pos(x1,y1),pos(x1,y2),D) <- y1>y2.  
+        //Down
+        ! x1[xco],x2[xco],y1[yco],y2[yco]: inDirection(pos(x1,y1),pos(x1,y2),U) <- y1<y2.  
+        //Left-Down
+        ! x1[xco],x2[xco],y1[yco],y2[yco]: inDirection(pos(x1,y1),pos(x2,y2),DL) <- inDirection(pos(x1,y1),pos(x1,y2),D) & inDirection(pos(x1,y1),pos(x2,y1),L) & abs(x1-x2) = abs(y1-y2).  
+        //Left-Up
+        ! x1[xco],x2[xco],y1[yco],y2[yco]: inDirection(pos(x1,y1),pos(x2,y2),UL) <- inDirection(pos(x1,y1),pos(x1,y2),U) & inDirection(pos(x1,y1),pos(x2,y1),L) & abs(x1-x2) = abs(y1-y2).   
+        //Right-Down
+        ! x1[xco],x2[xco],y1[yco],y2[yco]: inDirection(pos(x1,y1),pos(x2,y2),DR) <- inDirection(pos(x1,y1),pos(x1,y2),D) & inDirection(pos(x1,y1),pos(x2,y1),R) & abs(x1-x2) = abs(y1-y2).   
+        //Right-Up
+        ! x1[xco],x2[xco],y1[yco],y2[yco]: inDirection(pos(x1,y1),pos(x2,y2),UR) <- inDirection(pos(x1,y1),pos(x1,y2),U) & inDirection(pos(x1,y1),pos(x2,y1),R) & abs(x1-x2) = abs(y1-y2).          
+    }
+    
+     /****************
+     * Discs between *
+     ****************/
+    {
+        ! pos1[position],pos2[position],pos3[position] : between(pos1,pos2,pos3) <-  
+        //d2 and d3 are on the same horizontal, vertical or diagonal line on the board.
+        //d1 is in between d2 and d3 on that line.
+        ((inDirection(pos2,pos1,L) & inDirection(pos3,pos1,R)) | 
+        (inDirection(pos2,pos1,U) & inDirection(pos3,pos1,D)) | 
+        (inDirection(pos2,pos1,DL) & inDirection(pos3,pos1,UR)) | 
+        (inDirection(pos2,pos1,DR) & inDirection(pos3,pos1,UL))).
+    }
+        
+     /****************
+     * Traped discs  *
+     ****************/
+    {
+    	! t[Time],pos1[position],pos2[position],pos3[position],col1[player_color],col2[player_color] : 
+        discsTrapped(t,pos1,pos2,pos3,col2) <-     
+        //d2 and d3 are on the same horizontal, vertical or diagonal line on the board.
+        //d1 is in between d2 and d3 on that line.
+        between(pos1,pos2,pos3) &
+		//all positions in between d2 and d3 are occupied by a disc the same color as d1.
+        ! posBetween[position] : between(posBetween,pos2,pos3) => at(t,posBetween,col2) & at(t,pos1,col2).
+    }
+        
+     /****************
+     *     Board     *
+     ****************/  
+    {
+        //Set up initial board
+		! pos[position],col[player_color]: at(Start,pos,col) <- init_at(pos,col).
+        //Successor State Action Axiom & Inertia
+    	! t[Time],pos[position],col[player_color]: at(Next(t),pos,col) <- c_at(t,pos,col).
+    	! t[Time],pos[position],col[player_color]: at(Next(t),pos,col) <- at(t,pos,col) & ~cn_at(t,pos,col).
+
+        //Expressing causations  
+		! t[Time],pos[position],col[player_color]: c_at(t,pos,col) <- attacked(t,pos) & turn(t,col).
+        ! t[Time],pos[position],col[player_color]: c_at(t,pos,col) <- play(t,pos,col).
+        // Invert color
+        ! t[Time],pos[position],col1[player_color],col2[player_color]: cn_at(t,pos,col2) <- 
+        												attacked(t, pos) & turn(t,col1) & col1~=col2.
+    } 
+    //Preconditions
+    //Get only one play each time.
+    ! t1[Time],t2[Time],pos1[position],pos2[position],col[player_color]: play(t1,pos1,col) & play(t2,pos2,col) &
+    																	t1=t2 => pos1=pos2.
+	//Show new disc if attacked or played
+    ! t[Time],pos[position],col[player_color]: c_at(t,pos,col) => attacked(t,pos) | play(t,pos,col).
+    //Play when it is possible and our turn
+    ! t[Time],pos[position],col[player_color]: play(t,pos,col) => possible(t,pos) & turn(t,col).
+
+     /****************
+     *     Turns     *
+     ****************/ 
+    {
+        //Black player start the game
+        i_turn(black)<-.
+    	//Alternating between black and white
+        ! col[player_color] : turn(Start, col) <- i_turn(col).
+        ! t[Time] : turn(Next(t), black) <- turn(t, white).
+        ! t[Time] : turn(Next(t), white) <- turn(t, black).
+	}
+    
+     /****************
+     *    Possible   *
+     ****************/ 
+	{
+    //A player can add a disc of their own color to the board on a given position, 
+    //if there is at least one opposing disc trapped between the newly placed disc and
+	//one disc already on the board. (defined in terms of the at predicate)
+     	! t[Time],pos1[position],pos2[position],pos3[position],col1[player_color],col2[player_color]:
+        							possible(t,pos2) <-  at(t,pos1,col1) & at(t,pos3,col2) & col1~=col2 &
+        							(discsTrapped(t,pos1,pos2,pos3,col1) | discsTrapped(t,pos1,pos3,pos2,col1)) &
+        							turn(t,col2) &  ~at(t,pos2,col1) & ~at(t,pos2,col2).
+    }
+
+     /****************
+     *    Passes     *
+     ****************/ 
+    //If it is player turn and doesn't passes then he have to play. 
+    ! t[Time],col[player_color]: turn(t,col) & (~passes(t,col)) => ? pos[position]: play(t,pos,col).
+    //If it is player turn and there no possible move then he passes. 
+    ! t[Time],col[player_color]: passes(t,col) => turn(t,col) & (~(? pos[position]: possible(t,pos))).
+    
+     /****************
+     *    Attacked   *
+     ****************/ 
+  	{
+    //When a player adds a disc, all opponent's discs that are trapped between
+	//the newly placed disc and any other disc change side (it is defined in terms of the play predicate)
+       ! t[Time],pos1[position],pos2[position],pos3[position],col1[player_color],col2[player_color],col3[player_color]:
+        	attacked(t,pos1) <- (discsTrapped(t,pos1,pos2,pos3,col2) | discsTrapped(t,pos1,pos3,pos2,col2)) &
+        					play(t,pos2,col1) & turn(t,col1) & col1~=col2 & at(t,pos3,col1) & at(t,pos1,col2) &
+        					~(at(t,pos2,col3)).
+    }
+    
+     /****************
+     *  End of game  *
+     ****************/
+    {
+        //The game ends when two players subsequently pass.
+        //if one player has to pass at time point t and
+		//there are no possible moves for the other player at time point t + 1,
+		//then the game is \over" at time points t + 1 and later.
+    	! t[Time],col1[player_color],col2[player_color] : gameOver(Next(t)) <- passes(t,col1) & passes(Next(t),col2) &
+        																col1~=col2.
+    }
+    {
+        //the player with the highest number of discs wins the game
+    	//there is a winner at time t if and only if the game is over at time t
+    	! t[Time],col1[player_color],col2[player_color] : winner(t,col1) <- gameOver(t) &
+        											(#{pos[position]:at(t,pos,col2)} < #{pos[position]:at(t,pos,col1)})
+        											& col2~=col1.
+    }    
+}
+
+structure exampleS:reversiVoc{
+//this is an example board you can play around with
+Time = {0..14}
+Start = 0
+Next = {0->1;1->2;2->3;3->4;4->5;5->6;6->7;7->8;8->9;9->10;10->11;11->12;12->13;13->14}
+ xco = {1..4}
+ yco = {1..4}
+ init_at = {
+ 	pos(2,2),white(); 
+ 	pos(2,3),black(); 
+    pos(3,2),black(); 
+ 	pos(3,3),white(); 
+ }
+}
+
+//you might need to use an extended vocabulary for some of the verifications
+vocabulary verificationVoc{
+ 	extern vocabulary reversiVoc
+    //For verification3: Two positions are connected at Time.
+    connected(position,position,Time)
+}
+
+theory verification1: verificationVoc {
+	//Verify something here
+    //It is impossible that at two consecutive points in time, the number of 
+	//white discs increases.
+    ~? t[Time]: #{pos[position]:at(t,pos,white)} < #{pos[position]:at(Next(t),pos,white)} <
+    											#{pos[position]:at(Next(Next(t)),pos,white)}.
+}
+
+procedure verification1proc(struc){
+	//Do something here: verify verification1 in the context of structure struc. 
+	//At least print whether the verification is satisified or not.
+    isSat(verification1, struc)
+}
+
+theory verification2: verificationVoc{
+	//Verify something here
+    //At any point in time, any disc on the board is connected (horizontally,
+	//vertically or diagonally) to at least one other disc.
+    ! t[Time],x1[xco],y1[yco],col1[player_color]: at(t,pos(x1,y1),col1) => ? x2[xco],y2[yco],col2[player_color]:
+    													at(t,pos(x2,y2),col2) &
+														abs(x1-x2) =< 1 & abs(y1-y2) =< 1 &
+    													~(x1=x2 & y1=y2).
+
+}
+
+procedure verification2proc(struc){
+	//Do something here: verify verification2 in the context of structure struc. 
+	//At least print whether the verification is satisified or not.
+    isSat(verification2, struc)
+}
+
+theory verification3: verificationVoc{
+	//Verify something here
+    //At any point in time, the set of all discs on the board is a connected set
+	//(in other words: any disc on the board is reachable, using horizontal,
+	//vertical or diagonal steps, from any other disc on the board using only
+	//positions occupied by discs).
+	{
+       ! t[Time],x1[xco],y1[yco],c1,x2[xco],y2[yco],c2: connected(pos(x1,y1),pos(x2,y2),t) <-
+        											at(t,pos(x1,y1),c1) & at(t,pos(x2,y2),c2) &
+													abs(x1-x2) =< 1 & abs(y1-y2) =< 1 &
+    												~(x1=x2 & y1=y2).
+        
+        ! x1[xco],y1[yco], x3[xco],y3[yco],t: connected(pos(x1,y1),pos(x3,y3),t) <- 
+        			? x2[xco],y2[yco] :connected(pos(x1,y1),pos(x2,y2),t) & connected(pos(x2,y2),pos(x3,y3),t).
+    }
+    !t[Time],pos1[position],pos2[position],col1[player_color],col2[player_color]: at(t,pos1,col1) & at(t,pos2,col2) &
+    																		 pos1~=pos2 => connected(pos1,pos2,t).
+}
+
+procedure verification3proc(struc){
+	//Do something here: verify verification3 in the context of structure struc. 
+	//At least print whether the verification is satisified or not.
+    isSat(verification3, struc)
+}
+
+theory verification4: verificationVoc {
+	//Verify something here
+    //It is impossible to play twice on the same position.
+     ~?t1[Time],t2[Time],pos[position],col1[player_color],col2[player_color]: play(t1,pos,col1) & play(t2,pos,col2) &
+    																		t1~=t2.
+}
+
+procedure verification4proc(struc){
+	//Do something here: verify verification4 in the context of structure struc. 
+	//At least print whether the verification is satisified or not.
+    isSat(verification4, struc)
+}
+
+theory verification5: verificationVoc{
+	//Verify something here
+    //It is possible to arrive in a situation in which all the stones on the
+	//board are white.
+    ?t[Time]:!pos[position]:at(t,pos,white).
+}
+
+procedure verification5proc(struc){
+	//Do something here: verify verification5 in the context of structure struc. 
+	//At least print whether the verification is satisified or not.
+    isSat(verification5, struc)
+}
+
+theory verification6: verificationVoc{
+    //Black can win the game.
+	? t[Time]: winner(t,black).
+}
+
+procedure verification6proc(struc){
+	//Do something here: verify verification6 in the context of structure struc. 
+	//At least print whether the verification is satisified or not.
+    isSat(verification6, struc)
+}
+
+procedure isSat(theo, struc) {
+    T1 = merge(theo, reversiTheory)
+    print(sat(T1, struc))
+}
+
+procedure allVerifications(){
+	strucToCheck = exampleS
+	setvocabulary(strucToCheck,verificationVoc) 
+	verification1proc(strucToCheck)
+	verification2proc(strucToCheck)
+	verification3proc(strucToCheck)
+	verification4proc(strucToCheck)
+	verification5proc(strucToCheck)
+	verification6proc(strucToCheck)
+}
+
+include "visualisation.idp"
+procedure visualiseOneModel(){
+    local sol = onemodel(reversiTheory,exampleS)
+    visualise(sol)
+}

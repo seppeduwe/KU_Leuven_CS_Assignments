@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd" version="5">
+<org.eventb.core.event name="'" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="INITIALISATION">
+<org.eventb.core.action name="'" org.eventb.core.assignment="CurrentPlayer ≔ White" org.eventb.core.label="First_Player"/>
+<org.eventb.core.action name="," org.eventb.core.assignment="FilledPos ≔ {2↦3, 3↦3, 2↦2, 3↦2}" org.eventb.core.label="FilledPos"/>
+<org.eventb.core.action name=")" org.eventb.core.assignment="PreviousPassed ≔ FALSE" org.eventb.core.label="PreviousPassed"/>
+<org.eventb.core.action name="*" org.eventb.core.assignment="GameOver ≔ FALSE" org.eventb.core.label="GameOver"/>
+<org.eventb.core.action name="+" org.eventb.core.assignment="Winners ≔ ∅" org.eventb.core.label="Winners"/>
+</org.eventb.core.event>
+<org.eventb.core.variable name="(" org.eventb.core.identifier="CurrentPlayer"/>
+<org.eventb.core.seesContext name=")" org.eventb.core.target="Game"/>
+<org.eventb.core.invariant name="+" org.eventb.core.label="CurrentPlayer_Type" org.eventb.core.predicate="CurrentPlayer ∈ Colours"/>
+<org.eventb.core.variable name="-" org.eventb.core.identifier="PreviousPassed"/>
+<org.eventb.core.event name="." org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="Move">
+<org.eventb.core.parameter name="'" org.eventb.core.identifier="pos"/>
+<org.eventb.core.guard name="(" org.eventb.core.label="disc_played_empty_position" org.eventb.core.predicate="pos ∉ FilledPos"/>
+<org.eventb.core.action name=")" org.eventb.core.assignment="CurrentPlayer ≔ Next(CurrentPlayer)" org.eventb.core.label="concludes_players_turn"/>
+<org.eventb.core.action name="*" org.eventb.core.assignment="FilledPos ≔ FilledPos ∪ {pos}" org.eventb.core.label="fills_given_position"/>
+<org.eventb.core.guard name="+" org.eventb.core.label="game_not_over" org.eventb.core.predicate="GameOver = FALSE"/>
+<org.eventb.core.guard name="," org.eventb.core.label="pos_Type" org.eventb.core.predicate="pos ∈ Positions"/>
+<org.eventb.core.action name="-" org.eventb.core.assignment="PreviousPassed ≔ FALSE" org.eventb.core.label="reset_previous_player_passed"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="/" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="Pass">
+<org.eventb.core.action name="'" org.eventb.core.assignment="CurrentPlayer ≔ Next(CurrentPlayer)" org.eventb.core.label="signifies_end_player_turn"/>
+<org.eventb.core.guard name=")" org.eventb.core.label="game_isnt_over" org.eventb.core.predicate="GameOver = FALSE"/>
+<org.eventb.core.action name="*" org.eventb.core.assignment="PreviousPassed ≔ TRUE" org.eventb.core.label="player_pass"/>
+<org.eventb.core.guard name="+" org.eventb.core.label="previous_player_hasnt_passed" org.eventb.core.predicate="PreviousPassed = FALSE"/>
+</org.eventb.core.event>
+<org.eventb.core.invariant name="0" org.eventb.core.label="PreviousPassed_Type" org.eventb.core.predicate="PreviousPassed ∈ BOOL"/>
+<org.eventb.core.variable name="1" org.eventb.core.identifier="GameOver"/>
+<org.eventb.core.invariant name="2" org.eventb.core.label="GameOver" org.eventb.core.predicate="GameOver ∈ BOOL"/>
+<org.eventb.core.event name="3" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="EndGame">
+<org.eventb.core.guard name="'" org.eventb.core.label="game_isnt_over_yet" org.eventb.core.predicate="GameOver = FALSE"/>
+<org.eventb.core.action name="(" org.eventb.core.assignment="GameOver ≔ TRUE" org.eventb.core.label="signifies_end_of_game"/>
+<org.eventb.core.action name=")" org.eventb.core.assignment="Winners :∈ ℙ(Colours) ∖ {∅}" org.eventb.core.label="decides_the_winner"/>
+<org.eventb.core.guard name="*" org.eventb.core.label="previous_player_passed" org.eventb.core.predicate="PreviousPassed = TRUE"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="4" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="Gameover">
+<org.eventb.core.guard name="'" org.eventb.core.label="enabled_when_game_over" org.eventb.core.predicate="GameOver = TRUE"/>
+</org.eventb.core.event>
+<org.eventb.core.variable name="5" org.eventb.core.identifier="Winners"/>
+<org.eventb.core.invariant name="6" org.eventb.core.label="Winner_Type" org.eventb.core.predicate="Winners ⊆ Colours "/>
+<org.eventb.core.variable name="7" org.eventb.core.identifier="FilledPos"/>
+<org.eventb.core.invariant name="8" org.eventb.core.label="FilledPos" org.eventb.core.predicate="FilledPos ⊆ Positions"/>
+<org.eventb.core.invariant name="9" org.eventb.core.label="FilledPos_NotEmpty" org.eventb.core.predicate="FilledPos ≠ ∅"/>
+</org.eventb.core.machineFile>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.psFile>
+<org.eventb.core.psStatus name="INITIALISATION/Amount_white_discs_Type/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="1" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="INITIALISATION/Amount_black_discs_Type/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="1" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="Move/Amount_white_discs_Type/INV" org.eventb.core.confidence="0" org.eventb.core.poStamp="3" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="Move/Amount_black_discs_Type/INV" org.eventb.core.confidence="0" org.eventb.core.poStamp="3" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="Move/Amount_white_discs_update/WD" org.eventb.core.confidence="0" org.eventb.core.poStamp="3" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="Move/Amount_black_discs_update/WD" org.eventb.core.confidence="0" org.eventb.core.poStamp="3" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="EndGame/decides_the_winner/SIM" org.eventb.core.confidence="1000" org.eventb.core.poStamp="8" org.eventb.core.psManual="false"/>
+</org.eventb.core.psFile>

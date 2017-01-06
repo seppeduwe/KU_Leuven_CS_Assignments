@@ -1,0 +1,326 @@
+/*
+Model solution for reversi
+*/
+
+vocabulary reversiVoc{
+	type Time isa nat
+    Start : Time
+    partial Next(Time) : Time
+    
+    //Coordinates
+	type xco isa int
+	type yco isa int
+	type position constructed from {pos(xco,yco)}
+	
+	//directions can be useful to reason with
+	type direction constructed from {U,UR,R,DR,D,DL,L,UL}
+	
+	//The two colors in the game
+	type player_color constructed from {black,white}
+	
+	//at(t,p,c) holds if at timepoint t, there is a stone of color c on position p
+	at(Time,position,player_color)	
+	
+	//init- and cause predicates for at
+	init_at(position,player_color)
+	c_at(Time,position,player_color)	
+	cn_at(Time,position,player_color)	
+	
+	//turn(t,c) holds if it is the turn of the player playing c at time point t. This should always alternate. 
+	turn(Time,player_color)
+	
+	//play(t,p,c) holds if at time point t a stone of color $c$ is added to position p
+	play(Time,position,player_color)
+	
+	//winner(t,c) holds if the player with color c has won the game at time point t (or at some earlier point in time)	
+	winner(Time,player_color)
+	
+	//possible(t,p) holds if it is allowed to play a stone on position p at time t. 
+	possible(Time,position) 
+
+	//attacked(t,p) holds iff the stone on position p is attacked by the current move 
+	attacked(Time,position)
+	
+
+	gameOver(Time) // The game ended
+	
+	//Do not give to students
+	someMovePossible(Time) // some move is possible
+	empty(Time,position) //this square is empty
+
+	
+	nextSq(position,direction,position)
+	
+	someVisible(Time,position,direction,player_color)
+	  //At time, If I look from position in direction, than I can find a stone with color color without every passing an empty square. 
+	  
+	attackedIn(Time,position,direction)
+	  //position is attacked with a directional attack
+	  
+	sameColor(Time,position,position) //these two have the same color now
+	other(player_color):player_color
+	
+	
+	
+	
+	
+}
+
+theory reversiTheory: reversiVoc{
+	//Turns alternate. They keep on alternating as well after the game is finished. 
+	{
+		turn(Start,black).
+		! t[Time] c: turn(Next(t),c) <- turn(t,other(c)).
+	}
+	
+	
+	
+	// obligation to play if possible
+	! t: someMovePossible(t) => ?1 p c: play(t,p,c).
+	//preconditoin on play: only play possible moves
+	! t p c: play(t,p,c) => possible(t,p).
+	// You can only play at your own turn
+	! t c p: play(t,p,c) => turn(t,c).
+	
+	//Definition of a helper predicate: can I reach (from p) using only positions with stones on them a stone of color c? 
+	{
+		! t p d c p': someVisible(t,p,d,c) <- nextSq(p,d,p') & at(t,p',c). 
+		! t p d c p': someVisible(t,p,d,c) <- nextSq(p,d,p') & ~empty(t,p') & someVisible(t,p',d,c).
+	}
+	
+	//The above helper predicate allows to define possible moves. A move is possible if it would strike at least one other stone. 	
+	{
+		! t p: possible(t,p) <-
+			empty(t,p) & 
+			? c: 
+			turn(t,c)
+			& ?d p':
+				someVisible(t,p,d,c) & 
+				nextSq(p,d,p') & 
+				at(t,p',other(c)).
+		!t: someMovePossible(t) <- ?p: possible(t,p).
+	}
+	
+	//Definition of the attacked predicate: a stone is attacked if it is a member of a group trapped between the newly played stone and another stone of that color
+	{
+		! c played d p t: attackedIn(t,p,d) <- 
+			play(t,played,c) &
+			nextSq(played,d,p) & 
+			at(t,p,other(c)) & 
+			someVisible(t,p,d,c).
+		! p' d p t: attackedIn(t,p,d) <-
+			attackedIn(t,p',d) & 
+			nextSq(p',d,p) & 
+			sameColor(t,p,p').
+			
+		! p t: attacked(t,p) <- ? d: attackedIn(t,p,d).
+	}
+	
+	//Given the attacked predicate, we can define causality: it is caused that attacked stones swap color. 
+	{
+		! c p t: c_at(t,p,c) <- play(t,p,c). 
+		! c p t: c_at(t,p,c) <- attacked(t,p) & at(t,p,other(c)).
+		
+		! c p t: cn_at(t,p,c) <- attacked(t,p) & at(t,p,c).
+	}
+	
+	//Given the caused predicates, we define the state (at) with the standard LTC rules
+	
+	{
+		! p c: at(Start,p,c) <- init_at(p,c).
+		! t p c: at(Next(t),p,c) <- at(t,p,c) & ~cn_at(t,p,c). 
+		! t p c: at(Next(t),p,c) <- c_at(t,p,c). 
+	}
+	
+	//The game is over if no moves are possible for two consequetive turns. The game stays over afterwards
+	{
+		!t: gameOver(Next(t)) <- ~someMovePossible(t) & ~someMovePossible(Next(t)).
+		!t: gameOver(Next(t)) <- gameOver(t).
+	}
+	
+	//If the game is over, a winner can be determined by counting the stones. 
+	{
+		!t c: winner(t,c) <- gameOver(t) & #{p[position]: at(t,p,c)} >= #{p[position]: at(t,p,other(c))}.
+	}
+	
+	
+		
+	
+	//HELPER PREDICATES:
+	
+	{
+		//compute the next square in a given direction from a given square (if it exists)
+		!x[xco] y[yco]: nextSq(pos(x,y),U,pos(x,y+1)).
+		!x[xco] y[yco]: nextSq(pos(x,y),UR,pos(x+1,y+1)).
+		!x[xco] y[yco]: nextSq(pos(x,y),R,pos(x+1,y)).
+		!x[xco] y[yco]: nextSq(pos(x,y),DR,pos(x+1,y-1)).
+		!x[xco] y[yco]: nextSq(pos(x,y),D,pos(x,y-1)).
+		!x[xco] y[yco]: nextSq(pos(x,y),DL,pos(x-1,y-1)).
+		!x[xco] y[yco]: nextSq(pos(x,y),L,pos(x-1,y)).
+		!x[xco] y[yco]: nextSq(pos(x,y),UL,pos(x-1,y+1)).
+		
+			
+		//other is a function that swaps the two colors
+		other(black) = white.
+		other(white) = black.
+		}
+	
+
+	{
+		//A slot is empty if there is no stone on it
+		! t p: empty(t,p) <- ~?c: at(t,p,c).
+		//Two positions have the same color if they both have a stone and the stones have the same color 
+		! t p p' c: sameColor(t,p,p') <- at(t,p,c) & at(t,p',c).
+	}
+	
+	
+	
+	
+
+}
+
+structure exampleS:reversiVoc{
+//this is an example board you can play around with
+Time = {0..14}
+Start = 0
+Next = {0->1;1->2;2->3;3->4;4->5;5->6;6->7;7->8;8->9;9->10;10->11;11->12;12->13;13->14}
+ xco = {1..4}
+ yco = {1..4}
+ init_at = {
+ 	pos(2,2),white(); 
+ 	pos(2,3),black(); 
+ 	pos(3,2),black(); 
+ 	pos(3,3),white(); 
+ }
+}
+
+
+
+
+
+
+//you might need to use an extended vocabulary for some of the verifications
+vocabulary verificationVoc{
+ 	extern vocabulary reversiVoc
+ 	
+ 	StartPos: position
+ 	Reachable(Time, position)
+}
+
+theory verification1: verificationVoc {
+	?t[Time]: #{p[position]: at(t,p,white)} < #{p[position]: at(Next(t),p,white)} < #{p[position]: at(Next(Next(t)),p,white)}.
+}
+
+procedure verification1proc(struc){
+	local theo = merge(verification1, reversiTheory)
+	if(sat(theo,struc)) then
+		print("Verification 1 failed")
+	else
+	print("Verification 1 OK")	
+	end
+	//Do something here: verify verification1 in the context of structure struc. 
+	//At least print whether the verification is satisified or not.
+}
+
+theory verification2: verificationVoc{
+	~ !t p: (? c: at(t,p,c)) => ?d c' p': nextSq(p,d,p') & at(t,p',c').
+}
+
+procedure verification2proc(struc){
+	//Do something here: verify verification2 in the context of structure struc. 
+	//At least print whether the verification is satisified or not.
+	local theo = merge(verification2, reversiTheory)
+	if(sat(theo,struc)) then
+		print("Verification 2 failed")
+	else
+	print("Verification 2 OK")	
+	end
+}
+
+theory verification3: verificationVoc{
+	
+	{
+		!t: Reachable(t,StartPos).
+		!t p p' d c: Reachable(t,p) <- Reachable(t,p') & nextSq(p',d,p) & at(t,p,c).
+	}
+	!t: ?c: at(t,StartPos,c).
+	~ !t,p,c: at(t,p,c) => Reachable(t,p).
+	
+}
+
+procedure verification3proc(struc){
+	//Do something here: verify verification3 in the context of structure struc. 
+	//At least print whether the verification is satisified or not.
+	local theo = merge(verification3, reversiTheory)
+	if(sat(theo,struc)) then
+		print("Verification 3 failed")
+	else
+	print("Verification 3 OK")	
+	end
+}
+
+theory verification4: verificationVoc {
+	? p t[Time] t'[Time] c c': t~= t' & play(t,p,c) & play(t,p,c').
+}
+
+procedure verification4proc(struc){
+	//Do something here: verify verification4 in the context of structure struc. 
+	//At least print whether the verification is satisified or not.
+	local theo = merge(verification4, reversiTheory)
+	if(sat(theo,struc)) then
+		print("Verification 4 failed")
+	else
+	print("Verification 4 OK")	
+	end
+}
+
+theory verification5: verificationVoc{
+	?t: ! p c: at(t,p,c) => c=white.
+}
+
+procedure verification5proc(struc){
+	//Do something here: verify verification2 in the context of structure struc. 
+	//At least print whether the verification is satisified or not.
+	local theo = merge(verification5, reversiTheory)
+	if(not sat(theo,struc)) then
+		print("Verification 5 failed")
+	else
+	print("Verification 5 OK")	
+	end
+}
+
+theory verification6: verificationVoc{
+	?t:winner(t,black).
+}
+
+procedure verification6proc(struc){
+	//Do something here: verify verification3 in the context of structure struc. 
+	//At least print whether the verification is satisified or not.
+	local theo = merge(verification6, reversiTheory)
+	if(not sat(theo,struc)) then
+		print("Verification 6 failed")
+	else
+	print("Verification 6 OK")	
+	end
+}
+
+
+procedure allVerifications(){
+	strucToCheck = exampleS
+	setvocabulary(strucToCheck,verificationVoc) 
+	verification1proc(strucToCheck)
+	verification2proc(strucToCheck)
+	verification3proc(strucToCheck)
+	verification4proc(strucToCheck)
+	verification5proc(strucToCheck)
+	verification6proc(strucToCheck)
+}
+
+
+procedure visualiseOneModel(){
+    local sol = onemodel(reversiTheory,exampleS)
+    visualise(sol)
+}
+
+
+

@@ -1,0 +1,153 @@
+include "idpd3/idpd3_voc.idp"
+
+vocabulary V_extra{
+    extern reversiVoc::position/1
+    extern reversiVoc::xco/1
+    extern reversiVoc::yco/1
+    extern reversiVoc::player_color/1
+
+    extern vocabulary idpd3::V_out
+    
+    posKey(position):key
+    atKey(position):key
+    idpd3Col(player_color): idpd3::V_out::color
+    
+}
+
+//This procedure interprets 
+procedure toKeyC(a){
+    if(tostring(a) == "black") then
+        return "Black";
+    elseif (tostring(a) == "white") then
+        return "LightGrey";
+	else
+    	return tostring(a)
+    end
+}
+
+procedure toKeyP(a){
+    return "a-"..tostring(a);
+}
+
+procedure toKeyA(a){
+    return "p-"..tostring(a);
+}
+
+
+
+structure S_dummy: V_extra{
+    time = {1}
+    image = {"dummy_to_avoid_warning"}
+    label = {"dummy_to_avoid_warning"}    
+    order = {1}
+    
+    xco = {1}
+    yco = {1}
+    
+    //These determine the height/width of the canvas
+    width = {0..50}
+    height = {0..50}
+    
+    color = {"Black";"White";"Green";"Red" ; "Blue";"LightGrey"}
+    
+    
+    atKey = procedure toKeyA
+    posKey = procedure toKeyP
+    idpd3Col = procedure toKeyC
+    
+}
+
+
+vocabulary V_d3_out {
+    extern vocabulary V_extra
+    extern vocabulary reversiVoc
+
+    
+}
+procedure visualise(struc){
+    local newstruc = extend(struc)
+    local model = onemodel(T_d3_out,newstruc)
+    idpd3.init_idpd3()
+    idpd3.visualise(model)
+    print(model)
+}
+
+include <table_utils>
+
+procedure extend(struc){
+    local mystruc = clone(struc)
+    setvocabulary(mystruc,V_d3_out)
+    mystruc[idpd3::V_types::time.type] = range(1,#totable(mystruc[reversiVoc::Time.type]))
+    
+    
+    
+    
+    
+    
+    
+    
+    local keytype = {"Background"}
+    for i in tuples(mystruc[reversiVoc::position.pred].ct) do
+        table.insert(keytype,toKeyP(i[1]))
+        table.insert(keytype,toKeyA(i[1]))
+        end
+     mystruc[idpd3::V_types::key.type] = keytype
+   for i in tuples(mystruc[reversiVoc::player_color.pred].ct) do
+        table.insert(keytype,toKeyC(i[1]))
+        end
+    
+     mystruc[idpd3::V_types::key.type] = keytype
+    
+    
+    
+    mystruc[V_extra::posKey] = S_dummy[V_extra::posKey]
+    mystruc[V_extra::idpd3Col] = S_dummy[V_extra::idpd3Col]
+    mystruc[V_extra::atKey] = S_dummy[V_extra::atKey]
+    mystruc[V_extra::color.type] = S_dummy[V_extra::color.type]
+    
+    
+    local xcofunc = mystruc[reversiVoc::MAX[{reversiVoc::xco.type}]]
+    mystruc[V_extra::width.type] = range(0,10*(xcofunc()+1))
+    local ycofunc = mystruc[reversiVoc::MAX[{reversiVoc::yco.type}]]
+    mystruc[V_extra::height.type] = range(0,10*(ycofunc()+1))
+    return mystruc
+    
+    
+}
+
+theory T_d3_out : V_d3_out {
+    {
+        //every coordinate is associated with a circle
+        ! p t: d3_type(t,atKey(p)) = circ.
+        ! p t: d3_type(t,posKey(p)) = rect.
+        //They are placed next to each other
+        !x [xco] ,y[yco] b t : d3_x(t, b) = x*8+2 <- b = atKey(pos(x,y)).
+        !x [xco] ,y[yco] a t : d3_y(t, a) = MAX[:height]-(y*8+2) <- a = atKey(pos(x,y)).
+
+        
+        !x [xco] ,y[yco] b t : d3_x(t, b) = x*8+2 <- b = posKey(pos(x,y)).
+        !x [xco] ,y[yco] t a : d3_y(t, a) = MAX[:height]-(y*8+2) <- a = posKey(pos(x,y)).
+
+        
+        //All circles have the same height
+        ! c t: d3_circ_r(t+1, atKey(c)) = 4 <- ? col: at(t,c,col).
+        ! c t:d3_circ_r(t+1, atKey(c)) = 0 <- ~? col: at(t,c,col).
+        
+        ! p t:d3_rect_width(t, posKey(p)) = 4 .
+        ! p t:d3_rect_height(t, posKey(p)) = 4.
+        //A rectangle has the same color as its coordinate
+        ! c t: ! col: d3_color(t+1, atKey(c)) = idpd3Col(col) <- at(t,c,col).
+        
+        ! p t:d3_color(t+1, posKey(p)) = "Red" <- ~possible(t,p) & ~? c: play(t,p,c).
+        ! p t:d3_color(t+1, posKey(p)) = "Green" <- possible(t,p) & ~? c: play(t,p,c).
+        ! p t: d3_color(t+1, posKey(p)) = "Black" <- play(t,p,black).
+        ! p t:d3_color(t+1, posKey(p)) = "LightGrey" <- play(t,p,white).
+
+        //The width and the height of the canvas are set 
+        //to the maximum of the width and height in the types
+        !t: d3_width(t) = MAX[:width].
+        !t: d3_height(t) = MAX[:height].
+        
+        
+    }
+}

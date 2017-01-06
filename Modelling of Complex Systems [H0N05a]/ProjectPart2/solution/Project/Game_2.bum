@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd" version="5">
+<org.eventb.core.refinesMachine name="'" org.eventb.core.target="Game_1"/>
+<org.eventb.core.seesContext name=")" org.eventb.core.target="Game"/>
+<org.eventb.core.variable name="(" org.eventb.core.identifier="CurrentPlayer"/>
+<org.eventb.core.variable name="-" org.eventb.core.identifier="PreviousPassed"/>
+<org.eventb.core.variable name="1" org.eventb.core.identifier="GameOver"/>
+<org.eventb.core.variable name="5" org.eventb.core.identifier="Winners"/>
+<org.eventb.core.variable name="7" org.eventb.core.identifier="FilledPos"/>
+<org.eventb.core.variable name="&gt;" org.eventb.core.identifier="Board"/>
+<org.eventb.core.variable name="evt6" org.eventb.core.identifier="CurrentMove"/>
+<org.eventb.core.variable name="evt=" org.eventb.core.identifier="Captured"/>
+<org.eventb.core.variable name="evt@" org.eventb.core.identifier="NeedsChecking"/>
+<org.eventb.core.variable name="inv3" org.eventb.core.identifier="Reachable"/>
+<org.eventb.core.event name="inv4" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="INITIALISATION">
+<org.eventb.core.action name="'" org.eventb.core.assignment="Amount_white_discs ≔ 0" org.eventb.core.label="Amount_white_discs"/>
+<org.eventb.core.action name="(" org.eventb.core.assignment="Amount_black_discs ≔ 0" org.eventb.core.label="Amount_black_discs"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="inv5" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="Move">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="Move"/>
+<org.eventb.core.action name="(" org.eventb.core.assignment="Amount_white_discs ≔ card({position ∣ position↦White ∈ ((Board ∪ {cap↦cplayer ∣ cap ∈ Captured ∧ cplayer= CurrentPlayer} ∪ {CurrentMove↦CurrentPlayer}) &#13;&#10;&#9;&#9; &#9;                                  &#9;∖ { cap↦nplayer ∣ cap ∈ Captured ∧ nplayer = Next(CurrentPlayer)})}) " org.eventb.core.label="Amount_white_discs_update"/>
+<org.eventb.core.action name=")" org.eventb.core.assignment="Amount_black_discs ≔ card({position ∣ position↦Black ∈ ((Board ∪ {cap↦cplayer ∣ cap ∈ Captured ∧ cplayer= CurrentPlayer} ∪ {CurrentMove↦CurrentPlayer}) &#13;&#10;&#9;&#9; &#9;                                  &#9;∖ { cap↦nplayer ∣ cap ∈ Captured ∧ nplayer = Next(CurrentPlayer)})})" org.eventb.core.label="Amount_black_discs_update"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="inv6" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="CheckMove">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="CheckMove"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="inv7" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="CheckReachable">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="CheckReachable"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="inv8" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="CheckNoValidEnd">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="CheckNoValidEnd"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="inv9" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="CheckEndChain">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="CheckEndChain"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="inv:" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="Pass">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="Pass"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="inv;" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="EndGame">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="EndGame"/>
+<org.eventb.core.guard name="'" org.eventb.core.label="game_isnt_over_yet" org.eventb.core.predicate="GameOver = FALSE"/>
+<org.eventb.core.action name="internal1" org.eventb.core.assignment="GameOver ≔ TRUE" org.eventb.core.label="signifies_end_of_game"/>
+<org.eventb.core.action name=")" org.eventb.core.assignment="Winners ≔ { col ∣ Amount_white_discs ≥ Amount_black_discs ∧ col=White} ∪ { col ∣ Amount_black_discs ≥ Amount_white_discs ∧ col=Black} " org.eventb.core.label="decides_the_winner"/>
+<org.eventb.core.guard name="*" org.eventb.core.label="previous_player_passed" org.eventb.core.predicate="PreviousPassed = TRUE"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="inv=" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="Gameover">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="Gameover"/>
+</org.eventb.core.event>
+<org.eventb.core.variable name="inv&gt;" org.eventb.core.identifier="Amount_white_discs"/>
+<org.eventb.core.variable name="inv?" org.eventb.core.identifier="Amount_black_discs"/>
+<org.eventb.core.invariant name="inv@" org.eventb.core.label="Amount_white_discs_Type" org.eventb.core.predicate="Amount_white_discs ∈ 0‥16"/>
+<org.eventb.core.invariant name="invA" org.eventb.core.label="Amount_black_discs_Type" org.eventb.core.predicate="Amount_black_discs ∈ 0‥16"/>
+</org.eventb.core.machineFile>

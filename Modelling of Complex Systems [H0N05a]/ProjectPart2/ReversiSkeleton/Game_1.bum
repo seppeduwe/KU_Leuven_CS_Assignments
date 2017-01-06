@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd" version="5">
+<org.eventb.core.refinesMachine name="'" org.eventb.core.target="Game_0"/>
+<org.eventb.core.seesContext name=")" org.eventb.core.target="Game"/>
+<org.eventb.core.variable name="(" org.eventb.core.identifier="CurrentPlayer"/>
+<org.eventb.core.variable name="-" org.eventb.core.identifier="PreviousPassed"/>
+<org.eventb.core.variable name="1" org.eventb.core.identifier="GameOver"/>
+<org.eventb.core.variable name="5" org.eventb.core.identifier="Winners"/>
+<org.eventb.core.variable name="7" org.eventb.core.identifier="FilledPos"/>
+<org.eventb.core.event name="8" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="INITIALISATION">
+<org.eventb.core.action name="'" org.eventb.core.assignment="Board ≔ {2↦2 ↦ White, 2↦3 ↦ Black, 3↦2 ↦ Black, 3↦3 ↦ White}" org.eventb.core.label="Board"/>
+<org.eventb.core.action name=")" org.eventb.core.assignment="CurrentMove ≔ 1↦1" org.eventb.core.label="CurrentMove"/>
+<org.eventb.core.action name="*" org.eventb.core.assignment="Captured ≔ ∅" org.eventb.core.label="Captured"/>
+<org.eventb.core.action name="+" org.eventb.core.assignment="NeedsChecking ≔ ∅" org.eventb.core.label="Needs"/>
+<org.eventb.core.action name="," org.eventb.core.assignment="Reachable ≔ ∅" org.eventb.core.label="Reachable"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="9" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="Move">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="Move"/>
+<org.eventb.core.witness name="internal2" org.eventb.core.label="pos" org.eventb.core.predicate="pos = CurrentMove"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="evt?" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="CheckMove">
+<org.eventb.core.parameter name="'" org.eventb.core.identifier="x"/>
+<org.eventb.core.parameter name="+" org.eventb.core.identifier="y"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="evtB" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="CheckReachable">
+<org.eventb.core.parameter name="'" org.eventb.core.identifier="x"/>
+<org.eventb.core.parameter name="(" org.eventb.core.identifier="y"/>
+<org.eventb.core.parameter name="*" org.eventb.core.identifier="d"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="evt6" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="CheckNoValidEnd">
+<org.eventb.core.parameter name="'" org.eventb.core.identifier="x"/>
+<org.eventb.core.parameter name="(" org.eventb.core.identifier="y"/>
+<org.eventb.core.parameter name="*" org.eventb.core.identifier="d"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="evt7" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="CheckEndChain">
+<org.eventb.core.parameter name="'" org.eventb.core.identifier="x"/>
+<org.eventb.core.parameter name="(" org.eventb.core.identifier="y"/>
+<org.eventb.core.parameter name="*" org.eventb.core.identifier="d"/>
+</org.eventb.core.event>
+<org.eventb.core.event name=":" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="Pass">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="Pass"/>
+</org.eventb.core.event>
+<org.eventb.core.event name=";" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="EndGame">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="EndGame"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="=" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="Gameover">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="Gameover"/>
+</org.eventb.core.event>
+<org.eventb.core.variable name="&gt;" org.eventb.core.identifier="Board"/>
+<org.eventb.core.invariant name="?" org.eventb.core.label="Board_Type" org.eventb.core.predicate="Board ∈ FilledPos → Colours"/>
+<org.eventb.core.variable name="evt6" org.eventb.core.identifier="CurrentMove"/>
+<org.eventb.core.invariant name="evt7" org.eventb.core.label="CurrentMove" org.eventb.core.predicate="CurrentMove ∈ Positions"/>
+<org.eventb.core.invariant name="evt9" org.eventb.core.label="Board_Dom" org.eventb.core.predicate="dom(Board) = FilledPos" org.eventb.core.theorem="true"/>
+<org.eventb.core.variable name="evt=" org.eventb.core.identifier="Captured"/>
+<org.eventb.core.invariant name="evt&gt;" org.eventb.core.label="Captured" org.eventb.core.predicate="Captured ⊆ Positions"/>
+<org.eventb.core.variable name="evt@" org.eventb.core.identifier="NeedsChecking"/>
+<org.eventb.core.invariant name="inv5" org.eventb.core.label="NeedsChecking" org.eventb.core.predicate="NeedsChecking ∈ Positions ↔ Directions"/>
+<org.eventb.core.invariant name="evtE" org.eventb.core.label="currentRestricted" org.eventb.core.predicate="Captured ≠ ∅ ⇒ CurrentMove ∉ FilledPos"/>
+<org.eventb.core.invariant name="inv1" org.eventb.core.label="currentRestricted1" org.eventb.core.predicate="NeedsChecking ≠ ∅ ⇒ CurrentMove ∉ FilledPos"/>
+<org.eventb.core.invariant name="inv2" org.eventb.core.label="NeverEmpty" org.eventb.core.predicate="Board ≠ ∅"/>
+<org.eventb.core.variable name="inv3" org.eventb.core.identifier="Reachable"/>
+<org.eventb.core.invariant name="inv4" org.eventb.core.label="Reachable" org.eventb.core.predicate="Reachable ∈ Positions ↔ Directions"/>
+</org.eventb.core.machineFile>

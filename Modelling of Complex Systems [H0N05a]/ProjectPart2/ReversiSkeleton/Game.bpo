@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="Colours" org.eventb.core.type="ℙ(Colours)"/>
+<org.eventb.core.poIdentifier name="Directions" org.eventb.core.type="ℙ(Directions)"/>
+<org.eventb.core.poIdentifier name="Black" org.eventb.core.type="Colours"/>
+<org.eventb.core.poIdentifier name="Down" org.eventb.core.type="Directions"/>
+<org.eventb.core.poIdentifier name="DownLeft" org.eventb.core.type="Directions"/>
+<org.eventb.core.poIdentifier name="DownRight" org.eventb.core.type="Directions"/>
+<org.eventb.core.poIdentifier name="Left" org.eventb.core.type="Directions"/>
+<org.eventb.core.poIdentifier name="Neighbour" org.eventb.core.type="ℙ(ℤ×ℤ×Directions×ℤ×ℤ)"/>
+<org.eventb.core.poIdentifier name="Next" org.eventb.core.type="ℙ(Colours×Colours)"/>
+<org.eventb.core.poIdentifier name="NextTo" org.eventb.core.type="ℙ(ℤ×ℤ×ℤ×ℤ)"/>
+<org.eventb.core.poIdentifier name="Positions" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+<org.eventb.core.poIdentifier name="Right" org.eventb.core.type="Directions"/>
+<org.eventb.core.poIdentifier name="Up" org.eventb.core.type="Directions"/>
+<org.eventb.core.poIdentifier name="UpLeft" org.eventb.core.type="Directions"/>
+<org.eventb.core.poIdentifier name="UpRight" org.eventb.core.type="Directions"/>
+<org.eventb.core.poIdentifier name="White" org.eventb.core.type="Colours"/>
+<org.eventb.core.poIdentifier name="xCoords" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.poIdentifier name="xDir" org.eventb.core.type="ℙ(Directions×ℤ)"/>
+<org.eventb.core.poIdentifier name="xOf" org.eventb.core.type="ℙ(ℤ×ℤ×ℤ)"/>
+<org.eventb.core.poIdentifier name="yCoords" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.poIdentifier name="yDir" org.eventb.core.type="ℙ(Directions×ℤ)"/>
+<org.eventb.core.poIdentifier name="yOf" org.eventb.core.type="ℙ(ℤ×ℤ×ℤ)"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poSequent name="xOf_Type/THM" org.eventb.core.accurate="true" org.eventb.core.poDesc="Theorem" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ReversiSkeleton/Game.bpo|org.eventb.core.poFile#Game|org.eventb.core.poPredicateSet#HYP,"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="xOf∈Positions → xCoords" org.eventb.core.source="/ReversiSkeleton/Game.buc|org.eventb.core.contextFile#Game|org.eventb.core.axiom#axm5"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ReversiSkeleton/Game.buc|org.eventb.core.contextFile#Game|org.eventb.core.axiom#axm5"/>
+<org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/ReversiSkeleton/Game.bpo|org.eventb.core.poFile#Game|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/ReversiSkeleton/Game.bpo|org.eventb.core.poFile#Game|org.eventb.core.poPredicateSet#HYP,"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="Next_Type/THM" org.eventb.core.accurate="true" org.eventb.core.poDesc="Theorem" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ReversiSkeleton/Game.bpo|org.eventb.core.poFile#Game|org.eventb.core.poPredicateSet#HYP."/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="Next∈Colours ⤖ Colours" org.eventb.core.source="/ReversiSkeleton/Game.buc|org.eventb.core.contextFile#Game|org.eventb.core.axiom#axm4"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ReversiSkeleton/Game.buc|org.eventb.core.contextFile#Game|org.eventb.core.axiom#axm4"/>
+<org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/ReversiSkeleton/Game.bpo|org.eventb.core.poFile#Game|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/ReversiSkeleton/Game.bpo|org.eventb.core.poFile#Game|org.eventb.core.poPredicateSet#HYP."/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="Neighbour/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Axiom" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ReversiSkeleton/Game.bpo|org.eventb.core.poFile#Game|org.eventb.core.poPredicateSet#HYP5"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀x1⦂ℤ,y1⦂ℤ,d⦂Directions,x2⦂ℤ,y2⦂ℤ·x1∈xCoords∧x2∈xCoords∧y1∈yCoords∧y2∈yCoords∧d∈Directions⇒d∈dom(xDir)∧xDir∈Directions ⇸ ℤ∧(x1+xDir(d)=x2⇒d∈dom(yDir)∧yDir∈Directions ⇸ ℤ)" org.eventb.core.source="/ReversiSkeleton/Game.buc|org.eventb.core.contextFile#Game|org.eventb.core.axiom#axmH"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ReversiSkeleton/Game.buc|org.eventb.core.contextFile#Game|org.eventb.core.axiom#axmH"/>
+<org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/ReversiSkeleton/Game.bpo|org.eventb.core.poFile#Game|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/ReversiSkeleton/Game.bpo|org.eventb.core.poFile#Game|org.eventb.core.poPredicateSet#HYP5"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="Neighbour_Type/THM" org.eventb.core.accurate="true" org.eventb.core.poDesc="Theorem" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ReversiSkeleton/Game.bpo|org.eventb.core.poFile#Game|org.eventb.core.poPredicateSet#HYP6"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="Neighbour⊆xCoords × yCoords × Directions × xCoords × yCoords" org.eventb.core.source="/ReversiSkeleton/Game.buc|org.eventb.core.contextFile#Game|org.eventb.core.axiom#axmJ"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ReversiSkeleton/Game.buc|org.eventb.core.contextFile#Game|org.eventb.core.axiom#axmJ"/>
+<org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/ReversiSkeleton/Game.bpo|org.eventb.core.poFile#Game|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/ReversiSkeleton/Game.bpo|org.eventb.core.poFile#Game|org.eventb.core.poPredicateSet#HYP6"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poPredicateSet name="HYP," org.eventb.core.parentSet="/ReversiSkeleton/Game.bpo|org.eventb.core.poFile#Game|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="xCoords=1 ‥ 4" org.eventb.core.source="/ReversiSkeleton/Game.buc|org.eventb.core.contextFile#Game|org.eventb.core.axiom#)"/>
+<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="yCoords=1 ‥ 4" org.eventb.core.source="/ReversiSkeleton/Game.buc|org.eventb.core.contextFile#Game|org.eventb.core.axiom#*"/>
+<org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="partition(Colours,{White},{Black})" org.eventb.core.source="/ReversiSkeleton/Game.buc|org.eventb.core.contextFile#Game|org.eventb.core.axiom#2"/>
+<org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="Positions=xCoords × yCoords" org.eventb.core.source="/ReversiSkeleton/Game.buc|org.eventb.core.contextFile#Game|org.eventb.core.axiom#7"/>
+<org.eventb.core.poPredicate name="PRD4" org.eventb.core.predicate="xOf={p⦂ℤ×ℤ,x⦂ℤ·p∈Positions∧(∃y⦂ℤ·y∈yCoords∧p=x ↦ y) ∣ p ↦ x}" org.eventb.core.source="/ReversiSkeleton/Game.buc|org.eventb.core.contextFile#Game|org.eventb.core.axiom#:"/>
+<org.eventb.core.poPredicate name="PRD5" org.eventb.core.predicate="yOf={p⦂ℤ×ℤ,y⦂ℤ·p∈Positions∧(∃x⦂ℤ·x∈xCoords∧p=x ↦ y) ∣ p ↦ y}" org.eventb.core.source="/ReversiSkeleton/Game.buc|org.eventb.core.contextFile#Game|org.eventb.core.axiom#axm1"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="HYP." org.eventb.core.parentSet="/ReversiSkeleton/Game.bpo|org.eventb.core.poFile#Game|org.eventb.core.poPredicateSet#HYP," org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicate name="PRD6" org.eventb.core.predicate="xOf∈Positions → xCoords" org.eventb.core.source="/ReversiSkeleton/Game.buc|org.eventb.core.contextFile#Game|org.eventb.core.axiom#axm5"/>
+<org.eventb.core.poPredicate name="PRD7" org.eventb.core.predicate="Next={White ↦ Black,Black ↦ White}" org.eventb.core.source="/ReversiSkeleton/Game.buc|org.eventb.core.contextFile#Game|org.eventb.core.axiom#axm3"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="HYP5" org.eventb.core.parentSet="/ReversiSkeleton/Game.bpo|org.eventb.core.poFile#Game|org.eventb.core.poPredicateSet#HYP." org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicate name="PRD8" org.eventb.core.predicate="Next∈Colours ⤖ Colours" org.eventb.core.source="/ReversiSkeleton/Game.buc|org.eventb.core.contextFile#Game|org.eventb.core.axiom#axm4"/>
+<org.eventb.core.poPredicate name="PRD9" org.eventb.core.predicate="NextTo={x1⦂ℤ,y1⦂ℤ,x2⦂ℤ,y2⦂ℤ·x1∈xCoords∧x2∈xCoords∧y1∈yCoords∧y2∈yCoords∧((x1=x2∧(y1=y2+1∨y1+1=y2))∨(y1=y2∧(x1=x2+1∨x1+1=x2))) ∣ x1 ↦ y1 ↦ x2 ↦ y2}" org.eventb.core.source="/ReversiSkeleton/Game.buc|org.eventb.core.contextFile#Game|org.eventb.core.axiom#axm6"/>
+<org.eventb.core.poPredicate name="PRD10" org.eventb.core.predicate="partition(Directions,{Up},{Down},{Left},{Right},{UpLeft},{UpRight},{DownRight},{DownLeft})" org.eventb.core.source="/ReversiSkeleton/Game.buc|org.eventb.core.contextFile#Game|org.eventb.core.axiom#axmB"/>
+<org.eventb.core.poPredicate name="PRD11" org.eventb.core.predicate="xDir={Up ↦ 0,Down ↦ 0,Left ↦ −1,Right ↦ 1,UpLeft ↦ −1,UpRight ↦ 1,DownLeft ↦ −1,DownRight ↦ 1}" org.eventb.core.source="/ReversiSkeleton/Game.buc|org.eventb.core.contextFile#Game|org.eventb.core.axiom#axmG"/>
+<org.eventb.core.poPredicate name="PRD12" org.eventb.core.predicate="yDir={Up ↦ 1,Down ↦ −1,Left ↦ 0,Right ↦ 0,UpLeft ↦ 1,UpRight ↦ 1,DownLeft ↦ −1,DownRight ↦ −1}" org.eventb.core.source="/ReversiSkeleton/Game.buc|org.eventb.core.contextFile#Game|org.eventb.core.axiom#axm7"/>
+<org.eventb.core.poPredicate name="PRD13" org.eventb.core.predicate="xDir∈Directions → {−1,0,1}" org.eventb.core.source="/ReversiSkeleton/Game.buc|org.eventb.core.contextFile#Game|org.eventb.core.axiom#axmI"/>
+<org.eventb.core.poPredicate name="PRD14" org.eventb.core.predicate="yDir∈Directions → {−1,0,1}" org.eventb.core.source="/ReversiSkeleton/Game.buc|org.eventb.core.contextFile#Game|org.eventb.core.axiom#axm8"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="HYP6" org.eventb.core.parentSet="/ReversiSkeleton/Game.bpo|org.eventb.core.poFile#Game|org.eventb.core.poPredicateSet#HYP5" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicate name="PRD15" org.eventb.core.predicate="Neighbour={x1⦂ℤ,y1⦂ℤ,d⦂Directions,x2⦂ℤ,y2⦂ℤ·(x1∈xCoords∧x2∈xCoords∧y1∈yCoords∧y2∈yCoords∧d∈Directions)∧x1+xDir(d)=x2∧y1+yDir(d)=y2 ∣ x1 ↦ y1 ↦ d ↦ x2 ↦ y2}" org.eventb.core.source="/ReversiSkeleton/Game.buc|org.eventb.core.contextFile#Game|org.eventb.core.axiom#axmH"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/ReversiSkeleton/Game.bpo|org.eventb.core.poFile#Game|org.eventb.core.poPredicateSet#HYP6" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicate name="PRD16" org.eventb.core.predicate="Neighbour⊆xCoords × yCoords × Directions × xCoords × yCoords" org.eventb.core.source="/ReversiSkeleton/Game.buc|org.eventb.core.contextFile#Game|org.eventb.core.axiom#axmJ"/>
+</org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>

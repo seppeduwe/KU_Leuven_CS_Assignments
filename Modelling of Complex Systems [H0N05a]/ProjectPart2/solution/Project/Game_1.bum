@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd" version="5">
+<org.eventb.core.refinesMachine name="'" org.eventb.core.target="Game_0"/>
+<org.eventb.core.seesContext name=")" org.eventb.core.target="Game"/>
+<org.eventb.core.variable name="(" org.eventb.core.identifier="CurrentPlayer"/>
+<org.eventb.core.variable name="-" org.eventb.core.identifier="PreviousPassed"/>
+<org.eventb.core.variable name="1" org.eventb.core.identifier="GameOver"/>
+<org.eventb.core.variable name="5" org.eventb.core.identifier="Winners"/>
+<org.eventb.core.variable name="7" org.eventb.core.identifier="FilledPos"/>
+<org.eventb.core.event name="8" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="INITIALISATION">
+<org.eventb.core.action name="'" org.eventb.core.assignment="Board ≔ {2↦2 ↦ White, 2↦3 ↦ Black, 3↦2 ↦ Black, 3↦3 ↦ White}" org.eventb.core.label="Board"/>
+<org.eventb.core.action name=")" org.eventb.core.assignment="CurrentMove ≔ 1↦1" org.eventb.core.label="CurrentMove"/>
+<org.eventb.core.action name="*" org.eventb.core.assignment="Captured ≔ ∅" org.eventb.core.label="Captured"/>
+<org.eventb.core.action name="+" org.eventb.core.assignment="NeedsChecking ≔ ∅" org.eventb.core.label="Needs"/>
+<org.eventb.core.action name="," org.eventb.core.assignment="Reachable ≔ ∅" org.eventb.core.label="Reachable"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="9" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="Move">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="Move"/>
+<org.eventb.core.guard name="internal3" org.eventb.core.label="no_more_moves_need_checking" org.eventb.core.predicate="NeedsChecking = ∅"/>
+<org.eventb.core.guard name="internal4" org.eventb.core.label="at_least_one_position_will_be_captured" org.eventb.core.predicate="Captured ≠ ∅"/>
+<org.eventb.core.action name="internal5" org.eventb.core.assignment="Board ≔ (Board ∪ {cap↦cplayer ∣ cap ∈ Captured ∧ cplayer= CurrentPlayer} ∪ {CurrentMove↦CurrentPlayer}) &#13;&#10;∖ { cap↦nplayer ∣ cap ∈ Captured ∧ nplayer = Next(CurrentPlayer)} " org.eventb.core.label="updates_board_with_captured_discs"/>
+<org.eventb.core.action name="internal6" org.eventb.core.assignment="Captured ≔ ∅" org.eventb.core.label="clears_the_Captured_set"/>
+<org.eventb.core.guard name="internal7" org.eventb.core.label="pos" org.eventb.core.predicate="pos = CurrentMove"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="evt?" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="CheckMove">
+<org.eventb.core.parameter name="'" org.eventb.core.identifier="x"/>
+<org.eventb.core.parameter name="+" org.eventb.core.identifier="y"/>
+<org.eventb.core.guard name="," org.eventb.core.label="x_Type" org.eventb.core.predicate="x ∈ xCoords"/>
+<org.eventb.core.guard name="-" org.eventb.core.label="y_Type" org.eventb.core.predicate="y ∈ yCoords"/>
+<org.eventb.core.guard name="." org.eventb.core.label="play_on_empty_position" org.eventb.core.predicate="x↦y ∉ FilledPos"/>
+<org.eventb.core.action name="/" org.eventb.core.assignment="NeedsChecking ≔ { x1↦y1↦d ∣ (x↦y↦d↦x1↦y1) ∈ Neighbour}" org.eventb.core.label="add_all_neighbouring_positions"/>
+<org.eventb.core.guard name="0" org.eventb.core.label="no_check_in_progress" org.eventb.core.predicate="NeedsChecking = ∅"/>
+<org.eventb.core.guard name="1" org.eventb.core.label="no_successful_check_been_completed" org.eventb.core.predicate="Captured = ∅"/>
+<org.eventb.core.action name="2" org.eventb.core.assignment="CurrentMove ≔ x↦y" org.eventb.core.label="set_CurrentMove_to_given_position"/>
+<org.eventb.core.guard name="3" org.eventb.core.label="no_end_game" org.eventb.core.predicate="GameOver = FALSE"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="evtB" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="CheckReachable">
+<org.eventb.core.parameter name="'" org.eventb.core.identifier="x"/>
+<org.eventb.core.parameter name="(" org.eventb.core.identifier="y"/>
+<org.eventb.core.parameter name="*" org.eventb.core.identifier="d"/>
+<org.eventb.core.guard name="+" org.eventb.core.label="x_Type" org.eventb.core.predicate="x ∈ xCoords"/>
+<org.eventb.core.guard name="," org.eventb.core.label="y_Type" org.eventb.core.predicate="y ∈ yCoords"/>
+<org.eventb.core.guard name="grd1" org.eventb.core.label="d_Type" org.eventb.core.predicate="d ∈ Directions" org.eventb.core.theorem="true"/>
+<org.eventb.core.action name="/" org.eventb.core.assignment="Reachable ≔ Reachable ∪ {x↦y↦d} " org.eventb.core.label="add_reachable_position_to_Reachable"/>
+<org.eventb.core.guard name="0" org.eventb.core.label="position_has_disc_of_opponents_colour" org.eventb.core.predicate="x↦y↦Next(CurrentPlayer) ∈ Board "/>
+<org.eventb.core.action name="1" org.eventb.core.assignment="NeedsChecking ≔ (NeedsChecking ∪ {x1↦y1↦d1 ∣ (x↦y↦d1↦x1↦y1) ∈ Neighbour ∧ d=d1}) ∖ {x↦y↦d}" org.eventb.core.label="position_nexto_given_position_add_NeedsChecking_and_remove"/>
+<org.eventb.core.guard name="grd2" org.eventb.core.label="position_direction_in_NeedsChecking_set" org.eventb.core.predicate="x↦y↦d ∈ NeedsChecking"/>
+<org.eventb.core.guard name="grd3" org.eventb.core.label="have_a_neighbour" org.eventb.core.predicate="∃x1,y1·(x↦y↦d↦x1↦y1) ∈ Neighbour"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="evt6" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="CheckNoValidEnd">
+<org.eventb.core.parameter name="'" org.eventb.core.identifier="x"/>
+<org.eventb.core.parameter name="(" org.eventb.core.identifier="y"/>
+<org.eventb.core.parameter name="*" org.eventb.core.identifier="d"/>
+<org.eventb.core.guard name="+" org.eventb.core.label="x_Type" org.eventb.core.predicate="x ∈ xCoords"/>
+<org.eventb.core.guard name="," org.eventb.core.label="y_Type" org.eventb.core.predicate="y ∈ yCoords"/>
+<org.eventb.core.guard name="grd1" org.eventb.core.label="d_Type" org.eventb.core.predicate="d ∈ Directions"/>
+<org.eventb.core.guard name="." org.eventb.core.label="position_in_Reachable" org.eventb.core.predicate="x↦y↦d ∈ NeedsChecking"/>
+<org.eventb.core.action name="/" org.eventb.core.assignment="NeedsChecking ≔ NeedsChecking ∖ {x↦y↦d}" org.eventb.core.label="removes_position_from_NeedsChecking"/>
+<org.eventb.core.action name="grd2" org.eventb.core.assignment="Reachable ≔ Reachable ∖ {x1↦y1↦d1 ∣ d1=d ∧ x1 ∈ xCoords ∧ y1 ∈ yCoords} " org.eventb.core.label="clears_all_Reachable_positions_in_that_direction"/>
+<org.eventb.core.guard name="grd4" org.eventb.core.label="position_empty_or_no_neighbour" org.eventb.core.predicate="x↦y ∉ FilledPos ∨ (¬∃x1,y1·(x↦y↦d↦x1↦y1) ∈ Neighbour) "/>
+<org.eventb.core.guard name="grd3" org.eventb.core.label="position_not_valid" org.eventb.core.predicate="x↦y↦CurrentPlayer ∉ Board"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="evt7" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="CheckEndChain">
+<org.eventb.core.parameter name="'" org.eventb.core.identifier="x"/>
+<org.eventb.core.parameter name="(" org.eventb.core.identifier="y"/>
+<org.eventb.core.parameter name="*" org.eventb.core.identifier="d"/>
+<org.eventb.core.guard name="grd1" org.eventb.core.label="x_Type" org.eventb.core.predicate="x ∈ xCoords"/>
+<org.eventb.core.guard name="grd2" org.eventb.core.label="y_Type" org.eventb.core.predicate="y ∈ yCoords"/>
+<org.eventb.core.guard name="grd3" org.eventb.core.label="d_Type" org.eventb.core.predicate="d ∈ Directions" org.eventb.core.theorem="true"/>
+<org.eventb.core.guard name="grd4" org.eventb.core.label="check_disc_color_currentPlayer" org.eventb.core.predicate="x↦y↦CurrentPlayer ∈ Board"/>
+<org.eventb.core.guard name="grd5" org.eventb.core.label="position_in_NeedChecking" org.eventb.core.predicate="x↦y↦d ∈ NeedsChecking"/>
+<org.eventb.core.action name="grd5" org.eventb.core.assignment="Captured ≔ Captured ∪ {x1↦y1 ∣ (x1↦y1↦d) ∈ Reachable ∧ x1 ∈ xCoords ∧ y1 ∈ yCoords} " org.eventb.core.label="marks_all_reachable_positions_in_given_direction"/>
+<org.eventb.core.action name="grd6" org.eventb.core.assignment="Reachable ≔ Reachable ∖ {x1↦y1↦d1 ∣ d1=d ∧ x1 ∈ xCoords ∧ y1 ∈ yCoords} " org.eventb.core.label="clears_positions_from_reachable"/>
+<org.eventb.core.action name="grd7" org.eventb.core.assignment="NeedsChecking ≔ NeedsChecking ∖ { x↦y↦d }" org.eventb.core.label="extra_remove_from_NeedsChecking"/>
+</org.eventb.core.event>
+<org.eventb.core.event name=":" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="Pass">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="Pass"/>
+<org.eventb.core.guard name="(" org.eventb.core.label="move_is_being_checked" org.eventb.core.predicate="NeedsChecking = ∅"/>
+<org.eventb.core.guard name=")" org.eventb.core.label="positions_are_determined_to_be_reachable" org.eventb.core.predicate="Reachable = ∅"/>
+<org.eventb.core.guard name="*" org.eventb.core.label="positions_are_determined_to_be_capturable" org.eventb.core.predicate="Captured = ∅"/>
+</org.eventb.core.event>
+<org.eventb.core.event name=";" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="EndGame">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="EndGame"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="=" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="Gameover">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="Gameover"/>
+</org.eventb.core.event>
+<org.eventb.core.variable name="&gt;" org.eventb.core.identifier="Board"/>
+<org.eventb.core.invariant name="?" org.eventb.core.label="Board_Type" org.eventb.core.predicate="Board ∈ FilledPos → Colours"/>
+<org.eventb.core.variable name="evt6" org.eventb.core.identifier="CurrentMove"/>
+<org.eventb.core.invariant name="evt7" org.eventb.core.label="CurrentMove" org.eventb.core.predicate="CurrentMove ∈ Positions"/>
+<org.eventb.core.invariant name="evt9" org.eventb.core.label="Board_Dom" org.eventb.core.predicate="dom(Board) = FilledPos" org.eventb.core.theorem="true"/>
+<org.eventb.core.variable name="evt=" org.eventb.core.identifier="Captured"/>
+<org.eventb.core.invariant name="evt&gt;" org.eventb.core.label="Captured" org.eventb.core.predicate="Captured ⊆ Positions"/>
+<org.eventb.core.variable name="evt@" org.eventb.core.identifier="NeedsChecking"/>
+<org.eventb.core.invariant name="inv5" org.eventb.core.label="NeedsChecking" org.eventb.core.predicate="NeedsChecking ∈ Positions ↔ Directions"/>
+<org.eventb.core.invariant name="evtE" org.eventb.core.label="currentRestricted" org.eventb.core.predicate="Captured ≠ ∅ ⇒ CurrentMove ∉ FilledPos"/>
+<org.eventb.core.invariant name="inv1" org.eventb.core.label="currentRestricted1" org.eventb.core.predicate="NeedsChecking ≠ ∅ ⇒ CurrentMove ∉ FilledPos"/>
+<org.eventb.core.invariant name="inv2" org.eventb.core.label="NeverEmpty" org.eventb.core.predicate="Board ≠ ∅"/>
+<org.eventb.core.variable name="inv3" org.eventb.core.identifier="Reachable"/>
+<org.eventb.core.invariant name="inv4" org.eventb.core.label="Reachable" org.eventb.core.predicate="Reachable ∈ Positions ↔ Directions"/>
+</org.eventb.core.machineFile>

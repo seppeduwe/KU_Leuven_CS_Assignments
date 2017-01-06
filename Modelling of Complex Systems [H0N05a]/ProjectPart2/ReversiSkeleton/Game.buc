@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.contextFile org.eventb.core.configuration="org.eventb.core.fwd" version="3">
+<org.eventb.core.constant name="'" org.eventb.core.identifier="xCoords"/>
+<org.eventb.core.constant name="(" org.eventb.core.identifier="yCoords"/>
+<org.eventb.core.axiom name=")" org.eventb.core.label="xCoords" org.eventb.core.predicate="xCoords = 1‥4"/>
+<org.eventb.core.axiom name="*" org.eventb.core.label="yCoords" org.eventb.core.predicate="yCoords = 1‥4"/>
+<org.eventb.core.constant name="/" org.eventb.core.identifier="White"/>
+<org.eventb.core.constant name="0" org.eventb.core.identifier="Black"/>
+<org.eventb.core.carrierSet name="1" org.eventb.core.identifier="Colours"/>
+<org.eventb.core.axiom name="2" org.eventb.core.label="Colours" org.eventb.core.predicate="partition(Colours, {White}, {Black})"/>
+<org.eventb.core.constant name="6" org.eventb.core.identifier="Positions"/>
+<org.eventb.core.axiom name="7" org.eventb.core.label="Positions" org.eventb.core.predicate="Positions = xCoords × yCoords"/>
+<org.eventb.core.constant name="8" org.eventb.core.identifier="xOf"/>
+<org.eventb.core.constant name="9" org.eventb.core.identifier="yOf"/>
+<org.eventb.core.axiom name=":" org.eventb.core.label="xOf" org.eventb.core.predicate="xOf = {p ↦ x ∣ p ∈ Positions ∧ ∃ y · y ∈ yCoords ∧ p = x ↦ y}"/>
+<org.eventb.core.axiom name="axm1" org.eventb.core.label="yOf" org.eventb.core.predicate="yOf = {p ↦ y ∣ p ∈ Positions ∧ ∃ x · x ∈ xCoords ∧ p = x ↦ y}"/>
+<org.eventb.core.constant name="axm2" org.eventb.core.identifier="Next"/>
+<org.eventb.core.axiom name="axm5" org.eventb.core.label="xOf_Type" org.eventb.core.predicate="xOf ∈ Positions → xCoords" org.eventb.core.theorem="true"/>
+<org.eventb.core.axiom name="axm3" org.eventb.core.label="Next" org.eventb.core.predicate="Next = {White ↦ Black, Black ↦ White}"/>
+<org.eventb.core.axiom name="axm4" org.eventb.core.label="Next_Type" org.eventb.core.predicate="Next ∈ Colours ⤖ Colours" org.eventb.core.theorem="true"/>
+<org.eventb.core.axiom name="axm6" org.eventb.core.label="NextTo" org.eventb.core.predicate="NextTo = {x1 ↦ y1 ↦ x2 ↦ y2 ∣ x1 ∈ xCoords ∧ x2 ∈ xCoords ∧ y1 ∈ yCoords ∧ y2 ∈ yCoords ∧ &#13;&#10;( (x1 = x2 ∧ (y1 = y2+1 ∨ y1+1 = y2)) ∨ (y1 = y2 ∧ (x1 = x2+1 ∨ x1 + 1 = x2)))}"/>
+<org.eventb.core.constant name="axm7" org.eventb.core.identifier="NextTo"/>
+<org.eventb.core.constant name="axm8" org.eventb.core.identifier="Left"/>
+<org.eventb.core.constant name="axm9" org.eventb.core.identifier="Right"/>
+<org.eventb.core.constant name="axm:" org.eventb.core.identifier="Up"/>
+<org.eventb.core.constant name="axm;" org.eventb.core.identifier="Down"/>
+<org.eventb.core.constant name="axm=" org.eventb.core.identifier="UpLeft"/>
+<org.eventb.core.constant name="axm&gt;" org.eventb.core.identifier="UpRight"/>
+<org.eventb.core.constant name="axm?" org.eventb.core.identifier="DownRight"/>
+<org.eventb.core.constant name="axm@" org.eventb.core.identifier="DownLeft"/>
+<org.eventb.core.carrierSet name="axmA" org.eventb.core.identifier="Directions"/>
+<org.eventb.core.axiom name="axmB" org.eventb.core.label="Directions" org.eventb.core.predicate="partition(Directions,{Up}, {Down}, {Left}, {Right}, {UpLeft}, {UpRight}, {DownRight}, {DownLeft})"/>
+<org.eventb.core.constant name="axmC" org.eventb.core.identifier="Neighbour"/>
+<org.eventb.core.constant name="axmE" org.eventb.core.identifier="xDir"/>
+<org.eventb.core.constant name="axmF" org.eventb.core.identifier="yDir"/>
+<org.eventb.core.axiom name="axmG" org.eventb.core.label="xDir" org.eventb.core.predicate="xDir = {Up ↦ 0, Down ↦ 0, Left ↦ −1, Right ↦ 1, UpLeft ↦ −1, UpRight ↦ 1, DownLeft ↦ −1, DownRight ↦ 1}"/>
+<org.eventb.core.axiom name="axm7" org.eventb.core.label="yDir" org.eventb.core.predicate="yDir = {Up ↦ 1, Down ↦ −1, Left ↦ 0, Right ↦ 0, UpLeft ↦ 1, UpRight ↦ 1, DownLeft ↦ −1, DownRight ↦ −1}"/>
+<org.eventb.core.axiom name="axmI" org.eventb.core.label="xDir_Type" org.eventb.core.predicate="xDir ∈ Directions → {−1,0,1}"/>
+<org.eventb.core.axiom name="axm8" org.eventb.core.label="yDir_Type" org.eventb.core.predicate="yDir ∈ Directions → {−1,0,1}"/>
+<org.eventb.core.axiom name="axmH" org.eventb.core.label="Neighbour" org.eventb.core.predicate="Neighbour = {x1 ↦ y1 ↦ d ↦ x2 ↦ y2 ∣ (x1 ∈ xCoords ∧ x2 ∈ xCoords ∧ y1 ∈ yCoords ∧ y2 ∈ yCoords ∧ d ∈ Directions) ∧ &#13;&#10;(x1 + xDir(d) = x2) ∧ (y1 + yDir(d)= y2)}"/>
+<org.eventb.core.axiom name="axmJ" org.eventb.core.label="Neighbour_Type" org.eventb.core.predicate="Neighbour ⊆ (xCoords × yCoords × Directions × xCoords × yCoords)" org.eventb.core.theorem="true"/>
+</org.eventb.core.contextFile>
