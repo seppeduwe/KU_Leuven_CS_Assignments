@@ -1,0 +1,43 @@
+ vocabulary V{
+ 	type Time isa nat
+    Start : Time
+    partial Next(Time) : Time
+    
+    type states constructed from {busy, ready}
+    type requests constructed from {TRUE, FALSE}
+    
+    type event constructed from {accept_request(requests), do_not_accept_request(requests, states)}
+    
+    Occur(Time) : event
+    
+    State(Time) : states
+    I_State : states
+    
+    Request(Time) : requests
+    I_Request : requests
+    
+    
+
+ }
+ 
+ 
+ 
+theory T: V{
+ 	
+ 	{
+        State(Start) = I_State.
+        ! t : State(Next(t)) = busy <- ? r : Occur(t) = accept_request(r).
+        ! t s : State(Next(t)) = s <- ? r : Occur(t) = do_not_accept_request(r,s).
+        ! t : State(Next(t)) = State(t) <- (~? r : Occur(t) = accept_request(r))  & (~? r s : Occur(t) = do_not_accept_request(r,s)). // This can be omitted in this example since State is always changed
+    }
+    
+    {
+        Request(Start) = I_Request.
+        ! t r : Request(Next(t)) = r <- Occur(t) = accept_request(r).
+        ! t r : Request(Next(t)) = r <- ? s : Occur(t) = do_not_accept_request(r,s).
+        ! t : Request(Next(t)) = Request(t) <- (~? r : Occur(t) = accept_request(r))  & (~? r s : Occur(t) = do_not_accept_request(r,s)). // This can be omitted in this example since Request is always changed
+    }
+    
+    ! t [Time] r [requests] : Occur(t) = accept_request(r) => Request(t) = TRUE & State(t) = ready.
+    ! t [Time] r [requests] : Occur(t) = do_not_accept_request(r, s) => Request(t) = FALSE | State(t) = busy.
+ }

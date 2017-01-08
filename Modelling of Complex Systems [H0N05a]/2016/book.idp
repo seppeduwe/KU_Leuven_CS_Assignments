@@ -1,0 +1,89 @@
+vocabulary V {
+	type Time isa nat
+	partial Next(Time):Time
+	Start:Time
+
+	type Person
+	type Book
+	
+	Owns(Person,Book,Time)
+	I_Owns(Person,Book) //Initial predicate for owns
+	C_Owns(Person,Book,Time)
+	Cn_Owns(Person,Book,Time)
+	
+	Give(Person,Book,Person,Time)
+}
+
+structure S : V {
+	Time = {0..5}
+	Person = {Bob; John; Mary}
+	Book = {B1; B2; B3}
+
+	// Initially
+	I_Owns = { Bob,B1; John,B2; Mary,B3 }
+
+}
+
+theory timeTheo:V{
+	{
+		Start = MIN[:Time].
+		!t: Next(t) = t+1 <- Time(t+1).
+	}
+}
+	
+theory T : V {
+	{ 
+		// Successor State Action Axiom & Inertia
+		! p b : Owns(p,b,Start) <- I_Owns(p,b).
+		! p b t : Owns(p,b,Next(t)) <- C_Owns(p,b,t).
+		! p b t : Owns(p,b,Next(t)) <- Owns(p,b,t) & ~Cn_Owns(p,b,t).
+	}
+
+	{
+		// Expressing causations
+		! p b t : C_Owns(p,b,t) <- ? p2 : Give(p2, b, p, t).
+		! p b t : Cn_Owns(p,b,t) <- ? p2 : Give(p, b, p2, t).
+	}
+	
+	// Preconditions
+	// - A person needs to own a book if he wants to give it away
+	! p1 b p2 t : Give(p1,b,p2,t) => Owns(p1,b,t).
+	// - A book can be given to only one person
+	! p1 b t : ?=<1 p2 : Give(p1,b,p2,t).
+	// - A person cannot give a book to himself
+	~(? p b t : Give(p,b,p,t)).
+
+  
+}	
+
+procedure findmodels() {
+	local timeExpanded = calculatedefinitions(timeTheo,S)
+	stdoptions.nbmodels=5
+	printmodels(modelexpand(T,S))
+}
+
+
+
+procedure simulate() {
+    stdoptions.nbmodels = 5
+    print("----> Starting interactive simulation")
+	local states = initialise(T,S)
+	
+	//...and use one of those initial states to continue with (again and again and ...)
+	while true do
+		printmodels(states)
+		print("Please enter which state to use")
+		local num = tonumber(io.read("*line"))
+		local chosen = states[num]
+		states = progress(T,chosen)
+	end	
+}
+
+
+
+procedure main(){
+    //This method lets you walk through your solutions interactively
+	simulate()
+    //This method (defined above) simply searches models of your theory
+    findmodels()
+}
