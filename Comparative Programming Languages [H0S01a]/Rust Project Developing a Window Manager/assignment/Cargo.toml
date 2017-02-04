@@ -1,0 +1,16 @@
+[package]
+# Don't change this!
+name = "cplwm-assignment"
+# You can change this field
+version = "0.1.0"
+# Fill in this field
+authors = ["Seppe Duwé <seppe.duwe@student.kuleuven.be>"]
+
+[dependencies]
+rustc-serialize = "0.3.*"
+# You are free to add additional dependencies to your project. But this is
+# certainly not required.
+
+[dependencies.cplwm-api]
+path = "../api"
+version = "*"
