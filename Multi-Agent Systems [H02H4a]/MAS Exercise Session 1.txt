@@ -1,0 +1,23 @@
+Part 1: 
+
+    Goto https://github.com/rinde/RinSim
+    Read the overview of the simulator 
+    Follow the installation instructions and run SimpleExample
+    Try to answer this question: why do the dots show this strange behavior, can you explain why the code results in this behavior?
+    Copy the contents of SimpleExample.class (you can double click on this file in the example jar in your Maven Dependencies) to a file in your own project (as created via the instructions)
+    If Eclipse shows some warnings make sure to read the troubleshooting tips: https://github.com/rinde/RinSim/blob/master/docs/howtorun.md#troubleshooting 
+    Exercise: adapt the code such that the dots move in a straight line to their destinations instead of the random movement that they currently show. Make sure that when the dots reach their destination they pick a new random destination.
+
+Part 2: 
+
+    Run the WarehouseExample from the jar. 
+    Take a look at the code in WarehouseExample.java and AGVAgent.java, copy it to your own project.
+    change the line: RoadModelBuilders.dynamicGraph(GraphCreator.createSimpleGraph())
+                         to: RoadModelBuilders.dynamicGraph(GraphCreator.createGraph())
+    Observe the exception that is thrown.
+    Exercise: create an reactive agent that uses only local information (information from the model about the agent surroundings) to avoid deadlocks and if possible grid locks.
+    Tips:
+    - take a look at the visualization options of WarehouseRenderer and AGVRenderer
+    - if you are confused about some of the behavior, remember that the underlying model of the AGVs is a graph where each AGV is represented as a simple Point. You can use the GraphRoadModelRenderer to show a basic graph.
+    - some useful methods in the road model are isOccupied(Point) and hasRoadUserOn(Point,Point), also, catching the DeadlockException may be useful.
+

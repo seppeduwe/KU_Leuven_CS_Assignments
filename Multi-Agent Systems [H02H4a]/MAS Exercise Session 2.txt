@@ -1,0 +1,5 @@
+Create a contract net protocol implementation for a pickup and delivery problem. For this exercise only the task allocation problem is relevant, e.g. what vehicle is delivering what package.
+
+    use the PlaneRoadModel as road (as used in SimpleExample) so that vehicle routing becomes simple
+    use the DefaultPDPModel for the pickup and delivery problem (as used in TaxiExample)
+    use the CommModel for communication (as used in CommExample)
