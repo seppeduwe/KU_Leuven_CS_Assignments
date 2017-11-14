@@ -1,0 +1,101 @@
+// Heeeeellllllllp...
+vocabulary V {
+	type Time isa nat
+	partial Next(Time):Time
+	Start:Time
+    
+	type Jug
+    type Liters isa nat
+    MaxContents(Jug):Liters
+    
+    type Action constructed from {Fill(Jug),Transfer(Jug,Jug,Liters),Empty(Jug)}
+	do(Time, Action)
+    
+    I_Contents(Jug):Liters
+    //... more things
+    Contents(Time,Jug):Liters
+    C_Contents(Time,Jug):Liters
+    C_nContents(Time,Jug):Liters
+    
+	
+}
+
+theory timeTheo:V{
+	{
+		Start = MIN[:Time].
+		!t: Next(t) = t+1 <- Time(t+1).
+	}
+}
+
+structure S : V {
+	Time = {0..6}
+	Jug = {J3;J5}
+	Liters = {0..10}
+	MaxContents = {J5->5;J3->3}
+	I_Contents = {J3->0;J5->0;}
+}
+
+theory T : V {
+	// Preconditions
+    
+    // Do not fill from empty jug
+	! j1 j2 l t: do(t,Transfer(j1,j2,l)) => ~(Contents(t,j1)=0).
+    // Do not fill self 
+    // This also correct???
+	! j l t: ~do(t,Transfer(j,j,l)).
+    // Do not fill full jug
+	! j t: do(t,Fill(j)) => ~(Contents(t,j) = MaxContents(j)).
+    // Do not empty empty jug
+    ! j t: do(t,Empty(j)) => ~(Contents(t,j) = 0).
+    
+    // Possible transfer number of liters 
+    ! j1 j2 l t: do(t,Transfer(j1,j2,l)) => l =< Contents(t,j1).
+    ! j1 j2 l t: do(t,Transfer(j1,j2,l)) => l =< MaxContents(j2) - Contents(t,j2). 
+    ! j1 j2 l t: do(t,Transfer(j1,j2,l)) => l = Contents(t,j1) | l = MaxContents(j2) - Contents(t,j2). 
+    
+  {
+	// Successor State Axiom
+	! j l: Contents(Start,j) = l <- I_Contents(j)=l.
+	! p t l: Contents(Next(t),p)=l <- C_Contents(t,p)=l.
+	! p t l: Contents(Next(t),p)=l <- Contents(t,p)=l & ~C_nContents(t,p)=l.
+  }
+//!t j : C_Contents(t,j) = 0.
+  {	
+       
+	// Causes
+    // If the content changes, all other values are no longer it's content
+    // Because the use of funcions instead of predicates, it is a little bit more
+    // difficult. The problem lies in the uncause, A function can only be one value at a time.
+    // It is not possible to say it is not 1 and not 2 and not 3... . So we have to first lookup
+    // the current value and only uncause that one!
+
+   	! p t l1: C_nContents(t,p) = l1 <- ? l2[Liters] : C_Contents(t,p)=l2 &
+         												C_Contents(t-1,p)=l1 & l1~=l2.
+        
+    // Fill(Jug)
+    // ! j t l: C_Contents(t,j) = l <- do(t,Fill(j)) & MaxContents(j) = l.
+    // Empty(Jug)
+   	// ! j t : C_Contents(t,j)=0 <- do(t,Empty(j)).
+    // Transfer(Jug,Jug,Liters)
+    // ! j1 t l1 : C_Contents(t,j1)=l1 <- ?j2 l: do(t,Transfer(j1,j2,l)) & l1 = C_Contents(t,j1) - l. 
+    // ! j2 t l1 : C_Contents(t,j2)=l1 <- ?j1 l : do(t,Transfer(j1,j2,l)) & l1 = C_Contents(t,j2) + l. 
+    
+  }
+    //! t : ?>=1 j l: C_Contents(t,j)=l.
+    //! t : ?>=1 j l: C_nContents(t,j)=l.
+    //! t : ?>=1 j l: Contents(t,j)=l.
+    
+	// One action at a time
+    ! t : ?1 a : do(t,a). 
+
+    // You must obtain exactly 4 liters of water
+    //?t j : Contents(t,j) = 4.
+    
+}
+
+
+procedure main() {
+	//explainunsat(merge(T,timeTheo),S)
+    print(modelexpand(merge(T,timeTheo),S)[1])
+}	
+

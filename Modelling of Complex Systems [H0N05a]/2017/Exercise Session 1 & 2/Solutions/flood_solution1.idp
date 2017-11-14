@@ -1,0 +1,242 @@
+/*
+You are given a grid of squares, coloured at random in multiple colours. In each move, you can flood-fill the top left square in a colour of your choice (i.e. every square reachable from the starting square by an orthogonally connected path of squares all the same colour will be filled in the new colour). As you do this, more and more of the grid becomes connected to the starting square.
+
+Click in a square to flood-fill the top left corner with that square's colour.
+Your aim is to make the whole grid the same colour, in as few moves as possible.
+
+This is adapted from the following puzzle: https://www.chiark.greenend.org.uk/~sgtatham/puzzles/js/flood.html
+*/
+
+//This brings the needed IDPD3 methods into scope
+include "idpd3/idpd3_voc.idp"
+
+//The vocabulary representing the state of the puzzle
+LTCvocabulary V_State {
+    //The colors in the grid
+    type Color isa string
+
+    //Coordinates
+    type XCo isa int
+    type YCo isa int
+    type Coord constructed from {Co(XCo,YCo)}
+    //Alias for Co because of bug in LTC-projections
+    cor(XCo,YCo):Coord
+
+    //LTC Timestuff
+    type Time isa int
+    Start : Time
+    partial Next(Time):Time
+
+    //The location where the floods start 
+    //(normally the top left corner, coordinate (0,0))
+    floodStart : Coord
+
+    //This predicate describes which coordinates are connected by the same color
+    //to the floodStart location
+    connectedToFlood(Time,Coord)
+
+    //The puzzle describes the initial state of the grid
+    puzzle(Coord):Color
+    //colorOf describes the state of the grid throughout time
+    colorOf(Time,Coord):Color
+
+    //Helper predicates for defining a good puzzle:
+	//ColorConnect is an equivalence relation, partitioning the grid in its 
+    //connected component by color
+    colorConnect(Coord,Coord)
+    
+    //Declares that two coordinates are adjacent to each other
+    adjacent(Coord,Coord)
+
+}
+
+//The actions should be declared in a vocabulary different from the state
+LTCvocabulary V{
+    extern vocabulary V_State
+    click(Time):Coord
+}
+
+//The theory describing a good puzzle and the LTC theory of what is happening
+theory T:V{
+
+    //TODO: Define connectedToFlood/2. connectedToFlood(t, c) is true if at timepoint t, 
+    //the coordinate c is connected to the floodStart
+    //by tiles of the same color
+	{
+        !t : connectedToFlood(t,floodStart).
+        
+        !t, c1 : connectedToFlood(t,c1)<- (?c2 : connectedToFlood(t,c2) & adjacent(c1,c2)) & colorOf(t,c1) = colorOf(t,floodStart).
+    }
+
+    //TODO: Make floodStart the coordinate at the upper left corner
+	floodStart = cor(0,0).
+
+    //TODO: Define adjacent/2. Adjacency between coordinates is only counted horizontal and vertical, but not diagonal
+	{
+        // Horizontal
+        !XCo1,XCo2,YCo : adjacent(Co(XCo1,YCo),Co(XCo2,YCo)) <- abs(XCo1-XCo2)=<1.
+        // Vertical
+        !YCo1,YCo2,XCo : adjacent(Co(XCo,YCo1),Co(XCo,YCo2)) <- abs(YCo1-YCo2)=<1.
+    }
+
+    //IDP has to generate the puzzle itself, let's put some constraints in place so the 
+    //generated puzzle is interesting.
+
+    //TODO: Initially, maximally 3 squares of the same color are connected. 
+    //You might need to introduce an extra predicate to help writing this constraint
+    {
+        ! c1,c2 : colorConnect(c1,c2) <- puzzle(c1) = puzzle(c2) & adjacent(c1,c2).
+        ! c1,c2,c3 : colorConnect(c1,c2) <- colorConnect(c3,c2) & adjacent(c1,c3) & puzzle(c1) = puzzle(c3).
+        
+    }
+    
+	!c1[Coord] : #{c2[Coord] : colorConnect(c1,c2)} < 4.
+   
+    //TODO: Each color maximally be used twice as much as any other color
+	!col1[Color],col2[Color] : #{c1[Coord] : puzzle(c1) = col1} < 2* #{c2[Coord] : puzzle(c2) = col2}.
+
+
+    //This definition defines the color of the cells at all the timepoints.
+    //It can be tricky to write these so you get these for free for now. 
+    //You'll learn how to write them in exercise session 4
+    {
+        //The puzzle describes the initial state of the grid
+        ! co: colorOf(Start,co)=puzzle(co).
+        //If the square is not connected to the floodStart, it does not change color
+        ! co t: colorOf(Next(t),co) = colorOf(t,co) <- ~connectedToFlood(t,co).
+        // If the square is connected to the floodStart, it changes color to 
+        //the color of the square that was clicked on
+        ! co t: colorOf(Next(t),co) = colorOf(t,click(t)) <- connectedToFlood(t,co) .
+    }
+
+    //aliasing Co as cor for the visualisation due to bug
+    {
+        ! a[XCo] b[YCo]: cor(a,b) = Co(a,b).
+    }
+}
+
+
+//END OF EXERCISE
+
+
+//This vocabulary combines the main theory with the needed output information
+vocabulary V_d3_out {
+    extern vocabulary idpd3::V_out
+    //IMPORTANT: we import V_ss -> the single state theory of the LTC theory V
+    //this is automatically brought into scope by declaring V as an LTCvocabulary
+    extern vocabulary V_ss
+
+    //Associates a key of a graphical object with each coordinate
+    //(e.g. the square that will be displayed)
+    toKey(Coord):key
+}
+
+theory T_d3_out : V_d3_out {
+    //This theory only consists of a set of definitions explaining how 
+    //to visualize a structure over V_ss
+    {
+        //every coordinate is associated with a rectangle (a square to be precise)
+        ! t c: d3_type(t,toKey(c)) = rect.
+        //They are placed next to each other
+        !x[XCo],y[YCo] b t: d3_x(t, b) = x*4+2 <- b = toKey(cor(x,y)).
+        !x[XCo],y[YCo] a t: d3_y(t, a) = y*4+2 <- a = toKey(cor(x,y)).
+        //All rectangles have the same height
+        ! t r: d3_rect_width(t, r) = 4.
+        ! t r: d3_rect_height(t, r) = 4.
+        //A rectangle has the same color as it's coordinate
+        ! t c: d3_color(t, toKey(c)) = colorOf(c).
+
+        //The width and the height of the canvas are set 
+        //to the maximum of the width and height in the types
+        ! t: d3_width(t) = MAX[:width].
+        ! t: d3_height(t) = MAX[:height].
+
+    }
+
+}
+
+//For input handling we aditionnaly import the idpd3::V_in into scope
+vocabulary V_d3_in {
+    extern vocabulary V_d3_out
+    extern vocabulary idpd3::V_in
+}
+
+theory T_d3_in : V_d3_in {
+    {
+        //A click on a object, corresponds to a click on that coordinate in the original LTC theory
+
+        ! a t: click = a <- d3_click(t,toKey(a)).
+    }
+}
+
+//This procedure interprets 
+procedure toKey(a){
+    return tostring(a)
+}
+
+//This structure interprets all the needed types
+structure Default : V_d3_out {
+    //these are the colors from the main theory
+    color = {Red;Green;Blue;Yellow}   
+    //these are the colors from IDPD3
+    Color = {Red;Green;Blue;Yellow}
+
+    //These determine the number of squares in the field 
+    XCo = {0..4}
+    YCo = {0..4}
+
+    //The visualisation of a timestep is not an animation, 
+    //so only 1 element is needed in the time-type
+    time = {1}
+
+    //These determine the height/width of the canvas
+    width = {0..25}
+    height = {0..25}
+
+    label = {""}
+    order = {0}
+    image = {""}
+
+    //This associates the interpretation of toKey with the lua method of toKey
+    toKey = procedure toKey
+}
+
+
+procedure main(){
+
+    //This command initializes the idpd3 environment
+    idpd3.init_idpd3();
+    //This is the verbosity of the idpd3 code
+    //The system will print more information about what is happening under the hood
+    //if you increase this number. This is mainly useful for debugging purposes
+    idpd3_browser:setLogLevel(0);
+
+    //We need a starting structure 
+    //	- for the main theory (the flood game) 
+    //	- for input signals (clicks)
+    //  - for output signals (the visualisation itself)
+    // For our purposes these can be the same. So we clone the "Default structure" and we set the 
+    // vocabularies to the correct ones (projecting the non-relevant symbols away)
+    local S = clone(Default);
+    local S_d3_in = clone(Default);
+    local S_d3_out = clone(Default);
+
+    setvocabulary(S, V);
+    setvocabulary(S_d3_in, V_d3_in);
+    setvocabulary(S_d3_out, V_d3_out);
+
+    if (initialise(T,S)[1] == nil) then
+        explainunsat(T,S)
+        return
+    end
+
+
+    //This creates the interactive LTC-environment powered by IDPD3
+    local go = idpd3_browser:createLTC(
+        T, S, V_State_ss,
+        T_d3_in, S_d3_in, V_d3_in,
+        T_d3_out, S_d3_out, V_d3_out);
+    //This starts the execution
+    go();
+
+}

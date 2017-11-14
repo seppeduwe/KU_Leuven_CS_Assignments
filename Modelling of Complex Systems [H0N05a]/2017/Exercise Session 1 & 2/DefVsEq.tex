@@ -1,0 +1,44 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper]{geometry}
+\usepackage{parskip}
+%opening
+\title{On Equivalences and definitions}
+\author{\vspace{-2ex}}
+\date{}
+\pagenumbering{gobble}
+\begin{document}
+\maketitle
+\section*{The roster problem}
+In the Roster demo you were asked to translate the following statement: 
+\begin{quote}
+ A teacher teaches the mustTeachs of his courses.
+\end{quote}
+In other words, if a group has a course at a certain time, that course's teacher must be teaching that group at that time, and only then. 
+Several solutions seem possible (typing is left implicit): 
+\[ \forall g c d h : mustTeach(taughtBy(c,g),g,d,h) \Leftrightarrow has(c,g,d,h) . \]
+\[ \forall t g c d h : mustTeach(t,g,d,h) \Leftrightarrow taughtBy(c,g) = t \wedge has(c,g,d,h) . \]
+Or
+\[
+ \{ \forall g c d h : mustTeach(taughtBy(c,g),g,d,h) \leftarrow has(c,g,d,h).\}
+\]
+The sentences using equivalences and the definition seem equivalent, but aren't. If you use one of the equivalences, there will not be any models. 
+However, If you use the definition, you will get the correct models.
+
+The problem is that a single teacher can teach different courses to the same group. 
+Using one of the sentences with an equivalence makes it so that that group must have all those course at the same time. (\textbf{Check this}, e.g. assume taughtBy(g,c1) = taughtBy(g,c2))
+
+So if you want to use an equivalence, you would have to write: 
+\[ \forall t g d h : mustTeach(t,g,d,h) \Leftrightarrow \exists c : has(c,g,d,h) \wedge taughtBy(c,g) = t .\]
+This sentence states a teacher must teach a certain group at a certain time if and only if at that time the group has \textbf{some} course he/she teaches.
+\section*{Warning}
+The difference in meaning between the sentences using equivalences and the definition is very subtle. This subtlety shows how much easier to comprehend definitions are. When an equivalence is used it can be difficult to decide whether what you wrote is what you \emph{meant} to write. 
+\begin{quote}
+  \centering \textbf{\emph{Use definitions whenever you uniquely define a concept in terms of another, or a combination of other concepts. Avoid the use of equivalences}}
+\end{quote}
+We also refer to the second bad example of the use of equivalences on page
+82 of the slides of FO, which shows a similar pattern.
+
+
+
+\end{document}

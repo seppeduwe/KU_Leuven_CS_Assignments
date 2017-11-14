@@ -1,0 +1,278 @@
+include "idpd3/idpd3_voc.idp"
+
+vocabulary V_extra {
+    extern vocabulary ShiftItVoc
+    extern vocabulary idpd3::V_out
+    
+    ToSideKey(Side):key
+    ToTileKey(Tile):key
+    ToLockedKey(Tile):key
+    ToDirKey(Dir):key
+    GetSideImagePath(Colour, Dir):image
+    GetTileImagePath(Colour):image
+    GetLockedImagePath():image
+    GetArrowImagePath(Dir):image
+    GetArrowX(XCo, YCo, Dir, Co):width
+    GetArrowY(XCo, YCo, Dir, Co):height
+    GetGameWidth(XCo, YCo):width
+    timeKey : key
+    gameover : key
+    won: key
+    ToTimeLabel(time) : label
+    gameoverLab : label
+    wonLab : label
+    runningLab : label
+}
+
+procedure toTimeLabel(t) {
+    return "Time: "..tostring(t)
+}
+
+procedure toSideKey(x) {
+    return "side" .. tostring(x)
+}
+
+procedure toTileKey(x) {
+    return "tile" .. tostring(x)
+}
+
+procedure toLockedKey(x) {
+    return "locked" .. tostring(x)
+}
+
+procedure toDirKey(x) {
+    return "dir" .. tostring(x)
+}
+
+procedure getImageDir() {
+    return "https://people.cs.kuleuven.be/~simon.marynissen/project_MCS_2017-2018/"
+}
+
+procedure getSideImagePath(c, d) {
+    return getImageDir() .. tostring(c) .. string.sub(tostring(d),1,1) .. ".png"
+}
+
+procedure getTileImagePath(c) {
+    return getImageDir() .. tostring(c) .. ".png"
+}
+
+procedure getLockedImagePath() {
+    return getImageDir() .. "locked.png"
+}
+
+procedure getArrowImagePath(d) {
+    return getImageDir() .. "a" .. tostring(d) .. ".png"
+}
+
+procedure getArrowX(maxX, maxY, d, coor) {
+    local s = tostring(d)
+    if (s == "right") then
+        return 5
+    elseif (s == "left") then
+        return 14 + 11*tonumber(maxX)
+    elseif (s == "up" or s == "down") then 
+        return 15 + 11*tonumber(coor - 1)
+    end
+    return 0
+}
+
+procedure getArrowY(maxX, maxY, d, coor) {
+    str = tostring(d)
+    if (str == "up") then
+        return 14 + 11*tonumber(maxY)
+    elseif (str == "down") then
+        return 5
+    elseif (str == "left" or str == "right") then
+        return 15 + 11*(tonumber(maxY) - tonumber(coor))
+    end
+}
+
+procedure getGameWidth(maxX, maxY) {
+    local m = math.max(maxX, maxY)
+    return 10*(2+m) + m - 1 
+}
+
+structure visualStruct: V_extra {
+    // dummy ShiftItVoc specifications
+    Start = 0
+    Tile = {T}
+    Colour = {"red"}
+    XCo = {1}
+    YCo = {1}
+    
+    // dummy idpd3::V_types specifications
+    time = {0..20}
+    width = {0..30}
+    height = {0..30}
+    
+    // Actual idpd3::V_out specifications
+    order = {1..3}
+    color = {"Black"}
+    image = {"https://people.cs.kuleuven.be/~simon.marynissen/project_MCS_2017-2018/red.png";
+        "https://people.cs.kuleuven.be/~simon.marynissen/project_MCS_2017-2018/redu.png";
+    	"https://people.cs.kuleuven.be/~simon.marynissen/project_MCS_2017-2018/redd.png";
+    	"https://people.cs.kuleuven.be/~simon.marynissen/project_MCS_2017-2018/redl.png";
+    	"https://people.cs.kuleuven.be/~simon.marynissen/project_MCS_2017-2018/redr.png";
+        "https://people.cs.kuleuven.be/~simon.marynissen/project_MCS_2017-2018/aup.png";
+        "https://people.cs.kuleuven.be/~simon.marynissen/project_MCS_2017-2018/adown.png";
+        "https://people.cs.kuleuven.be/~simon.marynissen/project_MCS_2017-2018/aleft.png";
+        "https://people.cs.kuleuven.be/~simon.marynissen/project_MCS_2017-2018/aright.png";
+        "https://people.cs.kuleuven.be/~simon.marynissen/project_MCS_2017-2018/locked.png" }
+    ToSideKey = procedure toSideKey
+    ToTileKey = procedure toTileKey
+    ToLockedKey = procedure toLockedKey
+    ToDirKey = procedure toDirKey
+    GetSideImagePath = procedure getSideImagePath
+    GetTileImagePath = procedure getTileImagePath
+    GetLockedImagePath = procedure getLockedImagePath
+    GetArrowImagePath = procedure getArrowImagePath
+    GetArrowX = procedure getArrowX
+    GetArrowY = procedure getArrowY
+    GetGameWidth = procedure getGameWidth
+    ToTimeLabel = procedure toTimeLabel
+    timeKey = "time"
+    gameover = "gameover"
+    gameoverLab = "Game Over"
+    won = "won"
+    wonLab = "Won"
+    
+    runningLab = "Going"
+}
+
+vocabulary V_draw {
+    extern vocabulary idpd3::V_out
+    extern vocabulary V_extra
+}
+
+theory T_draw : V_draw {
+    {
+        // Drawing extra tiles behind the sides to get rid of lines between sides.
+        ! t[time], a[Tile]: d3_type(t, ToTileKey(a)) = img.
+        ! t[time], a[Tile], x[XCo], y[YCo]: d3_x(t, ToTileKey(a)) = 15+11*(x-1) <- GetPos(t, a) = P(x,y).
+        ! t[time], a[Tile], x[XCo], y[YCo]: d3_y(t, ToTileKey(a)) = 15+11*(MAX[:YCo] - y) <- GetPos(t, a) = P(x,y).
+        ! t[time], a[Tile]: d3_rect_width(t, ToTileKey(a)) = 10.
+        ! t[time], a[Tile]: d3_rect_height(t, ToTileKey(a)) = 10.
+        ! t[time], a[Tile]: d3_img_path(t, ToTileKey(a)) = GetTileImagePath(Colouring(S(a,up))).
+        ! t[time], a[Tile]: d3_order(t, ToTileKey(a)) = 1.
+        
+        // Drawing of the actual sides.
+        ! t[time], s[Side]: d3_type(t, ToSideKey(s)) = img.
+        ! t[time], a[Tile], d[Dir], x[XCo], y[YCo]: d3_x(t, ToSideKey(S(a,d))) = 15+11*(x-1) <- GetPos(t, a) = P(x,y).
+        ! t[time], a[Tile], d[Dir], x[XCo], y[YCo]: d3_y(t, ToSideKey(S(a,d))) = 15+11*(MAX[:YCo] - y) <- GetPos(t, a) = P(x,y).
+        ! t[time], s[Side]: d3_rect_width(t, ToSideKey(s)) = 10.
+        ! t[time], s[Side]: d3_rect_height(t, ToSideKey(s)) = 10.
+        ! t[time], a[Tile], d[Dir]: d3_img_path(t, ToSideKey(S(a,d))) = GetSideImagePath(Colouring(S(a,d)), d).
+        ! t[time], s[Side]: d3_order(t, ToSideKey(s)) = 2.
+        
+        // Drawing of the locks:
+        ! t[time], a[Tile]: d3_type(t, ToLockedKey(a)) = img <- IsLocked(a).
+        ! t[time], a[Tile], x[XCo], y[YCo]: d3_x(t, ToLockedKey(a)) = 15+11*(x-1) <- GetPos(t, a) = P(x,y) & IsLocked(a).
+        ! t[time], a[Tile], x[XCo], y[YCo]: d3_y(t, ToLockedKey(a)) = 15+11*(MAX[:YCo] - y) <- GetPos(t, a) = P(x,y) & IsLocked(a).
+        ! t[time], a[Tile]: d3_rect_width(t, ToLockedKey(a)) = 10 <- IsLocked(a).
+        ! t[time], a[Tile]: d3_rect_height(t, ToLockedKey(a)) = 10 <- IsLocked(a).
+        ! t[time], a[Tile]: d3_img_path(t, ToLockedKey(a)) = GetLockedImagePath() <- IsLocked(a).
+        ! t[time], a[Tile]: d3_order(t, ToLockedKey(a)) = 3 <- IsLocked(a).
+        
+        // Drawing of the arrows
+        ! t[time], d[Dir]: d3_type(t, ToDirKey(d)) = img <- t ~= MAX[:time] & ~GameEnded(t) & ((? x[XCo]: CM(x,d) = MoveAt(t)) | (? y[YCo]: RM(y,d) = MoveAt(t))).
+        ! t[time], d[Dir], c[Co]: d3_x(t, ToDirKey(d)) = GetArrowX(MAX[:XCo], MAX[:YCo],d, c) <- t ~= MAX[:time] & ~GameEnded(t) & ((? x[XCo]: CM(x,d) = MoveAt(t) & c = x) | (? y[YCo]: RM(y,d) = MoveAt(t) & c = y)).
+        ! t[time], d[Dir], c[Co]: d3_y(t, ToDirKey(d)) = GetArrowY(MAX[:XCo], MAX[:YCo],d, c) <- t ~= MAX[:time] & ~GameEnded(t) & ((? x[XCo]: CM(x,d) = MoveAt(t) & c = x) | (? y[YCo]: RM(y,d) = MoveAt(t) & c = y)).
+        ! t[time], d[Dir]: d3_rect_width(t, ToDirKey(d)) = 10 <- t ~= MAX[:time] & ~GameEnded(t) & ((? x[XCo]: CM(x,d) = MoveAt(t)) | (? y[YCo]: RM(y,d) = MoveAt(t))).
+        ! t[time], d[Dir]: d3_rect_height(t, ToDirKey(d)) = 10 <- t ~= MAX[:time] & ~GameEnded(t) & ((? x[XCo]: CM(x,d) = MoveAt(t)) | (? y[YCo]: RM(y,d) = MoveAt(t))).
+        ! t[time], d[Dir]: d3_img_path(t, ToDirKey(d)) = GetArrowImagePath(d) <- t ~= MAX[:time] & ~GameEnded(t) & ((? x[XCo]: CM(x,d) = MoveAt(t)) | (? y[YCo]: RM(y,d) = MoveAt(t))).
+        ! t[time], d[Dir]: d3_order(t, ToDirKey(d)) = 3 <- t ~= MAX[:time] & ~GameEnded(t) & ((? x[XCo]: CM(x,d) = MoveAt(t)) | (? y[YCo]: RM(y,d) = MoveAt(t))).
+        
+        ! t[time]: d3_type(t, timeKey) = text.
+        ! t[time]: d3_text_label(t,timeKey) = ToTimeLabel(t).
+        ! t[time]: d3_x(t, timeKey) = 6.
+        ! t[time]: d3_y(t, timeKey) = 3.
+        ! t[time]: d3_text_size(t, timeKey) = 2.
+        
+        ! t[time]: d3_type(t, gameover) = text.
+        ! t[time]: d3_text_label(t,gameover) = wonLab <- GameEnded(t) & Won(t).
+        ! t[time]: d3_text_label(t,gameover) = gameoverLab <-  GameEnded(t) & ~Won(t).
+        ! t[time]: d3_text_label(t,gameover) = runningLab  <- ~GameEnded(t).
+        ! t[time]: d3_x(t, gameover) = 6.
+        ! t[time]: d3_y(t, gameover) = 5.
+        ! t[time]: d3_text_size(t, gameover) = 2.
+        
+    }
+    ! t[time]: d3_height(t) = GetGameWidth(MAX[:XCo],MAX[:YCo]).
+    ! t[time]: d3_width(t) = d3_height(t).
+    
+}
+
+include <table_utils>
+
+procedure extend(struct){
+    local mystruct = clone(struct)
+    setvocabulary(mystruct,V_draw)
+    mystruct[idpd3::V_types::time.type] = range(0,#totable(mystruct[ShiftItVoc::Time.type])-1)
+    local m = math.max(#totable(mystruct[ShiftItVoc::XCo.type]), #totable(mystruct[ShiftItVoc::YCo.type]))
+    m = 10*(2+m) + m
+    mystruct[idpd3::V_types::width.type] = range(0,m)
+    mystruct[idpd3::V_types::height.type] = range(0,m)
+    mystruct[idpd3::V_types::label.type] = visualStruct[idpd3::V_types::label.type]
+    mystruct[idpd3::V_types::order.type] = visualStruct[idpd3::V_types::order.type]
+    mystruct[idpd3::V_types::color.type] = visualStruct[idpd3::V_types::color.type]
+    local image = {}
+    table.insert(image, getLockedImagePath())
+    for k,v in pairs(totable(mystruct[ShiftItVoc::Colour.type])) do
+    	table.insert(image, getTileImagePath(v))
+        for l,w in pairs(totable(mystruct[ShiftItVoc::Dir.type])) do
+            table.insert(image, getSideImagePath(v,w))
+        end
+    end
+    for k,v in pairs(totable(mystruct[ShiftItVoc::Dir.type])) do
+    	table.insert(image, getArrowImagePath(v))
+    end
+    
+    mystruct[idpd3::V_types::image.type] = image
+    local key = {}
+    for k,v in pairs(totable(mystruct[ShiftItVoc::Dir.type])) do
+        table.insert(key, toDirKey(v))
+    end
+    for k,v in pairs(totable(mystruct[ShiftItVoc::Side.type])) do
+        table.insert(key, toSideKey(v))
+    end
+    for k,v in pairs(totable(mystruct[ShiftItVoc::Tile.type])) do
+        table.insert(key, toTileKey(v))
+        table.insert(key, toLockedKey(v))
+    end
+    table.insert(key, "time")
+    table.insert(key, "gameover")
+    table.insert(key, "won")
+    mystruct[idpd3::V_types::key.type] = key
+    mystruct[V_extra::ToSideKey] = visualStruct[V_extra::ToSideKey]
+    mystruct[V_extra::ToTileKey] = visualStruct[V_extra::ToTileKey]
+    mystruct[V_extra::ToLockedKey] = visualStruct[V_extra::ToLockedKey]
+    mystruct[V_extra::ToDirKey] = visualStruct[V_extra::ToDirKey]
+    mystruct[V_extra::GetSideImagePath] = visualStruct[V_extra::GetSideImagePath]
+    mystruct[V_extra::GetTileImagePath] = visualStruct[V_extra::GetTileImagePath]
+    mystruct[V_extra::GetLockedImagePath] = visualStruct[V_extra::GetLockedImagePath]
+    mystruct[V_extra::GetArrowImagePath] = visualStruct[V_extra::GetArrowImagePath]
+    mystruct[V_extra::GetArrowX] = visualStruct[V_extra::GetArrowX]
+    mystruct[V_extra::GetArrowY] = visualStruct[V_extra::GetArrowY]
+    mystruct[V_extra::GetGameWidth] = visualStruct[V_extra::GetGameWidth]
+    mystruct[V_extra::ToTimeLabel] = visualStruct[V_extra::ToTimeLabel]
+    mystruct[V_extra::timeKey] = visualStruct[V_extra::timeKey]
+    mystruct[V_extra::gameover] = visualStruct[V_extra::gameover]
+    mystruct[V_extra::gameoverLab] = visualStruct[V_extra::gameoverLab]
+    mystruct[V_extra::won] = visualStruct[V_extra::won]
+    mystruct[V_extra::wonLab] = visualStruct[V_extra::wonLab]
+    mystruct[V_extra::runningLab] = visualStruct[V_extra::runningLab]
+    return mystruct
+}
+
+procedure visualiseStruct(struct){
+    local newstruct = extend(struct)
+    local model = onemodel(T_draw,newstruct)
+    idpd3C.visualise(model)
+}
+
+procedure initVisualisation() {
+    idpd3B = idpd3
+    idpd3.init_idpd3()
+    idpd3C = idpd3
+    idpd3 = idpd3B
+}

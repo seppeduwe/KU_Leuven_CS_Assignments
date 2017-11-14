@@ -1,0 +1,94 @@
+LTCvocabulary V{
+    // Introduce the type Time, constant Start : Time and partial function Next(Time) : Time, needed to support LTC theories.
+ 	type Time isa nat
+    Start : Time
+    partial Next(Time) : Time
+   // Create a constructed type for each deffined set, constructed from the values in the set.
+    type states constructed from {busy, ready}
+    type requests constructed from {TRUE,FALSE}
+    
+    // Each variable in B corresponds to a fluent in LTC. Hence, create a predicate or function for each such variable, these should have at least a parameter of type Time. Also create a constant I VariableName, which represents the initial value of the Variable, and the causal predicates C VariableName and C nVariableName.
+    Request(Time): requests
+    
+    State(Time): states
+    I_Request: requests
+    I_State: states
+    
+    C_Request(Time,requests)
+    C_State(Time,states)
+    
+    Cn_Request(Time,requests)
+    Cn_State(Time,states)
+    
+	// Translate each operation/event into an action predicate, taking into account any parameters.
+    type action constructed from{accept_request(requests),
+	do_not_accept_request(requests, states)}
+        
+    Occur(Time) : action
+}
+ 
+theory timeTheo:V{
+	{    
+        // Add the interpretation of Time, as needed for LTC.
+		Start = MIN[:Time].
+		!t: Next(t) = t+1 <- Time(t+1).
+	}
+}
+
+ 
+theory T: V{
+  	// Set the initial value for V:
+	// V(Start) = I V.
+	// Define the rest of the fluent by using the causal predicates. Do not forget to add the inertia rule.
+    // For each event that changes the associated variable, add a rule which defines the causal predicate appropriately.
+    // Remember to also define the C nVariableName predicate appropriately.
+	{
+        // Inertia State
+        State(Start) = I_State.
+        ! t s: State(Next(t)) = s <- C_State(t,s).
+		! t s: State(Next(t)) = s <- State(t) = s & ~Cn_State(t,s).   
+	}
+    {
+        // Inertia Request
+        Request(Start) = I_Request.
+        ! t r: Request(Next(t)) = r <- C_Request(t,r).
+		! t r: Request(Next(t)) = r <- Request(t) = r & ~Cn_Request(t,r).
+    }
+    
+    {
+        // Causes State
+        ! t r[requests] : C_State(t,busy) <- Occur(t) = accept_request(r).
+		! t s r[requests] : C_State(t,s) <- Occur(t) = do_not_accept_request(r,s).
+        
+       //If the content changes, all other values are no longer it's content.
+		! t s: Cn_State(t,s) <- ?s2 : C_State(t,s2) & s ~= s2. 
+    }
+    
+    {
+        // Causes Request
+        ! t r[requests] : C_Request(t,r) <- Occur(t) = accept_request(r).
+		! t s[states] r[requests] : C_Request(t,r) <- Occur(t) = do_not_accept_request(r,s).
+        
+       //If the content changes, all other values are no longer it's content.
+		! t r: Cn_Request(t,r) <- ?r2 : C_Request(t,r2) & r ~= r2.   
+    }
+	// Precondition
+    // All that is left to translate are the guards. For each event E, translated by an action predicate with appropriate parameters, with guard G add to the theory.
+	! t [Time] r [requests] : Occur(t) = accept_request(r) => State(t) = ready & Request(t) = TRUE.
+	! t [Time] r [requests] s[states]: Occur(t) = do_not_accept_request(r,s) => State(t) = busy | Request(t) = FALSE.  
+    // To make sure the LTC theory results in the same functionality as the B-machine, only one action can happen at any time. Add a constraint which specifies only one action can happen at any time t.
+    
+    // This is implicit, because we use a funtion instead of a predicate as Occur.    
+}
+
+structure S : V {
+    Time = {0..25}
+    // Add the initialisation of the variables by giving a value to the I V constants.
+	I_State = ready
+    I_Request = TRUE
+}
+procedure main() {
+    // Performing model expansion on this theory is equivalent to performing a random animation on the B-machine. To specify the animation steps you can constrain the Occur function in the structure.
+   stdoptions.nbmodels=15
+   printmodels(modelexpand(merge(T, timeTheo), S))
+}

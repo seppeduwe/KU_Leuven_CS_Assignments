@@ -1,0 +1,129 @@
+vocabulary V {
+	type Time isa nat
+	partial Next(Time):Time
+	Start:Time
+    
+	//type Person
+	//type Book
+    type Position isa int
+
+    type Remote
+    Closed:Position
+    Opened:Position
+    
+	///Owns(Person,Book,Time)
+	//I_Owns(Person,Book)
+	//C_Owns(Person,Book,Time)
+	//Cn_Owns(Person,Book,Time)
+	
+    Door(Position,Time)
+    I_Door(Position)
+    C_Door(Position,Time)
+    Cn_Door(Position,Time)
+    
+	//Give(Person,Book,Person,Time)
+    // Port is opening
+    Opening_door(Time)
+    // Port is closing
+    Closing_door(Time)
+    
+    Push_Open_door(Remote,Time)
+	Push_Close_door(Remote,Time)
+}
+
+structure S : V {
+	Time = {0..15}
+	Position = {1..5}
+	//Book = {B1; B2; B3}
+    Closed = 1
+    Opened = 5
+    Remote = {A;B}
+  	// Why not possible?
+    // I_Door = {Closed}
+    Push_Open_door = {A,1;B,12}
+    Push_Close_door = {A,10}
+}
+
+theory timeTheo:V{
+	{
+		Start = MIN[:Time].
+		!t[Time]: Next(t) = t+1 <- Time(t+1).
+	}
+}
+	
+theory T : V {
+    
+     // The initial state is that the door is closed 
+	I_Door(Closed).
+    
+    // Both "Opening_door" and "Closing_door" are false.
+    ~Opening_door(Start).
+    ~Closing_door(Start).
+    
+	{ 
+	// Successor State Action Axiom & Inertia
+	//	! p b : Owns(p,b,Start) <- I_Owns(p,b).
+    ! p : Door(p,Start) <- I_Door(p).
+	//	! p b t : Owns(p,b,Next(t)) <- C_Owns(p,b,t).
+    ! p t : Door(p,Next(t)) <- C_Door(p,t).
+	//	! p b t : Owns(p,b,Next(t)) <- Owns(p,b,t) & ~Cn_Owns(p,b,t).
+    ! p t : Door(p,Next(t)) <- Door(p,t) & ~Cn_Door(p,t).
+	}
+
+	{
+	// Expressing causations   
+  	// Opening door
+    !t p[Position]: C_Door(p+1,t) <- Door(p,t) & Opening_door(t).
+    // Closing door
+    !t p[Position]: C_Door(p-1,t) <- Door(p,t) & Closing_door(t).
+    //If the content changes, all other values are no longer it's content.
+    !t p p2: Cn_Door(p,t) <- C_Door(p2,t) &  p~=p2.
+	}
+
+	// Preconditions
+    {
+    //As "opening_door" is true, the port opens up, one position per time step, until the door is fully open, at which time "opening_door" is switched off.
+    // The two remotes can be used simultaneously and when they issue contradictory orders, opening has priority to closing the garage, to avoid damage to cars. 
+    // The inverse happens when "closing door" is true. 
+    !t r: Opening_door(Next(t)) <- Push_Open_door(r,t) & ~Door(Opened,t).
+    !t r: Closing_door(Next(t)) <- Push_Close_door(r,t) & ~Door(Closed,t) &  ~Opening_door(Next(t)).
+    
+    !t : Opening_door(Next(t)) <- Opening_door(t) & ~Door(Opened,t) & ~ (? x: Push_Close_door(x,t)).
+	!t : Closing_door(Next(t)) <- Closing_door(t) & ~Door(Closed,t) & ~ (? x: Push_Open_door(x,t)).	
+    }
+    
+    // There can be only one position at a time
+    !t : ?1p: Door(p,t).
+}	
+
+procedure findmodels() {
+	local timeExpanded = calculatedefinitions(timeTheo,S)
+	stdoptions.nbmodels=5
+	printmodels(modelexpand(T,S))
+}
+ 
+
+
+procedure simulate() {
+    stdoptions.nbmodels = 5
+    print("----> Starting interactive simulation")
+	local states = initialise(T,S)
+	
+	//...and use one of those initial states to continue with (again and again and ...)
+	while true do
+		printmodels(states)
+		print("Please enter which state to use")
+		local num = tonumber(io.read("*line"))
+		local chosen = states[num]
+		states = progress(T,chosen)
+	end	
+}
+
+
+
+procedure main(){
+    //This method lets you walk through your solutions interactively
+	//simulate()
+    //This method (defined above) simply searches models of your theory
+    findmodels()
+}

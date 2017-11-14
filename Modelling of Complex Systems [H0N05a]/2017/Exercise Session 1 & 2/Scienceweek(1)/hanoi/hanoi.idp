@@ -1,0 +1,87 @@
+/****************************************************************
+  Tower of Hanoi
+
+  The Tower of Hanoi is a mathematical game or puzzle. It 
+  consists of three rods, and a number of disks of different 
+  sizes which can slide onto any rod. The puzzle starts with 
+  the disks in a neat stack in ascending order of size on one 
+  rod, the smallest at the top, thus making a conical shape.
+
+  The objective of the puzzle is to move the entire stack to 
+  another rod, obeying the following simple rules:
+
+    Only one disk can be moved at a time.
+    Each move consists of taking the upper disk from one of 
+      the stacks and placing it on top of another stack 
+      i.e. a disk can only be moved if it is the uppermost 
+      disk on a stack.
+    No disk may be placed on top of a smaller disk.
+  
+  (source: wikipedia, http://en.wikipedia.org/wiki/Tower_of_Hanoi)
+
+***************************************************************/
+
+vocabulary V {
+
+  type disc isa int   // The discs
+  maxDisc:disc        // The number of the biggest disc
+    
+  type Time isa int   // The points in time (from zero to N)
+  type position       // The different pegs
+  end : Time          // The last timepoint (time N)
+
+  left : position     // The left position
+  middle : position   // The middle position
+  right : position    // The right position
+
+  moveDisc(Time) : disc  
+                      // De disc that is move at each point in time.
+                      // moveDisc(t) = s, the disc s is moved at time t.
+  
+  moveTo(Time) : position  
+                      // The position where the disc is moved to.
+                      // moveTo(t) = p, the disc is moved to position p
+                      // at time t.
+
+  onPosition(Time,disc,position)  
+                      // The location of the discs at time t.
+                      // onPosition(t,s,p) is true if before the action 
+                      // at time t, disc s is at position p.
+
+  onTopOf(Time,disc,disc)  
+                      // onTopOf(t,s1,s2) is true if before the action
+                      // at time t, disc s1 is on top of disc s2.
+}
+
+theory T : V {
+
+  // At the end, all discs are on the right
+
+
+  // A disc can only be moved when no discs are on the disc.
+
+
+  // There can never be a larger disc on top of a smaller one.
+
+
+  // Express how the position of disc changes over time.
+  { onPosition(0,disc,left).
+    onPosition(t+1,moveDisc(t),moveTo(t)) <- Time(t).
+    onPosition(t+1,disc,pos) <- onPosition(t,disc,pos) & disc ~= moveDisc(t).
+    onPosition(t+1,disc,pos) <- onPosition(t,disc,pos) & pos = moveTo(t).  }
+
+  // Express how the relative location of discs change over time.
+  { onTopOf(0,x,x+1).
+    onTopOf(t+1,x,y) <- onTopOf(t,x,y) & x ~= moveDisc(t) & y ~= moveDisc(t).
+    onTopOf(t+1,x,y) <- x = moveDisc(t) & p = moveTo(t) & x ~= y
+             & onPosition(t,y,p) & ! z : onTopOf(t,z,y) => x = z. 
+    onTopOf(t+1,x,z) <- onTopOf(t,x,y) & y = moveDisc(t) & onTopOf(t,y,z).
+  }
+}
+
+include "hanoi_draw.idp"
+include "hanoi_instance_1.idp"
+include "hanoi_solution.aidp"
+//include "hanoi_instance_2.idp"
+include "idpd3/run.idp"
+

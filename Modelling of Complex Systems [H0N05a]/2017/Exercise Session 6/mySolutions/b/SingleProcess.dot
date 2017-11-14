@@ -1,0 +1,36 @@
+digraph visited_states {
+graph [nodesep=1.5, ranksep=1.5];
+root [shape=invtriangle, color="#99BF38", fontsize=12, penwidth=2, label="root"];
+
+root -> 0 [style = dotted, color = black, label="INITIALISATION", fontsize=12];
+root -> 1 [style = dotted, color = black, label="INITIALISATION", fontsize=12];
+
+0 [shape=box, color="#99BF38", fontsize=12, penwidth=2, label="request = FALSE,state = ready"];
+
+0 -> 2 [color = "#006391", label="do_not_accept_request(TRUE,busy)", fontsize=12];
+0 -> 3 [color = "#006391", label="do_not_accept_request(FALSE,busy)", fontsize=12];
+0 -> 1 [color = "#006391", label="do_not_accept_request(TRUE,ready)", fontsize=12];
+0 -> 0 [color = "#006391", label="do_not_accept_request(FALSE,ready)", fontsize=12];
+0 -> 2 [color = "#006391", label="EXECUTE(100)", fontsize=12];
+
+1 [shape=box, color="#99BF38", fontsize=12, penwidth=2, label="request = TRUE,state = ready"];
+
+1 -> 2 [color = "#006391", label="accept_request(TRUE)", fontsize=12];
+1 -> 3 [color = "#006391", label="accept_request(FALSE)", fontsize=12];
+
+2 [shape=box, color="#99BF38", fontsize=12, penwidth=2, label="request = TRUE,state = busy"];
+
+2 -> 2 [color = "#006391", label="do_not_accept_request(TRUE,busy)", fontsize=12];
+2 -> 3 [color = "#006391", label="do_not_accept_request(FALSE,busy)", fontsize=12];
+2 -> 1 [color = "#006391", label="do_not_accept_request(TRUE,ready)", fontsize=12];
+2 -> 0 [color = "#006391", label="do_not_accept_request(FALSE,ready)", fontsize=12];
+2 -> 2 [color = "#006391", label="EXECUTE(100)", fontsize=12];
+
+3 [shape=doubleoctagon, color="#99BF38", fontsize=12, penwidth=2, label="request = FALSE,state = busy"];
+
+3 -> 2 [color = "#006391", label="do_not_accept_request(TRUE,busy)", fontsize=12];
+3 -> 3 [color = "#006391", label="do_not_accept_request(FALSE,busy)", fontsize=12];
+3 -> 1 [color = "#006391", label="do_not_accept_request(TRUE,ready)", fontsize=12];
+3 -> 0 [color = "#006391", label="do_not_accept_request(FALSE,ready)", fontsize=12];
+
+}

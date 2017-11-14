@@ -1,0 +1,184 @@
+LTCvocabulary ShiftItVoc {
+    // Predefined types, predicates and functions. You are not allowed to change the names, arities, intended meaning of any symbol.
+    
+    // LTC stuff
+    type Time isa int
+    Start:Time
+    partial Next(Time):Time
+    
+    // Coordinates
+    type Co isa int
+    type XCo isa Co
+    type YCo isa Co
+    type Pos constructed from { P(XCo, YCo) }
+    
+    // Directions can be useful to reason with
+    type Dir constructed from { up, down, left, right }
+    
+    // Row Moves and Column moves: a row is determined by a y-coordinate, a column is determined by an x-coordinate
+    type Move constructed from { RM(YCo, Dir), CM(XCo, Dir) }
+    
+    // Tile and sides
+    type Tile
+    type Side constructed from { S(Tile, Dir) }
+    
+    // Colour is a set consisting of strings representing colours. For the visualisation to work Colour should be a subset of {"blue","red","green","yellow","orange","purple"}. However, any other colour can be used as well, if one has no need to us the visualisation. Therefore, you should not specify this in your theory.
+    type Colour isa string
+    
+    // MoveAt(t) is the selected move at time t if it exists. So MoveAt(Start) would be the first move if it exists.
+    partial MoveAt(Time):Move
+    
+    // GetPos(t, a) is the position of tile a at time t
+    GetPos(Time, Tile):Pos
+    // LTC predicates for GetPos
+    Init_GetPos(Tile):Pos
+    C_GetPos(Time, Tile):Pos
+    CN_GetPos(Time, Tile):Pos
+    
+    // IsLocked(t) holds if the tile t is locked
+    IsLocked(Tile)
+    
+    // The colouring of the sides
+    Colouring(Side):Colour
+    // To make the input of our structures small, we introduce the following two partial functions:
+    // The colouring of a full tile, this specifies a colour for all sides simultaneously, this has fewer precendence than Init_Colouring
+    partial Init_Colouring_Full(Tile):Colour
+    // The colouring of a side, this has higher precendence than Init_Colouring_Full
+    partial Init_Colouring(Side):Colour
+    
+    // Reach(t, s, c) holds iff at time t the side s is in the colour c connected region of Ref(c). This will be useful to define when the player has won.
+    Reach(Time, Side, Colour)
+    // Ref(c) is the largest side with colour c, see project description for more explanation. For a colour that does not occur in the given game, it is not defined.
+    partial Ref(Colour): Side
+    
+    // The game ended
+    GameEnded(Time)
+    // The game won
+    Won(Time)
+    
+    // YOU ARE NOT ALLOWED TO ADD EXTRA TYPES. YOU WILL NEED EXTRA PREDICATES/FUNCTIONS. Put them here:
+    
+}
+
+theory ShiftItTheory: ShiftItVoc {
+    // Write here your definitions and constraints:
+
+}
+
+// example board you can play around with
+structure exampleS : ShiftItVoc {
+    XCo = { 1..3 }
+    YCo = { 1..3 }
+    Time = { 0..2 }
+    Start = 0
+    Next = {0->1;1->2}
+    IsLocked = {T5}
+    Colour = {"red"; "blue"}
+    Tile = {T1;T2;T3;T4;T5;T6;T7;T8;T9}
+    Init_GetPos = {T1,P(1,1);T2,P(1,2);T3,P(1,3);T4,P(2,1);T5,P(2,2);T6,P(2,3);T7,P(3,1);T8,P(3,2);T9,P(3,3)}
+    Init_Colouring_Full = {T1,"red";T2,"blue";T3,"blue";T4,"blue";T5,"blue";T6,"blue";T7,"blue";T8,"blue";T9,"red"}
+    Init_Colouring = {S(T1,down()),"blue"}
+}
+
+//you might need to use an extended vocabulary for some of the verifications
+vocabulary verificationVoc {
+ 	extern vocabulary ShiftItVoc
+	// add here your extra predicates and functions. However you are not allowed to add extra types, since this will break our automatic grading.
+}
+
+theory verification1: verificationVoc {
+	// Verify something here
+}
+
+procedure verification1proc(struc){
+	// Do something here: verify verification1 in the context of structure struc. 
+	// You must return true if the verification is satisfied and return false if its it not satisfied.
+}
+
+theory verification2: verificationVoc{
+	// Verify something here
+}
+
+procedure verification2proc(struc){
+	// Do something here: verify verification2 in the context of structure struc. 
+	// You must return true if the verification is satisfied and return false if its it not satisfied.
+}
+
+theory verification3: verificationVoc{
+	// Verify something here
+}
+
+procedure verification3proc(struc){
+	// Do something here: verify verification3 in the context of structure struc. 
+	// You must return true if the verification is satisfied and return false if its it not satisfied.
+}
+
+theory verification4: verificationVoc {
+	//Verify something here
+}
+
+procedure verification4proc(struc){
+	// Do something here: verify verification4 in the context of structure struc. 
+	// You must return true if the verification is satisfied and return false if its it not satisfied.
+}
+
+theory verification5: verificationVoc{
+	// Verify something here
+}
+
+procedure verification5proc(struc){
+	// Do something here: verify verification5 in the context of structure struc. 
+	// You must return true if the verification is satisfied and return false if its it not satisfied.
+}
+
+theory verification6: verificationVoc{
+	// Verify something here
+}
+
+procedure verification6proc(struc){
+	// Do something here: verify verification6 in the context of structure struc. 
+	// You must return true if the verification is satisfied and return false if its it not satisfied.
+}
+
+procedure allVerifications(struct1, struct2, struct3, struct4, struct5, struct6){
+	strucToCheck = exampleS
+	setvocabulary(struct1,verificationVoc) 
+	print("Verification 1: " .. verification1proc(struct1))
+    setvocabulary(struct2,verificationVoc) 
+	print("Verification 2: " .. verification2proc(struct1))
+    setvocabulary(struct3,verificationVoc) 
+	print("Verification 3: " .. verification3proc(struct1))
+    setvocabulary(struct4,verificationVoc) 
+	print("Verification 4: " .. verification4proc(struct1))
+    setvocabulary(struct5,verificationVoc) 
+	print("Verification 5: " .. verification5proc(struct1))
+    setvocabulary(struct6,verificationVoc) 
+	print("Verification 6: " .. verification6proc(struct1))
+}
+    
+procedure allVerificationsOnSameStruct(struct) {
+    allVerifications(struct, struct, struct, struct, struct, struct)
+}
+    
+procedure allVerificationsOnExampleStruct() {
+    local struct = clone(exampleS)
+    allVerificationsOneSameStruct(struct)
+}
+    
+    
+include "visualisation.idp"
+
+procedure main() {
+    // This option most of the time gives a speed up.
+    stdoptions.splitdefs = false
+    // This function inits the visualisation
+    initVisualisation()
+
+    local sol = onemodel(ShiftItTheory, exampleS)
+    if sol ~= nil then
+        // Visualises a ShiftItVoc structure
+        visualiseStruct(sol)
+    else
+       print("Your theory is unsatisfiable!") 
+    end
+}

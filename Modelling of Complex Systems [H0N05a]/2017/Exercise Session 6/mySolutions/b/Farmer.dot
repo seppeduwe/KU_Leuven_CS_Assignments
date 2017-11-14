@@ -1,0 +1,17 @@
+digraph history {
+graph [nodesep=1.5, ranksep=1.5];
+root [shape=invtriangle, color="brown", fontsize=12, penwidth=2, label="root"];
+
+0 [shape=box, color="brown", fontsize=12, penwidth=2, label="eats(fox) = chicken,eats(chicken) = grain"];
+
+1 [shape=box, color="brown", fontsize=12, penwidth=2, label="near = \{farmer,fox,chicken,grain\},far = \{\}"];
+
+4 [shape=doubleoctagon, color="brown", fontsize=12, penwidth=2, label="near = \{fox,grain\},far = \{farmer,chicken\}"];
+
+root -> 0 [style = dotted, color = black, label="SETUP_CONSTANTS", fontsize=12];
+
+0 -> 1 [color = "brown", label="INITIALISATION", fontsize=12];
+
+1 -> 4 [color = "brown", label="Move_far(\{chicken\})", fontsize=12];
+
+}

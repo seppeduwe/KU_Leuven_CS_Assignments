@@ -1,0 +1,54 @@
+// !!! Not working !!! 
+
+include "RunQueries.idp"
+ 
+procedure main(){
+	queries = {Q5}
+	displayQueryAnswers(queries)
+}
+
+/**
+ * A Database as a logical structure
+ */
+ 
+ vocabulary Sigma{
+ 	/*
+ 	 * The assignment uses untyped first order logic. This is why we use a type "object" representing all object in the domain. 
+ 	 * In real applications, we would make types like  person, instructor, student, course etc.
+ 	 * It is a good idea to try this.
+ 	 * 
+ 	 * constructed from already includes UNA and DCA!!!!!!
+ 	 */
+ 	type domain constructed from  { Test1Surname,Test1Name,Test1Street,Test1HouseNb,Test1City,Test1Zip,Test1BirthDate,Test1Job,Test1NbOfServedYears,
+Test2Surname,Test2Name,Test2Street,Test2HouseNb,Test2City,Test2Zip,Test2BirthDate,Test2Job,Test2NbOfServedYears  }
+    
+	type id isa int
+    type salary isa int
+ 	//Employee(id,surname,name,street,houseNb,city,zip,birthDate,job,salary,nbOfServedYears)
+	Employee(id,domain,domain,domain,domain,domain,domain,domain,domain,salary,domain)
+
+ }
+ 
+ structure database: Sigma{
+ 	Employee ={
+	1,Test1Surname(), Test1Name(), Test1Street(), Test1HouseNb(), Test1City(), Test1Zip(), Test1BirthDate(), Test1Job(), 150000, Test1NbOfServedYears ;
+	2, Test2Surname(), Test2Name(), Test2Street(), Test2HouseNb(), Test2City(), Test2Zip(), Test2BirthDate(), Test2Job(), 50000, Test2NbOfServedYears ;
+	}
+ 	
+ }
+ 
+
+
+/*
+    SELECT id
+    FROM Employee
+    WHERE Employee:salary >= 100:000;
+ */
+
+query Q5: Sigma{
+	{id : ?vn, n, st, stnr, g, z, geb, j, l, a : Employee(id, vn, n, st, stnr, g, z, geb, j, l, a) ^ l > 100000}
+    
+//{id : (?w, EmployeeId(w; id)^(?l, EmployeeSalary(w; l)^l >= 100000))}
+        
+}
+

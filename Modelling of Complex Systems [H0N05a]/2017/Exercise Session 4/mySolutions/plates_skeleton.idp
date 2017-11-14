@@ -1,0 +1,74 @@
+vocabulary V {
+	type Time isa nat
+	Start:Time
+	partial Next(Time):Time
+
+	type Plate
+
+	//Fluents
+	Clean(Plate,Time)
+  	I_Clean(Plate)
+	C_Clean(Plate,Time)
+	C_nClean(Plate,Time)
+	
+	// Actions
+	CleanPlate(Plate,Time)
+	UsePlate(Plate,Time)
+}
+
+structure S : V {
+  	Time = {0..5}
+	Plate = {P1; P2; P3; P4}
+	I_Clean = {P1; P2; P3; P4}
+}
+
+
+theory timeTheo:V{
+	{
+		Start = MIN[:Time].
+		!t: Next(t) = t+1 <- Time(t+1).
+	}
+}
+
+theory T : V {
+// Preconditions
+	! p t : CleanPlate(p,t) => ~Clean(p,t).
+    ! p t : UsePlate(p,t) => Clean(p,t). 
+  {
+	// Successor State Axiom
+        ! p : Clean(p,Start) <- I_Clean(p).
+        ! p t: Clean(p,Next(t)) <- C_Clean(p,t).
+        ! p t: Clean(p,Next(t)) <- Clean(p,t) & ~C_nClean(p,t).
+  }
+
+  {	
+	// Causes
+        ! p t : C_Clean(p,t) <- CleanPlate(p,t).
+        ! p t : C_nClean(p,t) <- UsePlate(p,t).
+  }
+	
+	//(Maybe, you can only clean one plate at a time?)
+    !t : ?=<1 p : CleanPlate(p,t).
+    
+    //Suppose you always want to have an extra clean plate in case there is 
+    // some unexpected guest. Alter your theory to incorporate this constraint.
+	//!t : ?>=1 p : Clean(p,t).
+	
+	
+}	
+
+theory allDirty : V{
+	// Is it possible to make all your plates dirty?
+   ?t : !p : ~Clean(p,t).
+}
+
+
+include <mx>
+procedure main() {
+	S=calculatedefinitions(timeTheo,S)
+	local allconstraints = merge(T,allDirty)
+	print("This is the merged theory:")
+	print(allconstraints)
+	print("Searching for a model")
+	print(onemodel(allconstraints,S))
+}

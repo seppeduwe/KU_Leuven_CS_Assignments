@@ -1,0 +1,184 @@
+LTCvocabulary V {
+    type Time isa nat
+    Start : Time
+    partial Next(Time) : Time
+    
+    type beverage constructed from {coke, fanta, water, beer}
+    type quantity = {0..10} isa nat
+    type coins = {1;2;5;10} isa nat // Coins in 10 cents
+    type amount = {0..30} isa nat // amounts up to 2 euros in steps of 10 cents
+
+    
+    Stock(Time, beverage) : quantity
+    I_Stock(beverage) : quantity
+    Price(beverage) : amount
+    Amount(Time) : amount // current amount paid
+    
+    type action constructed from {pay(coins), press_button(beverage), ask_refund, restock}
+    Do(Time, action)
+    
+    // Added
+    C_Stock(Time,beverage,quantity)
+    C_nStock(Time,beverage,quantity)
+    
+    C_Amount(Time,amount)
+    C_nAmount(Time,amount)
+}
+
+theory timeTheo:V{
+	{
+		Start = MIN[:Time].
+		!t: Next(t) = t+1 <- Time(t+1).
+	}
+}
+
+theory T : V {
+	// TO DO
+    // Precondition
+
+	// The machine will not accept anymore coins when the current amount paid 
+    // is already larger than the price of the most expensive beverage.
+	! c t: Do(t,pay(c)) => Amount(t) < max{x[beverage] : true : Price(x)}. 
+    
+    // Receive a beverage if they have paid at least the beverage's price.
+   	// Not needed
+    
+    // Ask refund only possible if there is some amount of currency in the machine.
+    ! t: Do(t,ask_refund) => Amount(t) > 0. 
+    
+    // Restock the machine when the stock of at least one of the beverages is below its maximum.
+    ! t: Do(t,restock) => ?b[beverage]: Stock(t,b) < I_Stock(b).
+    
+	// Inertia Stock
+	{
+		! b: Stock(Start,b) = I_Stock(b).
+		! t b q: Stock(Next(t),b) = q <- C_Stock(t,b,q).
+		! t b q: Stock(Next(t),b) = q <- Stock(t,b) = q & ~C_nStock(t,b,q).
+	}  
+
+    // Inertia Amount
+	{
+		Amount(Start) = 0.
+		! t a: Amount(Next(t)) = a <- C_Amount(t,a).
+		! t a: Amount(Next(t)) = a <- Amount(t) = a & ~C_nAmount(t,a).
+	}  
+    
+	// Causes Stock
+	{      
+		! t b : C_Stock(t, b, Stock(t, b)-1) <- Do(t, press_button(b)) & Amount(t) >= Price(b).
+		! t b : C_Stock(t, b, I_Stock(b)) <- Do(t,restock).
+       //If the content changes, all other values are no longer it's content.
+		! t b q: C_nStock(t,b,q) <- ?q2 : C_Stock(t,b,q2) & q ~= q2. 
+	}
+    
+	// Causes Amount
+    {     
+        ! t c : C_Amount(t,c + Amount(t)) <-  Do(t,pay(c)).
+        ! t b : C_Amount(t,Amount(t)-Price(b)) <-  Do(t,press_button(b)).
+        ! t : C_Amount(t,0) <-  Do(t,ask_refund).
+        //If the content changes, all other values are no longer it's content.
+        ! t a: C_nAmount(t,a) <- ?a2 : C_Amount(t,a2) & a ~= a2.
+    }
+    
+	// Exactly one action in every timestep
+    ! t : ?1 a: Do(t,a).
+}
+
+theory NoLargerAmount : V {
+	//TO DO
+    ! t : Amount(t) =<24.
+}
+
+theory DoubleRestock : V {
+	//TO DO
+    ! t : Do(t,restock) => ~Do(Next(t), restock).
+}
+
+structure S : V {
+    Time = {0..25}
+    Price = {coke() -> 12; fanta() -> 12; water() -> 10; beer() -> 15}
+    I_Stock = {(coke(), 5); (fanta(), 5); (water(), 5); (beer(), 5)}
+}
+
+procedure simulate() {
+    stdoptions.nbmodels = 10
+    print("----> Starting interactive simulation")
+	local states = initialise(T,S)
+	
+	//...and use one of those initial states to continue with (again and again and ...)
+	while true do
+		printmodels(states)
+		print("Please enter which state to use")
+		local num = tonumber(io.read("*line"))
+		local chosen = states[num]
+		states = progress(T,chosen)
+	end	
+}
+
+
+theory init_invar : V_ss {
+    // Add invariant for initial state
+    // I have no idea
+    Amount = 0.
+    !b[beverage] : Stock(b) = I_Stock(b).
+    
+}
+
+theory bistate_invar : V_bs {
+    // Add invariant for bistate
+    // Use predicate P for the current state and P_next for the next state
+    // eg. P(4) => P_next(5) mean that if 4 is in P in this time step then 5 must be in P for the next time step. 
+    // I have no idea
+    Do(restock) => ~Do_next(restock).
+}
+
+procedure prove_inv() {
+    print("prove_inv")
+    
+    // Init and bistate swap place
+    // m,T_bs, T_ss, V_bs, V_ss
+    a,bistate,init,V_bs,V_ss = initialise(T, S)
+
+    print(V_ss)
+	print(V_bs)
+    T_init = merge(init, init_invar)
+    T_bi = merge(bistate, bistate_invar)
+    
+	// Add code here to print whether the invariant is maintained by the theory
+    
+    /*   
+    if sat(T_init,Small) and sat(T1P2,Small) then
+		print("T_init entails the invariant at 0:", a)
+    	print("T_ind entails the invariant at 1:", b)
+	else
+		print("T_init entails not the invariant at 0:", a)
+    	print("T_ind entails not the invariant at 1:", b)
+	end
+    */
+    
+    // Slide 180/231 LTC.overlays.pdf
+    /*    
+    a=entails(T_init,InvariantAt0)
+    b=entails(T_ind,InvariantAt1)
+    if a and b then print"Both steps succeeded; the invariant is entailed." 
+        else 
+    		print("T_init entails the invariant at 0:", a)
+    		print("T_ind entails the invariant at 1:", b)
+        end
+    */
+}
+
+procedure main() {
+  //  simulate()
+    prove_inv()
+    //  printmodels(modelexpand(merge(T, timeTheo), S))
+    print("Can't have an amount larger than 24 in the machine:")
+    print(isinvariant(T, NoLargerAmount, S))
+    print("There can not be two restocks following each other.:")
+    // Why is this not really an invariant?
+    // An FO formula !t q[t] is an invariant of a LTC theory Ta if Ta |= !t q[t].
+    // So I think because time is finite here, it is impossible to check inf. for next(t).
+    print(isinvariant(T, DoubleRestock, S))
+    
+}
+

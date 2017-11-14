@@ -1,0 +1,248 @@
+vocabulary V {
+	type Time isa nat
+	partial Next(Time):Time
+	Start:Time
+
+    // Players in the game
+    type Player constructed from { P1, P2 }
+    // A finite integer type, representing a number of matches
+    type Matches isa nat
+    // Heaps in the game
+    type Heap
+    
+    // Number of matches on the heap
+    Nb(Heap,Time): Matches
+    I_Nb(Heap,Matches)
+    C_Nb(Heap,Matches,Time)
+    C_nNb(Heap,Matches,Time)
+    
+    // The player is on turn
+    Turn(Player,Time)
+    I_Turn(Player)
+    // The player wins the game
+    Winner(Player,Time)
+    // The game is game over, i.e. no move is possible
+    GameOver(Time)
+    // The action
+    Takes(Player,Heap,Matches,Time)
+}
+
+structure Big : V {
+	Time = {0..17}
+	//Player = {P1;P2}
+    Heap = {H1;H2;H3;H4}
+    I_Turn = {P1}
+    Matches = {0..7}
+    I_Nb = {H1,1;H2,3;H3,5;H4,7}
+}
+
+//structure P1Wins : V {
+//	Winner<ct> = {P1,17}
+//}
+
+//structure P2Wins:V{
+//	Winner<ct> = {P2,17}
+//}
+
+structure Small:V{
+	Time  = {0..17}
+	//Player = {P1;P2}
+	I_Turn = {P1}
+	Matches = {0..5}
+	Heap = {H1;H2;H3}
+	I_Nb = {H1,1;H2,3;H3,5}	
+}
+
+theory timeTheo:V{
+	{
+		Start = MIN[:Time].
+		!t: Next(t) = t+1 <- Time(t+1).
+	}
+}
+	
+theory T : V {
+	{ 
+		// Successor State Action Axiom & Inertia
+		! h m[Matches] t[Time] : Nb(h,Start)=m <- I_Nb(h,m).
+		! h m[Matches] t[Time] : Nb(h,Next(t))=m <- C_Nb(h,m,t).
+		//! h m[Matches] t[Time] : Nb(h,Next(t))=m <- Nb(h,t)=m & ~C_nNb(h,m,t).
+        // Much faster why??? t+1 instead of Next()
+		! h m[Matches] t[Time]: Nb(h,t+1) = m <- Nb(h,t) = m & ~ C_nNb(h,m,t).
+	}
+    {
+		// Expressing causations
+		// Takes a number of matches away from the heap
+        ! h m t : C_Nb(h,m,t) <- ? p m2 : m = Nb(h,t) - m2 & Takes(p,h,m2,t).
+        ! h m t : C_nNb(h,m,t) <-  ? p m2 : Takes(p,h,m2,t).
+	}
+    // Preconditions
+    {
+        ! p : Turn(p,Start) <- I_Turn(p).
+        
+        // Instead of 
+        Turn(p,t+1) <-  ~GameOver(t) & ~Turn(p,t).
+        //! p1 p2 t : Turn(p1,Next(t)) <-  ~GameOver(t) & Turn(p2,t) & p1 ~= p2.
+        
+        
+        ! p t : Winner(p,t) <- GameOver(t) & Turn(p,t).
+        // Why not here???
+        // !t : GameOver(t) <- ! h[Heap] : Nb(h,t) = 0.
+        
+        //If gameover, the same player turn
+		! p t : Turn(p,Next(t+1)) <-  GameOver(t) & Turn(p,t).
+    }
+    
+        	
+	! p h m t : Takes(p,h,m,t) => Turn(p,t).
+	! p h m t : Takes(p,h,m,t) => m =< Nb(h,t) & m > 0.
+    // As alternative on :
+    ! p h1 h2 m1 m2 t : Takes(p,h1,m1,t) & Takes(p,h2,m2,t) => h1 = h2 & m1 = m2. 
+    // ! p h m : ?=<1 t :Takes(p,h,m,t).
+    
+    // Wrong: ! p h m t : Takes(p,h,m,t) & m = 1 => GameOver(t).
+    ! t : GameOver(t) <=> ! h[Heap] : Nb(h,t) = 0.
+    
+    // If Turn, take or gameover. -> Why not as definition???
+    ! p t: Turn(p,t) => (? h m : Takes(p,h,m,t)) | GameOver(t).
+}	
+
+
+// Either player has the possibility to win the game
+theory IntegrityConstraint1P1 : V{
+	Winner(P1,17).
+}
+// Either player has the possibility to win the game
+theory IntegrityConstraint1P2 : V{
+	Winner(P2,17).
+}
+
+// In every state, it is the turn of exactly one player
+theory IntegrityConstraint2 : V{
+    ? t : !p : Turn(p,t) & Turn(p,t).
+}
+
+// Every game comes to an end. (You might need to check this for only three heaps, for computational reasons)
+theory IntegrityConstraint3 : V{
+	! t : ~GameOver(t).
+}
+
+// The game is not over until all the heaps are empty
+theory IntegrityConstraint4 : V{
+	? t h m[Matches] : GameOver(t) & Nb(h,t) > 0.
+}
+
+// There is a game that last for exactly 16 moves
+theory IntegrityConstraint5 : V{
+	 #{t[Time] : Turn(p,t)} = 16.
+}
+
+// There is a first move such that if the first player plays it on time 0, then the game is over on time 1. This proposition is obviously false. Then try to verify whether the following formula is entailed your theory: ?h1 ?nr1(Takes(P1; h1; nr1; 0) => GameOver(1))
+theory IntegrityConstraint6 : V{
+	// Is ~? h1 nr1 : Takes(P1,h1,nr1,0) => GameOver(1). entailed? Add negation of this formula to the theory
+	? h1 nr1 : Takes(P1,h1,nr1,0) => GameOver(1).
+}
+
+// Suppose the first player wants the game to end as quickly as possible. How many moves does he need? Hint: use two specifications: one to show that the first player can always make sure that the game ends after n moves, and one to show that this is not the case for n-1.
+theory IntegrityConstraint7 : V{
+
+}
+
+// procedure findmodels() {
+// 	local timeExpanded = calculatedefinitions(timeTheo,S)
+// 	stdoptions.nbmodels=5
+// 	printmodels(modelexpand(T,S))
+// }
+// 
+// 
+// 
+// procedure simulate() {
+//     stdoptions.nbmodels = 5
+//     print("----> Starting interactive simulation")
+// 	local states = initialise(T,S)
+// 	
+// 	//...and use one of those initial states to continue with (again and again and ...)
+// 	while true do
+// 		printmodels(states)
+// 		print("Please enter which state to use")
+// 		local num = tonumber(io.read("*line"))
+// 		local chosen = states[num]
+// 		states = progress(T,chosen)
+// 	end	
+// }
+// 
+// procedure testIntegrityConstraints(constraints){
+// 	//We assume that database is two-valued. Hence: all we should check is: is database a model of every constraint.
+// 	
+// 	for index = 1, #constraints do
+// 		//print("Testing constraint "..index)
+// 		stdoptions.nbmodels=1
+// 		result = ( #modelexpand(merge(T,constraints[index]),S) > 0)
+// 		//Alternatively to using the sat-inferences, we could use modelexpand and check if the result has at least one model
+// 		//(in our case: exactly one model)
+// 		if result then
+//             // True
+// 			print("Does not Satisfies constraint "..index)
+//             // printmodels(modelexpand(constraints[index],S))
+// 		else
+//             // False
+// 			print("Satisfy constraint "..index)
+// 		end
+// 	end
+// 	
+// }
+
+procedure main(){
+    //This method lets you walk through your solutions interactively
+	// simulate()
+    //This method (defined above) simply searches models of your theory
+    //findmodels()
+    
+    //integrityConstraints = {IntegrityConstraint1P1,IntegrityConstraint1P2,IntegrityConstraint2,IntegrityConstraint3,IntegrityConstraint4,IntegrityConstraint5,IntegrityConstraint6,IntegrityConstraint7}
+	//testIntegrityConstraints(integrityConstraints)
+
+	T1P1 = merge(T,IntegrityConstraint1P1)
+    T1P2 = merge(T,IntegrityConstraint1P2)
+	T2 = merge(T,IntegrityConstraint2)
+	T3 = merge(T,IntegrityConstraint3)
+	T4 = merge(T,IntegrityConstraint4)
+    T5 = merge(T,IntegrityConstraint5)
+	T6 = merge(T,IntegrityConstraint6)
+    T7 = merge(T,IntegrityConstraint7)
+	
+	if sat(T1P1,Small) and sat(T1P2,Small) then
+		print("ok: every player can win")
+	else
+		print("not every player can win")
+	end
+	if sat(T2,Big) then
+		print("more players can be on turn")
+	else
+		print("ok: only one player can be on turn")
+	end
+	if sat(T3,Small) then
+		print("there is a game not ending")
+	else
+		print("ok: every game comes to an end")
+	end
+	if sat(T4,Small) then
+		print("it is possible that the game is over with full heaps")
+	else
+		print("ok: when gameover, heaps are empty")
+	end
+    if sat(T5,Small) then
+		print("ok: There is a game that last for exactly 16 moves")
+	else
+		print("There is no game that last for exactly 16 moves")
+	end   
+	if sat(T6,Small) then
+		print("ok: However, the formula is not entailed by our theory. This formula was crappy")
+	else
+		print("Formula is entailed")
+	end
+	if sat(T7,Small) then
+		print("ok: How many moves does he need?")
+	else
+		print("How many moves does he need?")
+	end
+    
+}

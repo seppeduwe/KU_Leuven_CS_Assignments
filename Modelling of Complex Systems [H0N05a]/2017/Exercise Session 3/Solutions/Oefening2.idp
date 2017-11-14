@@ -1,0 +1,25 @@
+
+include "DataBaseInIDP.idp"
+include "RunQueries.idp"
+ 
+procedure main(){
+	queries = {O2Q1;O2Q2;O2Q3}
+	displayQueryAnswers(queries)
+}
+
+//TODO: complete queries. 
+
+//1. All tuples (x,y) such that student x has passed for the course y.
+query O2Q1: Sigma{
+	{x[domain] y[domain] :  ?g : Grade(x,y,g) & PassGrade(g)}
+}
+
+//2. All students who follow exactly one course
+query O2Q2: Sigma{
+	{x[domain] : ?1 c : Enrolled(x,c)}
+}
+
+//3. All students who are enrolled in CS230 and have passed for all the courses they did up til now.
+query O2Q3: Sigma{
+	{x[domain] :Enrolled(x,CS230) & (!c : !g : Grade(x,c,g) => PassGrade(g))}
+}

@@ -1,0 +1,37 @@
+//Ex3
+
+include "DataBaseInIDP.idp"
+include "RunQueries.idp"
+
+procedure main(){
+	integrityConstraints = {IntegrityConstraint1,IntegrityConstraint2,IntegrityConstraint3,IntegrityConstraint4}
+	
+	allIntegrityConstraints = merge(IntegrityConstraint1,IntegrityConstraint2)
+	allIntegrityConstraints = merge(allIntegrityConstraints,IntegrityConstraint3)
+	allIntegrityConstraints = merge(allIntegrityConstraints,IntegrityConstraint4)
+	//This way, you can combine all the integrityConstraints to One big theory representing integrity of the database.
+	
+	testIntegrityConstraints(integrityConstraints)
+}
+
+//TODO: add integrity constraints
+
+//1. No subject is a (direct) prerequisite for itself
+theory IntegrityConstraint1 : Sigma{
+	~?c : Prerequ(c,c). //Satisfied
+}
+
+//2. Nobody can have more than one grade for a course.
+theory IntegrityConstraint2 : Sigma{
+	~?s : ?c : #{g: Grade(s,c,g)} > 1. // Not Satisfied
+}
+
+//3. No student can be an instructor. (A student is someone who is enrolled in a course)
+theory IntegrityConstraint3 : Sigma{
+	~?s : (?c : Enrolled(s,c)) & (?c : Instructor(s,c)). //Satisfied
+}
+
+//4. Everyone who is enrolled for a course needs to have passed all courses which are (direct) needed prerequisites for that course.
+theory IntegrityConstraint4 : Sigma{
+	!s : !c1 : Enrolled(s,c1) => !c2 : Prerequ(c2,c1) => ?g : Grade(s,c2,g) & PassGrade(g). //Not Valid
+}

@@ -1,0 +1,23 @@
+include "DataBaseInIDP.idp"
+include "RunQueries.idp"
+
+procedure main(){
+	queries = {Ex4}
+	displayQueryAnswers(queries)
+}
+
+ /*
+SELECT student
+FROM Grade AS Gr1
+WHERE NOT EXISTS (
+	SELECT score 
+	FROM Grade AS Gr2
+	WHERE Gr1.student = Gr2.student 
+		  AND NOT 
+			(score = 'AA' OR score = 'AAA'))
+ */
+query Ex4: Sigma{
+	{ s[domain]  : (?c,g : Grade(s,c,g)) & (~?c,g : Grade(s,c,g) & ~(g = AA | g = AAA)) }
+    //{ x[domain]  : (?y : ?z : Grade(x,y,z)) & (!y : !z : Grade(x,y,z) => z = AA | z = AAA) }
+}
+

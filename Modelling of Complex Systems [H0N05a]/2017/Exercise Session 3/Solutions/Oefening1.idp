@@ -1,0 +1,50 @@
+include "DataBaseInIDP.idp"
+include "RunQueries.idp"
+
+procedure main(){
+	queries = {O1Q1;O1Q2;O1Q3;O1Q4;O1Q5;O1Q6;O1Q7}
+	runTrueFalseQueries(queries)
+}
+
+ /*
+ * TODO: complete the queries. Since these are true/false queries, nothing should be added in front of the colon
+ * (there are no variables)
+ * replace true or false by the relevant formula (the values as they are given are insignificatn)
+ */
+
+
+//1. Is there a prerequisite for CS238?
+query O1Q1: Sigma{
+	{ : ?x : Prerequ(x,CS238)} //True
+}
+
+// 2. Has May passed for CS230 ?
+query O1Q2: Sigma{
+	{ : ?g : Grade(May,CS230,g) & PassGrade(g)} // True
+}
+
+// 3. Are all the courses which are (direct) prerequisite for M100 instructed by Ray?
+query O1Q3: Sigma{
+	{ : !c : Prerequ(c,M100) => Instructor(Ray,c)} //True
+}
+
+// 4. Has everyone that is enrolled in CS230 passed for at least one course instructed by Sue?
+query O1Q4: Sigma{
+	{ : !s : Enrolled(s,CS230) => ? c : Instructor(Sue,c) & ?g : Grade(s,c,g) & PassGrade(g) } // False
+}
+
+// 5. Did John do an exam for CS230?
+query O1Q5: Sigma{
+    { : false}
+	// { : ?x : Grade(John,CS230,x)} //False, John doesn't exist in vocabulary
+}
+
+// 6. Are there students taking a course from every instructor?
+query O1Q6: Sigma{
+	{ : ?x : !y : (?w : Instructor(y,w)) => ?w : (Instructor(y,w) & Enrolled(x,w)) } //False
+}
+
+// 7. Is there are student who is enrolled in exactly 1 course?
+query O1Q7: Sigma{
+	{ : ? s : ?1 c : Enrolled(s,c) } //True
+}
