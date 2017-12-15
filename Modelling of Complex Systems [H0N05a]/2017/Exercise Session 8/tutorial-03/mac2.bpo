@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="6">
+<org.eventb.core.poPredicateSet name="CTXHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="COLOURS" org.eventb.core.type="ℙ(COLOURS)"/>
+<org.eventb.core.poIdentifier name="green" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.poIdentifier name="red" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.poIdentifier name="yellow" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.poPredicate name="COLOURT" org.eventb.core.predicate="partition(COLOURS,{red},{yellow},{green})" org.eventb.core.source="/tutorial-03/ctx1.buc|org.eventb.core.contextFile#ctx1|org.eventb.core.axiom#+"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.parentSet="/tutorial-03/mac2.bpo|org.eventb.core.poFile#mac2|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="1">
+<org.eventb.core.poIdentifier name="button" org.eventb.core.type="BOOL"/>
+<org.eventb.core.poIdentifier name="cars_colours" org.eventb.core.type="ℙ(COLOURS)"/>
+<org.eventb.core.poIdentifier name="cars_go" org.eventb.core.type="BOOL"/>
+<org.eventb.core.poIdentifier name="peds_colour" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.poIdentifier name="peds_go" org.eventb.core.type="BOOL"/>
+<org.eventb.core.poPredicate name="cars_colourt" org.eventb.core.predicate="cars_go∈BOOL" org.eventb.core.source="/tutorial-03/mac.bum|org.eventb.core.machineFile#mac|org.eventb.core.invariant#*"/>
+<org.eventb.core.poPredicate name="cars_colouru" org.eventb.core.predicate="peds_go∈BOOL" org.eventb.core.source="/tutorial-03/mac.bum|org.eventb.core.machineFile#mac|org.eventb.core.invariant#+"/>
+<org.eventb.core.poPredicate name="cars_colourv" org.eventb.core.predicate="¬(cars_go=TRUE∧peds_go=TRUE)" org.eventb.core.source="/tutorial-03/mac.bum|org.eventb.core.machineFile#mac|org.eventb.core.invariant#\/"/>
+<org.eventb.core.poPredicate name="cars_colourw" org.eventb.core.predicate="peds_colour∈{red,green}" org.eventb.core.source="/tutorial-03/mac1.bum|org.eventb.core.machineFile#mac1|org.eventb.core.invariant#0"/>
+<org.eventb.core.poPredicate name="cars_colourx" org.eventb.core.predicate="peds_go=TRUE⇔peds_colour=green" org.eventb.core.source="/tutorial-03/mac1.bum|org.eventb.core.machineFile#mac1|org.eventb.core.invariant#1"/>
+<org.eventb.core.poPredicate name="cars_coloury" org.eventb.core.predicate="cars_colours⊆COLOURS" org.eventb.core.source="/tutorial-03/mac1.bum|org.eventb.core.machineFile#mac1|org.eventb.core.invariant#2"/>
+<org.eventb.core.poPredicate name="cars_colourz" org.eventb.core.predicate="cars_go=TRUE⇔green∈cars_colours" org.eventb.core.source="/tutorial-03/mac1.bum|org.eventb.core.machineFile#mac1|org.eventb.core.invariant#4"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTIDENTcars_colourt" org.eventb.core.parentSet="/tutorial-03/mac2.bpo|org.eventb.core.poFile#mac2|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="1">
+<org.eventb.core.poIdentifier name="cars_colours'" org.eventb.core.type="ℙ(COLOURS)"/>
+<org.eventb.core.poIdentifier name="peds_colour'" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.poIdentifier name="button'" org.eventb.core.type="BOOL"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPcars_colourt" org.eventb.core.parentSet="/tutorial-03/mac2.bpo|org.eventb.core.poFile#mac2|org.eventb.core.poPredicateSet#EVTIDENTcars_colourt" org.eventb.core.poStamp="1"/>
+<org.eventb.core.poPredicateSet name="EVTIDENTcars_colouru" org.eventb.core.parentSet="/tutorial-03/mac2.bpo|org.eventb.core.poFile#mac2|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="1">
+<org.eventb.core.poIdentifier name="peds_colour'" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPcars_colouru" org.eventb.core.parentSet="/tutorial-03/mac2.bpo|org.eventb.core.poFile#mac2|org.eventb.core.poPredicateSet#EVTIDENTcars_colouru" org.eventb.core.poStamp="1">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="green∉cars_colours" org.eventb.core.source="/tutorial-03/mac1.bum|org.eventb.core.machineFile#mac1|org.eventb.core.event#+|org.eventb.core.guard#("/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTIDENTcars_colourv" org.eventb.core.parentSet="/tutorial-03/mac2.bpo|org.eventb.core.poFile#mac2|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="5">
+<org.eventb.core.poIdentifier name="peds_colour'" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.poIdentifier name="button'" org.eventb.core.type="BOOL"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPcars_colourv" org.eventb.core.parentSet="/tutorial-03/mac2.bpo|org.eventb.core.poFile#mac2|org.eventb.core.poPredicateSet#EVTIDENTcars_colourv" org.eventb.core.poStamp="5"/>
+<org.eventb.core.poPredicateSet name="EVTIDENTcars_colourw" org.eventb.core.parentSet="/tutorial-03/mac2.bpo|org.eventb.core.poFile#mac2|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="1">
+<org.eventb.core.poIdentifier name="cars_colours'" org.eventb.core.type="ℙ(COLOURS)"/>
+<org.eventb.core.poIdentifier name="new_value_colours" org.eventb.core.type="ℙ(COLOURS)"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPcars_colourw" org.eventb.core.parentSet="/tutorial-03/mac2.bpo|org.eventb.core.poFile#mac2|org.eventb.core.poPredicateSet#EVTIDENTcars_colourw" org.eventb.core.poStamp="6">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="new_value_colours⊆COLOURS" org.eventb.core.source="/tutorial-03/mac1.bum|org.eventb.core.machineFile#mac1|org.eventb.core.event#-|org.eventb.core.guard#("/>
+<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="green∈new_value_colours⇒peds_colour=red" org.eventb.core.source="/tutorial-03/mac1.bum|org.eventb.core.machineFile#mac1|org.eventb.core.event#-|org.eventb.core.guard#*"/>
+<org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="cars_colours={yellow}⇒new_value_colours={red}" org.eventb.core.source="/tutorial-03/mac1.bum|org.eventb.core.machineFile#mac1|org.eventb.core.event#-|org.eventb.core.guard#,"/>
+<org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="cars_colours={red}⇒new_value_colours={red,yellow}" org.eventb.core.source="/tutorial-03/mac1.bum|org.eventb.core.machineFile#mac1|org.eventb.core.event#-|org.eventb.core.guard#-"/>
+<org.eventb.core.poPredicate name="PRD4" org.eventb.core.predicate="cars_colours={red,yellow}⇒new_value_colours={green}" org.eventb.core.source="/tutorial-03/mac1.bum|org.eventb.core.machineFile#mac1|org.eventb.core.event#-|org.eventb.core.guard#."/>
+<org.eventb.core.poPredicate name="PRD5" org.eventb.core.predicate="cars_colours={green}⇒new_value_colours={yellow}" org.eventb.core.source="/tutorial-03/mac1.bum|org.eventb.core.machineFile#mac1|org.eventb.core.event#-|org.eventb.core.guard#\/"/>
+<org.eventb.core.poPredicate name="PRD6" org.eventb.core.predicate="¬(cars_colours={red}∧button=TRUE)" org.eventb.core.source="/tutorial-03/mac2.bum|org.eventb.core.machineFile#mac2|org.eventb.core.event#3|org.eventb.core.guard#("/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTIDENTcars_colourx" org.eventb.core.parentSet="/tutorial-03/mac2.bpo|org.eventb.core.poFile#mac2|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="button'" org.eventb.core.type="BOOL"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPcars_colourx" org.eventb.core.parentSet="/tutorial-03/mac2.bpo|org.eventb.core.poFile#mac2|org.eventb.core.poPredicateSet#EVTIDENTcars_colourx" org.eventb.core.poStamp="4">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="peds_colour=red" org.eventb.core.source="/tutorial-03/mac2.bum|org.eventb.core.machineFile#mac2|org.eventb.core.event#6|org.eventb.core.guard#'"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/tutorial-03/mac2.bpo|org.eventb.core.poFile#mac2|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="1">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="button∈BOOL" org.eventb.core.source="/tutorial-03/mac2.bum|org.eventb.core.machineFile#mac2|org.eventb.core.invariant#5"/>
+</org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>

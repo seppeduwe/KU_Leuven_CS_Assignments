@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eventb.core.machineFile version="5" org.eventb.core.configuration="org.eventb.core.fwd">
+<org.eventb.core.event name="internal_evt1" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="INITIALISATION">
+<org.eventb.core.action name="internal_act1" org.eventb.core.assignment="r≔0" org.eventb.core.label="act1"/>
+<org.eventb.core.action name="internal_act2" org.eventb.core.assignment="a ≔1" org.eventb.core.label="act2"/>
+<org.eventb.core.action name="internal_act3" org.eventb.core.assignment="b ≔ 0" org.eventb.core.label="act3"/>
+<org.eventb.core.witness name="internal_wit1" org.eventb.core.label="R'" org.eventb.core.predicate="R' = 1‥n"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="internal_evt2" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="remove_1">
+<org.eventb.core.action name="internal_act1" org.eventb.core.assignment="a ≔ a + 1" org.eventb.core.label="act11"/>
+<org.eventb.core.guard name="internal_grd1" org.eventb.core.label="grd11" org.eventb.core.predicate="a ≤ n"/>
+<org.eventb.core.guard name="internal_grd2" org.eventb.core.label="grd12" org.eventb.core.predicate="a ↦ b ∈ k"/>
+<org.eventb.core.refinesEvent name="internal_refinesEvent1" org.eventb.core.target="remove_1"/>
+<org.eventb.core.witness name="internal_wit1" org.eventb.core.label="x" org.eventb.core.predicate="x = a"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="internal_evt3" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="remove_2">
+<org.eventb.core.action name="internal_act1" org.eventb.core.assignment="b ≔ a" org.eventb.core.label="act1"/>
+<org.eventb.core.action name="internal_act2" org.eventb.core.assignment="a ≔ a + 1" org.eventb.core.label="act2"/>
+<org.eventb.core.guard name="internal_grd1" org.eventb.core.label="grd1" org.eventb.core.predicate="a ≤ n"/>
+<org.eventb.core.guard name="internal_grd2" org.eventb.core.label="grd2" org.eventb.core.predicate="a ↦b ∉ k"/>
+<org.eventb.core.refinesEvent name="internal_refinesEvent1" org.eventb.core.target="remove_2"/>
+<org.eventb.core.witness name="internal_wit1" org.eventb.core.label="x" org.eventb.core.predicate="x = a"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="internal_evt4" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="celebrity">
+<org.eventb.core.action name="internal_act1" org.eventb.core.assignment="r ≔ b" org.eventb.core.label="act1"/>
+<org.eventb.core.guard name="internal_grd1" org.eventb.core.label="grd1" org.eventb.core.predicate="a = n + 1"/>
+<org.eventb.core.refinesEvent name="internal_refinesEvent1" org.eventb.core.target="celebrity"/>
+</org.eventb.core.event>
+<org.eventb.core.invariant name="internal_inv1I" org.eventb.core.label="inv1" org.eventb.core.predicate="a ∈ 1‥n+1"/>
+<org.eventb.core.invariant name="internal_inv2I" org.eventb.core.label="inv2" org.eventb.core.predicate="R = a‥n"/>
+<org.eventb.core.refinesMachine name="internal_refinesMachine1" org.eventb.core.target="Celebrity_2"/>
+<org.eventb.core.seesContext name="internal_seesContext1" org.eventb.core.target="Celebrity_c1"/>
+<org.eventb.core.variable name="internal_var1" org.eventb.core.identifier="r"/>
+<org.eventb.core.variable name="internal_var2" org.eventb.core.identifier="a"/>
+<org.eventb.core.variable name="internal_var3" org.eventb.core.identifier="b"/>
+</org.eventb.core.machineFile>

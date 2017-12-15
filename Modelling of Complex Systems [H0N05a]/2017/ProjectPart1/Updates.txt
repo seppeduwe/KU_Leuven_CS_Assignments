@@ -1,0 +1,36 @@
+
+
+Attached is the assignment for the first part of the MCS project. 
+The submission deadline is 19/11/2017.
+
+Good luck.
+
+UPDATE 31/10:
+
+    The functions C_GetPos en CN_GetPos can be excluded from the assignment. You can keep those, change them to a predicate representation, change them into something else or just delete them. 
+
+UPDATE 8/11:
+
+    It is allowed to share structures, this has to be done using the "Discussion Board" where a new "Project Structures" category was opened up. These structures may only contain initial states of puzzles. So they can not be full models or models where some moves are fixed.
+    Clarification of verification 3: Maximality is only considered over the situations which are met while solving the puzzle. So you do not have to check with hypothetical other states which you did not need to over while solving the puzzle.
+    There are a few typos in the verification skeleton code:
+            in the allVerifications procedure, there
+            "print("Verification 1: " .. verification1proc(struct1))"
+            should become 
+            "print("Verification 1: " .. tostring(verification1proc(struct1)))",
+
+            "print("Verification 2: " .. verification2proc(struct1))"
+            should become
+            "print("Verification 2: " .. tostring(verification2proc(struct2)))"
+
+            and so on..
+            in allVerificationsOn ExampleStruct
+            "allVerificationsOneSameStruct"
+            should become
+            "allVerificationsOnSameStruct"
+
+UPDATE 13/11:
+
+    For verification 4: this is about any colour connected component, not just the one of Ref(c).
+    For verification 5: With next we mean in on of the four directions, but not wrapping at the edges. So for example, in a 3x3 board, position (1,1) is not next to (3,1) and not next to (1,3).
+

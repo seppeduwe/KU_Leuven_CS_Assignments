@@ -1,0 +1,1104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.prFile version="1">
+<org.eventb.core.prProof name="INITIALISATION/inv4/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="" org.eventb.core.prSets="COLOURS">
+<org.eventb.core.lang name="L"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="Partition rewrites in hyp (partition(COLOURS,{red},{yellow},{green}))" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p1" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p2,p3,p4,p5"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p2,p3,p4,p5"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p6">
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="⊤ goal" org.eventb.core.prGoal="p6" org.eventb.core.prHyps=""/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="green" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="red" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="⊤"/>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="COLOURS={red,yellow,green}">
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="¬red=yellow">
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="¬red=green"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="partition(COLOURS,{red},{yellow},{green})">
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="red∈{red,green}"/>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="¬yellow=green">
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.trueGoal"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="INITIALISATION/gluing/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1" org.eventb.core.prSets="COLOURS">
+<org.eventb.core.lang name="L"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="Partition rewrites in hyp (partition(COLOURS,{red},{yellow},{green}))" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p1" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p2,p3,p4,p5"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p2,p3,p4,p5"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p4">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p6">
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prGoal="p6" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p7">
+<org.eventb.core.prRule name="r3" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="⊤ goal" org.eventb.core.prGoal="p7" org.eventb.core.prHyps=""/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="green" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="red" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prPred name="p7" org.eventb.core.predicate="⊤"/>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="COLOURS={red,yellow,green}"/>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="¬red=yellow"/>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="¬red=green"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="FALSE=TRUE⇔red=green"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="partition(COLOURS,{red},{yellow},{green})"/>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="FALSE=TRUE⇔⊥"/>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="¬yellow=green"/>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.trueGoal"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.genMPL3"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="set_peds_go/gluing/INV" org.eventb.core.confidence="0" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="" org.eventb.core.prSets="COLOURS">
+<org.eventb.core.lang name="L"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="Partition rewrites in hyp (partition(COLOURS,{red},{yellow},{green}))" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p1" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p2,p3,p4,p5"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p2,p3,p4,p5"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p6">
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prGoal="p6" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p6">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p7" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p8"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p8" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p9"/>
+<org.eventb.core.prRule name="r3" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="remove ¬ in ¬(cars_go=TRUE∧peds_go=TRUE)" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p10" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p11"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p11"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p11" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p12"/>
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p12" org.eventb.core.prHyps="p14,p9" org.eventb.core.prInfHyps="p13"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p13"/>
+<org.eventb.core.prRule name="r4" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="type rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p15"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p16"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="green" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="peds_colour" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prPred name="p16" org.eventb.core.predicate="peds_go∈BOOL">
+<org.eventb.core.prIdent name="peds_go" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p10" org.eventb.core.predicate="¬(cars_go=TRUE∧peds_go=TRUE)">
+<org.eventb.core.prIdent name="cars_go" org.eventb.core.type="BOOL"/>
+<org.eventb.core.prIdent name="peds_go" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p13" org.eventb.core.predicate="⊤∨⊤"/>
+<org.eventb.core.prPred name="p15" org.eventb.core.predicate="cars_go∈BOOL">
+<org.eventb.core.prIdent name="cars_go" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="partition(COLOURS,{red},{yellow},{green})">
+<org.eventb.core.prIdent name="red" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="TRUE=TRUE⇔peds_colour=green"/>
+<org.eventb.core.prPred name="p14" org.eventb.core.predicate="cars_go=FALSE">
+<org.eventb.core.prIdent name="cars_go" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p12" org.eventb.core.predicate="cars_go=FALSE∨peds_go=FALSE">
+<org.eventb.core.prIdent name="cars_go" org.eventb.core.type="BOOL"/>
+<org.eventb.core.prIdent name="peds_go" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="¬yellow=green">
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p8" org.eventb.core.predicate="peds_go=TRUE⇔⊥">
+<org.eventb.core.prIdent name="peds_go" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="COLOURS={red,yellow,green}">
+<org.eventb.core.prIdent name="red" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="¬red=yellow">
+<org.eventb.core.prIdent name="red" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="¬red=green">
+<org.eventb.core.prIdent name="red" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p7" org.eventb.core.predicate="peds_go=TRUE⇔peds_colour=green">
+<org.eventb.core.prIdent name="peds_go" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="peds_colour=green"/>
+<org.eventb.core.prPred name="p11" org.eventb.core.predicate="¬cars_go=TRUE∨¬peds_go=TRUE">
+<org.eventb.core.prIdent name="cars_go" org.eventb.core.type="BOOL"/>
+<org.eventb.core.prIdent name="peds_go" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p9" org.eventb.core.predicate="peds_go=FALSE">
+<org.eventb.core.prIdent name="peds_go" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prReas name="r4" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.genMPL3"/>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.rn"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="set_peds_stop/gluing/INV" org.eventb.core.confidence="0" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="" org.eventb.core.prSets="COLOURS">
+<org.eventb.core.lang name="L"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="Partition rewrites in hyp (partition(COLOURS,{red},{yellow},{green}))" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p1" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p2,p3,p4,p5"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p2,p3,p4,p5"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p6">
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prGoal="p6" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p6">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p7" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p8"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p8" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p9"/>
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p10" org.eventb.core.prHyps="p9" org.eventb.core.prInfHyps="p11"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p11" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p12"/>
+<org.eventb.core.prRule name="r3" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="type rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p13"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p14"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="green" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="peds_colour" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prPred name="p8" org.eventb.core.predicate="peds_go=TRUE⇔⊤">
+<org.eventb.core.prIdent name="peds_go" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p14" org.eventb.core.predicate="peds_go∈BOOL">
+<org.eventb.core.prIdent name="peds_go" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p10" org.eventb.core.predicate="¬(cars_go=TRUE∧peds_go=TRUE)">
+<org.eventb.core.prIdent name="cars_go" org.eventb.core.type="BOOL"/>
+<org.eventb.core.prIdent name="peds_go" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p11" org.eventb.core.predicate="¬(cars_go=TRUE∧⊤)">
+<org.eventb.core.prIdent name="cars_go" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p13" org.eventb.core.predicate="cars_go∈BOOL">
+<org.eventb.core.prIdent name="cars_go" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="partition(COLOURS,{red},{yellow},{green})">
+<org.eventb.core.prIdent name="red" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="FALSE=TRUE⇔peds_colour=green"/>
+<org.eventb.core.prPred name="p12" org.eventb.core.predicate="cars_go=FALSE">
+<org.eventb.core.prIdent name="cars_go" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="¬peds_colour=green"/>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="¬yellow=green">
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p9" org.eventb.core.predicate="peds_go=TRUE">
+<org.eventb.core.prIdent name="peds_go" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="COLOURS={red,yellow,green}">
+<org.eventb.core.prIdent name="red" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="¬red=yellow">
+<org.eventb.core.prIdent name="red" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="¬red=green">
+<org.eventb.core.prIdent name="red" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p7" org.eventb.core.predicate="peds_go=TRUE⇔peds_colour=green">
+<org.eventb.core.prIdent name="peds_go" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.genMPL3"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="set_peds_green/inv4/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="" org.eventb.core.prSets="COLOURS">
+<org.eventb.core.lang name="L"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="Partition rewrites in hyp (partition(COLOURS,{red},{yellow},{green}))" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p1" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p2,p3,p4,p5"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p2,p3,p4,p5"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p6">
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="⊤ goal" org.eventb.core.prGoal="p6" org.eventb.core.prHyps=""/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="green" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="red" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="⊤"/>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="COLOURS={red,yellow,green}">
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="¬red=yellow">
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="¬red=green"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="partition(COLOURS,{red},{yellow},{green})">
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="green∈{red,green}"/>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="¬yellow=green">
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.trueGoal"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="set_peds_green/gluing/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="" org.eventb.core.prSets="COLOURS">
+<org.eventb.core.lang name="L"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="Partition rewrites in hyp (partition(COLOURS,{red},{yellow},{green}))" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p1" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p2,p3,p4,p5"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p2,p3,p4,p5"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p6">
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="⊤ goal" org.eventb.core.prGoal="p6" org.eventb.core.prHyps=""/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="green" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="TRUE=TRUE⇔green=green"/>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="⊤"/>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="COLOURS={red,yellow,green}">
+<org.eventb.core.prIdent name="red" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="¬red=yellow">
+<org.eventb.core.prIdent name="red" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="¬red=green">
+<org.eventb.core.prIdent name="red" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="partition(COLOURS,{red},{yellow},{green})">
+<org.eventb.core.prIdent name="red" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="¬yellow=green">
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.trueGoal"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="set_peds_green/act1/SIM" org.eventb.core.confidence="0" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="">
+<org.eventb.core.lang name="L"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="Partition rewrites in hyp (partition(COLOURS,{red},{yellow},{green}))" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p1" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p2,p3,p4,p5"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p2,p3,p4,p5"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p0">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p6" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p7"/>
+<org.eventb.core.prHypAction name="REWRITE1" org.eventb.core.prHidden="p8" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p9"/>
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p7"/>
+<org.eventb.core.prHypAction name="REWRITE1" org.eventb.core.prHidden="p9" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p10"/>
+<org.eventb.core.prRule name="r3" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="type rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p11"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p12"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="peds_go" org.eventb.core.type="BOOL"/>
+<org.eventb.core.prPred name="p12" org.eventb.core.predicate="peds_go∈BOOL"/>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="¬(cars_go=TRUE∧peds_go=TRUE)">
+<org.eventb.core.prIdent name="cars_go" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p11" org.eventb.core.predicate="cars_go∈BOOL">
+<org.eventb.core.prIdent name="cars_go" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="partition(COLOURS,{red},{yellow},{green})">
+<org.eventb.core.prIdent name="COLOURS" org.eventb.core.type="ℙ(COLOURS)"/>
+<org.eventb.core.prIdent name="green" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="red" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p7" org.eventb.core.predicate="¬(cars_go=TRUE∧⊥)">
+<org.eventb.core.prIdent name="cars_go" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p10" org.eventb.core.predicate="¬peds_colour=green">
+<org.eventb.core.prIdent name="COLOURS" org.eventb.core.type="ℙ(COLOURS)"/>
+<org.eventb.core.prIdent name="green" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="peds_colour" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="¬yellow=green">
+<org.eventb.core.prIdent name="COLOURS" org.eventb.core.type="ℙ(COLOURS)"/>
+<org.eventb.core.prIdent name="green" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="peds_go=TRUE"/>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="COLOURS={red,yellow,green}">
+<org.eventb.core.prIdent name="COLOURS" org.eventb.core.type="ℙ(COLOURS)"/>
+<org.eventb.core.prIdent name="green" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="red" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="¬red=yellow">
+<org.eventb.core.prIdent name="COLOURS" org.eventb.core.type="ℙ(COLOURS)"/>
+<org.eventb.core.prIdent name="red" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="¬red=green">
+<org.eventb.core.prIdent name="COLOURS" org.eventb.core.type="ℙ(COLOURS)"/>
+<org.eventb.core.prIdent name="green" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="red" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p8" org.eventb.core.predicate="peds_go=TRUE⇔peds_colour=green">
+<org.eventb.core.prIdent name="COLOURS" org.eventb.core.type="ℙ(COLOURS)"/>
+<org.eventb.core.prIdent name="green" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="peds_colour" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p9" org.eventb.core.predicate="⊥⇔peds_colour=green">
+<org.eventb.core.prIdent name="COLOURS" org.eventb.core.type="ℙ(COLOURS)"/>
+<org.eventb.core.prIdent name="green" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="peds_colour" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.genMPL3"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="set_peds_red/inv4/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="" org.eventb.core.prSets="COLOURS">
+<org.eventb.core.lang name="L"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="Partition rewrites in hyp (partition(COLOURS,{red},{yellow},{green}))" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p1" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p2,p3,p4,p5"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p2,p3,p4,p5"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p6">
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="⊤ goal" org.eventb.core.prGoal="p6" org.eventb.core.prHyps=""/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="green" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="red" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="⊤"/>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="COLOURS={red,yellow,green}">
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="¬red=yellow">
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="¬red=green"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="partition(COLOURS,{red},{yellow},{green})">
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="red∈{red,green}"/>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="¬yellow=green">
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.trueGoal"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="set_peds_red/gluing/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1" org.eventb.core.prSets="COLOURS">
+<org.eventb.core.lang name="L"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="Partition rewrites in hyp (partition(COLOURS,{red},{yellow},{green}))" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p1" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p2,p3,p4,p5"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p2,p3,p4,p5"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p4">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p6">
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prGoal="p6" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p7">
+<org.eventb.core.prRule name="r3" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="⊤ goal" org.eventb.core.prGoal="p7" org.eventb.core.prHyps=""/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="green" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="red" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prPred name="p7" org.eventb.core.predicate="⊤"/>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="COLOURS={red,yellow,green}"/>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="¬red=yellow"/>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="¬red=green"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="FALSE=TRUE⇔red=green"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="partition(COLOURS,{red},{yellow},{green})"/>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="FALSE=TRUE⇔⊥"/>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="¬yellow=green"/>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.trueGoal"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.genMPL3"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="set_peds_red/act1/SIM" org.eventb.core.confidence="0" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="">
+<org.eventb.core.lang name="L"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="Partition rewrites in hyp (partition(COLOURS,{red},{yellow},{green}))" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p1" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p2,p3,p4,p5"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p2,p3,p4,p5"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="remove ¬ in ¬(cars_go=TRUE∧peds_go=TRUE)" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p6" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p7"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p7"/>
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p7" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p8"/>
+<org.eventb.core.prRule name="r3" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p0">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p8" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p9"/>
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p9" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p10"/>
+<org.eventb.core.prRule name="r4" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="type rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p11"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p12"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="peds_go" org.eventb.core.type="BOOL"/>
+<org.eventb.core.prPred name="p12" org.eventb.core.predicate="peds_go∈BOOL"/>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="¬(cars_go=TRUE∧peds_go=TRUE)">
+<org.eventb.core.prIdent name="cars_go" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p11" org.eventb.core.predicate="cars_go∈BOOL">
+<org.eventb.core.prIdent name="cars_go" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="partition(COLOURS,{red},{yellow},{green})">
+<org.eventb.core.prIdent name="COLOURS" org.eventb.core.type="ℙ(COLOURS)"/>
+<org.eventb.core.prIdent name="green" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="red" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p10" org.eventb.core.predicate="cars_go=FALSE">
+<org.eventb.core.prIdent name="cars_go" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p8" org.eventb.core.predicate="cars_go=FALSE∨peds_go=FALSE">
+<org.eventb.core.prIdent name="cars_go" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="¬yellow=green">
+<org.eventb.core.prIdent name="COLOURS" org.eventb.core.type="ℙ(COLOURS)"/>
+<org.eventb.core.prIdent name="green" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="COLOURS={red,yellow,green}">
+<org.eventb.core.prIdent name="COLOURS" org.eventb.core.type="ℙ(COLOURS)"/>
+<org.eventb.core.prIdent name="green" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="red" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p9" org.eventb.core.predicate="cars_go=FALSE∨⊥">
+<org.eventb.core.prIdent name="cars_go" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="¬red=yellow">
+<org.eventb.core.prIdent name="COLOURS" org.eventb.core.type="ℙ(COLOURS)"/>
+<org.eventb.core.prIdent name="red" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="¬red=green">
+<org.eventb.core.prIdent name="COLOURS" org.eventb.core.type="ℙ(COLOURS)"/>
+<org.eventb.core.prIdent name="green" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="red" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p7" org.eventb.core.predicate="¬cars_go=TRUE∨¬peds_go=TRUE">
+<org.eventb.core.prIdent name="cars_go" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="peds_go=FALSE"/>
+<org.eventb.core.prReas name="r4" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.rn"/>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.genMPL3"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="set_cars/grd2/GRD" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3,p4,p5" org.eventb.core.prSets="COLOURS">
+<org.eventb.core.lang name="L"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="Partition rewrites in hyp (partition(COLOURS,{red},{yellow},{green}))" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p4" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p6,p7,p8,p9"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p6,p7,p8,p9"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="remove ¬ in ¬(cars_go=TRUE∧peds_go=TRUE)" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p2" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p10"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p10"/>
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p10" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p11"/>
+<org.eventb.core.prRule name="r3" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="type rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p12"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p13"/>
+<org.eventb.core.prHypAction name="HIDE2" org.eventb.core.prHyps="p14"/>
+<org.eventb.core.prRule name="r4" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="⇒ goal" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p16" org.eventb.core.prHyps="p15">
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prGoal="p16" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p16">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p5" org.eventb.core.prHyps="p15" org.eventb.core.prInfHyps="p17"/>
+<org.eventb.core.prHypAction name="REWRITE1" org.eventb.core.prHidden="p11" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p18"/>
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p17" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p19"/>
+<org.eventb.core.prHypAction name="REWRITE1" org.eventb.core.prHidden="p18" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p20"/>
+<org.eventb.core.prRule name="r6" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="ML" org.eventb.core.prGoal="p16" org.eventb.core.prHyps="p1,p3,p6,p7,p8,p9,p15,p19,p20">
+<org.eventb.core.prString name=".arg" org.eventb.core.prSValue="0;1:500"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="cars_go" org.eventb.core.type="BOOL"/>
+<org.eventb.core.prIdent name="green" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="new_value" org.eventb.core.type="BOOL"/>
+<org.eventb.core.prIdent name="peds_colour" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="peds_go" org.eventb.core.type="BOOL"/>
+<org.eventb.core.prIdent name="red" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prPred name="p13" org.eventb.core.predicate="peds_go∈BOOL"/>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="¬(cars_go=TRUE∧peds_go=TRUE)"/>
+<org.eventb.core.prPred name="p12" org.eventb.core.predicate="cars_go∈BOOL"/>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="partition(COLOURS,{red},{yellow},{green})"/>
+<org.eventb.core.prPred name="p20" org.eventb.core.predicate="cars_go=FALSE"/>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="new_value=TRUE⇒peds_colour=red"/>
+<org.eventb.core.prPred name="p11" org.eventb.core.predicate="cars_go=FALSE∨peds_go=FALSE"/>
+<org.eventb.core.prPred name="p9" org.eventb.core.predicate="¬yellow=green"/>
+<org.eventb.core.prPred name="p19" org.eventb.core.predicate="peds_colour=red"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="peds_colour∈{red,green}"/>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="COLOURS={red,yellow,green}"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="new_value=TRUE⇒peds_go=FALSE"/>
+<org.eventb.core.prPred name="p18" org.eventb.core.predicate="cars_go=FALSE∨⊥"/>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="peds_go=TRUE⇔peds_colour=green"/>
+<org.eventb.core.prPred name="p7" org.eventb.core.predicate="¬red=yellow"/>
+<org.eventb.core.prPred name="p8" org.eventb.core.predicate="¬red=green"/>
+<org.eventb.core.prPred name="p15" org.eventb.core.predicate="new_value=TRUE"/>
+<org.eventb.core.prPred name="p14" org.eventb.core.predicate="new_value∈BOOL"/>
+<org.eventb.core.prPred name="p10" org.eventb.core.predicate="¬cars_go=TRUE∨¬peds_go=TRUE"/>
+<org.eventb.core.prPred name="p17" org.eventb.core.predicate="⊤⇒peds_colour=red"/>
+<org.eventb.core.prPred name="p16" org.eventb.core.predicate="peds_go=FALSE"/>
+<org.eventb.core.prReas name="r4" org.eventb.core.prRID="org.eventb.core.seqprover.impI"/>
+<org.eventb.core.prReas name="r6" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalML:1"/>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.rn"/>
+<org.eventb.core.prReas name="r5" org.eventb.core.prRID="org.eventb.core.seqprover.genMPL3"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="set_peds_green/grd1/GRD" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2" org.eventb.core.prSets="COLOURS">
+<org.eventb.core.lang name="L"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="Partition rewrites in hyp (partition(COLOURS,{red},{yellow},{green}))" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p3" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p4,p5,p6,p7"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p4,p5,p6,p7"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p1" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p8"/>
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p2" org.eventb.core.prHyps="p8" org.eventb.core.prInfHyps="p9"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p9" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p0"/>
+<org.eventb.core.prRule name="r3" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="hyp" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p0"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="cars_colours" org.eventb.core.type="ℙ(COLOURS)"/>
+<org.eventb.core.prIdent name="cars_go" org.eventb.core.type="BOOL"/>
+<org.eventb.core.prIdent name="green" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prPred name="p9" org.eventb.core.predicate="cars_go=TRUE⇔⊥"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="green∉cars_colours"/>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="COLOURS={red,yellow,green}">
+<org.eventb.core.prIdent name="red" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p8" org.eventb.core.predicate="¬green∈cars_colours"/>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="cars_go=TRUE⇔green∈cars_colours"/>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="¬red=yellow">
+<org.eventb.core.prIdent name="red" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="¬red=green">
+<org.eventb.core.prIdent name="red" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="partition(COLOURS,{red},{yellow},{green})">
+<org.eventb.core.prIdent name="red" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="cars_go=FALSE"/>
+<org.eventb.core.prPred name="p7" org.eventb.core.predicate="¬yellow=green">
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.hyp"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.genMPL3"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="INITIALISATION/inv6/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1" org.eventb.core.prSets="COLOURS">
+<org.eventb.core.lang name="L"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="Partition rewrites in hyp (partition(COLOURS,{red},{yellow},{green}))" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p1" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p2,p3,p4,p5"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p2,p3,p4,p5"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p6">
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="hyp" org.eventb.core.prGoal="p6" org.eventb.core.prHyps="p4"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="green" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="red" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="¬green=red"/>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="COLOURS={red,yellow,green}"/>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="¬red=yellow"/>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="¬red=green"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="partition(COLOURS,{red},{yellow},{green})"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="FALSE=TRUE⇔green∈{red}"/>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="¬yellow=green"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.hyp"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="set_cars/inv6/INV" org.eventb.core.confidence="0" org.eventb.core.prFresh="" org.eventb.core.prHyps="">
+<org.eventb.core.lang name="L"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="Partition rewrites in hyp (partition(COLOURS,{red},{yellow},{green}))" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p0" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p1,p2,p3,p4"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p1,p2,p3,p4"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="remove ¬ in ¬(cars_go=TRUE∧peds_go=TRUE)" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p5" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p6"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p6"/>
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p6" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p7"/>
+<org.eventb.core.prRule name="r3" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="type rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p8"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p9"/>
+<org.eventb.core.prHypAction name="HIDE2" org.eventb.core.prHyps="p10"/>
+<org.eventb.core.prHypAction name="HIDE3" org.eventb.core.prHyps="p11"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+<org.eventb.core.prPred name="p9" org.eventb.core.predicate="peds_go∈BOOL">
+<org.eventb.core.prIdent name="peds_go" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="COLOURS={red,yellow,green}">
+<org.eventb.core.prIdent name="COLOURS" org.eventb.core.type="ℙ(COLOURS)"/>
+<org.eventb.core.prIdent name="green" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="red" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="¬(cars_go=TRUE∧peds_go=TRUE)">
+<org.eventb.core.prIdent name="cars_go" org.eventb.core.type="BOOL"/>
+<org.eventb.core.prIdent name="peds_go" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p10" org.eventb.core.predicate="cars_colours⊆COLOURS">
+<org.eventb.core.prIdent name="COLOURS" org.eventb.core.type="ℙ(COLOURS)"/>
+<org.eventb.core.prIdent name="cars_colours" org.eventb.core.type="ℙ(COLOURS)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="¬red=yellow">
+<org.eventb.core.prIdent name="COLOURS" org.eventb.core.type="ℙ(COLOURS)"/>
+<org.eventb.core.prIdent name="red" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="¬red=green">
+<org.eventb.core.prIdent name="COLOURS" org.eventb.core.type="ℙ(COLOURS)"/>
+<org.eventb.core.prIdent name="green" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="red" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p8" org.eventb.core.predicate="cars_go∈BOOL">
+<org.eventb.core.prIdent name="cars_go" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="partition(COLOURS,{red},{yellow},{green})">
+<org.eventb.core.prIdent name="COLOURS" org.eventb.core.type="ℙ(COLOURS)"/>
+<org.eventb.core.prIdent name="green" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="red" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p11" org.eventb.core.predicate="new_value∈BOOL">
+<org.eventb.core.prIdent name="new_value" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="¬cars_go=TRUE∨¬peds_go=TRUE">
+<org.eventb.core.prIdent name="cars_go" org.eventb.core.type="BOOL"/>
+<org.eventb.core.prIdent name="peds_go" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p7" org.eventb.core.predicate="cars_go=FALSE∨peds_go=FALSE">
+<org.eventb.core.prIdent name="cars_go" org.eventb.core.type="BOOL"/>
+<org.eventb.core.prIdent name="peds_go" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="¬yellow=green">
+<org.eventb.core.prIdent name="COLOURS" org.eventb.core.type="ℙ(COLOURS)"/>
+<org.eventb.core.prIdent name="green" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.rn"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="set_cars_colours/inv6/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p0" org.eventb.core.prSets="COLOURS">
+<org.eventb.core.lang name="L"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="hyp" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p0"/>
+<org.eventb.core.prIdent name="green" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="new_value" org.eventb.core.type="BOOL"/>
+<org.eventb.core.prIdent name="new_value_colours" org.eventb.core.type="ℙ(COLOURS)"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="new_value=TRUE⇔green∈new_value_colours"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.hyp"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="set_cars_colours/grd2/GRD" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3,p4,p5,p6,p7" org.eventb.core.prSets="COLOURS">
+<org.eventb.core.lang name="L"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="Partition rewrites in hyp (partition(COLOURS,{red},{yellow},{green}))" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p6" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p8,p9,p10,p11"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p8,p9,p10,p11"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="remove ¬ in ¬(cars_go=TRUE∧peds_go=TRUE)" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p3" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p12"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p12"/>
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p12" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p13"/>
+<org.eventb.core.prRule name="r3" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="type rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p14"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p15"/>
+<org.eventb.core.prHypAction name="HIDE2" org.eventb.core.prHyps="p16"/>
+<org.eventb.core.prHypAction name="HIDE3" org.eventb.core.prHyps="p17"/>
+<org.eventb.core.prRule name="r4" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="⇒ goal" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p19" org.eventb.core.prHyps="p18">
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prGoal="p19" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p19">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p7" org.eventb.core.prHyps="p18" org.eventb.core.prInfHyps="p20"/>
+<org.eventb.core.prHypAction name="REWRITE1" org.eventb.core.prHidden="p13" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p21"/>
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p20" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p22"/>
+<org.eventb.core.prHypAction name="REWRITE1" org.eventb.core.prHidden="p21" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p23"/>
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p2" org.eventb.core.prHyps="p22" org.eventb.core.prInfHyps="p24"/>
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p24" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p25"/>
+<org.eventb.core.prRule name="r6" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="ML" org.eventb.core.prGoal="p19" org.eventb.core.prHyps="p1,p4,p5,p8,p9,p10,p11,p18,p22,p23,p25">
+<org.eventb.core.prString name=".arg" org.eventb.core.prSValue="0;1:500"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="cars_colours" org.eventb.core.type="ℙ(COLOURS)"/>
+<org.eventb.core.prIdent name="cars_go" org.eventb.core.type="BOOL"/>
+<org.eventb.core.prIdent name="green" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="new_value" org.eventb.core.type="BOOL"/>
+<org.eventb.core.prIdent name="new_value_colours" org.eventb.core.type="ℙ(COLOURS)"/>
+<org.eventb.core.prIdent name="peds_colour" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="peds_go" org.eventb.core.type="BOOL"/>
+<org.eventb.core.prIdent name="red" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prPred name="p15" org.eventb.core.predicate="peds_go∈BOOL"/>
+<org.eventb.core.prPred name="p16" org.eventb.core.predicate="cars_colours⊆COLOURS"/>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="partition(COLOURS,{red},{yellow},{green})"/>
+<org.eventb.core.prPred name="p23" org.eventb.core.predicate="cars_go=FALSE"/>
+<org.eventb.core.prPred name="p13" org.eventb.core.predicate="cars_go=FALSE∨peds_go=FALSE"/>
+<org.eventb.core.prPred name="p22" org.eventb.core.predicate="green∈new_value_colours"/>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="green∈new_value_colours⇒peds_colour=red"/>
+<org.eventb.core.prPred name="p8" org.eventb.core.predicate="COLOURS={red,yellow,green}"/>
+<org.eventb.core.prPred name="p21" org.eventb.core.predicate="cars_go=FALSE∨⊥"/>
+<org.eventb.core.prPred name="p18" org.eventb.core.predicate="new_value=TRUE"/>
+<org.eventb.core.prPred name="p24" org.eventb.core.predicate="⊤⇒peds_colour=red"/>
+<org.eventb.core.prPred name="p20" org.eventb.core.predicate="⊤⇔green∈new_value_colours"/>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="¬(cars_go=TRUE∧peds_go=TRUE)"/>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="cars_go=TRUE⇔green∈cars_colours"/>
+<org.eventb.core.prPred name="p14" org.eventb.core.predicate="cars_go∈BOOL"/>
+<org.eventb.core.prPred name="p11" org.eventb.core.predicate="¬yellow=green"/>
+<org.eventb.core.prPred name="p25" org.eventb.core.predicate="peds_colour=red"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="peds_colour∈{red,green}"/>
+<org.eventb.core.prPred name="p17" org.eventb.core.predicate="new_value_colours⊆COLOURS"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="new_value=TRUE⇒peds_go=FALSE"/>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="peds_go=TRUE⇔peds_colour=green"/>
+<org.eventb.core.prPred name="p9" org.eventb.core.predicate="¬red=yellow"/>
+<org.eventb.core.prPred name="p10" org.eventb.core.predicate="¬red=green"/>
+<org.eventb.core.prPred name="p12" org.eventb.core.predicate="¬cars_go=TRUE∨¬peds_go=TRUE"/>
+<org.eventb.core.prPred name="p7" org.eventb.core.predicate="new_value=TRUE⇔green∈new_value_colours"/>
+<org.eventb.core.prPred name="p19" org.eventb.core.predicate="peds_go=FALSE"/>
+<org.eventb.core.prReas name="r4" org.eventb.core.prRID="org.eventb.core.seqprover.impI"/>
+<org.eventb.core.prReas name="r6" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalML:1"/>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.rn"/>
+<org.eventb.core.prReas name="r5" org.eventb.core.prRID="org.eventb.core.seqprover.genMPL3"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="set_cars_colours/act1/SIM" org.eventb.core.confidence="0" org.eventb.core.prFresh="" org.eventb.core.prHyps="">
+<org.eventb.core.lang name="L"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="Partition rewrites in hyp (partition(COLOURS,{red},{yellow},{green}))" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p0" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p1,p2,p3,p4"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p1,p2,p3,p4"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="remove ¬ in ¬(cars_go=TRUE∧peds_go=TRUE)" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p5" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p6"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p6"/>
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p6" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p7"/>
+<org.eventb.core.prRule name="r3" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="type rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p8"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p9"/>
+<org.eventb.core.prHypAction name="HIDE2" org.eventb.core.prHyps="p10"/>
+<org.eventb.core.prHypAction name="HIDE3" org.eventb.core.prHyps="p11"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+<org.eventb.core.prPred name="p9" org.eventb.core.predicate="peds_go∈BOOL">
+<org.eventb.core.prIdent name="peds_go" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="COLOURS={red,yellow,green}">
+<org.eventb.core.prIdent name="COLOURS" org.eventb.core.type="ℙ(COLOURS)"/>
+<org.eventb.core.prIdent name="green" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="red" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="¬(cars_go=TRUE∧peds_go=TRUE)">
+<org.eventb.core.prIdent name="cars_go" org.eventb.core.type="BOOL"/>
+<org.eventb.core.prIdent name="peds_go" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p11" org.eventb.core.predicate="new_value_colours⊆COLOURS">
+<org.eventb.core.prIdent name="COLOURS" org.eventb.core.type="ℙ(COLOURS)"/>
+<org.eventb.core.prIdent name="new_value_colours" org.eventb.core.type="ℙ(COLOURS)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p10" org.eventb.core.predicate="cars_colours⊆COLOURS">
+<org.eventb.core.prIdent name="COLOURS" org.eventb.core.type="ℙ(COLOURS)"/>
+<org.eventb.core.prIdent name="cars_colours" org.eventb.core.type="ℙ(COLOURS)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="¬red=yellow">
+<org.eventb.core.prIdent name="COLOURS" org.eventb.core.type="ℙ(COLOURS)"/>
+<org.eventb.core.prIdent name="red" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="¬red=green">
+<org.eventb.core.prIdent name="COLOURS" org.eventb.core.type="ℙ(COLOURS)"/>
+<org.eventb.core.prIdent name="green" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="red" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p8" org.eventb.core.predicate="cars_go∈BOOL">
+<org.eventb.core.prIdent name="cars_go" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="partition(COLOURS,{red},{yellow},{green})">
+<org.eventb.core.prIdent name="COLOURS" org.eventb.core.type="ℙ(COLOURS)"/>
+<org.eventb.core.prIdent name="green" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="red" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="¬cars_go=TRUE∨¬peds_go=TRUE">
+<org.eventb.core.prIdent name="cars_go" org.eventb.core.type="BOOL"/>
+<org.eventb.core.prIdent name="peds_go" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p7" org.eventb.core.predicate="cars_go=FALSE∨peds_go=FALSE">
+<org.eventb.core.prIdent name="cars_go" org.eventb.core.type="BOOL"/>
+<org.eventb.core.prIdent name="peds_go" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="¬yellow=green">
+<org.eventb.core.prIdent name="COLOURS" org.eventb.core.type="ℙ(COLOURS)"/>
+<org.eventb.core.prIdent name="green" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.rn"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="set_cars_colours/new_value/WFIS" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3" org.eventb.core.prSets="COLOURS">
+<org.eventb.core.lang name="L"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="Partition rewrites in hyp (partition(COLOURS,{red},{yellow},{green}))" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p3" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p4,p5,p6,p7"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p4,p5,p6,p7"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="remove ¬ in ¬(cars_go=TRUE∧peds_go=TRUE)" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p2" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p8"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p8"/>
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p8" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p9"/>
+<org.eventb.core.prRule name="r3" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="type rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p10"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p11"/>
+<org.eventb.core.prHypAction name="HIDE2" org.eventb.core.prHyps="p12"/>
+<org.eventb.core.prHypAction name="HIDE3" org.eventb.core.prHyps="p13"/>
+<org.eventb.core.prRule name="r4" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="PP" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p4,p5,p6,p7,p9">
+<org.eventb.core.prString name=".arg" org.eventb.core.prSValue="R500"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="cars_go" org.eventb.core.type="BOOL"/>
+<org.eventb.core.prIdent name="green" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="new_value_colours" org.eventb.core.type="ℙ(COLOURS)"/>
+<org.eventb.core.prIdent name="peds_colour" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="peds_go" org.eventb.core.type="BOOL"/>
+<org.eventb.core.prIdent name="red" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prIdent name="yellow" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.prPred name="p11" org.eventb.core.predicate="peds_go∈BOOL"/>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="¬(cars_go=TRUE∧peds_go=TRUE)"/>
+<org.eventb.core.prPred name="p12" org.eventb.core.predicate="cars_colours⊆COLOURS">
+<org.eventb.core.prIdent name="cars_colours" org.eventb.core.type="ℙ(COLOURS)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="∃new_value⦂BOOL·new_value=TRUE⇔green∈new_value_colours"/>
+<org.eventb.core.prPred name="p10" org.eventb.core.predicate="cars_go∈BOOL"/>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="partition(COLOURS,{red},{yellow},{green})"/>
+<org.eventb.core.prPred name="p9" org.eventb.core.predicate="cars_go=FALSE∨peds_go=FALSE"/>
+<org.eventb.core.prPred name="p7" org.eventb.core.predicate="¬yellow=green"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="green∈new_value_colours⇒peds_colour=red"/>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="COLOURS={red,yellow,green}"/>
+<org.eventb.core.prPred name="p13" org.eventb.core.predicate="new_value_colours⊆COLOURS"/>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="¬red=yellow"/>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="¬red=green"/>
+<org.eventb.core.prPred name="p8" org.eventb.core.predicate="¬cars_go=TRUE∨¬peds_go=TRUE"/>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+<org.eventb.core.prReas name="r4" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalPP:1"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.rn"/>
+</org.eventb.core.prProof>
+</org.eventb.core.prFile>

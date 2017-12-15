@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.prFile version="1">
+<org.eventb.core.prProof name="INITIALISATION/inv1/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3,p4,p5,p6,p7,p8">
+<org.eventb.core.prRule name="com.clearsy.atelierb.provers.core.externalML" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="ML" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p6,p5,p1,p3,p4,p2,p7,p8">
+<org.eventb.core.prString name=".arg" org.eventb.core.prSValue="0;1:500"/>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="P" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.prIdent name="c" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="k" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+<org.eventb.core.prIdent name="n" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="k∈P ∖ {c} ↔ P"/>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="n∈ℕ"/>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="k∼[{c}]=P ∖ {c}"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="1∈1 ‥ n+1"/>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="k∩(id ⦂ ℙ(ℤ×ℤ))=(∅ ⦂ ℙ(ℤ×ℤ))"/>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="c∈P"/>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="P⊆ℕ"/>
+<org.eventb.core.prPred name="p7" org.eventb.core.predicate="n&gt;0"/>
+<org.eventb.core.prPred name="p8" org.eventb.core.predicate="P=0 ‥ n"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="INITIALISATION/inv2/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3,p4,p5,p6,p7,p8">
+<org.eventb.core.prRule name="com.clearsy.atelierb.provers.core.externalML" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="ML" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p6,p5,p1,p3,p4,p2,p7,p8">
+<org.eventb.core.prString name=".arg" org.eventb.core.prSValue="0;1:500"/>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="P" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.prIdent name="c" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="k" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+<org.eventb.core.prIdent name="n" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="k∈P ∖ {c} ↔ P"/>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="n∈ℕ"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="1 ‥ n=1 ‥ n"/>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="k∼[{c}]=P ∖ {c}"/>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="k∩(id ⦂ ℙ(ℤ×ℤ))=(∅ ⦂ ℙ(ℤ×ℤ))"/>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="c∈P"/>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="P⊆ℕ"/>
+<org.eventb.core.prPred name="p7" org.eventb.core.predicate="n&gt;0"/>
+<org.eventb.core.prPred name="p8" org.eventb.core.predicate="P=0 ‥ n"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="INITIALISATION/act1/SIM" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3,p4,p5,p6,p7,p8">
+<org.eventb.core.prRule name="com.clearsy.atelierb.provers.core.externalML" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="ML" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p6,p5,p1,p3,p4,p2,p7,p8">
+<org.eventb.core.prString name=".arg" org.eventb.core.prSValue="0;1:500"/>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="P" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.prIdent name="c" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="k" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+<org.eventb.core.prIdent name="n" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="k∈P ∖ {c} ↔ P"/>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="n∈ℕ"/>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="k∼[{c}]=P ∖ {c}"/>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="k∩(id ⦂ ℙ(ℤ×ℤ))=(∅ ⦂ ℙ(ℤ×ℤ))"/>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="c∈P"/>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="P⊆ℕ"/>
+<org.eventb.core.prPred name="p7" org.eventb.core.predicate="n&gt;0"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="0∈P"/>
+<org.eventb.core.prPred name="p8" org.eventb.core.predicate="P=0 ‥ n"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="INITIALISATION/act2/SIM" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3,p4,p5,p6,p7,p8">
+<org.eventb.core.prRule name="com.clearsy.atelierb.provers.core.externalML" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="ML" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p6,p5,p1,p3,p4,p2,p7,p8">
+<org.eventb.core.prString name=".arg" org.eventb.core.prSValue="0;1:500"/>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="P" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.prIdent name="c" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="k" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+<org.eventb.core.prIdent name="n" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="k∈P ∖ {c} ↔ P"/>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="n∈ℕ"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="0∈P∧1 ‥ n=P ∖ {0}"/>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="k∼[{c}]=P ∖ {c}"/>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="k∩(id ⦂ ℙ(ℤ×ℤ))=(∅ ⦂ ℙ(ℤ×ℤ))"/>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="c∈P"/>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="P⊆ℕ"/>
+<org.eventb.core.prPred name="p7" org.eventb.core.predicate="n&gt;0"/>
+<org.eventb.core.prPred name="p8" org.eventb.core.predicate="P=0 ‥ n"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="remove_1/inv1/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19">
+<org.eventb.core.prRule name="com.clearsy.atelierb.provers.core.externalML" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="ML" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p18,p6,p10,p3,p17,p1,p19,p9,p8,p4,p16,p15,p11,p7,p14,p5,p2,p12,p13">
+<org.eventb.core.prString name=".arg" org.eventb.core.prSValue="0;1:500"/>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="P" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.prIdent name="Q" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.prIdent name="R" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.prIdent name="a" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="b" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="c" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="k" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+<org.eventb.core.prIdent name="n" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="r" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="n∈ℕ"/>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="R=a ‥ n"/>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="k∼[{c}]=P ∖ {c}"/>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="Q⊆P"/>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="a∈1 ‥ n+1"/>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="c∈P"/>
+<org.eventb.core.prPred name="p7" org.eventb.core.predicate="b∉R"/>
+<org.eventb.core.prPred name="p8" org.eventb.core.predicate="r∈P"/>
+<org.eventb.core.prPred name="p9" org.eventb.core.predicate="P=0 ‥ n"/>
+<org.eventb.core.prPred name="p10" org.eventb.core.predicate="k∈P ∖ {c} ↔ P"/>
+<org.eventb.core.prPred name="p11" org.eventb.core.predicate="b∈P"/>
+<org.eventb.core.prPred name="p12" org.eventb.core.predicate="a≤n"/>
+<org.eventb.core.prPred name="p13" org.eventb.core.predicate="a ↦ b∈k"/>
+<org.eventb.core.prPred name="p15" org.eventb.core.predicate="R⊆P"/>
+<org.eventb.core.prPred name="p14" org.eventb.core.predicate="Q=R∪{b}"/>
+<org.eventb.core.prPred name="p16" org.eventb.core.predicate="c∈Q"/>
+<org.eventb.core.prPred name="p17" org.eventb.core.predicate="k∩(id ⦂ ℙ(ℤ×ℤ))=(∅ ⦂ ℙ(ℤ×ℤ))"/>
+<org.eventb.core.prPred name="p18" org.eventb.core.predicate="P⊆ℕ"/>
+<org.eventb.core.prPred name="p19" org.eventb.core.predicate="n&gt;0"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="a+1∈1 ‥ n+1"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="remove_1/inv2/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19">
+<org.eventb.core.prRule name="com.clearsy.atelierb.provers.core.externalML" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="ML" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p18,p6,p10,p3,p17,p1,p19,p9,p8,p4,p16,p15,p11,p7,p14,p5,p2,p12,p13">
+<org.eventb.core.prString name=".arg" org.eventb.core.prSValue="0;1:500"/>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="P" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.prIdent name="Q" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.prIdent name="R" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.prIdent name="a" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="b" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="c" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="k" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+<org.eventb.core.prIdent name="n" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="r" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="n∈ℕ"/>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="R=a ‥ n"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="R ∖ {a}=a+1 ‥ n"/>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="k∼[{c}]=P ∖ {c}"/>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="Q⊆P"/>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="a∈1 ‥ n+1"/>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="c∈P"/>
+<org.eventb.core.prPred name="p7" org.eventb.core.predicate="b∉R"/>
+<org.eventb.core.prPred name="p8" org.eventb.core.predicate="r∈P"/>
+<org.eventb.core.prPred name="p9" org.eventb.core.predicate="P=0 ‥ n"/>
+<org.eventb.core.prPred name="p10" org.eventb.core.predicate="k∈P ∖ {c} ↔ P"/>
+<org.eventb.core.prPred name="p11" org.eventb.core.predicate="b∈P"/>
+<org.eventb.core.prPred name="p12" org.eventb.core.predicate="a≤n"/>
+<org.eventb.core.prPred name="p13" org.eventb.core.predicate="a ↦ b∈k"/>
+<org.eventb.core.prPred name="p15" org.eventb.core.predicate="R⊆P"/>
+<org.eventb.core.prPred name="p14" org.eventb.core.predicate="Q=R∪{b}"/>
+<org.eventb.core.prPred name="p16" org.eventb.core.predicate="c∈Q"/>
+<org.eventb.core.prPred name="p17" org.eventb.core.predicate="k∩(id ⦂ ℙ(ℤ×ℤ))=(∅ ⦂ ℙ(ℤ×ℤ))"/>
+<org.eventb.core.prPred name="p18" org.eventb.core.predicate="P⊆ℕ"/>
+<org.eventb.core.prPred name="p19" org.eventb.core.predicate="n&gt;0"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="remove_1/grd1/GRD" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19">
+<org.eventb.core.prRule name="com.clearsy.atelierb.provers.core.externalML" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="ML" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p18,p6,p10,p3,p17,p1,p19,p9,p8,p4,p16,p15,p11,p7,p14,p5,p2,p12,p13">
+<org.eventb.core.prString name=".arg" org.eventb.core.prSValue="0;1:500"/>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="P" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.prIdent name="Q" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.prIdent name="R" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.prIdent name="a" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="b" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="c" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="k" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+<org.eventb.core.prIdent name="n" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="r" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="n∈ℕ"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="a∈R"/>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="R=a ‥ n"/>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="k∼[{c}]=P ∖ {c}"/>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="Q⊆P"/>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="a∈1 ‥ n+1"/>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="c∈P"/>
+<org.eventb.core.prPred name="p7" org.eventb.core.predicate="b∉R"/>
+<org.eventb.core.prPred name="p8" org.eventb.core.predicate="r∈P"/>
+<org.eventb.core.prPred name="p9" org.eventb.core.predicate="P=0 ‥ n"/>
+<org.eventb.core.prPred name="p10" org.eventb.core.predicate="k∈P ∖ {c} ↔ P"/>
+<org.eventb.core.prPred name="p11" org.eventb.core.predicate="b∈P"/>
+<org.eventb.core.prPred name="p12" org.eventb.core.predicate="a≤n"/>
+<org.eventb.core.prPred name="p13" org.eventb.core.predicate="a ↦ b∈k"/>
+<org.eventb.core.prPred name="p15" org.eventb.core.predicate="R⊆P"/>
+<org.eventb.core.prPred name="p14" org.eventb.core.predicate="Q=R∪{b}"/>
+<org.eventb.core.prPred name="p16" org.eventb.core.predicate="c∈Q"/>
+<org.eventb.core.prPred name="p17" org.eventb.core.predicate="k∩(id ⦂ ℙ(ℤ×ℤ))=(∅ ⦂ ℙ(ℤ×ℤ))"/>
+<org.eventb.core.prPred name="p18" org.eventb.core.predicate="P⊆ℕ"/>
+<org.eventb.core.prPred name="p19" org.eventb.core.predicate="n&gt;0"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="remove_1/grd2/GRD" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p0">
+<org.eventb.core.prRule name="org.eventb.core.seqprover.hyp" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="hyp" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p0"/>
+<org.eventb.core.prIdent name="a" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="b" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="k" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="a ↦ b∈k"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="remove_2/inv1/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19">
+<org.eventb.core.prRule name="com.clearsy.atelierb.provers.core.externalML" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="ML" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p18,p6,p11,p3,p17,p1,p19,p9,p8,p4,p16,p15,p12,p7,p14,p5,p2,p13,p10">
+<org.eventb.core.prString name=".arg" org.eventb.core.prSValue="0;1:500"/>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="P" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.prIdent name="Q" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.prIdent name="R" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.prIdent name="a" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="b" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="c" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="k" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+<org.eventb.core.prIdent name="n" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="r" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="n∈ℕ"/>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="R=a ‥ n"/>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="k∼[{c}]=P ∖ {c}"/>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="Q⊆P"/>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="a∈1 ‥ n+1"/>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="c∈P"/>
+<org.eventb.core.prPred name="p7" org.eventb.core.predicate="b∉R"/>
+<org.eventb.core.prPred name="p8" org.eventb.core.predicate="r∈P"/>
+<org.eventb.core.prPred name="p9" org.eventb.core.predicate="P=0 ‥ n"/>
+<org.eventb.core.prPred name="p10" org.eventb.core.predicate="a ↦ b∉k"/>
+<org.eventb.core.prPred name="p11" org.eventb.core.predicate="k∈P ∖ {c} ↔ P"/>
+<org.eventb.core.prPred name="p12" org.eventb.core.predicate="b∈P"/>
+<org.eventb.core.prPred name="p13" org.eventb.core.predicate="a≤n"/>
+<org.eventb.core.prPred name="p15" org.eventb.core.predicate="R⊆P"/>
+<org.eventb.core.prPred name="p14" org.eventb.core.predicate="Q=R∪{b}"/>
+<org.eventb.core.prPred name="p16" org.eventb.core.predicate="c∈Q"/>
+<org.eventb.core.prPred name="p17" org.eventb.core.predicate="k∩(id ⦂ ℙ(ℤ×ℤ))=(∅ ⦂ ℙ(ℤ×ℤ))"/>
+<org.eventb.core.prPred name="p18" org.eventb.core.predicate="P⊆ℕ"/>
+<org.eventb.core.prPred name="p19" org.eventb.core.predicate="n&gt;0"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="a+1∈1 ‥ n+1"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="remove_2/inv2/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19">
+<org.eventb.core.prRule name="com.clearsy.atelierb.provers.core.externalML" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="ML" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p18,p6,p11,p3,p17,p1,p19,p9,p8,p4,p16,p15,p12,p7,p14,p5,p2,p13,p10">
+<org.eventb.core.prString name=".arg" org.eventb.core.prSValue="0;1:500"/>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="P" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.prIdent name="Q" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.prIdent name="R" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.prIdent name="a" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="b" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="c" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="k" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+<org.eventb.core.prIdent name="n" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="r" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="n∈ℕ"/>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="R=a ‥ n"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="R ∖ {a}=a+1 ‥ n"/>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="k∼[{c}]=P ∖ {c}"/>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="Q⊆P"/>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="a∈1 ‥ n+1"/>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="c∈P"/>
+<org.eventb.core.prPred name="p7" org.eventb.core.predicate="b∉R"/>
+<org.eventb.core.prPred name="p8" org.eventb.core.predicate="r∈P"/>
+<org.eventb.core.prPred name="p9" org.eventb.core.predicate="P=0 ‥ n"/>
+<org.eventb.core.prPred name="p10" org.eventb.core.predicate="a ↦ b∉k"/>
+<org.eventb.core.prPred name="p11" org.eventb.core.predicate="k∈P ∖ {c} ↔ P"/>
+<org.eventb.core.prPred name="p12" org.eventb.core.predicate="b∈P"/>
+<org.eventb.core.prPred name="p13" org.eventb.core.predicate="a≤n"/>
+<org.eventb.core.prPred name="p15" org.eventb.core.predicate="R⊆P"/>
+<org.eventb.core.prPred name="p14" org.eventb.core.predicate="Q=R∪{b}"/>
+<org.eventb.core.prPred name="p16" org.eventb.core.predicate="c∈Q"/>
+<org.eventb.core.prPred name="p17" org.eventb.core.predicate="k∩(id ⦂ ℙ(ℤ×ℤ))=(∅ ⦂ ℙ(ℤ×ℤ))"/>
+<org.eventb.core.prPred name="p18" org.eventb.core.predicate="P⊆ℕ"/>
+<org.eventb.core.prPred name="p19" org.eventb.core.predicate="n&gt;0"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="remove_2/grd1/GRD" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19">
+<org.eventb.core.prRule name="com.clearsy.atelierb.provers.core.externalML" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="ML" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p18,p6,p11,p3,p17,p1,p19,p9,p8,p4,p16,p15,p12,p7,p14,p5,p2,p13,p10">
+<org.eventb.core.prString name=".arg" org.eventb.core.prSValue="0;1:500"/>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="P" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.prIdent name="Q" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.prIdent name="R" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.prIdent name="a" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="b" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="c" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="k" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+<org.eventb.core.prIdent name="n" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="r" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="n∈ℕ"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="a∈R"/>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="R=a ‥ n"/>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="k∼[{c}]=P ∖ {c}"/>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="Q⊆P"/>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="a∈1 ‥ n+1"/>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="c∈P"/>
+<org.eventb.core.prPred name="p7" org.eventb.core.predicate="b∉R"/>
+<org.eventb.core.prPred name="p8" org.eventb.core.predicate="r∈P"/>
+<org.eventb.core.prPred name="p9" org.eventb.core.predicate="P=0 ‥ n"/>
+<org.eventb.core.prPred name="p10" org.eventb.core.predicate="a ↦ b∉k"/>
+<org.eventb.core.prPred name="p11" org.eventb.core.predicate="k∈P ∖ {c} ↔ P"/>
+<org.eventb.core.prPred name="p12" org.eventb.core.predicate="b∈P"/>
+<org.eventb.core.prPred name="p13" org.eventb.core.predicate="a≤n"/>
+<org.eventb.core.prPred name="p15" org.eventb.core.predicate="R⊆P"/>
+<org.eventb.core.prPred name="p14" org.eventb.core.predicate="Q=R∪{b}"/>
+<org.eventb.core.prPred name="p16" org.eventb.core.predicate="c∈Q"/>
+<org.eventb.core.prPred name="p17" org.eventb.core.predicate="k∩(id ⦂ ℙ(ℤ×ℤ))=(∅ ⦂ ℙ(ℤ×ℤ))"/>
+<org.eventb.core.prPred name="p18" org.eventb.core.predicate="P⊆ℕ"/>
+<org.eventb.core.prPred name="p19" org.eventb.core.predicate="n&gt;0"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="remove_2/grd2/GRD" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p0">
+<org.eventb.core.prRule name="org.eventb.core.seqprover.hyp" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="hyp" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p0"/>
+<org.eventb.core.prIdent name="a" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="b" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="k" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="a ↦ b∉k"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="remove_2/act2/SIM" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19">
+<org.eventb.core.prRule name="com.clearsy.atelierb.provers.core.externalML" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="ML" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p18,p6,p11,p3,p17,p1,p19,p9,p8,p4,p16,p15,p12,p7,p14,p5,p2,p13,p10">
+<org.eventb.core.prString name=".arg" org.eventb.core.prSValue="0;1:500"/>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="P" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.prIdent name="Q" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.prIdent name="R" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.prIdent name="a" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="b" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="c" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="k" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+<org.eventb.core.prIdent name="n" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="r" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="n∈ℕ"/>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="R=a ‥ n"/>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="k∼[{c}]=P ∖ {c}"/>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="Q⊆P"/>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="a∈1 ‥ n+1"/>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="c∈P"/>
+<org.eventb.core.prPred name="p7" org.eventb.core.predicate="b∉R"/>
+<org.eventb.core.prPred name="p8" org.eventb.core.predicate="r∈P"/>
+<org.eventb.core.prPred name="p9" org.eventb.core.predicate="P=0 ‥ n"/>
+<org.eventb.core.prPred name="p10" org.eventb.core.predicate="a ↦ b∉k"/>
+<org.eventb.core.prPred name="p11" org.eventb.core.predicate="k∈P ∖ {c} ↔ P"/>
+<org.eventb.core.prPred name="p12" org.eventb.core.predicate="b∈P"/>
+<org.eventb.core.prPred name="p13" org.eventb.core.predicate="a≤n"/>
+<org.eventb.core.prPred name="p15" org.eventb.core.predicate="R⊆P"/>
+<org.eventb.core.prPred name="p14" org.eventb.core.predicate="Q=R∪{b}"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="a=a"/>
+<org.eventb.core.prPred name="p16" org.eventb.core.predicate="c∈Q"/>
+<org.eventb.core.prPred name="p17" org.eventb.core.predicate="k∩(id ⦂ ℙ(ℤ×ℤ))=(∅ ⦂ ℙ(ℤ×ℤ))"/>
+<org.eventb.core.prPred name="p18" org.eventb.core.predicate="P⊆ℕ"/>
+<org.eventb.core.prPred name="p19" org.eventb.core.predicate="n&gt;0"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="celebrity/grd1/GRD" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16,p17,p18">
+<org.eventb.core.prRule name="com.clearsy.atelierb.provers.core.externalML" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="ML" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p17,p7,p11,p4,p16,p2,p18,p10,p9,p5,p15,p14,p12,p8,p13,p6,p3,p1">
+<org.eventb.core.prString name=".arg" org.eventb.core.prSValue="0;1:500"/>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="P" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.prIdent name="Q" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.prIdent name="R" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.prIdent name="a" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="b" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="c" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="k" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+<org.eventb.core.prIdent name="n" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="r" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="a=n+1"/>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="n∈ℕ"/>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="R=a ‥ n"/>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="k∼[{c}]=P ∖ {c}"/>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="Q⊆P"/>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="a∈1 ‥ n+1"/>
+<org.eventb.core.prPred name="p7" org.eventb.core.predicate="c∈P"/>
+<org.eventb.core.prPred name="p8" org.eventb.core.predicate="b∉R"/>
+<org.eventb.core.prPred name="p9" org.eventb.core.predicate="r∈P"/>
+<org.eventb.core.prPred name="p10" org.eventb.core.predicate="P=0 ‥ n"/>
+<org.eventb.core.prPred name="p11" org.eventb.core.predicate="k∈P ∖ {c} ↔ P"/>
+<org.eventb.core.prPred name="p12" org.eventb.core.predicate="b∈P"/>
+<org.eventb.core.prPred name="p14" org.eventb.core.predicate="R⊆P"/>
+<org.eventb.core.prPred name="p13" org.eventb.core.predicate="Q=R∪{b}"/>
+<org.eventb.core.prPred name="p15" org.eventb.core.predicate="c∈Q"/>
+<org.eventb.core.prPred name="p16" org.eventb.core.predicate="k∩(id ⦂ ℙ(ℤ×ℤ))=(∅ ⦂ ℙ(ℤ×ℤ))"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="R=(∅ ⦂ ℙ(ℤ))"/>
+<org.eventb.core.prPred name="p17" org.eventb.core.predicate="P⊆ℕ"/>
+<org.eventb.core.prPred name="p18" org.eventb.core.predicate="n&gt;0"/>
+</org.eventb.core.prProof>
+</org.eventb.core.prFile>

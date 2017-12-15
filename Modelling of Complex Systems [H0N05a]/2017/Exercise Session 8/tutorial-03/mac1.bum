@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd" version="5">
+<org.eventb.core.refinesMachine name="'" org.eventb.core.target="mac"/>
+<org.eventb.core.variable name="(" org.eventb.core.identifier="cars_colours"/>
+<org.eventb.core.event name="*" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="INITIALISATION">
+<org.eventb.core.action name="'" org.eventb.core.assignment="peds_colour ≔ red" org.eventb.core.label="act3"/>
+<org.eventb.core.action name="internal2" org.eventb.core.assignment="cars_colours ≔ {red}" org.eventb.core.label="act4"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="+" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="set_peds_green">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="set_peds_go"/>
+<org.eventb.core.action name="'" org.eventb.core.assignment="peds_colour ≔ green" org.eventb.core.label="act1"/>
+<org.eventb.core.guard name="(" org.eventb.core.label="grd1" org.eventb.core.predicate="green ∉ cars_colours"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="," org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="set_peds_red">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="set_peds_stop"/>
+<org.eventb.core.action name="'" org.eventb.core.assignment="peds_colour ≔ red" org.eventb.core.label="act1"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="-" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="set_cars_colours">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="set_cars"/>
+<org.eventb.core.parameter name="'" org.eventb.core.identifier="new_value_colours"/>
+<org.eventb.core.guard name="(" org.eventb.core.label="grd1" org.eventb.core.predicate="new_value_colours ⊆ COLOURS" org.eventb.core.theorem="true"/>
+<org.eventb.core.action name=")" org.eventb.core.assignment="cars_colours ≔ new_value_colours" org.eventb.core.label="act1"/>
+<org.eventb.core.guard name="*" org.eventb.core.label="gluing_cars" org.eventb.core.predicate="green ∈ new_value_colours⇒ peds_colour = red"/>
+<org.eventb.core.witness name="+" org.eventb.core.label="new_value" org.eventb.core.predicate="new_value = TRUE ⇔ green ∈ new_value_colours"/>
+<org.eventb.core.guard name="," org.eventb.core.label="grd2" org.eventb.core.predicate="cars_colours = {yellow} ⇒ new_value_colours = {red}"/>
+<org.eventb.core.guard name="-" org.eventb.core.label="grd3" org.eventb.core.predicate="cars_colours = {red} ⇒ new_value_colours = {red,yellow}"/>
+<org.eventb.core.guard name="." org.eventb.core.label="grd4" org.eventb.core.predicate="cars_colours = {red,yellow} ⇒ new_value_colours = {green}"/>
+<org.eventb.core.guard name="/" org.eventb.core.label="grd5" org.eventb.core.predicate="cars_colours = {green} ⇒ new_value_colours = {yellow}"/>
+</org.eventb.core.event>
+<org.eventb.core.seesContext name="." org.eventb.core.target="ctx1"/>
+<org.eventb.core.variable name="/" org.eventb.core.identifier="peds_colour"/>
+<org.eventb.core.invariant name="0" org.eventb.core.label="inv4" org.eventb.core.predicate="peds_colour ∈ {red,green}"/>
+<org.eventb.core.invariant name="1" org.eventb.core.label="gluing" org.eventb.core.predicate="peds_go = TRUE ⇔ peds_colour = green"/>
+<org.eventb.core.invariant name="2" org.eventb.core.label="inv5" org.eventb.core.predicate="cars_colours ⊆ COLOURS"/>
+<org.eventb.core.invariant name="4" org.eventb.core.label="inv6" org.eventb.core.predicate="cars_go = TRUE ⇔ green ∈ cars_colours"/>
+</org.eventb.core.machineFile>

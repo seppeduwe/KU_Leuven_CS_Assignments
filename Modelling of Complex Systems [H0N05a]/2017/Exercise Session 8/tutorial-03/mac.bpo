@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="10">
+<org.eventb.core.poPredicateSet name="CTXHYP" org.eventb.core.poStamp="0"/>
+<org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.parentSet="/tutorial-03/mac.bpo|org.eventb.core.poFile#mac|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="1">
+<org.eventb.core.poIdentifier name="cars_go" org.eventb.core.type="BOOL"/>
+<org.eventb.core.poIdentifier name="peds_go" org.eventb.core.type="BOOL"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poSequent name="INITIALISATION/inv3/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="6">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/tutorial-03/mac.bpo|org.eventb.core.poFile#mac|org.eventb.core.poPredicateSet#EVTALLHYPpeds_gp"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="¬(FALSE=TRUE∧FALSE=TRUE)" org.eventb.core.source="/tutorial-03/mac.bum|org.eventb.core.machineFile#mac|org.eventb.core.invariant#\/"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/tutorial-03/mac.bum|org.eventb.core.machineFile#mac|org.eventb.core.event#'"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/tutorial-03/mac.bum|org.eventb.core.machineFile#mac|org.eventb.core.invariant#\/"/>
+<org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/tutorial-03/mac.bpo|org.eventb.core.poFile#mac|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/tutorial-03/mac.bpo|org.eventb.core.poFile#mac|org.eventb.core.poSequent#INITIALISATION\/inv3\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/tutorial-03/mac.bpo|org.eventb.core.poFile#mac|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD2"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poPredicateSet name="EVTIDENTpeds_gp" org.eventb.core.parentSet="/tutorial-03/mac.bpo|org.eventb.core.poFile#mac|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="cars_go'" org.eventb.core.type="BOOL"/>
+<org.eventb.core.poIdentifier name="peds_go'" org.eventb.core.type="BOOL"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPpeds_gp" org.eventb.core.parentSet="/tutorial-03/mac.bpo|org.eventb.core.poFile#mac|org.eventb.core.poPredicateSet#EVTIDENTpeds_gp" org.eventb.core.poStamp="0"/>
+<org.eventb.core.poSequent name="set_peds_go/inv3/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="10">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/tutorial-03/mac.bpo|org.eventb.core.poFile#mac|org.eventb.core.poPredicateSet#EVTALLHYPpeds_gq"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="¬(cars_go=TRUE∧TRUE=TRUE)" org.eventb.core.source="/tutorial-03/mac.bum|org.eventb.core.machineFile#mac|org.eventb.core.invariant#\/"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/tutorial-03/mac.bum|org.eventb.core.machineFile#mac|org.eventb.core.event#,"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/tutorial-03/mac.bum|org.eventb.core.machineFile#mac|org.eventb.core.invariant#\/"/>
+<org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/tutorial-03/mac.bpo|org.eventb.core.poFile#mac|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/tutorial-03/mac.bpo|org.eventb.core.poFile#mac|org.eventb.core.poSequent#set_peds_go\/inv3\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/tutorial-03/mac.bpo|org.eventb.core.poFile#mac|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD2"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poPredicateSet name="EVTIDENTpeds_gq" org.eventb.core.parentSet="/tutorial-03/mac.bpo|org.eventb.core.poFile#mac|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="6">
+<org.eventb.core.poIdentifier name="peds_go'" org.eventb.core.type="BOOL"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPpeds_gq" org.eventb.core.parentSet="/tutorial-03/mac.bpo|org.eventb.core.poFile#mac|org.eventb.core.poPredicateSet#EVTIDENTpeds_gq" org.eventb.core.poStamp="10">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="cars_go=FALSE" org.eventb.core.source="/tutorial-03/mac.bum|org.eventb.core.machineFile#mac|org.eventb.core.event#,|org.eventb.core.guard#("/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poSequent name="set_peds_stop/inv3/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="8">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/tutorial-03/mac.bpo|org.eventb.core.poFile#mac|org.eventb.core.poPredicateSet#EVTALLHYPpeds_gr"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="¬(cars_go=TRUE∧FALSE=TRUE)" org.eventb.core.source="/tutorial-03/mac.bum|org.eventb.core.machineFile#mac|org.eventb.core.invariant#\/"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/tutorial-03/mac.bum|org.eventb.core.machineFile#mac|org.eventb.core.event#-"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/tutorial-03/mac.bum|org.eventb.core.machineFile#mac|org.eventb.core.invariant#\/"/>
+<org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/tutorial-03/mac.bpo|org.eventb.core.poFile#mac|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/tutorial-03/mac.bpo|org.eventb.core.poFile#mac|org.eventb.core.poSequent#set_peds_stop\/inv3\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/tutorial-03/mac.bpo|org.eventb.core.poFile#mac|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD2"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poPredicateSet name="EVTIDENTpeds_gr" org.eventb.core.parentSet="/tutorial-03/mac.bpo|org.eventb.core.poFile#mac|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="8">
+<org.eventb.core.poIdentifier name="peds_go'" org.eventb.core.type="BOOL"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPpeds_gr" org.eventb.core.parentSet="/tutorial-03/mac.bpo|org.eventb.core.poFile#mac|org.eventb.core.poPredicateSet#EVTIDENTpeds_gr" org.eventb.core.poStamp="8"/>
+<org.eventb.core.poSequent name="set_cars/inv3/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="9">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/tutorial-03/mac.bpo|org.eventb.core.poFile#mac|org.eventb.core.poPredicateSet#EVTALLHYPpeds_gs"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="¬(new_value=TRUE∧peds_go=TRUE)" org.eventb.core.source="/tutorial-03/mac.bum|org.eventb.core.machineFile#mac|org.eventb.core.invariant#\/"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/tutorial-03/mac.bum|org.eventb.core.machineFile#mac|org.eventb.core.event#."/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/tutorial-03/mac.bum|org.eventb.core.machineFile#mac|org.eventb.core.invariant#\/"/>
+<org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/tutorial-03/mac.bpo|org.eventb.core.poFile#mac|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/tutorial-03/mac.bpo|org.eventb.core.poFile#mac|org.eventb.core.poSequent#set_cars\/inv3\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/tutorial-03/mac.bpo|org.eventb.core.poFile#mac|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD2"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poPredicateSet name="EVTIDENTpeds_gs" org.eventb.core.parentSet="/tutorial-03/mac.bpo|org.eventb.core.poFile#mac|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="cars_go'" org.eventb.core.type="BOOL"/>
+<org.eventb.core.poIdentifier name="new_value" org.eventb.core.type="BOOL"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPpeds_gs" org.eventb.core.parentSet="/tutorial-03/mac.bpo|org.eventb.core.poFile#mac|org.eventb.core.poPredicateSet#EVTIDENTpeds_gs" org.eventb.core.poStamp="9">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="new_value∈BOOL" org.eventb.core.source="/tutorial-03/mac.bum|org.eventb.core.machineFile#mac|org.eventb.core.event#.|org.eventb.core.guard#("/>
+<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="new_value=TRUE⇒peds_go=FALSE" org.eventb.core.source="/tutorial-03/mac.bum|org.eventb.core.machineFile#mac|org.eventb.core.event#.|org.eventb.core.guard#*"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/tutorial-03/mac.bpo|org.eventb.core.poFile#mac|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="6">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="cars_go∈BOOL" org.eventb.core.source="/tutorial-03/mac.bum|org.eventb.core.machineFile#mac|org.eventb.core.invariant#*"/>
+<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="peds_go∈BOOL" org.eventb.core.source="/tutorial-03/mac.bum|org.eventb.core.machineFile#mac|org.eventb.core.invariant#+"/>
+<org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="¬(cars_go=TRUE∧peds_go=TRUE)" org.eventb.core.source="/tutorial-03/mac.bum|org.eventb.core.machineFile#mac|org.eventb.core.invariant#\/"/>
+</org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>

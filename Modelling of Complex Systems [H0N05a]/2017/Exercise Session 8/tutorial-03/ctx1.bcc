@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.scContextFile org.eventb.core.accurate="true" org.eventb.core.configuration="org.eventb.core.fwd">
+<org.eventb.core.scAxiom name="'" org.eventb.core.label="type" org.eventb.core.predicate="partition(COLOURS,{red},{yellow},{green})" org.eventb.core.source="/tutorial-03/ctx1.buc|org.eventb.core.contextFile#ctx1|org.eventb.core.axiom#+" org.eventb.core.theorem="false"/>
+<org.eventb.core.scCarrierSet name="COLOURS" org.eventb.core.source="/tutorial-03/ctx1.buc|org.eventb.core.contextFile#ctx1|org.eventb.core.carrierSet#*" org.eventb.core.type="ℙ(COLOURS)"/>
+<org.eventb.core.scConstant name="green" org.eventb.core.source="/tutorial-03/ctx1.buc|org.eventb.core.contextFile#ctx1|org.eventb.core.constant#)" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.scConstant name="red" org.eventb.core.source="/tutorial-03/ctx1.buc|org.eventb.core.contextFile#ctx1|org.eventb.core.constant#'" org.eventb.core.type="COLOURS"/>
+<org.eventb.core.scConstant name="yellow" org.eventb.core.source="/tutorial-03/ctx1.buc|org.eventb.core.contextFile#ctx1|org.eventb.core.constant#(" org.eventb.core.type="COLOURS"/>
+</org.eventb.core.scContextFile>

@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.prFile version="1">
+<org.eventb.core.prProof name="INITIALISATION/inv1/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1" org.eventb.core.prSets="drinks">
+<org.eventb.core.lang name="L"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="Partition rewrites in hyp (partition(drinks,{cola},{fanta},{no_drink}))" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p1" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p2,p3,p4,p5"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p2,p3,p4,p5"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="ML" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p2,p3,p4,p5">
+<org.eventb.core.prString name=".arg" org.eventb.core.prSValue="0;1:500"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="cola" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="fanta" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="no_drink" org.eventb.core.type="drinks"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="{cola ↦ 3,fanta ↦ 3}∈drinks ↔ ℕ"/>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="¬cola=no_drink"/>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="drinks={cola,fanta,no_drink}"/>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="¬cola=fanta"/>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="¬fanta=no_drink"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="partition(drinks,{cola},{fanta},{no_drink})"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalML:1"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="get_cola/inv1/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3,p4,p5,p6,p7" org.eventb.core.prSets="drinks">
+<org.eventb.core.lang name="L"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="Partition rewrites in hyp (partition(drinks,{cola},{fanta},{no_drink}))" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p5" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p8,p9,p10,p11"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p8,p9,p10,p11"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p12" org.eventb.core.prHyps="p4" org.eventb.core.prInfHyps="p13"/>
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p13"/>
+<org.eventb.core.prRule name="r3" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="type rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p14"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p15"/>
+<org.eventb.core.prRule name="r4" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="ML" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p6,p4,p3,p7,p2,p1,p8,p9,p10,p11">
+<org.eventb.core.prString name=".arg" org.eventb.core.prSValue="0;1:500"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="cola" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="drink" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="fanta" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="no_drink" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="paid" org.eventb.core.type="BOOL"/>
+<org.eventb.core.prIdent name="quantity" org.eventb.core.type="ℙ(drinks×ℤ)"/>
+<org.eventb.core.prPred name="p10" org.eventb.core.predicate="¬cola=no_drink"/>
+<org.eventb.core.prPred name="p8" org.eventb.core.predicate="drinks={cola,fanta,no_drink}"/>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="drink=cola"/>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="paid=TRUE"/>
+<org.eventb.core.prPred name="p11" org.eventb.core.predicate="¬fanta=no_drink"/>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="quantity∈drinks ↔ ℕ"/>
+<org.eventb.core.prPred name="p15" org.eventb.core.predicate="paid∈BOOL"/>
+<org.eventb.core.prPred name="p13" org.eventb.core.predicate="drink≠no_drink⇒⊤"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="quantity∈drinks ⇸ ℤ"/>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="cola∈dom(quantity)"/>
+<org.eventb.core.prPred name="p12" org.eventb.core.predicate="drink≠no_drink⇒paid=TRUE"/>
+<org.eventb.core.prPred name="p9" org.eventb.core.predicate="¬cola=fanta"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="quantity{cola ↦ quantity(cola) − 1}∈drinks ↔ ℕ"/>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="partition(drinks,{cola},{fanta},{no_drink})"/>
+<org.eventb.core.prPred name="p14" org.eventb.core.predicate="drink∈drinks"/>
+<org.eventb.core.prPred name="p7" org.eventb.core.predicate="quantity(cola)&gt;0"/>
+<org.eventb.core.prReas name="r4" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalML:1"/>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.genMPL3"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="get_cola/act1/WD" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2" org.eventb.core.prSets="drinks">
+<org.eventb.core.lang name="L"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="Partition rewrites in hyp (partition(drinks,{cola},{fanta},{no_drink}))" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p3" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p4,p5,p6,p7"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p4,p5,p6,p7"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p11">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p8" org.eventb.core.prHyps="p10" org.eventb.core.prInfHyps="p9"/>
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prGoal="p11" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p12">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p9"/>
+<org.eventb.core.prRule name="r3" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="⊤ goal" org.eventb.core.prGoal="p12" org.eventb.core.prHyps=""/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="cola" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="quantity" org.eventb.core.type="ℙ(drinks×ℤ)"/>
+<org.eventb.core.prPred name="p11" org.eventb.core.predicate="⊤∧⊤"/>
+<org.eventb.core.prPred name="p12" org.eventb.core.predicate="⊤"/>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="¬cola=no_drink">
+<org.eventb.core.prIdent name="no_drink" org.eventb.core.type="drinks"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="drinks={cola,fanta,no_drink}">
+<org.eventb.core.prIdent name="fanta" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="no_drink" org.eventb.core.type="drinks"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p7" org.eventb.core.predicate="¬fanta=no_drink">
+<org.eventb.core.prIdent name="fanta" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="no_drink" org.eventb.core.type="drinks"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p10" org.eventb.core.predicate="paid=TRUE">
+<org.eventb.core.prIdent name="paid" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p9" org.eventb.core.predicate="drink≠no_drink⇒⊤">
+<org.eventb.core.prIdent name="drink" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="no_drink" org.eventb.core.type="drinks"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="quantity∈drinks ⇸ ℤ"/>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="cola∈dom(quantity)"/>
+<org.eventb.core.prPred name="p8" org.eventb.core.predicate="drink≠no_drink⇒paid=TRUE">
+<org.eventb.core.prIdent name="drink" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="no_drink" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="paid" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="¬cola=fanta">
+<org.eventb.core.prIdent name="fanta" org.eventb.core.type="drinks"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="cola∈dom(quantity)∧quantity∈drinks ⇸ ℤ"/>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="partition(drinks,{cola},{fanta},{no_drink})">
+<org.eventb.core.prIdent name="fanta" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="no_drink" org.eventb.core.type="drinks"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.trueGoal"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.genMPL3"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="get_cola/grd1/WD" org.eventb.core.confidence="0" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="" org.eventb.core.prSets="drinks">
+<org.eventb.core.lang name="L"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="Partition rewrites in hyp (partition(drinks,{cola},{fanta},{no_drink}))" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p1" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p2,p3,p4,p5"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p2,p3,p4,p5"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p6" org.eventb.core.prHyps="p8" org.eventb.core.prInfHyps="p7"/>
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p7"/>
+<org.eventb.core.prRule name="r3" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="type rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p9"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p10"/>
+<org.eventb.core.prRule name="r4" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="∧ goal" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p11"/>
+<org.eventb.core.prAnte name="(" org.eventb.core.prGoal="p12"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="cola" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="quantity" org.eventb.core.type="ℙ(drinks×ℤ)"/>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="¬cola=no_drink">
+<org.eventb.core.prIdent name="no_drink" org.eventb.core.type="drinks"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="drinks={cola,fanta,no_drink}">
+<org.eventb.core.prIdent name="fanta" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="no_drink" org.eventb.core.type="drinks"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="¬fanta=no_drink">
+<org.eventb.core.prIdent name="fanta" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="no_drink" org.eventb.core.type="drinks"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p8" org.eventb.core.predicate="paid=TRUE">
+<org.eventb.core.prIdent name="paid" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p10" org.eventb.core.predicate="paid∈BOOL">
+<org.eventb.core.prIdent name="paid" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p7" org.eventb.core.predicate="drink≠no_drink⇒⊤">
+<org.eventb.core.prIdent name="drink" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="no_drink" org.eventb.core.type="drinks"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p12" org.eventb.core.predicate="quantity∈drinks ⇸ ℤ"/>
+<org.eventb.core.prPred name="p11" org.eventb.core.predicate="cola∈dom(quantity)"/>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="drink≠no_drink⇒paid=TRUE">
+<org.eventb.core.prIdent name="drink" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="no_drink" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="paid" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="¬cola=fanta">
+<org.eventb.core.prIdent name="fanta" org.eventb.core.type="drinks"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="cola∈dom(quantity)∧quantity∈drinks ⇸ ℤ"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="partition(drinks,{cola},{fanta},{no_drink})">
+<org.eventb.core.prIdent name="fanta" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="no_drink" org.eventb.core.type="drinks"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p9" org.eventb.core.predicate="drink∈drinks">
+<org.eventb.core.prIdent name="drink" org.eventb.core.type="drinks"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+<org.eventb.core.prReas name="r4" org.eventb.core.prRID="org.eventb.core.seqprover.conj:0"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.genMPL3"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="select_cola/grd1/WD" org.eventb.core.confidence="0" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="" org.eventb.core.prSets="drinks">
+<org.eventb.core.lang name="L"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="Partition rewrites in hyp (partition(drinks,{cola},{fanta},{no_drink}))" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p1" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p2,p3,p4,p5"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p2,p3,p4,p5"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p6" org.eventb.core.prHyps="p8" org.eventb.core.prInfHyps="p7"/>
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p7"/>
+<org.eventb.core.prRule name="r3" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="type rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p9"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p10"/>
+<org.eventb.core.prRule name="r4" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="∧ goal" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p11"/>
+<org.eventb.core.prAnte name="(" org.eventb.core.prGoal="p12"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="cola" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="quantity" org.eventb.core.type="ℙ(drinks×ℤ)"/>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="¬cola=no_drink">
+<org.eventb.core.prIdent name="no_drink" org.eventb.core.type="drinks"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="drinks={cola,fanta,no_drink}">
+<org.eventb.core.prIdent name="fanta" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="no_drink" org.eventb.core.type="drinks"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="¬fanta=no_drink">
+<org.eventb.core.prIdent name="fanta" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="no_drink" org.eventb.core.type="drinks"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p8" org.eventb.core.predicate="paid=TRUE">
+<org.eventb.core.prIdent name="paid" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p10" org.eventb.core.predicate="paid∈BOOL">
+<org.eventb.core.prIdent name="paid" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p7" org.eventb.core.predicate="drink≠no_drink⇒⊤">
+<org.eventb.core.prIdent name="drink" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="no_drink" org.eventb.core.type="drinks"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p12" org.eventb.core.predicate="quantity∈drinks ⇸ ℤ"/>
+<org.eventb.core.prPred name="p11" org.eventb.core.predicate="cola∈dom(quantity)"/>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="drink≠no_drink⇒paid=TRUE">
+<org.eventb.core.prIdent name="drink" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="no_drink" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="paid" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="¬cola=fanta">
+<org.eventb.core.prIdent name="fanta" org.eventb.core.type="drinks"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="cola∈dom(quantity)∧quantity∈drinks ⇸ ℤ"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="partition(drinks,{cola},{fanta},{no_drink})">
+<org.eventb.core.prIdent name="fanta" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="no_drink" org.eventb.core.type="drinks"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p9" org.eventb.core.predicate="drink∈drinks">
+<org.eventb.core.prIdent name="drink" org.eventb.core.type="drinks"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+<org.eventb.core.prReas name="r4" org.eventb.core.prRID="org.eventb.core.seqprover.conj:0"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.genMPL3"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="select_fanta/grd1/WD" org.eventb.core.confidence="0" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="" org.eventb.core.prSets="drinks">
+<org.eventb.core.lang name="L"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="Partition rewrites in hyp (partition(drinks,{cola},{fanta},{no_drink}))" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p1" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p2,p3,p4,p5"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p2,p3,p4,p5"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p6" org.eventb.core.prHyps="p8" org.eventb.core.prInfHyps="p7"/>
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p7"/>
+<org.eventb.core.prRule name="r3" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="type rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p9"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p10"/>
+<org.eventb.core.prRule name="r4" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="∧ goal" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p11"/>
+<org.eventb.core.prAnte name="(" org.eventb.core.prGoal="p12"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="fanta" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="quantity" org.eventb.core.type="ℙ(drinks×ℤ)"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="fanta∈dom(quantity)∧quantity∈drinks ⇸ ℤ"/>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="¬cola=no_drink">
+<org.eventb.core.prIdent name="cola" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="no_drink" org.eventb.core.type="drinks"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="drinks={cola,fanta,no_drink}">
+<org.eventb.core.prIdent name="cola" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="no_drink" org.eventb.core.type="drinks"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="¬fanta=no_drink">
+<org.eventb.core.prIdent name="no_drink" org.eventb.core.type="drinks"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p8" org.eventb.core.predicate="paid=TRUE">
+<org.eventb.core.prIdent name="paid" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p10" org.eventb.core.predicate="paid∈BOOL">
+<org.eventb.core.prIdent name="paid" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p7" org.eventb.core.predicate="drink≠no_drink⇒⊤">
+<org.eventb.core.prIdent name="drink" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="no_drink" org.eventb.core.type="drinks"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p12" org.eventb.core.predicate="quantity∈drinks ⇸ ℤ"/>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="drink≠no_drink⇒paid=TRUE">
+<org.eventb.core.prIdent name="drink" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="no_drink" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="paid" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="¬cola=fanta">
+<org.eventb.core.prIdent name="cola" org.eventb.core.type="drinks"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="partition(drinks,{cola},{fanta},{no_drink})">
+<org.eventb.core.prIdent name="cola" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="no_drink" org.eventb.core.type="drinks"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p9" org.eventb.core.predicate="drink∈drinks">
+<org.eventb.core.prIdent name="drink" org.eventb.core.type="drinks"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p11" org.eventb.core.predicate="fanta∈dom(quantity)"/>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+<org.eventb.core.prReas name="r4" org.eventb.core.prRID="org.eventb.core.seqprover.conj:0"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.genMPL3"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="get_fanta/inv1/INV" org.eventb.core.confidence="0" org.eventb.core.prFresh="" org.eventb.core.prHyps="">
+<org.eventb.core.lang name="L"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="Partition rewrites in hyp (partition(drinks,{cola},{fanta},{no_drink}))" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p0" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p1,p2,p3,p4"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p1,p2,p3,p4"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p5" org.eventb.core.prHyps="p7" org.eventb.core.prInfHyps="p6"/>
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p6"/>
+<org.eventb.core.prRule name="r3" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="type rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p8"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p9"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+<org.eventb.core.prPred name="p9" org.eventb.core.predicate="paid∈BOOL">
+<org.eventb.core.prIdent name="paid" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="drink≠no_drink⇒⊤">
+<org.eventb.core.prIdent name="drink" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="drinks" org.eventb.core.type="ℙ(drinks)"/>
+<org.eventb.core.prIdent name="no_drink" org.eventb.core.type="drinks"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="¬cola=no_drink">
+<org.eventb.core.prIdent name="cola" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="drinks" org.eventb.core.type="ℙ(drinks)"/>
+<org.eventb.core.prIdent name="no_drink" org.eventb.core.type="drinks"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="drinks={cola,fanta,no_drink}">
+<org.eventb.core.prIdent name="cola" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="drinks" org.eventb.core.type="ℙ(drinks)"/>
+<org.eventb.core.prIdent name="fanta" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="no_drink" org.eventb.core.type="drinks"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="drink≠no_drink⇒paid=TRUE">
+<org.eventb.core.prIdent name="drink" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="drinks" org.eventb.core.type="ℙ(drinks)"/>
+<org.eventb.core.prIdent name="no_drink" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="paid" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="¬cola=fanta">
+<org.eventb.core.prIdent name="cola" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="drinks" org.eventb.core.type="ℙ(drinks)"/>
+<org.eventb.core.prIdent name="fanta" org.eventb.core.type="drinks"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="¬fanta=no_drink">
+<org.eventb.core.prIdent name="drinks" org.eventb.core.type="ℙ(drinks)"/>
+<org.eventb.core.prIdent name="fanta" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="no_drink" org.eventb.core.type="drinks"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p7" org.eventb.core.predicate="paid=TRUE">
+<org.eventb.core.prIdent name="paid" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="partition(drinks,{cola},{fanta},{no_drink})">
+<org.eventb.core.prIdent name="cola" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="drinks" org.eventb.core.type="ℙ(drinks)"/>
+<org.eventb.core.prIdent name="fanta" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="no_drink" org.eventb.core.type="drinks"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p8" org.eventb.core.predicate="drink∈drinks">
+<org.eventb.core.prIdent name="drink" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="drinks" org.eventb.core.type="ℙ(drinks)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.genMPL3"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="get_fanta/act1/WD" org.eventb.core.confidence="0" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="" org.eventb.core.prSets="drinks">
+<org.eventb.core.lang name="L"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="Partition rewrites in hyp (partition(drinks,{cola},{fanta},{no_drink}))" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p1" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p2,p3,p4,p5"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p2,p3,p4,p5"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p6" org.eventb.core.prHyps="p8" org.eventb.core.prInfHyps="p7"/>
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p7"/>
+<org.eventb.core.prRule name="r3" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="type rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p9"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p10"/>
+<org.eventb.core.prRule name="r4" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="∧ goal" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p11"/>
+<org.eventb.core.prAnte name="(" org.eventb.core.prGoal="p12"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="fanta" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="quantity" org.eventb.core.type="ℙ(drinks×ℤ)"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="fanta∈dom(quantity)∧quantity∈drinks ⇸ ℤ"/>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="¬cola=no_drink">
+<org.eventb.core.prIdent name="cola" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="no_drink" org.eventb.core.type="drinks"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="drinks={cola,fanta,no_drink}">
+<org.eventb.core.prIdent name="cola" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="no_drink" org.eventb.core.type="drinks"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="¬fanta=no_drink">
+<org.eventb.core.prIdent name="no_drink" org.eventb.core.type="drinks"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p8" org.eventb.core.predicate="paid=TRUE">
+<org.eventb.core.prIdent name="paid" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p10" org.eventb.core.predicate="paid∈BOOL">
+<org.eventb.core.prIdent name="paid" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p7" org.eventb.core.predicate="drink≠no_drink⇒⊤">
+<org.eventb.core.prIdent name="drink" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="no_drink" org.eventb.core.type="drinks"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p12" org.eventb.core.predicate="quantity∈drinks ⇸ ℤ"/>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="drink≠no_drink⇒paid=TRUE">
+<org.eventb.core.prIdent name="drink" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="no_drink" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="paid" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="¬cola=fanta">
+<org.eventb.core.prIdent name="cola" org.eventb.core.type="drinks"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="partition(drinks,{cola},{fanta},{no_drink})">
+<org.eventb.core.prIdent name="cola" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="no_drink" org.eventb.core.type="drinks"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p9" org.eventb.core.predicate="drink∈drinks">
+<org.eventb.core.prIdent name="drink" org.eventb.core.type="drinks"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p11" org.eventb.core.predicate="fanta∈dom(quantity)"/>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+<org.eventb.core.prReas name="r4" org.eventb.core.prRID="org.eventb.core.seqprover.conj:0"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.genMPL3"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="refill/inv1/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3" org.eventb.core.prSets="drinks">
+<org.eventb.core.lang name="L"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="Partition rewrites in hyp (partition(drinks,{cola},{fanta},{no_drink}))" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p2" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p4,p5,p6,p7"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p4,p5,p6,p7"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p8" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p9"/>
+<org.eventb.core.prHypAction name="REWRITE1" org.eventb.core.prHidden="p1" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p10"/>
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="type rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p11"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p12"/>
+<org.eventb.core.prRule name="r3" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="PP" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p3,p4,p5,p6,p7,p10">
+<org.eventb.core.prString name=".arg" org.eventb.core.prSValue="R500"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="cola" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="fanta" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="no_drink" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="quantity" org.eventb.core.type="ℙ(drinks×ℤ)"/>
+<org.eventb.core.prPred name="p9" org.eventb.core.predicate="¬drink=no_drink⇒paid=TRUE">
+<org.eventb.core.prIdent name="drink" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="paid" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="¬cola=no_drink"/>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="drinks={cola,fanta,no_drink}"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="{x⦂drinks,y⦂ℤ·x ↦ y∈quantity∧y=4 ∣ x ↦ y}∈drinks ↔ ℕ"/>
+<org.eventb.core.prPred name="p7" org.eventb.core.predicate="¬fanta=no_drink"/>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="quantity∈drinks ↔ ℕ"/>
+<org.eventb.core.prPred name="p12" org.eventb.core.predicate="paid∈BOOL">
+<org.eventb.core.prIdent name="paid" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p10" org.eventb.core.predicate="¬ran(quantity)={4}"/>
+<org.eventb.core.prPred name="p8" org.eventb.core.predicate="drink≠no_drink⇒paid=TRUE">
+<org.eventb.core.prIdent name="drink" org.eventb.core.type="drinks"/>
+<org.eventb.core.prIdent name="paid" org.eventb.core.type="BOOL"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="¬cola=fanta"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="ran(quantity)≠{4}"/>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="partition(drinks,{cola},{fanta},{no_drink})"/>
+<org.eventb.core.prPred name="p11" org.eventb.core.predicate="drink∈drinks">
+<org.eventb.core.prIdent name="drink" org.eventb.core.type="drinks"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalPP:1"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+</org.eventb.core.prProof>
+</org.eventb.core.prFile>

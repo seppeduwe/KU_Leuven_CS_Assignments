@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="P" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.poIdentifier name="c" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="k" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/Celebrity/Celebrity_c0.bpo|org.eventb.core.poFile#Celebrity_c0|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="P⊆ℕ" org.eventb.core.source="/Celebrity/Celebrity_c0.buc|org.eventb.core.contextFile#Celebrity_c0|org.eventb.core.axiom#internal_axm1A"/>
+<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="c∈P" org.eventb.core.source="/Celebrity/Celebrity_c0.buc|org.eventb.core.contextFile#Celebrity_c0|org.eventb.core.axiom#internal_axm2A"/>
+<org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="k∈P ∖ {c} ↔ P" org.eventb.core.source="/Celebrity/Celebrity_c0.buc|org.eventb.core.contextFile#Celebrity_c0|org.eventb.core.axiom#internal_axm3A"/>
+<org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="k∼[{c}]=P ∖ {c}" org.eventb.core.source="/Celebrity/Celebrity_c0.buc|org.eventb.core.contextFile#Celebrity_c0|org.eventb.core.axiom#internal_axm4A"/>
+<org.eventb.core.poPredicate name="PRD4" org.eventb.core.predicate="k∩(id ⦂ ℙ(ℤ×ℤ))=(∅ ⦂ ℙ(ℤ×ℤ))" org.eventb.core.source="/Celebrity/Celebrity_c0.buc|org.eventb.core.contextFile#Celebrity_c0|org.eventb.core.axiom#internal_axm5A"/>
+</org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>

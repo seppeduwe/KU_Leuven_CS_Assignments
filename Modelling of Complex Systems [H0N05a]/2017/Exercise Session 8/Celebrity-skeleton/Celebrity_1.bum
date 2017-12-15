@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eventb.core.machineFile version="5" org.eventb.core.configuration="org.eventb.core.fwd">
+<org.eventb.core.event name="internal_evt1" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="INITIALISATION">
+<org.eventb.core.action name="internal_act1" org.eventb.core.assignment="r :∈ P" org.eventb.core.label="act1"/>
+<org.eventb.core.action name="internal_act2" org.eventb.core.assignment="Q ≔ P" org.eventb.core.label="act2"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="internal_evt2" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="celebrity">
+<org.eventb.core.action name="internal_act1" org.eventb.core.assignment="r ≔ x" org.eventb.core.label="act1"/>
+<org.eventb.core.guard name="internal_grd1" org.eventb.core.label="grd1" org.eventb.core.predicate="x ∈ Q"/>
+<org.eventb.core.guard name="internal_grd2" org.eventb.core.label="grd2" org.eventb.core.predicate="Q = {x}"/>
+<org.eventb.core.parameter name="internal_var1" org.eventb.core.identifier="x"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="internal_evt3" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="remove_1">
+<org.eventb.core.action name="internal_act1" org.eventb.core.assignment="Q ≔ Q ∖ {x}" org.eventb.core.label="act1"/>
+<org.eventb.core.guard name="internal_grd1" org.eventb.core.label="grd1" org.eventb.core.predicate="x ∈ Q"/>
+<org.eventb.core.guard name="internal_grd2" org.eventb.core.label="grd2" org.eventb.core.predicate="y ∈ Q"/>
+<org.eventb.core.guard name="internal_grd3" org.eventb.core.label="grd3" org.eventb.core.predicate="x ↦ y ∈ k"/>
+<org.eventb.core.parameter name="internal_var1" org.eventb.core.identifier="x"/>
+<org.eventb.core.parameter name="internal_var2" org.eventb.core.identifier="y"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="internal_evt4" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="remove_2">
+<org.eventb.core.action name="internal_act1" org.eventb.core.assignment="Q ≔ Q ∖ {y}" org.eventb.core.label="act1"/>
+<org.eventb.core.guard name="internal_grd1" org.eventb.core.label="grd1" org.eventb.core.predicate="x ∈ Q"/>
+<org.eventb.core.guard name="internal_grd2" org.eventb.core.label="grd2" org.eventb.core.predicate="y ∈ Q"/>
+<org.eventb.core.guard name="internal_grd3" org.eventb.core.label="grd3" org.eventb.core.predicate="x ↦ y ∉ k"/>
+<org.eventb.core.guard name="internal_grd4" org.eventb.core.label="grd4" org.eventb.core.predicate="x ≠ y"/>
+<org.eventb.core.parameter name="internal_var1" org.eventb.core.identifier="x"/>
+<org.eventb.core.parameter name="internal_var2" org.eventb.core.identifier="y"/>
+</org.eventb.core.event>
+<org.eventb.core.invariant name="internal_inv1I" org.eventb.core.label="inv1" org.eventb.core.predicate="Q ⊆ P"/>
+<org.eventb.core.invariant name="internal_inv2I" org.eventb.core.label="inv2" org.eventb.core.predicate="c ∈ Q"/>
+<org.eventb.core.refinesMachine name="internal_refinesMachine1" org.eventb.core.target="Celebrity_0"/>
+<org.eventb.core.seesContext name="internal_seesContext1" org.eventb.core.target="Celebrity_c0"/>
+<org.eventb.core.variable name="internal_var1" org.eventb.core.identifier="r"/>
+<org.eventb.core.variable name="internal_var2" org.eventb.core.identifier="Q"/>
+</org.eventb.core.machineFile>

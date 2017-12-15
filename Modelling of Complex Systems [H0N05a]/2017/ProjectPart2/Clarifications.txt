@@ -1,0 +1,24 @@
+Clarifications (11/12):
+
+- There are no blocks in Machine0, but you can still use blockColour to determine which colours you assign to which positions. (You need this to be able to properly refine in Machine1)
+
+- Somewhere in the text the event "switch" is used. You can read that as "swap".
+
+- In the last machine. You CAN keep doing "select1" and "select2" after they have been executed.
+
+- In Machine0 and Machine1, can colours of positions or blocks still be swapped once the game is over? No they can not
+
+- In Machine3, can select1 and select2 be performed at any time (as long as the game is not over yet)? Yes
+
+- Do they have to select adjacent blocks or can they select any pair of blocks? Any Pair
+
+- Can they also deselect blocks (set the block selection back to -1)? No
+
+- Do they have to be performed in a certain order (select1 before select2)? No
+
+- You can make blockColour in the context a surjection. (This is the only allowed edit)
+
+- I want to extend the context to prevent code duplication? As noted in the assignment it is allowed to expand the context as long as you don't edit pre-existing statements.
+
+- Are we encouraged to add less important invariants to machines, such as an invariant stating that if the player won, the game must also be over in Machine0?
+That is good practice we like to see and probably a good way to check your own work but we will ignore those for grading purposes.

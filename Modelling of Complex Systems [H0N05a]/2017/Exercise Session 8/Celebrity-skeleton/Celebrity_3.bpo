@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="CTXHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="P" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.poIdentifier name="c" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="k" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="P⊆ℕ" org.eventb.core.source="/Celebrity/Celebrity_c0.buc|org.eventb.core.contextFile#Celebrity_c0|org.eventb.core.axiom#internal_axm1A"/>
+<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="c∈P" org.eventb.core.source="/Celebrity/Celebrity_c0.buc|org.eventb.core.contextFile#Celebrity_c0|org.eventb.core.axiom#internal_axm2A"/>
+<org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="k∈P ∖ {c} ↔ P" org.eventb.core.source="/Celebrity/Celebrity_c0.buc|org.eventb.core.contextFile#Celebrity_c0|org.eventb.core.axiom#internal_axm3A"/>
+<org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="k∼[{c}]=P ∖ {c}" org.eventb.core.source="/Celebrity/Celebrity_c0.buc|org.eventb.core.contextFile#Celebrity_c0|org.eventb.core.axiom#internal_axm4A"/>
+<org.eventb.core.poPredicate name="PRD4" org.eventb.core.predicate="k∩(id ⦂ ℙ(ℤ×ℤ))=(∅ ⦂ ℙ(ℤ×ℤ))" org.eventb.core.source="/Celebrity/Celebrity_c0.buc|org.eventb.core.contextFile#Celebrity_c0|org.eventb.core.axiom#internal_axm5A"/>
+<org.eventb.core.poIdentifier name="n" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poPredicate name="PRD5" org.eventb.core.predicate="n∈ℕ" org.eventb.core.source="/Celebrity/Celebrity_c1.buc|org.eventb.core.contextFile#Celebrity_c1|org.eventb.core.axiom#internal_axm1A"/>
+<org.eventb.core.poPredicate name="PRD6" org.eventb.core.predicate="n&gt;0" org.eventb.core.source="/Celebrity/Celebrity_c1.buc|org.eventb.core.contextFile#Celebrity_c1|org.eventb.core.axiom#internal_axm2A"/>
+<org.eventb.core.poPredicate name="PRD7" org.eventb.core.predicate="P=0 ‥ n" org.eventb.core.source="/Celebrity/Celebrity_c1.buc|org.eventb.core.contextFile#Celebrity_c1|org.eventb.core.axiom#internal_axm3A"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.parentSet="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="Q" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.poIdentifier name="R" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.poIdentifier name="a" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="b" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="r" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poPredicate name="PRD8" org.eventb.core.predicate="r∈P" org.eventb.core.source="/Celebrity/Celebrity_0.bum|org.eventb.core.machineFile#Celebrity_0|org.eventb.core.invariant#internal_inv1I"/>
+<org.eventb.core.poPredicate name="PRD9" org.eventb.core.predicate="Q⊆P" org.eventb.core.source="/Celebrity/Celebrity_1.bum|org.eventb.core.machineFile#Celebrity_1|org.eventb.core.invariant#internal_inv1I"/>
+<org.eventb.core.poPredicate name="PRD10" org.eventb.core.predicate="c∈Q" org.eventb.core.source="/Celebrity/Celebrity_1.bum|org.eventb.core.machineFile#Celebrity_1|org.eventb.core.invariant#internal_inv2I"/>
+<org.eventb.core.poPredicate name="PRD11" org.eventb.core.predicate="R⊆P" org.eventb.core.source="/Celebrity/Celebrity_2.bum|org.eventb.core.machineFile#Celebrity_2|org.eventb.core.invariant#internal_inv1I"/>
+<org.eventb.core.poPredicate name="PRD12" org.eventb.core.predicate="b∈P" org.eventb.core.source="/Celebrity/Celebrity_2.bum|org.eventb.core.machineFile#Celebrity_2|org.eventb.core.invariant#internal_inv2I"/>
+<org.eventb.core.poPredicate name="PRD13" org.eventb.core.predicate="b∉R" org.eventb.core.source="/Celebrity/Celebrity_2.bum|org.eventb.core.machineFile#Celebrity_2|org.eventb.core.invariant#internal_inv3I"/>
+<org.eventb.core.poPredicate name="PRD14" org.eventb.core.predicate="Q=R∪{b}" org.eventb.core.source="/Celebrity/Celebrity_2.bum|org.eventb.core.machineFile#Celebrity_2|org.eventb.core.invariant#internal_inv4I"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poSequent name="INITIALISATION/inv1/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poPredicateSet#EVTALLHYPEVT0"/>
+<org.eventb.core.poPredicate name="GOAL" org.eventb.core.predicate="1∈1 ‥ n+1" org.eventb.core.source="/Celebrity/Celebrity_3.bum|org.eventb.core.machineFile#Celebrity_3|org.eventb.core.invariant#internal_inv1I"/>
+<org.eventb.core.poSource name="SRC0" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Celebrity/Celebrity_2.bum|org.eventb.core.machineFile#Celebrity_2|org.eventb.core.event#internal_evt1"/>
+<org.eventb.core.poSource name="SRC1" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Celebrity/Celebrity_3.bum|org.eventb.core.machineFile#Celebrity_3|org.eventb.core.event#internal_evt1"/>
+<org.eventb.core.poSource name="SRC2" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Celebrity/Celebrity_3.bum|org.eventb.core.machineFile#Celebrity_3|org.eventb.core.invariant#internal_inv1I"/>
+<org.eventb.core.poSelHint name="HINT0" org.eventb.core.poSelHintFst="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poSequent#INITIALISATION\/inv1\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="HINT1" org.eventb.core.poSelHintFst="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD0"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="INITIALISATION/inv2/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poPredicateSet#EVTALLHYPEVT0"/>
+<org.eventb.core.poPredicate name="GOAL" org.eventb.core.predicate="1 ‥ n=1 ‥ n" org.eventb.core.source="/Celebrity/Celebrity_3.bum|org.eventb.core.machineFile#Celebrity_3|org.eventb.core.invariant#internal_inv2I"/>
+<org.eventb.core.poSource name="SRC0" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Celebrity/Celebrity_2.bum|org.eventb.core.machineFile#Celebrity_2|org.eventb.core.event#internal_evt1"/>
+<org.eventb.core.poSource name="SRC1" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Celebrity/Celebrity_3.bum|org.eventb.core.machineFile#Celebrity_3|org.eventb.core.event#internal_evt1"/>
+<org.eventb.core.poSource name="SRC2" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Celebrity/Celebrity_3.bum|org.eventb.core.machineFile#Celebrity_3|org.eventb.core.invariant#internal_inv2I"/>
+<org.eventb.core.poSelHint name="HINT0" org.eventb.core.poSelHintFst="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poSequent#INITIALISATION\/inv2\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="HINT1" org.eventb.core.poSelHintFst="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD1"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="INITIALISATION/act1/SIM" org.eventb.core.accurate="true" org.eventb.core.poDesc="Action simulation" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poPredicateSet#EVTALLHYPEVT0"/>
+<org.eventb.core.poPredicate name="GOAL" org.eventb.core.predicate="0∈P" org.eventb.core.source="/Celebrity/Celebrity_2.bum|org.eventb.core.machineFile#Celebrity_2|org.eventb.core.event#internal_evt1|org.eventb.core.action#internal_act1"/>
+<org.eventb.core.poSource name="SRC0" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Celebrity/Celebrity_2.bum|org.eventb.core.machineFile#Celebrity_2|org.eventb.core.event#internal_evt1"/>
+<org.eventb.core.poSource name="SRC1" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Celebrity/Celebrity_2.bum|org.eventb.core.machineFile#Celebrity_2|org.eventb.core.event#internal_evt1|org.eventb.core.action#internal_act1"/>
+<org.eventb.core.poSource name="SRC2" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Celebrity/Celebrity_3.bum|org.eventb.core.machineFile#Celebrity_3|org.eventb.core.event#internal_evt1"/>
+<org.eventb.core.poSelHint name="HINT0" org.eventb.core.poSelHintFst="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poSequent#INITIALISATION\/act1\/SIM|org.eventb.core.poPredicateSet#SEQHYP"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="INITIALISATION/act2/SIM" org.eventb.core.accurate="true" org.eventb.core.poDesc="Action simulation" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poPredicateSet#EVTALLHYPEVT0"/>
+<org.eventb.core.poPredicate name="GOAL" org.eventb.core.predicate="0∈P∧1 ‥ n=P ∖ {0}" org.eventb.core.source="/Celebrity/Celebrity_2.bum|org.eventb.core.machineFile#Celebrity_2|org.eventb.core.event#internal_evt1|org.eventb.core.action#internal_act2"/>
+<org.eventb.core.poSource name="SRC0" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Celebrity/Celebrity_2.bum|org.eventb.core.machineFile#Celebrity_2|org.eventb.core.event#internal_evt1"/>
+<org.eventb.core.poSource name="SRC1" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Celebrity/Celebrity_2.bum|org.eventb.core.machineFile#Celebrity_2|org.eventb.core.event#internal_evt1|org.eventb.core.action#internal_act2"/>
+<org.eventb.core.poSource name="SRC2" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Celebrity/Celebrity_3.bum|org.eventb.core.machineFile#Celebrity_3|org.eventb.core.event#internal_evt1"/>
+<org.eventb.core.poSelHint name="HINT0" org.eventb.core.poSelHintFst="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poSequent#INITIALISATION\/act2\/SIM|org.eventb.core.poPredicateSet#SEQHYP"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poPredicateSet name="EVTIDENTEVT0" org.eventb.core.parentSet="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="r'" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="b'" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="R'" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.poIdentifier name="a'" org.eventb.core.type="ℤ"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPEVT0" org.eventb.core.parentSet="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poPredicateSet#EVTIDENTEVT0" org.eventb.core.poStamp="0"/>
+<org.eventb.core.poSequent name="remove_1/inv1/INV" org.eventb.core.accurate="false" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poPredicateSet#EVTALLHYPEVT1"/>
+<org.eventb.core.poPredicate name="GOAL" org.eventb.core.predicate="a+1∈1 ‥ n+1" org.eventb.core.source="/Celebrity/Celebrity_3.bum|org.eventb.core.machineFile#Celebrity_3|org.eventb.core.invariant#internal_inv1I"/>
+<org.eventb.core.poSource name="SRC0" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Celebrity/Celebrity_2.bum|org.eventb.core.machineFile#Celebrity_2|org.eventb.core.event#internal_evt3"/>
+<org.eventb.core.poSource name="SRC1" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Celebrity/Celebrity_3.bum|org.eventb.core.machineFile#Celebrity_3|org.eventb.core.event#internal_evt2"/>
+<org.eventb.core.poSource name="SRC2" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Celebrity/Celebrity_3.bum|org.eventb.core.machineFile#Celebrity_3|org.eventb.core.invariant#internal_inv1I"/>
+<org.eventb.core.poSelHint name="HINT0" org.eventb.core.poSelHintFst="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poSequent#remove_1\/inv1\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="HINT1" org.eventb.core.poSelHintFst="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD0"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="remove_1/inv2/INV" org.eventb.core.accurate="false" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poPredicateSet#EVTALLHYPEVT1"/>
+<org.eventb.core.poPredicate name="GOAL" org.eventb.core.predicate="R ∖ {a}=a+1 ‥ n" org.eventb.core.source="/Celebrity/Celebrity_3.bum|org.eventb.core.machineFile#Celebrity_3|org.eventb.core.invariant#internal_inv2I"/>
+<org.eventb.core.poSource name="SRC0" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Celebrity/Celebrity_2.bum|org.eventb.core.machineFile#Celebrity_2|org.eventb.core.event#internal_evt3"/>
+<org.eventb.core.poSource name="SRC1" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Celebrity/Celebrity_3.bum|org.eventb.core.machineFile#Celebrity_3|org.eventb.core.event#internal_evt2"/>
+<org.eventb.core.poSource name="SRC2" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Celebrity/Celebrity_3.bum|org.eventb.core.machineFile#Celebrity_3|org.eventb.core.invariant#internal_inv2I"/>
+<org.eventb.core.poSelHint name="HINT0" org.eventb.core.poSelHintFst="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poSequent#remove_1\/inv2\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="HINT1" org.eventb.core.poSelHintFst="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD1"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="remove_1/grd1/GRD" org.eventb.core.accurate="false" org.eventb.core.poDesc="Guard strengthening (split)" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poPredicateSet#EVTALLHYPEVT1"/>
+<org.eventb.core.poPredicate name="GOAL" org.eventb.core.predicate="a∈R" org.eventb.core.source="/Celebrity/Celebrity_2.bum|org.eventb.core.machineFile#Celebrity_2|org.eventb.core.event#internal_evt3|org.eventb.core.guard#internal_grd1"/>
+<org.eventb.core.poSource name="SRC0" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Celebrity/Celebrity_2.bum|org.eventb.core.machineFile#Celebrity_2|org.eventb.core.event#internal_evt3"/>
+<org.eventb.core.poSource name="SRC1" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Celebrity/Celebrity_2.bum|org.eventb.core.machineFile#Celebrity_2|org.eventb.core.event#internal_evt3|org.eventb.core.guard#internal_grd1"/>
+<org.eventb.core.poSource name="SRC2" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Celebrity/Celebrity_3.bum|org.eventb.core.machineFile#Celebrity_3|org.eventb.core.event#internal_evt2"/>
+<org.eventb.core.poSelHint name="HINT0" org.eventb.core.poSelHintFst="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poSequent#remove_1\/grd1\/GRD|org.eventb.core.poPredicateSet#SEQHYP"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="remove_1/grd2/GRD" org.eventb.core.accurate="false" org.eventb.core.poDesc="Guard strengthening (split)" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poPredicateSet#EVTALLHYPEVT1"/>
+<org.eventb.core.poPredicate name="GOAL" org.eventb.core.predicate="a ↦ b∈k" org.eventb.core.source="/Celebrity/Celebrity_2.bum|org.eventb.core.machineFile#Celebrity_2|org.eventb.core.event#internal_evt3|org.eventb.core.guard#internal_grd2"/>
+<org.eventb.core.poSource name="SRC0" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Celebrity/Celebrity_2.bum|org.eventb.core.machineFile#Celebrity_2|org.eventb.core.event#internal_evt3"/>
+<org.eventb.core.poSource name="SRC1" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Celebrity/Celebrity_2.bum|org.eventb.core.machineFile#Celebrity_2|org.eventb.core.event#internal_evt3|org.eventb.core.guard#internal_grd2"/>
+<org.eventb.core.poSource name="SRC2" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Celebrity/Celebrity_3.bum|org.eventb.core.machineFile#Celebrity_3|org.eventb.core.event#internal_evt2"/>
+<org.eventb.core.poSelHint name="HINT0" org.eventb.core.poSelHintFst="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poSequent#remove_1\/grd2\/GRD|org.eventb.core.poPredicateSet#SEQHYP"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poPredicateSet name="EVTIDENTEVT1" org.eventb.core.parentSet="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="x" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="R'" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.poIdentifier name="a'" org.eventb.core.type="ℤ"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPEVT1" org.eventb.core.parentSet="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poPredicateSet#EVTIDENTEVT1" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="a≤n" org.eventb.core.source="/Celebrity/Celebrity_3.bum|org.eventb.core.machineFile#Celebrity_3|org.eventb.core.event#internal_evt2|org.eventb.core.guard#internal_grd1"/>
+<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="a ↦ b∈k" org.eventb.core.source="/Celebrity/Celebrity_3.bum|org.eventb.core.machineFile#Celebrity_3|org.eventb.core.event#internal_evt2|org.eventb.core.guard#internal_grd2"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poSequent name="remove_2/inv1/INV" org.eventb.core.accurate="false" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poPredicateSet#EVTALLHYPEVT2"/>
+<org.eventb.core.poPredicate name="GOAL" org.eventb.core.predicate="a+1∈1 ‥ n+1" org.eventb.core.source="/Celebrity/Celebrity_3.bum|org.eventb.core.machineFile#Celebrity_3|org.eventb.core.invariant#internal_inv1I"/>
+<org.eventb.core.poSource name="SRC0" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Celebrity/Celebrity_2.bum|org.eventb.core.machineFile#Celebrity_2|org.eventb.core.event#internal_evt4"/>
+<org.eventb.core.poSource name="SRC1" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Celebrity/Celebrity_3.bum|org.eventb.core.machineFile#Celebrity_3|org.eventb.core.event#internal_evt3"/>
+<org.eventb.core.poSource name="SRC2" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Celebrity/Celebrity_3.bum|org.eventb.core.machineFile#Celebrity_3|org.eventb.core.invariant#internal_inv1I"/>
+<org.eventb.core.poSelHint name="HINT0" org.eventb.core.poSelHintFst="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poSequent#remove_2\/inv1\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="HINT1" org.eventb.core.poSelHintFst="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD0"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="remove_2/inv2/INV" org.eventb.core.accurate="false" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poPredicateSet#EVTALLHYPEVT2"/>
+<org.eventb.core.poPredicate name="GOAL" org.eventb.core.predicate="R ∖ {a}=a+1 ‥ n" org.eventb.core.source="/Celebrity/Celebrity_3.bum|org.eventb.core.machineFile#Celebrity_3|org.eventb.core.invariant#internal_inv2I"/>
+<org.eventb.core.poSource name="SRC0" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Celebrity/Celebrity_2.bum|org.eventb.core.machineFile#Celebrity_2|org.eventb.core.event#internal_evt4"/>
+<org.eventb.core.poSource name="SRC1" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Celebrity/Celebrity_3.bum|org.eventb.core.machineFile#Celebrity_3|org.eventb.core.event#internal_evt3"/>
+<org.eventb.core.poSource name="SRC2" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Celebrity/Celebrity_3.bum|org.eventb.core.machineFile#Celebrity_3|org.eventb.core.invariant#internal_inv2I"/>
+<org.eventb.core.poSelHint name="HINT0" org.eventb.core.poSelHintFst="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poSequent#remove_2\/inv2\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="HINT1" org.eventb.core.poSelHintFst="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD1"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="remove_2/grd1/GRD" org.eventb.core.accurate="false" org.eventb.core.poDesc="Guard strengthening (split)" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poPredicateSet#EVTALLHYPEVT2"/>
+<org.eventb.core.poPredicate name="GOAL" org.eventb.core.predicate="a∈R" org.eventb.core.source="/Celebrity/Celebrity_2.bum|org.eventb.core.machineFile#Celebrity_2|org.eventb.core.event#internal_evt4|org.eventb.core.guard#internal_grd1"/>
+<org.eventb.core.poSource name="SRC0" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Celebrity/Celebrity_2.bum|org.eventb.core.machineFile#Celebrity_2|org.eventb.core.event#internal_evt4"/>
+<org.eventb.core.poSource name="SRC1" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Celebrity/Celebrity_2.bum|org.eventb.core.machineFile#Celebrity_2|org.eventb.core.event#internal_evt4|org.eventb.core.guard#internal_grd1"/>
+<org.eventb.core.poSource name="SRC2" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Celebrity/Celebrity_3.bum|org.eventb.core.machineFile#Celebrity_3|org.eventb.core.event#internal_evt3"/>
+<org.eventb.core.poSelHint name="HINT0" org.eventb.core.poSelHintFst="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poSequent#remove_2\/grd1\/GRD|org.eventb.core.poPredicateSet#SEQHYP"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="remove_2/grd2/GRD" org.eventb.core.accurate="false" org.eventb.core.poDesc="Guard strengthening (split)" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poPredicateSet#EVTALLHYPEVT2"/>
+<org.eventb.core.poPredicate name="GOAL" org.eventb.core.predicate="a ↦ b∉k" org.eventb.core.source="/Celebrity/Celebrity_2.bum|org.eventb.core.machineFile#Celebrity_2|org.eventb.core.event#internal_evt4|org.eventb.core.guard#internal_grd2"/>
+<org.eventb.core.poSource name="SRC0" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Celebrity/Celebrity_2.bum|org.eventb.core.machineFile#Celebrity_2|org.eventb.core.event#internal_evt4"/>
+<org.eventb.core.poSource name="SRC1" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Celebrity/Celebrity_2.bum|org.eventb.core.machineFile#Celebrity_2|org.eventb.core.event#internal_evt4|org.eventb.core.guard#internal_grd2"/>
+<org.eventb.core.poSource name="SRC2" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Celebrity/Celebrity_3.bum|org.eventb.core.machineFile#Celebrity_3|org.eventb.core.event#internal_evt3"/>
+<org.eventb.core.poSelHint name="HINT0" org.eventb.core.poSelHintFst="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poSequent#remove_2\/grd2\/GRD|org.eventb.core.poPredicateSet#SEQHYP"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="remove_2/act2/SIM" org.eventb.core.accurate="false" org.eventb.core.poDesc="Action simulation" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poPredicateSet#EVTALLHYPEVT2"/>
+<org.eventb.core.poPredicate name="GOAL" org.eventb.core.predicate="a=a" org.eventb.core.source="/Celebrity/Celebrity_2.bum|org.eventb.core.machineFile#Celebrity_2|org.eventb.core.event#internal_evt4|org.eventb.core.action#internal_act2"/>
+<org.eventb.core.poSource name="SRC0" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Celebrity/Celebrity_2.bum|org.eventb.core.machineFile#Celebrity_2|org.eventb.core.event#internal_evt4"/>
+<org.eventb.core.poSource name="SRC1" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Celebrity/Celebrity_2.bum|org.eventb.core.machineFile#Celebrity_2|org.eventb.core.event#internal_evt4|org.eventb.core.action#internal_act2"/>
+<org.eventb.core.poSource name="SRC2" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Celebrity/Celebrity_3.bum|org.eventb.core.machineFile#Celebrity_3|org.eventb.core.event#internal_evt3"/>
+<org.eventb.core.poSelHint name="HINT0" org.eventb.core.poSelHintFst="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poSequent#remove_2\/act2\/SIM|org.eventb.core.poPredicateSet#SEQHYP"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poPredicateSet name="EVTIDENTEVT2" org.eventb.core.parentSet="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="b'" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="x" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="R'" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.poIdentifier name="a'" org.eventb.core.type="ℤ"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPEVT2" org.eventb.core.parentSet="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poPredicateSet#EVTIDENTEVT2" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="a≤n" org.eventb.core.source="/Celebrity/Celebrity_3.bum|org.eventb.core.machineFile#Celebrity_3|org.eventb.core.event#internal_evt3|org.eventb.core.guard#internal_grd1"/>
+<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="a ↦ b∉k" org.eventb.core.source="/Celebrity/Celebrity_3.bum|org.eventb.core.machineFile#Celebrity_3|org.eventb.core.event#internal_evt3|org.eventb.core.guard#internal_grd2"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poSequent name="celebrity/grd1/GRD" org.eventb.core.accurate="false" org.eventb.core.poDesc="Guard strengthening (split)" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poPredicateSet#EVTALLHYPEVT3"/>
+<org.eventb.core.poPredicate name="GOAL" org.eventb.core.predicate="R=(∅ ⦂ ℙ(ℤ))" org.eventb.core.source="/Celebrity/Celebrity_2.bum|org.eventb.core.machineFile#Celebrity_2|org.eventb.core.event#internal_evt2|org.eventb.core.guard#internal_grd1"/>
+<org.eventb.core.poSource name="SRC0" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Celebrity/Celebrity_2.bum|org.eventb.core.machineFile#Celebrity_2|org.eventb.core.event#internal_evt2"/>
+<org.eventb.core.poSource name="SRC1" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/Celebrity/Celebrity_2.bum|org.eventb.core.machineFile#Celebrity_2|org.eventb.core.event#internal_evt2|org.eventb.core.guard#internal_grd1"/>
+<org.eventb.core.poSource name="SRC2" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/Celebrity/Celebrity_3.bum|org.eventb.core.machineFile#Celebrity_3|org.eventb.core.event#internal_evt4"/>
+<org.eventb.core.poSelHint name="HINT0" org.eventb.core.poSelHintFst="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poSequent#celebrity\/grd1\/GRD|org.eventb.core.poPredicateSet#SEQHYP"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poPredicateSet name="EVTIDENTEVT3" org.eventb.core.parentSet="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="r'" org.eventb.core.type="ℤ"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPEVT3" org.eventb.core.parentSet="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poPredicateSet#EVTIDENTEVT3" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="a=n+1" org.eventb.core.source="/Celebrity/Celebrity_3.bum|org.eventb.core.machineFile#Celebrity_3|org.eventb.core.event#internal_evt4|org.eventb.core.guard#internal_grd1"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/Celebrity/Celebrity_3.bpo|org.eventb.core.poFile#Celebrity_3|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="a∈1 ‥ n+1" org.eventb.core.source="/Celebrity/Celebrity_3.bum|org.eventb.core.machineFile#Celebrity_3|org.eventb.core.invariant#internal_inv1I"/>
+<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="R=a ‥ n" org.eventb.core.source="/Celebrity/Celebrity_3.bum|org.eventb.core.machineFile#Celebrity_3|org.eventb.core.invariant#internal_inv2I"/>
+</org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>

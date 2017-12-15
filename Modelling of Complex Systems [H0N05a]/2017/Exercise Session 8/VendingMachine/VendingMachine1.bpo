@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="23">
+<org.eventb.core.poPredicateSet name="CTXHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="drinks" org.eventb.core.type="ℙ(drinks)"/>
+<org.eventb.core.poIdentifier name="cola" org.eventb.core.type="drinks"/>
+<org.eventb.core.poIdentifier name="fanta" org.eventb.core.type="drinks"/>
+<org.eventb.core.poIdentifier name="no_drink" org.eventb.core.type="drinks"/>
+<org.eventb.core.poPredicate name="no_drinl" org.eventb.core.predicate="partition(drinks,{cola},{fanta},{no_drink})" org.eventb.core.source="/VendingMachine/Beverages.buc|org.eventb.core.contextFile#Beverages|org.eventb.core.axiom#*"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.parentSet="/VendingMachine/VendingMachine1.bpo|org.eventb.core.poFile#VendingMachine1|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="1">
+<org.eventb.core.poIdentifier name="drink" org.eventb.core.type="drinks"/>
+<org.eventb.core.poIdentifier name="paid" org.eventb.core.type="BOOL"/>
+<org.eventb.core.poIdentifier name="quantity" org.eventb.core.type="ℙ(drinks×ℤ)"/>
+<org.eventb.core.poPredicate name="quantitz" org.eventb.core.predicate="drink∈drinks" org.eventb.core.source="/VendingMachine/VendingMachine0.bum|org.eventb.core.machineFile#VendingMachine0|org.eventb.core.invariant#+"/>
+<org.eventb.core.poPredicate name="quantit{" org.eventb.core.predicate="paid∈BOOL" org.eventb.core.source="/VendingMachine/VendingMachine0.bum|org.eventb.core.machineFile#VendingMachine0|org.eventb.core.invariant#,"/>
+<org.eventb.core.poPredicate name="quantit|" org.eventb.core.predicate="drink≠no_drink⇒paid=TRUE" org.eventb.core.source="/VendingMachine/VendingMachine0.bum|org.eventb.core.machineFile#VendingMachine0|org.eventb.core.invariant#-"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poSequent name="INITIALISATION/inv1/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="15">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/VendingMachine/VendingMachine1.bpo|org.eventb.core.poFile#VendingMachine1|org.eventb.core.poPredicateSet#EVTALLHYPBeveragex"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="{cola ↦ 3,fanta ↦ 3}∈drinks ↔ ℕ" org.eventb.core.source="/VendingMachine/VendingMachine1.bum|org.eventb.core.machineFile#VendingMachine1|org.eventb.core.invariant#2"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/VendingMachine/VendingMachine0.bum|org.eventb.core.machineFile#VendingMachine0|org.eventb.core.event#'"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/VendingMachine/VendingMachine1.bum|org.eventb.core.machineFile#VendingMachine1|org.eventb.core.event#+"/>
+<org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/VendingMachine/VendingMachine1.bum|org.eventb.core.machineFile#VendingMachine1|org.eventb.core.invariant#2"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/VendingMachine/VendingMachine1.bpo|org.eventb.core.poFile#VendingMachine1|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/VendingMachine/VendingMachine1.bpo|org.eventb.core.poFile#VendingMachine1|org.eventb.core.poSequent#INITIALISATION\/inv1\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/VendingMachine/VendingMachine1.bpo|org.eventb.core.poFile#VendingMachine1|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD0"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poPredicateSet name="EVTIDENTBeveragex" org.eventb.core.parentSet="/VendingMachine/VendingMachine1.bpo|org.eventb.core.poFile#VendingMachine1|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="1">
+<org.eventb.core.poIdentifier name="quantity'" org.eventb.core.type="ℙ(drinks×ℤ)"/>
+<org.eventb.core.poIdentifier name="paid'" org.eventb.core.type="BOOL"/>
+<org.eventb.core.poIdentifier name="drink'" org.eventb.core.type="drinks"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPBeveragex" org.eventb.core.parentSet="/VendingMachine/VendingMachine1.bpo|org.eventb.core.poFile#VendingMachine1|org.eventb.core.poPredicateSet#EVTIDENTBeveragex" org.eventb.core.poStamp="1"/>
+<org.eventb.core.poPredicateSet name="EVTIDENTBeveragey" org.eventb.core.parentSet="/VendingMachine/VendingMachine1.bpo|org.eventb.core.poFile#VendingMachine1|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="1">
+<org.eventb.core.poIdentifier name="paid'" org.eventb.core.type="BOOL"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPBeveragey" org.eventb.core.parentSet="/VendingMachine/VendingMachine1.bpo|org.eventb.core.poFile#VendingMachine1|org.eventb.core.poPredicateSet#EVTIDENTBeveragey" org.eventb.core.poStamp="1">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="paid=FALSE" org.eventb.core.source="/VendingMachine/VendingMachine0.bum|org.eventb.core.machineFile#VendingMachine0|org.eventb.core.event#.|org.eventb.core.guard#'"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poSequent name="select_cola/grd1/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Guard" org.eventb.core.poStamp="10">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/VendingMachine/VendingMachine1.bpo|org.eventb.core.poFile#VendingMachine1|org.eventb.core.poPredicateSet#EVTHYPBeveragez("/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="cola∈dom(quantity)∧quantity∈drinks ⇸ ℤ" org.eventb.core.source="/VendingMachine/VendingMachine1.bum|org.eventb.core.machineFile#VendingMachine1|org.eventb.core.event#-|org.eventb.core.guard#("/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/VendingMachine/VendingMachine1.bum|org.eventb.core.machineFile#VendingMachine1|org.eventb.core.event#-|org.eventb.core.guard#("/>
+<org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/VendingMachine/VendingMachine1.bpo|org.eventb.core.poFile#VendingMachine1|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/VendingMachine/VendingMachine1.bpo|org.eventb.core.poFile#VendingMachine1|org.eventb.core.poPredicateSet#EVTHYPBeveragez("/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poPredicateSet name="EVTIDENTBeveragez" org.eventb.core.parentSet="/VendingMachine/VendingMachine1.bpo|org.eventb.core.poFile#VendingMachine1|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="1">
+<org.eventb.core.poIdentifier name="drink'" org.eventb.core.type="drinks"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTHYPBeveragez(" org.eventb.core.parentSet="/VendingMachine/VendingMachine1.bpo|org.eventb.core.poFile#VendingMachine1|org.eventb.core.poPredicateSet#EVTIDENTBeveragez" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="paid=TRUE" org.eventb.core.source="/VendingMachine/VendingMachine0.bum|org.eventb.core.machineFile#VendingMachine0|org.eventb.core.event#evt1|org.eventb.core.guard#'"/>
+<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="drink=no_drink" org.eventb.core.source="/VendingMachine/VendingMachine0.bum|org.eventb.core.machineFile#VendingMachine0|org.eventb.core.event#evt1|org.eventb.core.guard#)"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPBeveragez" org.eventb.core.parentSet="/VendingMachine/VendingMachine1.bpo|org.eventb.core.poFile#VendingMachine1|org.eventb.core.poPredicateSet#EVTHYPBeveragez(" org.eventb.core.poStamp="10">
+<org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="quantity(cola)&gt;0" org.eventb.core.source="/VendingMachine/VendingMachine1.bum|org.eventb.core.machineFile#VendingMachine1|org.eventb.core.event#-|org.eventb.core.guard#("/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poSequent name="select_fanta/grd1/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Guard" org.eventb.core.poStamp="11">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/VendingMachine/VendingMachine1.bpo|org.eventb.core.poFile#VendingMachine1|org.eventb.core.poPredicateSet#EVTHYPBeverage{("/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="fanta∈dom(quantity)∧quantity∈drinks ⇸ ℤ" org.eventb.core.source="/VendingMachine/VendingMachine1.bum|org.eventb.core.machineFile#VendingMachine1|org.eventb.core.event#.|org.eventb.core.guard#("/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/VendingMachine/VendingMachine1.bum|org.eventb.core.machineFile#VendingMachine1|org.eventb.core.event#.|org.eventb.core.guard#("/>
+<org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/VendingMachine/VendingMachine1.bpo|org.eventb.core.poFile#VendingMachine1|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/VendingMachine/VendingMachine1.bpo|org.eventb.core.poFile#VendingMachine1|org.eventb.core.poPredicateSet#EVTHYPBeverage{("/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poPredicateSet name="EVTIDENTBeverage{" org.eventb.core.parentSet="/VendingMachine/VendingMachine1.bpo|org.eventb.core.poFile#VendingMachine1|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="1">
+<org.eventb.core.poIdentifier name="drink'" org.eventb.core.type="drinks"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTHYPBeverage{(" org.eventb.core.parentSet="/VendingMachine/VendingMachine1.bpo|org.eventb.core.poFile#VendingMachine1|org.eventb.core.poPredicateSet#EVTIDENTBeverage{" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="paid=TRUE" org.eventb.core.source="/VendingMachine/VendingMachine0.bum|org.eventb.core.machineFile#VendingMachine0|org.eventb.core.event#evt2|org.eventb.core.guard#grd1"/>
+<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="drink=no_drink" org.eventb.core.source="/VendingMachine/VendingMachine0.bum|org.eventb.core.machineFile#VendingMachine0|org.eventb.core.event#evt2|org.eventb.core.guard#grd2"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPBeverage{" org.eventb.core.parentSet="/VendingMachine/VendingMachine1.bpo|org.eventb.core.poFile#VendingMachine1|org.eventb.core.poPredicateSet#EVTHYPBeverage{(" org.eventb.core.poStamp="11">
+<org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="quantity(fanta)&gt;0" org.eventb.core.source="/VendingMachine/VendingMachine1.bum|org.eventb.core.machineFile#VendingMachine1|org.eventb.core.event#.|org.eventb.core.guard#("/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poSequent name="get_cola/inv1/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="10">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/VendingMachine/VendingMachine1.bpo|org.eventb.core.poFile#VendingMachine1|org.eventb.core.poPredicateSet#EVTALLHYPBeverage\|"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="quantity{cola ↦ quantity(cola) − 1}∈drinks ↔ ℕ" org.eventb.core.source="/VendingMachine/VendingMachine1.bum|org.eventb.core.machineFile#VendingMachine1|org.eventb.core.invariant#2"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/VendingMachine/VendingMachine0.bum|org.eventb.core.machineFile#VendingMachine0|org.eventb.core.event#evt3"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/VendingMachine/VendingMachine1.bum|org.eventb.core.machineFile#VendingMachine1|org.eventb.core.event#\/"/>
+<org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/VendingMachine/VendingMachine1.bum|org.eventb.core.machineFile#VendingMachine1|org.eventb.core.invariant#2"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/VendingMachine/VendingMachine1.bpo|org.eventb.core.poFile#VendingMachine1|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/VendingMachine/VendingMachine1.bpo|org.eventb.core.poFile#VendingMachine1|org.eventb.core.poSequent#get_cola\/inv1\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/VendingMachine/VendingMachine1.bpo|org.eventb.core.poFile#VendingMachine1|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD0"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="get_cola/act1/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of action" org.eventb.core.poStamp="10">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/VendingMachine/VendingMachine1.bpo|org.eventb.core.poFile#VendingMachine1|org.eventb.core.poPredicateSet#EVTALLHYPBeverage\|"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="cola∈dom(quantity)∧quantity∈drinks ⇸ ℤ" org.eventb.core.source="/VendingMachine/VendingMachine1.bum|org.eventb.core.machineFile#VendingMachine1|org.eventb.core.event#\/|org.eventb.core.action#("/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/VendingMachine/VendingMachine1.bum|org.eventb.core.machineFile#VendingMachine1|org.eventb.core.event#\/|org.eventb.core.action#("/>
+<org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/VendingMachine/VendingMachine1.bpo|org.eventb.core.poFile#VendingMachine1|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/VendingMachine/VendingMachine1.bpo|org.eventb.core.poFile#VendingMachine1|org.eventb.core.poPredicateSet#EVTALLHYPBeverage\|"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poPredicateSet name="EVTIDENTBeverage|" org.eventb.core.parentSet="/VendingMachine/VendingMachine1.bpo|org.eventb.core.poFile#VendingMachine1|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="6">
+<org.eventb.core.poIdentifier name="quantity'" org.eventb.core.type="ℙ(drinks×ℤ)"/>
+<org.eventb.core.poIdentifier name="paid'" org.eventb.core.type="BOOL"/>
+<org.eventb.core.poIdentifier name="drink'" org.eventb.core.type="drinks"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPBeverage|" org.eventb.core.parentSet="/VendingMachine/VendingMachine1.bpo|org.eventb.core.poFile#VendingMachine1|org.eventb.core.poPredicateSet#EVTIDENTBeverage\|" org.eventb.core.poStamp="10">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="paid=TRUE" org.eventb.core.source="/VendingMachine/VendingMachine0.bum|org.eventb.core.machineFile#VendingMachine0|org.eventb.core.event#evt3|org.eventb.core.guard#grd1"/>
+<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="drink=cola" org.eventb.core.source="/VendingMachine/VendingMachine0.bum|org.eventb.core.machineFile#VendingMachine0|org.eventb.core.event#evt3|org.eventb.core.guard#grd2"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poSequent name="get_fanta/inv1/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="12">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/VendingMachine/VendingMachine1.bpo|org.eventb.core.poFile#VendingMachine1|org.eventb.core.poPredicateSet#EVTALLHYPBeverage}"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="quantity{fanta ↦ quantity(fanta) − 1}∈drinks ↔ ℕ" org.eventb.core.source="/VendingMachine/VendingMachine1.bum|org.eventb.core.machineFile#VendingMachine1|org.eventb.core.invariant#2"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/VendingMachine/VendingMachine0.bum|org.eventb.core.machineFile#VendingMachine0|org.eventb.core.event#evt4"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/VendingMachine/VendingMachine1.bum|org.eventb.core.machineFile#VendingMachine1|org.eventb.core.event#0"/>
+<org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/VendingMachine/VendingMachine1.bum|org.eventb.core.machineFile#VendingMachine1|org.eventb.core.invariant#2"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/VendingMachine/VendingMachine1.bpo|org.eventb.core.poFile#VendingMachine1|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/VendingMachine/VendingMachine1.bpo|org.eventb.core.poFile#VendingMachine1|org.eventb.core.poSequent#get_fanta\/inv1\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/VendingMachine/VendingMachine1.bpo|org.eventb.core.poFile#VendingMachine1|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD0"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="get_fanta/act1/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of action" org.eventb.core.poStamp="12">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/VendingMachine/VendingMachine1.bpo|org.eventb.core.poFile#VendingMachine1|org.eventb.core.poPredicateSet#EVTALLHYPBeverage}"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="fanta∈dom(quantity)∧quantity∈drinks ⇸ ℤ" org.eventb.core.source="/VendingMachine/VendingMachine1.bum|org.eventb.core.machineFile#VendingMachine1|org.eventb.core.event#0|org.eventb.core.action#("/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/VendingMachine/VendingMachine1.bum|org.eventb.core.machineFile#VendingMachine1|org.eventb.core.event#0|org.eventb.core.action#("/>
+<org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/VendingMachine/VendingMachine1.bpo|org.eventb.core.poFile#VendingMachine1|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/VendingMachine/VendingMachine1.bpo|org.eventb.core.poFile#VendingMachine1|org.eventb.core.poPredicateSet#EVTALLHYPBeverage}"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poPredicateSet name="EVTIDENTBeverage}" org.eventb.core.parentSet="/VendingMachine/VendingMachine1.bpo|org.eventb.core.poFile#VendingMachine1|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="11">
+<org.eventb.core.poIdentifier name="quantity'" org.eventb.core.type="ℙ(drinks×ℤ)"/>
+<org.eventb.core.poIdentifier name="paid'" org.eventb.core.type="BOOL"/>
+<org.eventb.core.poIdentifier name="drink'" org.eventb.core.type="drinks"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPBeverage}" org.eventb.core.parentSet="/VendingMachine/VendingMachine1.bpo|org.eventb.core.poFile#VendingMachine1|org.eventb.core.poPredicateSet#EVTIDENTBeverage}" org.eventb.core.poStamp="11">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="paid=TRUE" org.eventb.core.source="/VendingMachine/VendingMachine0.bum|org.eventb.core.machineFile#VendingMachine0|org.eventb.core.event#evt4|org.eventb.core.guard#grd1"/>
+<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="drink=fanta" org.eventb.core.source="/VendingMachine/VendingMachine0.bum|org.eventb.core.machineFile#VendingMachine0|org.eventb.core.event#evt4|org.eventb.core.guard#grd2"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poSequent name="refill/inv1/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="23">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/VendingMachine/VendingMachine1.bpo|org.eventb.core.poFile#VendingMachine1|org.eventb.core.poPredicateSet#EVTALLHYPBeverage~"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="{x⦂drinks·x∈dom(quantity) ∣ x ↦ 4}∈drinks ↔ ℕ" org.eventb.core.source="/VendingMachine/VendingMachine1.bum|org.eventb.core.machineFile#VendingMachine1|org.eventb.core.invariant#2"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/VendingMachine/VendingMachine1.bum|org.eventb.core.machineFile#VendingMachine1|org.eventb.core.event#3"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/VendingMachine/VendingMachine1.bum|org.eventb.core.machineFile#VendingMachine1|org.eventb.core.invariant#2"/>
+<org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/VendingMachine/VendingMachine1.bpo|org.eventb.core.poFile#VendingMachine1|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/VendingMachine/VendingMachine1.bpo|org.eventb.core.poFile#VendingMachine1|org.eventb.core.poSequent#refill\/inv1\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/VendingMachine/VendingMachine1.bpo|org.eventb.core.poFile#VendingMachine1|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD0"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poPredicateSet name="EVTIDENTBeverage~" org.eventb.core.parentSet="/VendingMachine/VendingMachine1.bpo|org.eventb.core.poFile#VendingMachine1|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="quantity'" org.eventb.core.type="ℙ(drinks×ℤ)"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPBeverage~" org.eventb.core.parentSet="/VendingMachine/VendingMachine1.bpo|org.eventb.core.poFile#VendingMachine1|org.eventb.core.poPredicateSet#EVTIDENTBeverage~" org.eventb.core.poStamp="23">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="ran(quantity)≠{4}" org.eventb.core.source="/VendingMachine/VendingMachine1.bum|org.eventb.core.machineFile#VendingMachine1|org.eventb.core.event#3|org.eventb.core.guard#'"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/VendingMachine/VendingMachine1.bpo|org.eventb.core.poFile#VendingMachine1|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="1">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="quantity∈drinks ↔ ℕ" org.eventb.core.source="/VendingMachine/VendingMachine1.bum|org.eventb.core.machineFile#VendingMachine1|org.eventb.core.invariant#2"/>
+</org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>

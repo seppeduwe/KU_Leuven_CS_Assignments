@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.scMachineFile org.eventb.core.accurate="true" org.eventb.core.configuration="org.eventb.core.fwd">
+<org.eventb.core.scInvariant name="'" org.eventb.core.label="inv1" org.eventb.core.predicate="cars_go∈BOOL" org.eventb.core.source="/tutorial-03/mac.bum|org.eventb.core.machineFile#mac|org.eventb.core.invariant#*" org.eventb.core.theorem="false"/>
+<org.eventb.core.scInvariant name="(" org.eventb.core.label="inv2" org.eventb.core.predicate="peds_go∈BOOL" org.eventb.core.source="/tutorial-03/mac.bum|org.eventb.core.machineFile#mac|org.eventb.core.invariant#+" org.eventb.core.theorem="false"/>
+<org.eventb.core.scInvariant name=")" org.eventb.core.label="inv3" org.eventb.core.predicate="¬(cars_go=TRUE∧peds_go=TRUE)" org.eventb.core.source="/tutorial-03/mac.bum|org.eventb.core.machineFile#mac|org.eventb.core.invariant#\/" org.eventb.core.theorem="false"/>
+<org.eventb.core.scVariable name="cars_go" org.eventb.core.abstract="false" org.eventb.core.concrete="true" org.eventb.core.source="/tutorial-03/mac.bum|org.eventb.core.machineFile#mac|org.eventb.core.variable#(" org.eventb.core.type="BOOL"/>
+<org.eventb.core.scVariable name="peds_go" org.eventb.core.abstract="false" org.eventb.core.concrete="true" org.eventb.core.source="/tutorial-03/mac.bum|org.eventb.core.machineFile#mac|org.eventb.core.variable#)" org.eventb.core.type="BOOL"/>
+<org.eventb.core.scEvent name="peds_gp" org.eventb.core.accurate="true" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="INITIALISATION" org.eventb.core.source="/tutorial-03/mac.bum|org.eventb.core.machineFile#mac|org.eventb.core.event#'">
+<org.eventb.core.scAction name="'" org.eventb.core.assignment="cars_go ≔ FALSE" org.eventb.core.label="act1" org.eventb.core.source="/tutorial-03/mac.bum|org.eventb.core.machineFile#mac|org.eventb.core.event#'|org.eventb.core.action#'"/>
+<org.eventb.core.scAction name="(" org.eventb.core.assignment="peds_go ≔ FALSE" org.eventb.core.label="act2" org.eventb.core.source="/tutorial-03/mac.bum|org.eventb.core.machineFile#mac|org.eventb.core.event#'|org.eventb.core.action#("/>
+</org.eventb.core.scEvent>
+<org.eventb.core.scEvent name="peds_gq" org.eventb.core.accurate="true" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="set_peds_go" org.eventb.core.source="/tutorial-03/mac.bum|org.eventb.core.machineFile#mac|org.eventb.core.event#,">
+<org.eventb.core.scGuard name="'" org.eventb.core.label="grd1" org.eventb.core.predicate="cars_go=FALSE" org.eventb.core.source="/tutorial-03/mac.bum|org.eventb.core.machineFile#mac|org.eventb.core.event#,|org.eventb.core.guard#(" org.eventb.core.theorem="false"/>
+<org.eventb.core.scAction name="(" org.eventb.core.assignment="peds_go ≔ TRUE" org.eventb.core.label="act1" org.eventb.core.source="/tutorial-03/mac.bum|org.eventb.core.machineFile#mac|org.eventb.core.event#,|org.eventb.core.action#'"/>
+</org.eventb.core.scEvent>
+<org.eventb.core.scEvent name="peds_gr" org.eventb.core.accurate="true" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="set_peds_stop" org.eventb.core.source="/tutorial-03/mac.bum|org.eventb.core.machineFile#mac|org.eventb.core.event#-">
+<org.eventb.core.scAction name="'" org.eventb.core.assignment="peds_go ≔ FALSE" org.eventb.core.label="act1" org.eventb.core.source="/tutorial-03/mac.bum|org.eventb.core.machineFile#mac|org.eventb.core.event#-|org.eventb.core.action#'"/>
+</org.eventb.core.scEvent>
+<org.eventb.core.scEvent name="peds_gs" org.eventb.core.accurate="true" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="set_cars" org.eventb.core.source="/tutorial-03/mac.bum|org.eventb.core.machineFile#mac|org.eventb.core.event#.">
+<org.eventb.core.scGuard name="'" org.eventb.core.label="grd1" org.eventb.core.predicate="new_value∈BOOL" org.eventb.core.source="/tutorial-03/mac.bum|org.eventb.core.machineFile#mac|org.eventb.core.event#.|org.eventb.core.guard#(" org.eventb.core.theorem="false"/>
+<org.eventb.core.scGuard name="(" org.eventb.core.label="grd2" org.eventb.core.predicate="new_value=TRUE⇒peds_go=FALSE" org.eventb.core.source="/tutorial-03/mac.bum|org.eventb.core.machineFile#mac|org.eventb.core.event#.|org.eventb.core.guard#*" org.eventb.core.theorem="false"/>
+<org.eventb.core.scParameter name="new_value" org.eventb.core.source="/tutorial-03/mac.bum|org.eventb.core.machineFile#mac|org.eventb.core.event#.|org.eventb.core.parameter#'" org.eventb.core.type="BOOL"/>
+<org.eventb.core.scAction name="new_valuf" org.eventb.core.assignment="cars_go ≔ new_value" org.eventb.core.label="act1" org.eventb.core.source="/tutorial-03/mac.bum|org.eventb.core.machineFile#mac|org.eventb.core.event#.|org.eventb.core.action#)"/>
+</org.eventb.core.scEvent>
+</org.eventb.core.scMachineFile>

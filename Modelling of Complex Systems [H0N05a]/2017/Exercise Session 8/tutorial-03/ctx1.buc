@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.contextFile org.eventb.core.configuration="org.eventb.core.fwd" version="3">
+<org.eventb.core.constant name="'" org.eventb.core.identifier="red"/>
+<org.eventb.core.constant name="(" org.eventb.core.identifier="yellow"/>
+<org.eventb.core.constant name=")" org.eventb.core.identifier="green"/>
+<org.eventb.core.carrierSet name="*" org.eventb.core.identifier="COLOURS"/>
+<org.eventb.core.axiom name="+" org.eventb.core.label="type" org.eventb.core.predicate="partition(COLOURS,{red},{yellow},{green})"/>
+</org.eventb.core.contextFile>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.psFile>
+<org.eventb.core.psStatus name="INITIALISATION/inv3/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="6" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="set_peds_go/inv3/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="10" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="set_peds_stop/inv3/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="8" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="set_cars/inv3/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="9" org.eventb.core.psManual="false"/>
+</org.eventb.core.psFile>

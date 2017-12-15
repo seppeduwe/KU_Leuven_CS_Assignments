@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.contextFile org.eventb.core.configuration="org.eventb.core.fwd" version="3">
+<org.eventb.core.axiom name="internal_axm1A" org.eventb.core.label="axm1" org.eventb.core.predicate="P ⊆ ℕ"/>
+<org.eventb.core.axiom name="internal_axm2A" org.eventb.core.label="axm2" org.eventb.core.predicate="c ∈ P"/>
+<org.eventb.core.axiom name="internal_axm3A" org.eventb.core.label="axm3" org.eventb.core.predicate="k ∈ (P ∖ {c}) ↔ P"/>
+<org.eventb.core.axiom name="internal_axm4A" org.eventb.core.label="axm4" org.eventb.core.predicate="k∼ [{c}] = P ∖ {c}"/>
+<org.eventb.core.axiom name="internal_axm5A" org.eventb.core.label="axm5" org.eventb.core.predicate="k ∩ id = ∅"/>
+<org.eventb.core.constant name="internal_cst1" org.eventb.core.identifier="k"/>
+<org.eventb.core.constant name="internal_cst2" org.eventb.core.identifier="c"/>
+<org.eventb.core.constant name="internal_cst3" org.eventb.core.identifier="P"/>
+</org.eventb.core.contextFile>
