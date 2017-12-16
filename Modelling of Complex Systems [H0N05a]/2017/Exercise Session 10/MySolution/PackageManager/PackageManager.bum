@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd" version="5">
+<org.eventb.core.event name="'" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="INITIALISATION">
+<org.eventb.core.action name="'" org.eventb.core.assignment="installed ≔ ∅" org.eventb.core.label="init_installed"/>
+</org.eventb.core.event>
+<org.eventb.core.seesContext name="(" org.eventb.core.target="Packages"/>
+<org.eventb.core.variable name=")" org.eventb.core.identifier="installed"/>
+<org.eventb.core.invariant name="*" org.eventb.core.label="installed_type" org.eventb.core.predicate="installed ⊆ packages"/>
+<org.eventb.core.event name="+" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="install">
+<org.eventb.core.action name="'" org.eventb.core.assignment="installed ≔ installed ∪ {package}" org.eventb.core.label="install"/>
+<org.eventb.core.parameter name="(" org.eventb.core.identifier="package"/>
+<org.eventb.core.guard name=")" org.eventb.core.label="package" org.eventb.core.predicate="package ∈ packages"/>
+<org.eventb.core.guard name="*" org.eventb.core.label="not_installed" org.eventb.core.predicate="package ∉ installed"/>
+<org.eventb.core.guard name="+" org.eventb.core.label="dependencies" org.eventb.core.predicate="∀x · x ∈ packages ∧ x ↦ package ∈ depends ⇒ x ∈ installed"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="," org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="remove">
+<org.eventb.core.parameter name="'" org.eventb.core.identifier="package"/>
+<org.eventb.core.guard name="(" org.eventb.core.label="package" org.eventb.core.predicate="package ∈ packages"/>
+<org.eventb.core.guard name=")" org.eventb.core.label="installed" org.eventb.core.predicate="package ∈ installed"/>
+<org.eventb.core.guard name="*" org.eventb.core.label="dependencies" org.eventb.core.predicate="∀x · x ∈ packages ∧ package ↦ x ∈ depends ⇒ x ∉ installed"/>
+<org.eventb.core.action name="+" org.eventb.core.assignment="installed ≔ installed ∖ {package}" org.eventb.core.label="remove"/>
+</org.eventb.core.event>
+</org.eventb.core.machineFile>

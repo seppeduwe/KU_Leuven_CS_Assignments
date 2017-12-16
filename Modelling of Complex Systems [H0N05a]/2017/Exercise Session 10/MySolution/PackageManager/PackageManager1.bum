@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd" version="5">
+<org.eventb.core.refinesMachine name="'" org.eventb.core.target="PackageManager"/>
+<org.eventb.core.seesContext name="(" org.eventb.core.target="Packages"/>
+<org.eventb.core.variable name=")" org.eventb.core.identifier="installed"/>
+<org.eventb.core.event name="*" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="INITIALISATION"/>
+<org.eventb.core.event name="," org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="remove">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="remove"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="-" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="recInstall">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="install"/>
+<org.eventb.core.parameter name="(" org.eventb.core.identifier="package"/>
+<org.eventb.core.guard name=")" org.eventb.core.label="package" org.eventb.core.predicate="package ∈ packages"/>
+<org.eventb.core.guard name="*" org.eventb.core.label="not_installed" org.eventb.core.predicate="package ∉ installed"/>
+<org.eventb.core.guard name="internal1" org.eventb.core.label="dependencies" org.eventb.core.predicate="∀x · x ∈ packages ∧ x ↦ package ∈ depends ⇒ x ∈ installed"/>
+<org.eventb.core.action name="'" org.eventb.core.assignment="installed ≔ {x ∣ x ↦ package ∈ depends } ∪ installed ∪ {package} " org.eventb.core.label="install"/>
+</org.eventb.core.event>
+</org.eventb.core.machineFile>

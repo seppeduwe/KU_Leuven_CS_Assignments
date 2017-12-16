@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="13">
+<org.eventb.core.poPredicateSet name="CTXHYP" org.eventb.core.poStamp="11">
+<org.eventb.core.poIdentifier name="depends" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+<org.eventb.core.poIdentifier name="packages" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.poPredicate name="packaget" org.eventb.core.predicate="packages⊆ℕ" org.eventb.core.source="/PackageManager/Packages.buc|org.eventb.core.contextFile#Packages|org.eventb.core.axiom#)"/>
+<org.eventb.core.poPredicate name="packageu" org.eventb.core.predicate="depends∈packages ↔ packages" org.eventb.core.source="/PackageManager/Packages.buc|org.eventb.core.contextFile#Packages|org.eventb.core.axiom#*"/>
+<org.eventb.core.poPredicate name="packagev" org.eventb.core.predicate="packages=1 ‥ 5" org.eventb.core.source="/PackageManager/Packages.buc|org.eventb.core.contextFile#Packages|org.eventb.core.axiom#+"/>
+<org.eventb.core.poPredicate name="packagew" org.eventb.core.predicate="depends={2 ↦ 4,4 ↦ 3}" org.eventb.core.source="/PackageManager/Packages.buc|org.eventb.core.contextFile#Packages|org.eventb.core.axiom#,"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.parentSet="/PackageManager/PackageManager.bpo|org.eventb.core.poFile#PackageManager|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="11">
+<org.eventb.core.poIdentifier name="installed" org.eventb.core.type="ℙ(ℤ)"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poSequent name="INITIALISATION/installed_type/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="11">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/PackageManager/PackageManager.bpo|org.eventb.core.poFile#PackageManager|org.eventb.core.poPredicateSet#EVTALLHYPinstallee"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="(∅ ⦂ ℙ(ℤ))⊆packages" org.eventb.core.source="/PackageManager/PackageManager.bum|org.eventb.core.machineFile#PackageManager|org.eventb.core.invariant#*"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/PackageManager/PackageManager.bum|org.eventb.core.machineFile#PackageManager|org.eventb.core.event#'"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/PackageManager/PackageManager.bum|org.eventb.core.machineFile#PackageManager|org.eventb.core.invariant#*"/>
+<org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/PackageManager/PackageManager.bpo|org.eventb.core.poFile#PackageManager|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/PackageManager/PackageManager.bpo|org.eventb.core.poFile#PackageManager|org.eventb.core.poSequent#INITIALISATION\/installed_type\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/PackageManager/PackageManager.bpo|org.eventb.core.poFile#PackageManager|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD0"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poPredicateSet name="EVTIDENTinstallee" org.eventb.core.parentSet="/PackageManager/PackageManager.bpo|org.eventb.core.poFile#PackageManager|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="11">
+<org.eventb.core.poIdentifier name="installed'" org.eventb.core.type="ℙ(ℤ)"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPinstallee" org.eventb.core.parentSet="/PackageManager/PackageManager.bpo|org.eventb.core.poFile#PackageManager|org.eventb.core.poPredicateSet#EVTIDENTinstallee" org.eventb.core.poStamp="11"/>
+<org.eventb.core.poSequent name="install/installed_type/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="13">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/PackageManager/PackageManager.bpo|org.eventb.core.poFile#PackageManager|org.eventb.core.poPredicateSet#EVTALLHYPinstallef"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="installed∪{package}⊆packages" org.eventb.core.source="/PackageManager/PackageManager.bum|org.eventb.core.machineFile#PackageManager|org.eventb.core.invariant#*"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/PackageManager/PackageManager.bum|org.eventb.core.machineFile#PackageManager|org.eventb.core.event#+"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/PackageManager/PackageManager.bum|org.eventb.core.machineFile#PackageManager|org.eventb.core.invariant#*"/>
+<org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/PackageManager/PackageManager.bpo|org.eventb.core.poFile#PackageManager|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/PackageManager/PackageManager.bpo|org.eventb.core.poFile#PackageManager|org.eventb.core.poSequent#install\/installed_type\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/PackageManager/PackageManager.bpo|org.eventb.core.poFile#PackageManager|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD0"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poPredicateSet name="EVTIDENTinstallef" org.eventb.core.parentSet="/PackageManager/PackageManager.bpo|org.eventb.core.poFile#PackageManager|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="11">
+<org.eventb.core.poIdentifier name="installed'" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.poIdentifier name="package" org.eventb.core.type="ℤ"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPinstallef" org.eventb.core.parentSet="/PackageManager/PackageManager.bpo|org.eventb.core.poFile#PackageManager|org.eventb.core.poPredicateSet#EVTIDENTinstallef" org.eventb.core.poStamp="13">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="package∈packages" org.eventb.core.source="/PackageManager/PackageManager.bum|org.eventb.core.machineFile#PackageManager|org.eventb.core.event#+|org.eventb.core.guard#)"/>
+<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="package∉installed" org.eventb.core.source="/PackageManager/PackageManager.bum|org.eventb.core.machineFile#PackageManager|org.eventb.core.event#+|org.eventb.core.guard#*"/>
+<org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="∀x⦂ℤ·x∈packages∧x ↦ package∈depends⇒x∈installed" org.eventb.core.source="/PackageManager/PackageManager.bum|org.eventb.core.machineFile#PackageManager|org.eventb.core.event#+|org.eventb.core.guard#+"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poSequent name="remove/installed_type/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="11">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/PackageManager/PackageManager.bpo|org.eventb.core.poFile#PackageManager|org.eventb.core.poPredicateSet#EVTALLHYPinstalleg"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="installed ∖ {package}⊆packages" org.eventb.core.source="/PackageManager/PackageManager.bum|org.eventb.core.machineFile#PackageManager|org.eventb.core.invariant#*"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/PackageManager/PackageManager.bum|org.eventb.core.machineFile#PackageManager|org.eventb.core.event#,"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/PackageManager/PackageManager.bum|org.eventb.core.machineFile#PackageManager|org.eventb.core.invariant#*"/>
+<org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/PackageManager/PackageManager.bpo|org.eventb.core.poFile#PackageManager|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/PackageManager/PackageManager.bpo|org.eventb.core.poFile#PackageManager|org.eventb.core.poSequent#remove\/installed_type\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/PackageManager/PackageManager.bpo|org.eventb.core.poFile#PackageManager|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD0"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poPredicateSet name="EVTIDENTinstalleg" org.eventb.core.parentSet="/PackageManager/PackageManager.bpo|org.eventb.core.poFile#PackageManager|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="11">
+<org.eventb.core.poIdentifier name="installed'" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.poIdentifier name="package" org.eventb.core.type="ℤ"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPinstalleg" org.eventb.core.parentSet="/PackageManager/PackageManager.bpo|org.eventb.core.poFile#PackageManager|org.eventb.core.poPredicateSet#EVTIDENTinstalleg" org.eventb.core.poStamp="11">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="package∈packages" org.eventb.core.source="/PackageManager/PackageManager.bum|org.eventb.core.machineFile#PackageManager|org.eventb.core.event#,|org.eventb.core.guard#("/>
+<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="package∈installed" org.eventb.core.source="/PackageManager/PackageManager.bum|org.eventb.core.machineFile#PackageManager|org.eventb.core.event#,|org.eventb.core.guard#)"/>
+<org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="∀x⦂ℤ·x∈packages∧package ↦ x∈depends⇒x∉installed" org.eventb.core.source="/PackageManager/PackageManager.bum|org.eventb.core.machineFile#PackageManager|org.eventb.core.event#,|org.eventb.core.guard#*"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/PackageManager/PackageManager.bpo|org.eventb.core.poFile#PackageManager|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="11">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="installed⊆packages" org.eventb.core.source="/PackageManager/PackageManager.bum|org.eventb.core.machineFile#PackageManager|org.eventb.core.invariant#*"/>
+</org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>

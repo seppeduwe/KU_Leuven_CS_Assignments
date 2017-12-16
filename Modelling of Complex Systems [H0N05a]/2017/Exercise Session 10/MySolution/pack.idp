@@ -1,0 +1,152 @@
+vocabulary V {
+    type Time isa nat
+	partial Next(Time):Time
+	Start:Time
+    type sizeUnit = { 0..100 } isa nat
+	type Package
+	// depends(a,b) means that package b
+	// depends directly on package a
+	depends(Package,Package)
+	// indicates which packages are installed at certain timepoints
+	installed(Time,Package)
+	// The following predicates represent the actions
+	install(Time,Package)
+	remove(Time,Package)
+	recInstall(Time,Package)
+    
+    I_installed(Package)
+    C_installed(Time,Package)
+    Cn_installed(Time,Package)
+    
+    // A.2
+   	size(Package):sizeUnit
+    totalDiskSpace:sizeUnit 
+    
+    // Equal to the unused disk space.
+    availableSpace(Time):sizeUnit
+	C_availableSpace(Time,sizeUnit)
+	Cn_availableSpace(Time,sizeUnit)
+    
+}
+
+
+structure S : V {
+	Time = {0..5}
+	Package = {Rodin; ProB; IDP}
+	depends = {Rodin,ProB; IDP, IDP; ProB,IDP}
+
+	// Initially the system is empty.
+	I_installed = { }
+    
+    // A.2
+    size = {Rodin -> 5; ProB -> 15 ; IDP -> 20}
+    totalDiskSpace = 40
+    
+
+}
+
+theory diskSpaceTheo : V {
+    // Installation/recursive installation actions can only be executed when there is sufficient disk space.
+
+    /*{ 
+        availableSpace(Start)=totalDiskSpace<-.
+		! i t : availableSpace(Next(t))=i <- C_availableSpace(t,i).
+		! i t : availableSpace(Next(t))=i <- availableSpace(t)=i & ~Cn_availableSpace(t,i).  
+	}
+
+   // Strange, not possible in one line, no problem here because user can only use one action at a time.
+	
+	{
+        //If the content changes, all other values are no longer it's content.
+		! t i: Cn_availableSpace(t,availableSpace(t)) <- C_availableSpace(t,i). 
+        
+        
+        // No idea this is not working, sum{p[Package] : C_installed(t,p) : size(p)}
+        ! t p : C_availableSpace(t,availableSpace(t) -  size(p)) <-  install(t,p).
+        ! t p : C_availableSpace(t,availableSpace(t) + size(p)) <- remove(t,p).
+    	// Only sees 1 depth, make temp var?
+        ! t i : C_availableSpace(t,availableSpace(t) + i) <- ? p p2 : recInstall(t,p) & depends(p,p2) & size(p)+size(p2) = i.
+    }*/
+    	  			
+    // Set range
+	!t[Time] : availableSpace(t) =< totalDiskSpace & availableSpace(t) >= 0.
+    
+   // Not clean but something like this should work, better to work with cause and not cause
+   !t[Time] : availableSpace(t) = totalDiskSpace - sum{p[Package] : installed(t,p) : size(p)} .
+	
+}
+
+theory timeTheo:V{
+	{
+		Start = MIN[:Time].
+		!t: Next(t) = t+1 <- Time(t+1).
+	}
+}
+	
+theory installTheo : V {
+	{ 
+		// Successor State Action Axiom & Inertia
+		! p : installed(Start,p) <- I_installed(p).
+		! p t : installed(Next(t),p) <- C_installed(t,p).
+		! p t : installed(Next(t),p) <- installed(t,p) & ~Cn_installed(t,p).  
+	}
+
+	{
+		// Expressing causations
+        ! p t : C_installed(t,p) <- install(t,p).
+        ! p t : Cn_installed(t,p) <- remove(t,p).
+        // recInstall is een action, mag maar 1 actie, dus in je causes of nieuwe predicaten maken
+        ! p t : C_installed(t,p) <- recInstall(t,p).
+        // Why not looping?
+        ! p t : C_installed(t,p) <- ? p2 : C_installed(t,p2) & depends(p2,p). 
+	}
+    // Testing
+    !t : ~? p: recInstall(t,p).
+    
+	// Preconditions
+	// Every package has dependencies on other packages. 
+    ! p1 : ?p2 : depends(p1,p2).
+    // At each point in time, a number of packages are installed on the computer. 
+    !t : ?>=1 p: t > Start => installed(t,p).
+    // A user will execute exactly one action at every point in time.
+    !t[Time] : #{p[Package]: install(t,p)} + #{p[Package]: remove(t,p)} + #{p[Package]: recInstall(t,p)} = 1. 
+    // Installation actions can only be executed on a package which is not yet installed.
+    !t[Time] p : install(t,p) => ~installed(t,p).
+    !t[Time] p : recInstall(t,p) => ~installed(t,p).
+    
+    // install a package, this action is disabled when the direct dependencies for the package are not met
+    ! t p : install(t,p) => ! p2 : depends(p,p2) => (installed(t,p2) | p=p2).
+    
+	// Removal actions can only be executed on packages which are installed at that timepoint. 
+	! t p : remove(t,p) => installed(t,p).  
+    
+    // remove a package, this action is disabled when some other installed package depends directly on this package
+    ! t p : remove(t,p) => ~(? p2 : depends(p2,p) & installed(t,p2) & p~=p2).
+}	
+
+procedure findmodels() {
+	stdoptions.nbmodels=5
+	printmodels(modelexpand(merge(diskSpaceTheo,merge(installTheo,timeTheo)),S))
+}
+
+procedure simulate() {
+    stdoptions.nbmodels = 5
+    print("----> Starting interactive simulation")
+	local states = initialise(T,S)
+	
+	//...and use one of those initial states to continue with (again and again and ...)
+	while true do
+		printmodels(states)
+		print("Please enter which state to use")
+		local num = tonumber(io.read("*line"))
+		local chosen = states[num]
+		states = progress(T,chosen)
+	end	
+}
+
+procedure main(){
+    //This method lets you walk through your solutions interactively
+	// simulate()
+    //This method (defined above) simply searches models of your theory
+    findmodels()
+}

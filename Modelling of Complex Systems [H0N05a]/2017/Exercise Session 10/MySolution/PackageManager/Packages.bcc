@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.scContextFile org.eventb.core.accurate="true" org.eventb.core.configuration="org.eventb.core.fwd">
+<org.eventb.core.scAxiom name="'" org.eventb.core.label="pool" org.eventb.core.predicate="packages⊆ℕ" org.eventb.core.source="/PackageManager/Packages.buc|org.eventb.core.contextFile#Packages|org.eventb.core.axiom#)" org.eventb.core.theorem="false"/>
+<org.eventb.core.scAxiom name="(" org.eventb.core.label="depends" org.eventb.core.predicate="depends∈packages ↔ packages" org.eventb.core.source="/PackageManager/Packages.buc|org.eventb.core.contextFile#Packages|org.eventb.core.axiom#*" org.eventb.core.theorem="false"/>
+<org.eventb.core.scAxiom name=")" org.eventb.core.label="packages_init" org.eventb.core.predicate="packages=1 ‥ 5" org.eventb.core.source="/PackageManager/Packages.buc|org.eventb.core.contextFile#Packages|org.eventb.core.axiom#+" org.eventb.core.theorem="false"/>
+<org.eventb.core.scAxiom name="*" org.eventb.core.label="depends_init" org.eventb.core.predicate="depends={2 ↦ 4,4 ↦ 3}" org.eventb.core.source="/PackageManager/Packages.buc|org.eventb.core.contextFile#Packages|org.eventb.core.axiom#," org.eventb.core.theorem="false"/>
+<org.eventb.core.scConstant name="depends" org.eventb.core.source="/PackageManager/Packages.buc|org.eventb.core.contextFile#Packages|org.eventb.core.constant#(" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+<org.eventb.core.scConstant name="packages" org.eventb.core.source="/PackageManager/Packages.buc|org.eventb.core.contextFile#Packages|org.eventb.core.constant#'" org.eventb.core.type="ℙ(ℤ)"/>
+</org.eventb.core.scContextFile>

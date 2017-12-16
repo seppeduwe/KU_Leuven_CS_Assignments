@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="4">
+<org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="depends" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+<org.eventb.core.poIdentifier name="packages" org.eventb.core.type="ℙ(ℤ)"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/PackageManager/Packages.bpo|org.eventb.core.poFile#Packages|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="4">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="packages⊆ℕ" org.eventb.core.source="/PackageManager/Packages.buc|org.eventb.core.contextFile#Packages|org.eventb.core.axiom#)"/>
+<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="depends∈packages ↔ packages" org.eventb.core.source="/PackageManager/Packages.buc|org.eventb.core.contextFile#Packages|org.eventb.core.axiom#*"/>
+<org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="packages=1 ‥ 5" org.eventb.core.source="/PackageManager/Packages.buc|org.eventb.core.contextFile#Packages|org.eventb.core.axiom#+"/>
+<org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="depends={2 ↦ 4,4 ↦ 3}" org.eventb.core.source="/PackageManager/Packages.buc|org.eventb.core.contextFile#Packages|org.eventb.core.axiom#,"/>
+</org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>
