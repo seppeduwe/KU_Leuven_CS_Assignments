@@ -11,7 +11,7 @@ vocabulary V {
     type Heap
     
     // Number of matches on the heap
-    Nb(Heap,Time): Matches
+    partial Nb(Heap,Time): Matches
     I_Nb(Heap,Matches)
     C_Nb(Heap,Matches,Time)
     C_nNb(Heap,Matches,Time)
@@ -65,9 +65,9 @@ theory T : V {
 		// Successor State Action Axiom & Inertia
 		! h m[Matches] t[Time] : Nb(h,Start)=m <- I_Nb(h,m).
 		! h m[Matches] t[Time] : Nb(h,Next(t))=m <- C_Nb(h,m,t).
-		//! h m[Matches] t[Time] : Nb(h,Next(t))=m <- Nb(h,t)=m & ~C_nNb(h,m,t).
-        // Much faster why??? t+1 instead of Next()
-		! h m[Matches] t[Time]: Nb(h,t+1) = m <- Nb(h,t) = m & ~ C_nNb(h,m,t).
+		! h m[Matches] t[Time] : Nb(h,Next(t))=m <- Nb(h,t)=m & ~C_nNb(h,m,t).
+        // Much faster why??? t+1 instead of Next() Solved, added timeTheo
+		//! h m[Matches] t[Time]: Nb(h,t+1) = m <- Nb(h,t) = m & ~ C_nNb(h,m,t).
 	}
     {
 		// Expressing causations
@@ -80,7 +80,7 @@ theory T : V {
         ! p : Turn(p,Start) <- I_Turn(p).
         
         // Instead of 
-        Turn(p,t+1) <-  ~GameOver(t) & ~Turn(p,t).
+        Turn(p,Next(t)) <-  ~GameOver(t) & ~Turn(p,t).
         //! p1 p2 t : Turn(p1,Next(t)) <-  ~GameOver(t) & Turn(p2,t) & p1 ~= p2.
         
         
@@ -89,7 +89,7 @@ theory T : V {
         // !t : GameOver(t) <- ! h[Heap] : Nb(h,t) = 0.
         
         //If gameover, the same player turn
-		! p t : Turn(p,Next(t+1)) <-  GameOver(t) & Turn(p,t).
+		! p t : Turn(p,Next(t)) <-  GameOver(t) & Turn(p,t).
     }
     
         	
@@ -196,10 +196,11 @@ procedure main(){
 	// simulate()
     //This method (defined above) simply searches models of your theory
     //findmodels()
-    
+  //  local timeExpanded = calculatedefinitions(timeTheo,S)
+
     //integrityConstraints = {IntegrityConstraint1P1,IntegrityConstraint1P2,IntegrityConstraint2,IntegrityConstraint3,IntegrityConstraint4,IntegrityConstraint5,IntegrityConstraint6,IntegrityConstraint7}
 	//testIntegrityConstraints(integrityConstraints)
-
+	T = merge(T,timeTheo)
 	T1P1 = merge(T,IntegrityConstraint1P1)
     T1P2 = merge(T,IntegrityConstraint1P2)
 	T2 = merge(T,IntegrityConstraint2)
