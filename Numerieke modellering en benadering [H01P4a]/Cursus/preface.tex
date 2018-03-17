@@ -1,0 +1,214 @@
+\chapter*{Voorwoord}
+Dit document bevat een beknopte samenvatting van het boek en de notities van de jaren 2016-2018. Voor de Harry Potter fans, ooit als eens in het boek van de half-bloed prins willen lezen..., of voor de 'Wat als' fans $\rightarrow$ \url{https://www.youtube.com/watch?v=eizOd7_d9pA}. Dit document bevat handige info voor het examen.  De cursus wordt gedoceerd door 2 docenten, Prof. Van Barel Marc \& Prof. Vandewalle Stefan. En bestaat uit 16 lessen, 8 oefenzittingen en 2 opgaves (Matlab of Python), eerste 8 lessen worden gegeven door Prof. Vandewalle, de laatste 8 lessen door Prof. Van Barel. 
+
+De broncode en de laatste versie van dit document bevinden zich op \url{https://github.com/seppeduwe/NMEB}. We moedigen toekomstige lezers aan bij te dragen aan de ontwikkeling van dit document.
+
+\section*{De proffen}
+Beiden behoren ze tot NUMA (Numerieke analyse en toegepaste wiskunde) afdeling van het departement computerwetenschappen, Prof. Vandewalle houdt zich bezig met ontwikkelen van rekentechnieken in het domein van numerieke wiskunde. Prof. Vandewalle zijn expertise is vooral in numerieke methodes voor het oplossen van differentiaal vergelijken alsook in de wiskunde van computergesteund design. Prof. Van Barel gespecialiseerd in de numerieke wiskunde en dan vooral in de numerieke lineaire algebra, oplossen van stelsel, eigen waarde problemen, kleinste kwadraten problemen.
+Voor het deel van Prof. Vandewalle is er een cursus beschikbaar in de Acco, geen slides en notities op het bord. Voor het deel van Prof. Van Barel zijn slides beschikbaar op Toledo en wordt het boek "Numerical Linear Algebra - Lloyd N. Trefethen David Bau" aangeraden.
+
+\section*{Evaluatie}
+Klassiek examen, 2 docenten tegelijk aanwezig, 1 examen voor de 2 delen. 4 tal vragen (bestaande uit 1 bewijs en overzichtsvragen), schriftelijke voorbereiding, bij beiden docenten langsgaan. Practica's tellen voor 4/20 punten mee. Moet voor het praktisch en theoretisch gedeelte slagen.
+
+\section*{Syllabus}
+De syllabus bevindt zich op \url{https://onderwijsaanbod.kuleuven.be/syllabi/n/H01P3AN.htm}
+
+\section*{Doelstellingen}
+Deze cursus behandelt een aantal belangrijke numerieke methoden en algoritmen die toepassing vinden in verschillende ingenieursdisciplines. De student krijgt een overzicht in de numerieke eigenschappen van deze algoritmen, hun complexiteit, nauwkeurigheid en betrouwbaarheid.
+De student leert zo het kritisch evalueren van algoritmen zodat hij een gefundeerd oordeel kan vormen over voor- en nadelen van alternatieve algoritmen. De cursus besteedt ook aandacht aan het gebruik van deze algoritmen in toepassingen. De student leert hierdoor numerieke resultaten correct te interpreteren.
+De student verwerft hierdoor de nodige kritische wetenschappelijke houding binnen dit onderzoeksdomein. In de practica en in de oefenzittingen gebruikt de student de programmeeromgeving Matlab. De resultaten die de student bekomen heeft in de practica worden via een verslag gerapporteerd. Dit is  een oefening in schriftelijk rapporteren. Door in de hoorcolleges en oefenzittingen een aantal voorbeelden te geven, wordt de link gelegd met het desbetreffende onderzoek.
+
+\section*{Onderwijsleeractiviteiten}
+\subsection*{4 sp. Numerieke modellering en benadering: hoorcollege (B-KUL-H01P3a)}
+\begin{enumerate}
+	\item Basisbegrippen \\
+	      opfrissen en verder uitwerken van begrippen uit de (numerieke) wiskunde: vector-en matrixnorm, scalair product, orthogonaliteit, stabiliteit, conditie.
+
+	\item Matrix-factorisatie-algoritmen
+	      \begin{itemize}
+		      \item toepassingen: opstellen van kleinste-kwadraten-benaderingen, multilineaire regressie, tijdreeksanalyse, numerieke voorspelling
+		      \item herhaling van begrippen uit de cursus numerieke wiskunde:
+		            factorisatie van algemene en symmetrisch positief-definiete matrices (LU- en Cholesky-decompositie)
+		      \item orthogonale factorisatie: QR-decompositie, Gram-Schmidt orthogonalisatie
+		      \item oplossen van overgedetermineerde stelsels
+	      \end{itemize}
+
+	\item De snelle Fourier-transformatie
+	      \begin{itemize}
+		      \item toepassingen: signaalverwerking (digitale filters, spectrale analyse), beeldverwerking (ruisverwijdering, compressie met JPEG en MPEG)
+		      \item definitie en eigenschappen van de discrete Fourier-transformatie (DFT)
+		      \item de snelle Fourier-transformatie (FFT): afleiding, complexiteit, implementatie
+		      \item varianten: discrete cosinustransformatie (DCT), DST, meerdimensionale DFT.
+	      \end{itemize}
+
+	\item Benaderen en ontwerpen met splines
+	      \begin{itemize}
+		      \item toepassingen: reverse-engineering, modelleren van meetwaarden, computergesteund geometrisch ontwerp van krommen en oppervlakke
+		      \item definitie, eigenschappen, voorstelling van splinefuncties en B-spline basisfuncties
+		      \item benaderen met behulp van splines: interpolatie en vereffening volgens verschillende criteria (kleinste kwadraten, smoothing)
+		      \item computergesteund geometrisch ontwerp: Bézier-, spline- en NURBS-krommen en oppervlakken.
+	      \end{itemize}
+
+	\item Krylov deelruimtemethoden
+	      \begin{itemize}
+		      \item toepassingen: oplossen van grote ijle stelsels  in numerieke simulatie
+		      \item iteratieve methoden: lineaire en niet-lineaire technieken
+		      \item het begrip Krylov-deelruimte
+		      \item twee basismethoden: toegevoegde gradiënt-methode (CG = Conjugatie Gradient) en GMRES (Generalised Minimal Residual Method)
+		      \item preconditionering: doel, principes.
+	      \end{itemize}
+
+	\item Eigenwaarden- en singuliere waarden-ontbinding
+	      \begin{itemize}
+		      \item toepassingen: stabiliteitsanalyse, modale analyse, modelreductie, bewerkingen op grafen (partitionering, ordening, PageRank)
+		      \item enkele eigenschappen (multipliciteit, Schurvorm, sensitiviteit)
+		      \item berekening van enkele geselecteerde eigenwaarden van (grote) matrices:
+		            deelruimte-iteratie, inverse iteratie, Rayleigh quotient.
+		      \item QR-algoritme
+		      \item berekenen van de singulierewaardenontbinding (beknopt).
+	      \end{itemize}
+\end{enumerate}
+\subsection*{1.2 sp. Numerieke modellering en benadering: oefeningen (B-KUL-H01P4a)}
+In elke zitting wordt Matlab gebruikt. Daarbij wordt de nadruk gelegd op de ontwikkeling van efficiënte Matlab code (bv. door het vermijden van de inverse te berekenen, gebruik maken van vectorbewerkingen, ...) en het schrijven van uitbreidbare/herbruikbare code.
+
+Een mogelijke invulling van de oefenzittingen is als volgt:
+Zittingen 1, 2 en 4 bevatten telkens een 'pen en papier' gedeelte waarbij er meer theoretische oefeningen uitgewerkt worden.
+
+\begin{enumerate}
+	\item Zitting 1: QR-factorisatie en kleinste-kwadratenproblemen
+	      \begin{itemize}
+		      \item hoort bij deel 2 uit 'Numerical Linear Algebra' van L.N. Trefethen, D. Bau
+		      \item inhoud/doelstellingen:
+		            \begin{itemize}
+			            \item doorgronden algoritmes voor het opstellen van een QR-factorisatie met behulp van Householder en Givens transformaties
+			            \item problemen met numerieke afrondingsfouten bij Householder reflecties en normaalvergelijkingen
+			            \item een toepassing uitwerken op een uitbreiding van de theorie uit de cursus naar snelle Givenstransformaties
+		            \end{itemize}
+	      \end{itemize}
+
+	\item Zitting 2: Conditie van kleinste-kwadratenproblemen en stabiliteit van kleinste-kwadratenalgoritmes
+	      \begin{itemize}
+		      \item hoort bij deel 3 uit 'Numerical Linear Algebra' van L.N. Trefethen, D. Bau
+		      \item inhoud/doelstellingen:
+		            \begin{itemize}
+			            \item opfrissing SVD
+			            \item begrip van theorem 18.1:
+			                  \begin{itemize}
+				                  \item theoretische uitwerking \& illustratie van de betekenis van de parameters (conditiegetal, eta, cos(theta)) uit theorem 18.1
+				                  \item ontwikkeling van een Matlab programma om de conditie van verschillende soorten matrixproblemen te onderzoeken
+			                  \end{itemize}
+			            \item onderscheid tussen conditie en stabiliteit
+		            \end{itemize}
+	      \end{itemize}
+
+	\item Zitting 3: Eigenwaardenproblemen
+	      \begin{itemize}
+		      \item hoort bij deel 5 uit 'Numerical Linear Algebra' van L.N. Trefethen, D. Bau
+		      \item inhoud/doelstellingen:
+		            \begin{itemize}
+			            \item convergentiesnelheid QR-methode numeriek onderzoeken
+			            \item inverse iteratie (algoritme 27.2) uitwerken, conditie en stabiliteit praktisch onderzoeken
+			            \item probleem conditie van defectieve matrices
+		            \end{itemize}
+	      \end{itemize}
+
+	\item Zitting 4: Iteratieve methoden
+	      \begin{itemize}
+		      \item hoort bij deel 6 uit 'Numerical Linear Algebra' van L.N. Trefethen, D. Bau
+		      \item inhoud/doelstellingen:
+		            \begin{itemize}
+			            \item betekenis theoretische convergentiesnelheid CG (formules 38.9 en 38.9) onderzoeken (theoretisch + in Matlab)
+			            \item uitwerking van de methode van de steilste helling (theoretische eigenschappen bewijzen, praktische vergelijking in Matlab met CG)
+			            \item implementatie Arnoldi iteraties
+		            \end{itemize}
+	      \end{itemize}
+	      Opmerking: zitting 3 en 4 kunnen omgewisseld worden naargelang het onderwerp van het practicum.
+
+	\item Zitting 5: Kleinste-kwadratenbenaderingen, deel 1
+	      \begin{itemize}
+		      \item hoort bij hoofdstukken 2-3 uit Acco cursus
+		      \item inhoud/doelstellingen:
+		            \begin{itemize}
+			            \item grafische illustratie kleinste-kwadratenbenaderingen
+			            \item implementatie van kleinste-kwadratenbenaderingen als oplossing van een normaalstelsel en als oplossing van een overgedetermineerd stelsel
+			            \item toepassing: benaderen van een kromme
+		            \end{itemize}
+	      \end{itemize}
+
+	\item Zitting 6: Kleinste-kwadratenbenaderingen, deel2
+	      \begin{itemize}
+		      \item Deze oefenzitting maakt gebruik van de code ontwikkeld in oefenzitting 5. Daarnaast hoort er bij deze oefenzitting een invulblad waarop de studenten hun resultaten noteren. Bij de volgende oefenzittingen krijgen de studenten hun verbeterde resultaten terug en worden de meest voorkomende fouten besproken.
+		      \item inhoud/doelstellingen:
+		            \begin{itemize}
+			            \item onderscheid tussen kleinste-kwadratenbenaderingen en interpolerende veeltermbenadering
+			            \item toepassing van kleinste-kwadratenbenaderingen op enkele niet-triviale problemen met onderzoek van de nauwkeurigheid
+		            \end{itemize}
+	      \end{itemize}
+
+	\item Zitting 7: FFT en DFT
+	      \begin{itemize}
+		      \item hoort bij hoofdstuk 4 uit Acco cursus
+		      \item inhoud/doelstellingen:
+		            \begin{itemize}
+			            \item betekenis Fourier frequenties
+			            \item uitwerking compressie van een foto m.b.v. FFT
+			            \item implementatie van een DFT-vermenigvuldigingsalgoritme
+		            \end{itemize}
+	      \end{itemize}
+
+	\item Zitting 8: Geometrische modellering
+	      \begin{itemize}
+		      \item hoort bij hoofdstuk 6 uit Acco cursus
+		      \item inhoud/doelstellingen:
+		            \begin{itemize}
+			            \item onderzoek en vergelijking van de eigenschappen van de verschillende soorten curven die gebruikt worden voor geometrische modellering
+		            \end{itemize}
+		            Oefenzitting 8 maakt geen gebruik van Matlab, maar gebruikt een Java-pakket voor de visualisatie van de verschillende types curven.
+	      \end{itemize}
+\end{enumerate}
+
+\textbf{Bij oefenzittingen 7 en 8 worden de aanwezigheden genoteerd.}
+
+
+\subsection*{0.8 sp. Numerieke modellering en benadering: practica (B-KUL-H01Z3a)}
+Algemene doelstellingen:
+\begin{itemize}
+	\item dieper inzicht in theorie verwerven
+	\item ontwikkeling van een efficiënte Matlab implementatie
+	\item ontwerp van nieuwe, gelijkaardige numerieke algoritmen als gezien in de theorie
+	\item schrijven van wetenschappelijk verslag
+\end{itemize}
+Voorbeeld van mogelijke planning en onderwerpen:
+\begin{itemize}
+	\item Eerste practicum (+- 20 u, 4 weken): thema iteratieve methoden of eigenwaardenproblemen (opgave: 5de week)
+	\item Tweede practicum (+- 10u, 2 weken): thema interpolerende of kleinste-kwadratenbenaderingen met splines of trigonometrische veeltermen (opgave: 11de week)
+\end{itemize}
+\newpage
+Dit document valt onder de MIT licentie.
+\\\\
+\noindent\fbox{%
+	\parbox{\textwidth}{%
+		Copyright (c) \the\year\ \theauthors\ \thecontributors
+		\\\\
+		Permission is hereby granted, free of charge, to any person
+		obtaining a copy of this software and associated documentation
+		files (the "Software"), to deal in the Software without
+		restriction, including without limitation the rights to use,
+		copy, modify, merge, publish, distribute, sublicense, and/or sell
+		copies of the Software, and to permit persons to whom the
+		Software is furnished to do so, subject to the following
+		conditions:
+		\\\\
+		The above copyright notice and this permission notice shall be
+		included in all copies or substantial portions of the Software.
+		\\\\
+		THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+		EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+		OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+		NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+		HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+		WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+		FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+		OTHER DEALINGS IN THE SOFTWARE.
+	}%
+}
