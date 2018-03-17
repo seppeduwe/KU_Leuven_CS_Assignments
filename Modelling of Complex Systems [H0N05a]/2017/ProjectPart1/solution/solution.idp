@@ -1,0 +1,319 @@
+LTCvocabulary ShiftItVoc {
+    // LTC stuff
+    type Time isa int
+    Start:Time
+    partial Next(Time):Time
+    
+    // Coordinates
+    type Co isa int
+    type XCo isa Co
+    type YCo isa Co
+    type Pos constructed from { P(XCo, YCo) }
+    
+    // Directions can be useful to reason with
+    type Dir constructed from { up, down, left, right }
+    
+    // Row Moves and Column moves
+    type Move constructed from { RM(YCo, Dir), CM(XCo, Dir) }
+    
+    // Tile and sides
+    type Tile
+    type Side constructed from { S(Tile, Dir) }
+    
+    // Colours of the sides, is a subset from { "blue", "red", "green", "yellow", "orange", "purple"}
+    type Colour isa string
+    
+    // MoveAt(t) is the selected move at time t if it exists
+    partial MoveAt(Time):Move
+    
+    // GetPos(t, a) is the position of tile a at time t
+    GetPos(Time, Tile):Pos
+    // LTC predicates for GetPos
+    Init_GetPos(Tile):Pos
+    
+    // IsLocked(t) holds if the tile t is locked
+    IsLocked(Tile)
+    
+    // The colouring of the sides
+    Colouring(Side):Colour
+    // To make the input of our structures small, we introduce the following two partial functions:
+    // The colouring of a full tile, this specifies a colour for all sides simultaneously, this has fewer precendence than Init_Colouring
+    partial Init_Colouring_Full(Tile):Colour
+    // The colouring of a side, this has higher precendence than Init_Colouring_Full
+    partial Init_Colouring(Side):Colour
+    
+    // Reach(t, s, c) holds iff at time t the side s is in the colour c connected region of Ref(c). This will be useful to define when the player has won.
+    Reach(Time, Side, Colour)
+    // Ref(c) is a side with colour c. It is defined partially since not all colours have to occur in a given game.
+    Ref(Colour):Side
+    
+    // The game ended
+    GameEnded(Time)
+    // The game won
+    Won(Time)
+    
+    
+    
+    // help predicates and functions
+    
+    // Successor functions for XCo and YCo; maps c to c+1 except for maximum, which is mapped to minimum
+    SuccX(XCo):XCo
+    SuccY(YCo):YCo
+    // Predecessor functions for XCo and YCo; similar to SuccX and SuccY
+    PredX(XCo):XCo
+    PredY(YCo):YCo
+    
+    // Is horizontal direction
+    IsHor(Dir)
+    // Is vertical direction
+    IsVer(Dir)
+    // Opposite direction; left <-> right and up <-> down
+    Opposite(Dir):Dir
+    // Is smaller direction
+    IsSmaller(Dir, Dir)
+    
+    // Gets the X and Y coordinate of a position
+    GetX(Pos):XCo
+    GetY(Pos):YCo
+    
+    // NextPos(p, d) is the neighbouring position of p in the direction d
+    NextPos(Pos, Dir):Pos
+    // The inverse of NextPos
+    PrevPos(Pos, Dir):Pos
+    // Holds if NextPos wraps around edge
+    NextPosBeyondEdge(Pos, Dir)
+    // Gets the coordinate of a move
+	GetCo(Move):Co
+    // Get the direction of a move
+    GetDir(Move):Dir
+    // Gets the direction of a side
+    GetD(Side):Dir
+    // Gets the tile of a side
+    GetTile(Side):Tile
+    // Moved(t, tile) Holds if the tile is moved with the move at time t
+    Moved(Time, Tile)
+    // Holds if there is a move at time t (and the game is not ended)
+   	IsMoving(Time)
+}
+
+theory ShiftItTheory: ShiftItVoc {
+    {
+        // Definitions of the successor and predecessor of the coordinates
+        ! x[XCo]: SuccX(x) = x+1 <- XCo(x+1).
+        ! x[XCo]: SuccX(x) = MIN[:XCo] <- ~XCo(x+1).
+        ! x[XCo], x2[XCo]: PredX(x) = x2 <- SuccX(x2) = x.
+        ! y[YCo]: SuccY(y) = y+1 <- YCo(y+1).
+        ! y[YCo]: SuccY(y) = MIN[:YCo] <- ~YCo(y+1).
+        ! y[XCo], y2[XCo]: PredY(y) = y2 <- SuccY(y2) = y.
+    }{
+        // Definitions of horizontal, vertical and opposite directions
+        IsHor(left()).
+        IsHor(right()).
+        IsVer(up()).
+        IsVer(down()).
+        Opposite(up()) = down().
+        Opposite(down()) = up().
+        Opposite(left()) = right().
+        Opposite(right()) = left().
+    }{
+    	IsSmaller(down, left).
+        IsSmaller(left, right).
+        IsSmaller(right, up).
+        ! d[Dir], e[Dir]: IsSmaller(d,e) <- ? f[Dir]: IsSmaller(d,f) & IsSmaller(f,e).
+    }{
+        // Extracting coordinates from a position
+        ! x[XCo], y[YCo]: GetX(P(x,y)) = x.
+        ! x[XCo], y[YCo]: GetY(P(x,y)) = y.
+    }{
+        // Definition of the next position in a certain direction
+        ! x[XCo], y[YCo]: NextPos(P(x,y), up()) = P(x, SuccY(y)).
+        ! x[XCo], y[YCo]: NextPos(P(x,y), down()) = P(x, PredY(y)).
+        ! x[XCo], y[YCo]: NextPos(P(x,y), right()) = P(SuccX(x),y).
+        ! x[XCo], y[YCo]: NextPos(P(x,y), left()) = P(PredX(x),y).
+        // PrevPos is the inverse of NextPos
+        ! p d q: PrevPos(p,d) = q <- NextPos(q,d) = p.
+    }{
+        // Holds if the coordinates wrap around the edges
+        ! x[XCo], y[YCo]: NextPosBeyondEdge(P(x,y), up()) <- SuccY(y) =< y.
+        ! x[XCo], y[YCo]: NextPosBeyondEdge(P(x,y), down()) <- PredY(y) >= y.
+        ! x[XCo], y[YCo]: NextPosBeyondEdge(P(x,y), right()) <- SuccX(x) =< x.
+        ! x[XCo], y[YCo]: NextPosBeyondEdge(P(x,y), left()) <- PredX(x) >= x.
+    }{
+        // Extracting coordinate and direction from a move
+        ! y[YCo], d[Dir]: GetCo(RM(y,d)) = y.
+		! x[XCo], d[Dir]: GetCo(CM(x,d)) = x.
+		! y[YCo], d[Dir]: GetDir(RM(y,d)) = d.
+		! x[XCo], d[Dir]: GetDir(CM(x,d)) = d.
+    }{
+        // Extracting tile and direction from a side
+        ! t[Tile], d[Dir]: GetTile(S(t,d)) = t.
+        ! t[Tile], d[Dir]: GetD(S(t,d)) = d.
+    }{
+        // If the movement is horizontal (row move), then tiles within that row are moved
+        ! t[Time], a[Tile]: Moved(t,a) <- IsHor(GetDir(MoveAt(t))) & GetY(GetPos(t,a)) = GetCo(MoveAt(t)).
+        // If the movement is vertical (column move), then tiles within that column are moved
+        ! t[Time], a[Tile]: Moved(t,a) <- IsVer(GetDir(MoveAt(t))) & GetX(GetPos(t,a)) = GetCo(MoveAt(t)).
+    }{
+        // Definition of IsMoving
+        ! t[Time]: IsMoving(t) <- (? m[Move]: MoveAt(t) = m) & ~GameEnded(t).
+    }{
+        // Full tile colouring
+        ! s[Side]: Colouring(s) = Init_Colouring(s) <- ? c[Colour]: Init_Colouring(s) = c.
+        // Side colouring
+        ! s[Side]: Colouring(s) = Init_Colouring_Full(GetTile(s)) <- ~(? c[Colour]: Init_Colouring(s) = c).
+    }{
+        // Ref(c) is always reached if Ref(c) is defined
+        ! t[Time], c[Colour]: Reach(t,Ref(c),c) <- ? s[Side]: Ref(c) = s.
+        // A side lying next to a reached side on different tiles
+        ! t[Time], s[Side], c[Colour]: Reach(t,s,c) <- ? r[Side]: (
+        	Colouring(s) = Colouring(r) &
+        	Reach(t,r,c) &
+        	// Tiles of s and r should lie next to each other with side s and r touching
+        	NextPos(GetPos(t,GetTile(s)), GetD(s)) = GetPos(t,GetTile(r)) &
+        	GetD(s) = Opposite(GetD(r)) &
+        	~NextPosBeyondEdge(GetPos(t,GetTile(s)), GetD(s))	
+        ).
+        // A side lying next to a reached side on the same tile
+        ! t[Time], s[Side], c[Colour]: Reach(t,s,c) <- ? r[Side]: (
+        	r ~= s &
+        	Reach(t,r,c) &
+        	GetTile(s) = GetTile(r) &
+        	Colouring(s) = Colouring(r) &
+        	GetD(s) ~= Opposite(GetD(r))
+        ).
+    }{
+        // The game is won if every side is in the reachable set of the Ref of its colour
+    	! t[Time]: Won(t) <- ! s[Side]: Reach(t,s,Colouring(s)).
+        // Once the game is won, it stays won
+        ! t[Time]: Won(Next(t)) <- Time(Next(t)) & Won(t).
+    }{
+        // Degenerate case: no moves can be executed
+        ! t[Time]: GameEnded(t) <- (
+        	// Every column contains a locked block
+        	(! x[XCo]: ?a[Tile]: IsLocked(a) & GetX(GetPos(t,a)) = x) &
+        	// Every row contains a locked block
+        	(! y[YCo]: ?a[Tile]: IsLocked(a) & GetY(GetPos(t,a)) = y)
+        ).
+        // The game is ended when it's won
+        ! t[Time]: GameEnded(t) <- Won(t).
+        // Once the game is ended, it stays ended
+        ! t[Time]: GameEnded(Next(t)) <- Time(Next(t)) & GameEnded(t).
+    }{
+        // initial position
+        ! t[Tile]: GetPos(0,t) = Init_GetPos(t).
+        // A tile that is not moved retains its position
+        ! t[Time], a[Tile]: GetPos(Next(t),a) = GetPos(t,a) <- Time(Next(t)) & ~Moved(t,a).
+        // A tile that is moved, gets its position shifted in the direction of the movement
+        ! t[Time], a[Tile]: GetPos(Next(t),a) = NextPos(GetPos(t,a), GetDir(MoveAt(t))) <- Time(Next(t)) & Moved(t,a).
+    }
+    
+    // Initially every position is filled with a tile.
+    ! p[Pos]: ? t[Tile]: GetPos(0,t) = p.
+    // Initially every position only contains 1 tile
+    ! a[Tile], b[Tile]: GetPos(0,a) = GetPos(0,b) => a = b.
+    // If the game is not ended, we still want to move.
+    ! t[Time]: ~GameEnded(t) => IsMoving(t).
+    // The direction of a row move is horizontal and the direction of a column move is vertical.
+    ! t[Time], d[Dir], y[YCo]: MoveAt(t) = RM(y,d) => IsHor(d).
+    ! t[Time], d[Dir], x[XCo]: MoveAt(t) = CM(x,d) => IsVer(d).
+    // If a row/column is moved, we cannot have a locked block in it, or equivalently every locked block is never moved.
+	! t[Time], a[Tile]: IsLocked(a) => ~Moved(t,a).
+    // For every colour c present, Ref(c) has colour c.
+	! c[Colour]: (? s[Side]: Colouring(s) = c) => (Colouring(Ref(c)) = c).
+    // Ref(c) is only defined for every colour present
+    ! c[Colour]: (? s[Side]: Colouring(s) = c) <=> (? s[Side]: Ref(c) = s).
+    // Ref(c) is maximal under the side with the same colour
+    ! c[Colour]: (? s[Side]: Colouring(s) = c) => (! s[Side]: ((Colouring(s) = c & s ~= Ref(c)) => (
+    	(GetY(GetPos(Start, GetTile(s))) < GetY(GetPos(Start, GetTile(Ref(c))))) | // bigger Y coordinate
+    	(GetY(GetPos(Start, GetTile(s))) = GetY(GetPos(Start, GetTile(Ref(c)))) & GetX(GetPos(Start, GetTile(s))) < GetX(GetPos(Start, GetTile(Ref(c))))) | // equal Y coordinate and bigger X coordinate
+    	(GetTile(s) = GetTile(Ref(c)) & IsSmaller(GetD(s), GetD(Ref(c)))) // Same tile, but bigger direction
+    ))).
+}
+
+//you might need to use an extended vocabulary for some of the verifications
+vocabulary verificationVoc {
+ 	extern vocabulary ShiftItVoc
+    InSameComponent(Time, Side, Side)
+}
+
+theory verification1: verificationVoc {
+	? t[Time]: Won(t).
+}
+
+procedure verification1proc(struct) {
+    local t = merge(verification1, ShiftItTheory)
+    return sat(t, struct)
+}
+
+theory verification2: verificationVoc {
+    ~GameEnded(Start).
+    ~(! t[Time]: GameEnded(t) =>  Won(t)).
+}
+
+procedure verification2proc(struct) {
+    local t = merge(verification2, ShiftItTheory)
+    return not sat(t, struct)
+}
+
+theory verification3: verificationVoc {
+    ~(! t[Time]: Won(t) => ! r[Time], c[Colour]: #{s[Side]: Reach(t,s,c)} >= #{s[Side]: Reach(r,s,c)}).
+}
+
+procedure verification3proc(struct) {
+    local t = merge(verification3, ShiftItTheory)
+    return not sat(t, struct)
+}
+
+theory verification4: verificationVoc {
+	{
+        ! t[Time], s[Side]: InSameComponent(t,s,s). // reflexive
+        ! t[Time], s[Side], r[Side]: InSameComponent(t,s,r) <- InSameComponent(t,r,s). // symmetric
+        ! t[Time], s[Side], r[Side]: InSameComponent(t,s,r) <- ? u[Side]: InSameComponent(t,s,u) & InSameComponent(t,u,r). // transitive
+        // two sides on different tiles next to each other
+        ! t[Time], s[Side], r[Side]: InSameComponent(t,s,r) <- ( 
+        	Colouring(s) = Colouring(r) &
+        	NextPos(GetPos(t,GetTile(s)), GetD(s)) = GetPos(t,GetTile(r)) &
+        	GetD(s) = Opposite(GetD(r)) &
+        	~NextPosBeyondEdge(GetPos(t,GetTile(s)), GetD(s))
+        ).
+        // two sides on the same tile next to each other
+ 		! t[Time], s[Side], r[Side]: InSameComponent(t,s,r) <- (
+        	Colouring(s) = Colouring(r) &
+        	GetTile(s) = GetTile(r) &
+        	GetD(s) ~= Opposite(GetD(r))
+        ).
+    }
+    ? t[Time]: Won(t).
+    ! t[Time], s[Side], r[Side]: InSameComponent(t,s,r) => InSameComponent(Next(t),s,r).
+}
+
+procedure verification4proc(struct) {
+    local t = merge(verification4, ShiftItTheory)
+    return sat(t,struct)
+}
+
+theory verification5: verificationVoc {
+	? t[Time]: Won(t).
+    ! t[Time]: Won(t) => (! a[Tile]: (
+    	(? d[Dir]: NextPos(GetPos(Start,a),d) = GetPos(t,a) & ~NextPosBeyondEdge(GetPos(Start,a),d)) |
+    	GetPos(Start,a) = GetPos(t,a))
+    ).
+}
+
+procedure verification5proc(struct) {
+    local t = merge(verification5, ShiftItTheory)
+	return sat(t,struct)
+}
+
+theory verification6: verificationVoc{
+    ~(! t[Time], y[YCo], d[Dir]: (
+    	Time(Next(t)) & Time(Next(Next(t))) &
+    	MoveAt(t) = CM(y,d) &
+    	MoveAt(Next(t)) = CM(y, Opposite(d))
+    ) => (! a[Tile]: GetPos(t,a) = GetPos(Next(Next(t)),a))).
+}
+
+procedure verification6proc(struct) {
+    local t = merge(verification6, ShiftItTheory)
+    return not sat(t, struct)
+}

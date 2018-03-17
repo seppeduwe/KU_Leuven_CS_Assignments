@@ -1,0 +1,90 @@
+\documentclass[11pt]{book}
+
+% Essential
+\usepackage[dutch]{babel}
+\usepackage{titling}
+\usepackage{tikz}
+\usetikzlibrary{decorations.text,calc,arrows.meta}
+%\usetikzlibrary{scopes,chains,shapes,positioning}
+\usetikzlibrary{mindmap}
+\usepackage{pdfpages}
+% Optional
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{graphicx}
+
+% Titleplage
+\newcommand{\theauthors}{Seppe Duw\'e}
+\newcommand{\thecontributors}{Xavier Dejager}
+\newcommand{\theprofs}{S. Vandewalle, M. Van Barel}
+
+\title{Numerieke modellering en benadering \\ (B-KUL-H01P4a)}
+\date{\today}
+\author{\theauthors}
+
+% Margins
+\setlength{\topmargin}{0in}
+\setlength{\footskip}{0.5in}
+\setlength{\textwidth}{6.5in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textheight}{8.5in}
+
+% Image folder
+\graphicspath{{figures/}{../figures/}}
+
+% Theorem styles
+% declare a new theorem style
+\newtheoremstyle{mystyle}%
+{}% Space above
+{}% Space below 
+{\itshape\color{blue}}% Body font
+{}% Indent amount
+{}% Theorem head font
+{.}% Punctuation after theorem head
+{ }% Space after theorem head 
+{}% Theorem head spec (can be left empty, meaning ‘normal’)
+
+\theoremstyle{mystyle}
+\newtheorem{defn}{Definitie}[section]
+\newtheorem{exam}{Examen}[section]
+\newtheorem{exmp}{Voorbeeld}[section]
+\newtheorem{form}{Formularium}[section]
+\newtheorem{tip}{Tip}[section]
+\begin{document}
+\frontmatter
+% Title Page
+\include{titlepage}
+% Table of Contents Page
+\tableofcontents
+\include{preface}
+\listoffigures
+%\listoftables
+
+\mainmatter
+\include{chapters/1_Inleiding}
+\include{chapters/2_EnkeleBegrippenUitDeBenaderingsTheorie}
+\include{chapters/3_Veeltermbenadering}
+\include{chapters/4_TrigonometrischeBenadering}
+\include{chapters/5_BenaderenMetSplineFuncties}
+\include{chapters/6_GeometrischeModellering}
+\chapter{Oefenzittingen}
+\include{exercise/1_Benaderingstheorie}
+%\include{exercise/Session2}
+%\include{exercise/Session3}
+%\include{exercise/Session4}
+%\include{exercise/Session5}
+%\include{exercise/Session6}
+%\include{exercise/Session7}
+%\include{exercise/Session8}
+% Appendix
+\appendix
+
+% References
+\bibliographystyle{plain}
+\bibliography{bibliography}
+\nocite{*}
+
+\end{document}
+

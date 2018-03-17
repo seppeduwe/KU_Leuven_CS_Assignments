@@ -1,0 +1,994 @@
+Homeworks 2017-2018
+Version 1.0.1
+This has not been checked, there may still be mistakes!!!
+---------------------------------------------------------
+
+Homework 1. P40
+Meaning 1: I arrived at home and after I arrived I called her.
+Meaning 2: I started going home and I called her on my way over. In meaning two, the call could have easily finished by the time I arrived at home.
+
+Homework 2. P42
+1) 
+f(a) = a + 1 = 1 + 1 = 2
+g(b) = 2 x b = 2 x 2 = 4
+h(f(a),g(b)) = h(2,4) = 2 x 4 = 8
+
+2)
+f(a) = weight of a = weight of John
+g(b) = height of b = height of John
+h(f(a), g(b)) = h(weight of John, height of John) = weight of John/(height of John)2
+
+In 1) the term denotes e the number 8 (without the computations), The interpretation / structure introduces numbers as objects, but there's no term 8 in the sheer vocabulary we're working with here.
+in 2) it denotes the BMI of John.
+
+Homework 3. P43
+Although the phrasing is missing some details or context like mentioned before, (distance, direction, meaning of symbols,etc) I think the ambiguous part could be in the interpretation of "and". It could be a temporal or a logical conjunction. But it isn't in this case. You can not say that the force applied is proportional to the product of their masses and then inverse proportional to their distance. That just doesn't make sense. That aside the pure phrasing is ambiguous if you want to know the details like which distance and direction. If this doesn't matter the phrasing still holds a truth that is unambiguous.
+(Verified answer: unambiguous)
+
+It's also worth noting that this phrasing only specifies specific properties of the law that are true (proportional to product of masses, inversely proportional to distance squared), not that those are the only proportional relationships and that taking those two things into account we end up with the gravitational constant G. Although that doesn't necessarily make it more ambiguous, one could argue it's not the same as saying F = G*m1*m2/r^2., which is what was probably the intended interpretation of the sentence.
+
+Homework 4. P44
+A formula T is tautological iff ¬T is not satisfiable.
+Proof. T is a tautology
+iff every structure A satisfies T
+iff every structure A does not satisfy ¬T
+iff there is no structure A that satisfies ¬T
+iff ¬T is not satisfiable.
+
+A formula T1 is equivalent to T2 iff {T1,¬T2} is not satisfiable and {¬T1,T2} is not satisfiable.
+Proof. T1 is equivalent to T2
+iff for every structure A, if A ⊨ T1 then A ⊨ T2 and if A ⊨ T2 then A ⊨ T1
+iff there is no structure A such that A ⊨ T1 and A ⊯ T2, and there is no structure A such that A ⊨ T2 and A ⊯ T1
+iff there is no structure A that satisfies both T1 and ¬T2, and there is no structure A that satisfies both T2 and ¬T1
+iff {T1,¬T2} is not satisfiable and {¬T1,T2} is not satisfiable.
+
+Homework 5. P45
+D = {1,2,3,4,5,r,g,b}
+Vertex = {1,2,3,4,5}
+Edge={(1,2),(2,1),(2,3),(3,2),(2,5),(5,2),(1,5),(5,1),(1,4),(4,1),(4,5),(5,4),(4,3),(3,4)}
+Col = {r,g,b}
+Colouring={(1,b),(2,g),(3,b),(4,g),(5,r),(r,r),(g,g),(b,b)}
+IDP notation:
+Vocabulary V{
+	type D
+	Vertex(D)
+	Edge(D,D)
+	Col(D)
+	Colouring(D):D
+}
+Structure S:V{
+D = {1,2,3,4,5,r,g,b}
+Vertex = {1,2,3,4,5}
+Edge={(1,2),(2,1),(2,3),(3,2),(2,5),(5,2),(1,5),(5,1),(1,4),(4,1),(4,5),(5,4),(4,3),(3,4)}
+Col = {r,g,b}
+Colouring={(1->b),(2->g),(3->b),(4->g),(5->r),(r->r),(g->g),(b->b)}
+}
+
+Homework 6. P45
+Informal:
+For every vertex, there exists 2 other vertices y and z which are different from one another, and they are connected by direct edges between them, forming a loop.
+(Every vertex can reach itself using exactly 3 edges over 3 distinct vertices.)
+It is true:
+Vertex 1: take vertices 2 and 5, they are different vertices and there are direct edges between them.
+Vertex 2: take vertices 5 and 3.
+Vertex 3: take vertices 5 and 4.
+Vertex 4: take vertices 3 and 5.
+Vertex 5: take vertices 1 and 4.
+So for every possible vertex, we can find a solution and thus the formula is proven to be true.
+
+Homework 7. P46
+vocabulary V{  
+	type Ape constructed from {Sam, Anna, Harriet, Mike}
+	type Fruit constructed from {Banana, Pear, Apple, Orange} 
+	type Loc constructed from {Grass,Rock,Tree,Stream} 
+	Eats(Ape,Fruit) 
+	Location(Ape,Loc)
+}
+
+theory T:V{   
+	! x[Fruit]: #{y:Eats(y,x)}=1.   
+	! y[Ape]: #{x:Eats(y,x)}=1.   
+	! x[Loc]: #{y:Location(y,x)}=1. 
+	! y[Ape]: #{x:Location(y,x)}=1.
+    ~Eats(Sam,Banana).   
+	Location(Sam,Grass). 
+	! x:Location(x,Rock) => Eats(x,Apple).   
+	! x:Eats(x,Pear)=>~Location(x,Tree).   
+	Location(Anna,Stream).
+	~Eats(Anna,Pear).   
+	~Location(Harriet,Tree).   
+	~Eats(Mike,Orange).
+}
+
+structure S:V{}
+
+procedure main(){  
+   stdoptions.nbmodels = 1 printmodels(modelexpand(T,S))
+}
+
+this gives :
+ structure : V {
+ Eats = { Anna,Orange; Harriet,Apple; Mike,Banana; Sam,Pear }
+ Location = { Anna,Stream; Harriet,Rock; Mike,Tree; Sam,Grass }
+ }
+
+You added this part to the theory:
+    ! x[Fruit]: #{y:Eats(y,x)}=1.
+    ! y[Ape]: #{x:Eats(y,x)}=1.
+    ! x[Loc]: #{y:Location(y,x)}=1.
+    ! y[Ape]: #{x:Location(y,x)}=1.
+I added this part to the theory instead:
+
+    !a: !f:!g: Eats(a,f) & Eats(a,g) => f=g.
+    !a:!b: !f: Eats(a,f) & Eats(b,f) => a=b.
+    !a: ?f: Eats(a,f).
+   
+    !a: !p:!q: Location(a,p) & Location(a,q) => p=q.
+    !a:!b: !p: Location(a,p) & Location(b,p) => a=b.
+    !a: ?p: Location(a,p).
+
+The main differences are that I didn't use types or aggregates in the theory and that I didn't assume every piece of fruit has to be eaten by an ape and that I didn't assume that every location needs to hold an ape.
+However, for modeling purposes, I do like your solution more, provided it gets changed to:
+
+    ! f[Fruit]: #{ a[Ape] : Eats(a,f) }=<1.
+    ! a[Ape]: #{ f[Fruit] : Eats(a,f) }=1.
+    ! a[Ape]: #{ p[Loc] : Location(a,p) }=1.
+    ! p[Loc]: #{ a[Ape] : Location(a,p) }=<1.
+I like it more, because it's more concise and readable on the one hand and much more flexible on the other hand.
+Locations can suddenly contain 2 apes each?
+In your solution, it'd be easier to change it.
+There is a function Capacity(Loc) : int representing the maximal amount of apes per location?
+
+-> You guys forgot to answer the favourite ape question. I think it was Mike, because kids usually like what they know and don't like or fear what they don't know. All kids learn that apes eat bananas and climb trees and Mike eats a banana at the tree, so he was most likely the kids' favourite. 
+
+Homework 8. P46
+(Not verified)
+- What does the following proposition mean:
+  P(0) & !x(P(x) => P(S(x))
+The set P containing 0 and closed under taking successor.
+
+- Verify whether the following structure satisfies it.
+The structure satisfies the proposition. 
+The set P has the zero element and every element in the set P has a successor.
+
+- Propose an alternative interpretation of P such that the formula is not satisfied.
+The structures where P(0) or !x(P(x) => P(S(x)) are not satisfied.
+P = {b,f} or P = {d,b,f,h}
+
+- Express that P is a subset of Q as a formula. 
+!x: P(x) => Q(x)
+
+- Try to express that g cannot be reached from 0 through the function S. Does it work?
+g cannot be reached from 0 through the function S.
+
+{
+~(S(0) = g),
+~?x_1: ( S(0) = x_1 & S(x_1) = g ),
+...
+~?x_1..x_n: ( S(0) = x_1 ... S(x_n) = g ),
+...
+}
+
+Homework 9. P47
+Proof :
+
+Let b be the isomorphism from the structure 2l to the structure 2l'.
+
+Sentences can be an atom (a predicate supplied with terms supplied as arguments or a comparison) as ground case.
+Sentences can also be iteratively defined as a conjunction, a disjunction, an implication, an equivalence or a quantification over other sentences.
+Every sentence can be constructed by applying the iterative definition to the ground case a finite amount of times.
+
+Terms can be constants (object symbols) as ground case.
+Terms can be iteratively defined as a function applied to terms.
+Every term can be constructed by applying the the iterative definition to the ground case a finite amount of times.
+
+We will show that for every term t holds that b( t^2l ) = t^2l' through complete induction (in which the ground case and iterative case are proven analogously).
+
+We will then show that for every sentence s holds that 2l satisfies s if and only if 2l' satisfies s through complete induction (in which again the ground case and iterative case are mostly proven analogously).
+
+We will provide the proofs by induction by proving the the theorem for every type of term and sentence, using the induction hypothesis on their iterative components.
+
+Because every term and sentence can be constructed iteratively by combining those components again, the proof will have been finished.
+
+Semi-formal proofs by induction over terms and sentences e:
+
+If e is a term f(t1,t2,...,tn) with f/n: in sigma and t1,t2,...,tn terms over sigma for which the induction hypothesis holds,
+then the following holds:
+  b( (f(t1,t2,...,tn))^2l )
+= b( f^2l(t1^2l,t2^2l,...,tn^2l) )      [by definition of interpretation]
+= f^2l'(b(t1^2l),b(t2^2l),...,b(tn^2l)) [by definition of isomorphism]
+= f^2l'(t1^2l',t2^2l',...,tn^2l')       [by induction hypothesis]
+= (f(t1,t2,...,tn))^2l'                 [by definition of interpretation]
+
+If e is an atom P(t1,t2,...,tn) with P/n in sigma and t1,t2,...,tn terms over sigma for which the induction hypothesis holds,
+then the following holds:
+    2l |= P(t1,t2,...,tn)
+iff (t1^2l,t2^2l,...,tn^2l) in P^2l           [by definition of satisfiability]
+iff (b(t1^2l),b(t2^2l),...,b(tn^2l)) in P^2l' [by definition of isomorphism]
+iff (t1^2l',t2^2l',...,tn^2l') in P^2l'       [by induction hypothesis]
+iff 2l' |= P(t1,t2,...,tn)                    [by definition of satisfiability]
+
+if e is a conjunction alpha & beta with alpha and beta sentences over sigma for which the induction hypothesis holds,
+then the following holds:
+    2l |= alpha & beta
+iff 2l |= alpha and 2l |= beta   [by definition of satisfiability]
+iff 2l' |= alpha and 2l' |= beta [by induction hypothesis]
+iff 2l' |= alpha & beta          [by definition of satisfiability]
+
+if e is a disjunction alpha | beta with alpha and beta sentences over sigma for which the induction hypothesis holds,
+then the following holds:
+    2l |= alpha | beta
+iff 2l |= alpha or 2l |= beta   [by definition of satisfiability]
+iff 2l' |= alpha or 2l' |= beta [by induction hypothesis]
+iff 2l' |= alpha | beta         [by definition of satisfiability]
+
+if e is a negation ~alpha with alpha a sentences over sigma for which the induction hypothesis holds,
+then the following holds:
+    2l |= ~alpha
+iff 2l |/= alpha  [by definition of satisfiability]
+iff 2l' |/= alpha [by induction hypothesis]
+iff 2l' |= ~alpha [by definition of satisfiability]
+
+if e is an implication alpha => beta with alpha and beta sentences over sigma for which the induction hypothesis holds,
+then the following holds:
+    2l |= alpha => beta
+iff 2l |/= alpha or 2l |= beta   [by definition of satisfiability]
+iff 2l' |/= alpha or 2l' |= beta [by induction hypothesis]
+iff 2l' |= alpha => beta         [by definition of satisfiability]
+
+if e is an equivalence alpha <=> beta with alpha and beta sentences over sigma for which the induction hypothesis holds,
+then the following holds:
+    2l |= alpha <=> beta
+iff 2l |= alpha if and only if 2l |= beta   [by definition of satisfiability]
+iff 2l' |= alpha if and only if 2l' |= beta [by induction hypothesis]
+iff 2l' |= alpha <=> beta                   [by definition of satisfiability]
+
+if e is an existential quantification (?x alpha) with alpha a sentence over sigma and the free variable x, for which the induction hypothesis holds,
+then the following holds:
+    2l |= (?x alpha)
+iff there exists d in D_2l such that 2l[x:d] |= alpha     [by definition of satisfiability]
+iff there exists d in D_2l such that 2l'[x:b(d)] |= alpha [by induction hypothesis]
+iff there exists d' in D_2l' such that 2l'[x:d'] |= alpha
+iff 2l' |= (?x alpha)                                     [by definition of satisfiability]
+
+if e is a universal quantification (!x alpha) with alpha a sentence over sigma and the free variable x, for which the induction hypothesis holds,
+then the following holds:
+    2l |= (!x alpha)
+iff for d in D_2l it holds that 2l[x:d] |= alpha     [by definition of satisfiability]
+iff for d in D_2l it holds that 2l'[x:b(d)] |= alpha [by induction hypothesis]
+iff for d' in D_2l' it holds that 2l'[x:d'] |= alpha
+iff 2l' |= (!x alpha)                                [by definition of satisfiability]
+
+if e is a comparison t=s with t and s terms over sigma for which the induction hypothesis holds,
+then the following holds:
+    2l |= t=s
+iff t^2l=s^2l       [by definition of satisfiability]
+iff b(t^2l)=b(s^2l) [property of bijection]
+iff t^2l'=s^2l'     [by induction hypothesis]
+iff 2l' |= t=s      [by definition of satisfiability]
+
+QED.
+
+Homework 10. P47
+The definition of a categorical FO theory is as follows:
+An FO theory is categorical iff all its models belong to the same non-empty equivalence class.
+Where two structures belong to the same equivalence class iff they are isomorph.
+A trivial solution to this question is then a FO theory where there is only one model that satisfies the theory. -> If there's one model satisfying a theory (which does not consist of an empty structure), then there are infinitely many different models satisfying the theory, but they may all be isomorphic to each other.
+This is because you can basically rename all of the domain elements in a satisfying model to get a new model that satisfies the theory.
+For example an Einstein puzzle with a unique solution. This would create one equivalence class with one element.
+
+Other answer: !x: x=Singleton.   with as vocabulary just the function symbol Singleton/0:
+
+Homework 11. P49
+Let Course^2l = { Chem; Phys } and Tutor^2l = { (CT, Chem) ; (PT, Phys) }.
+We can verify the below formula to be true:
+
+!x ?y (Course(x)=> Tutor(y,x))
+x can be either Chem, Phys, CT or PT.
+If x is Phys, let y be PT and let y be CT otherwise.
+It is then easy to verify for every value of x that the formula holds.
+And we can verify the below formula to be false:
+?y!x(Course(x)=>Tutor(y,x))
+y can be either Chem, Phys, CT or PT.
+If y is PT, let x be Chem and let x be Phys otherwise.
+It is then easy to verify that the above formula never holds.
+
+Homework 12. P49
+It might help to write the sentences as:
+?x:?y: phi(x,y).
+?y:?x: phi(x,y).
+
+You can prove those are logically equivalent by showing that both sentences are satisfied by the same models.
+You could do that as follows (2l is a model):
+2l |= ?x:?y: phi(x,y)
+iff 2l [x:x^2l] |= ?y: phi(x,y)
+iff 2l [y:y^2l] [x:x^2l] |= phi(x,y)
+iff 2l [x:x^2l] [y:y^2l] |= phi(x,y) (because x and y are different independent symbols)
+iff 2l [y:y^2l] |= ?x: phi(x,y)
+iff 2l |= ?y: ?x: phi(x,y)
+
+Homework 13. P50
+The quantifiers i found are the following:
+    Both
+    A lot of
+    Lots of
+    Plenty of
+    Many
+    Several
+    A majority of
+    A minority of
+    A great deal of
+    A couple of 
+    About "n"
+    Between "n" and "m"
+    An odd number of
+    A countable number of
+    The least amount of 
+    a large amount of/ a great deal of
+	too many/too few/enough
+	multiple/several
+	both
+	so much
+    All mandatory
+    most interesting
+
+If we're talking about quantifiers in general (not necessarily fitting the example sentence), we can count all the quantifiers of LTL quantifiers and second order logic quantifiers too (although second order quantifiers might be considered the same as first order quantifiers in this context).
+
+Homework 14. P50
+Sadly, no convenient method in pure FO exists. We have to specify for each quantifier exactly how many elements must satisfy the formula exhaustively.
+At least n:
+    ∃x1∃x2...∃xn(P(x1) ∧ P(x2) ∧ ...  ∧ P(xn) ∧ ¬(x1 = x2) ∧ ...  ∧ ¬(x1 = xn) ∧ ¬(x2 = x3)  ∧ ... ∧ ¬(xn-1 = xn) ∧ Q (x1) ∧ Q(x2) ∧ ... ∧ Q(xn))
+At most n:
+    ∀x1∀x2...∀xn∀xn+1(P(x1) ∧ Q(x1) ∧ P(x2) ∧ Q(x2) ∧ ... ∧ P(xn+1) ∧ Q(xn+1) ⇒ x1 = x2  ∨ x1 = x3 ∨ ... ∨ xn = xn+1)
+Clearly, not a good method when we want to express this with a larger "n", even 3 would already yield a fairly substantial formula. We can express this in finite domains like:
+at least n: |P^µ ∩ Q^µ| ≥ n 
+at most n: |P^µ ∩ Q^µ| ≤ n
+
+Homework 15. P50
+Work out how the other natural language quantifiers can be translated to FO.
+- Each, all, every : !x
+- Some, at least one : ?x
+- No, not a single : ~?x
+- Not all : ~!x
+- At least "n" : ?>=n x
+- At most "n" : ?=<n x
+- Exactly "n" : ?=n x
+- Few (def: A small number of. More than two.) :  ?>2 x
+
+Homework 16. P50
+|P ∩ Q| > |P − Q|
+Ok, but what about infinite models?
+What if there are an infinite amount of objects satisfying P&Q and an infinite amount of objects satisfying P&~Q?
+Also, to be safe you should use P^2l and Q^2l instead, to refer to their interpretations.
+
+Homework 17. P52
+Assume the following structure:
+D = {Fritz, Herman, Hans, Felix} (domain)
+Human = {(Fritz), (Herman), (Hans), (Felix)}
+Parent = {(Fritz)}
+HasChild = {(Fritz, Herman), (Hans, Felix)}
+The structure satisfies the theory:
+    For non – parents Herman and Felix, the formula is clearly true because Parent and HasChild are both never true
+    For x = Fritz:
+        Parent(Fritz) ⇔ ∃c HasChild(Fritz, c) must hold
+        Parent(Fritz) ⇒ ∃c HasChild(Fritz, c) is true for c = Herman
+        ∃c HasChild(Fritz, c) ⇒ Parent(Fritz) is also true for c = Herman 
+    For x = Hans
+        Parent(Hans) ⇔ ∃c HasChild(Hans, c) must hold
+        Parent(Hans) ⇒ ∃c HasChild(Hans, c) is already fulfilled because Hans is not in Parent
+        ∃c HasChild(Hans, c) ⇒ Parent(Hans) is also true! This is because there indeed exists a c for which the implication holds. E.g. take c = Hans, it is now true that HasChild(Hans, Hans) ⇒ Parent(Hans) simply because there is nothing that makes HasChild(Hans, Hans) true. 
+We come to the conclusion that the structure satisfies the theory, but it does not satisfy the natural language definition. Therefore, the natural language definition and the theory are not equivalent.
+
+Other answer: E.x. Take a structure in which John is a parent and has a child Ann, but there are no humans.
+In this structure the given formula is true (the conclusion is true; the truth of the condition, whether John is human, does not matter). However, the definition is false (only humans can be parents).
+The correct explicit definition in FO is : ∀x(Parent(x) ⇔ (Human(x) ∧ ∃c HasChild(x, c)))
+
+
+Homework 18. P52
+!n ~ (even(n) <=> ?x (nat(x) & n = 2x))
+->I think the original formula is actually right when we consider the (positive) real numbers as our domain. The exercise seems to assume a domain of the natural numbers, in which case we could also just write:  ∀x even(2x).
+->The original formula is not right. The problem with the original formula is that Even^U can be a superset of the even numbers and still satisfy it, so the formula doesn't constrain Even to be to set of two-folds of natural numbers.
+
+Homework 19. P52
+The solution if we run this is not the correct one, this is because  !n,m:Q(n)&Q(m)=> P(n+m) says that it should be true for all pairs of n and m, this means that for all numbers of 3 and above, we will evaluate Q(3+)&Q(3+)=>P(6+), which is impossible as our set can't have numbers higher than 5. !n m: P(n+m)=>Q(n)&Q(m). says that for allP( n+m) which are true, it should be true that Q(n) and Q(m) are true, this means that every single way to write n+m, should be in Q.
+These are the reasons that the original Theory will give us unwanted result
+
+Other answer: It means that for every number x in P and any number y, such that z = x - y, is also a valid number, Q contains both y and z.
+If we work with natural numbers, this means that if P accepts the same numbers as Q and for every number x in P, P contains any number smaller than x as well.
+If we work with integers or real numbers, this means that either P and Q are both empty or they both contain all numbers.
+
+Other answer: ∀n∀m(P(n + m) ⇔ Q(n) ∧ Q(m)) can be split up into
+∀n∀m(P(n + m) => Q(n) ∧ Q(m)) and ∀n∀m(Q(n) ∧ Q(m) => P(n + m)). 
+The first one means that for any number in P, Q needs to contain any two numbers that can be summed to form that number in P, so if P contains all numbers, then so does Q.
+The second one means that for any two values in Q, P needs to contain the sum of those two, so if Q contains all numbers, then so does P.
+This is not what was meant to be expressed.
+
+Homework 20. P52
+!n (P(n) <=> ?x,y (Q(x)&Q(y)&x+y=n))
+
+Homework 21. P56
+!x,y,z(P(x,y,z) => ~?y1,n(P(x,y1,n)&y1 ~=y)&~?z1,m(P(x,m,z1)&z1~=z))
+Other answer: !x,y1,y2,z2(P(x,y1,z1)&P(x,y2,z2)=>y1=y2&Z1=z2)
+
+Homework 22. P57
+https://latex.codecogs.com/gif.latex?\forall&space;x,&space;y,&space;z&space;~(&space;P(x,y,z)&space;\Rightarrow&space;\forall&space;y_1,&space;z_1&space;~&space;(P(x,&space;y_1,&space;z_1)&space;\Rightarrow&space;y_1&space;=&space;y&space;\wedge&space;z_1&space;=&space;z))
+Define
+https://latex.codecogs.com/gif.latex?P(x,y,z)&space;\iff&space;Q(x,y)&space;\wedge&space;R(x,z)&space;\\&space;Q(x,y)&space;\iff&space;\exists&space;z&space;:&space;P(x,y,z)&space;\wedge&space;(\forall&space;y_1&space;:&space;P(x,y_1,z)&space;\Rightarrow&space;y_1&space;=&space;y)&space;\\&space;R(x,z)&space;\iff&space;\exists&space;y&space;:&space;P(x,y,z)&space;\wedge&space;(\forall&space;z_1&space;:&space;P(x,y,z_1)&space;\Rightarrow&space;z_1&space;=&space;z)&space;\\&space;\\&space;\textup{Implication:&space;}&space;\\&space;P(x,y,z)&space;&&space;\Rightarrow&space;&&space;(\forall&space;y_1,&space;z_1&space;:&space;(P(x,&space;y_1,&space;z_1)&space;\Rightarrow&space;y&space;=&space;y_1&space;\wedge&space;z&space;=&space;z_1))&space;\wedge&space;(\exists&space;z_1&space;:&space;P(x,y,z_1))&space;\wedge&space;(\exists&space;y_1&space;:&space;P(x,&space;y_1,&space;z))\\&space;&&space;\Rightarrow&space;&&space;(\forall&space;y_1,&space;z_1:&space;P(x,y_1,&space;z_1)&space;\Rightarrow&space;y&space;=&space;y_1)&space;\wedge&space;(\exists&space;z_1&space;:&space;P(x,y,z_1))&space;\wedge&space;(\forall&space;y_1,&space;z_1:&space;P(x,&space;y_1,&space;z_1)&space;\Rightarrow&space;z&space;=&space;z_1)&space;\wedge&space;(\exists&space;y_1&space;:&space;P(x,&space;y_1,&space;z))&space;\\&space;\Rightarrow&space;Q(x,y)&space;\wedge&space;R(x,z)
+
+https://latex.codecogs.com/gif.latex?\dpi{100}&space;\textup{Reverse&space;implication:&space;}&space;\\&space;Q(x,y)&space;\Rightarrow&space;\exists&space;z_0&space;:&space;P(x,y,z_0)&space;\wedge&space;(\forall&space;y_1&space;:&space;P(x,y_1,z_0)&space;\Rightarrow&space;y_1&space;=&space;y)\\&space;R(x,z)&space;\Rightarrow&space;\exists&space;y_0&space;:&space;P(x,y_0,z)&space;\wedge&space;(\forall&space;z_1&space;:&space;P(x,y_0,z_1)&space;\Rightarrow&space;z_1&space;=&space;z)\\&space;\\&space;Q(x,y)&space;\wedge&space;R(x,z)&space;\Rightarrow&space;\exists&space;z_0,&space;y_0&space;:&space;P(x,y_0,z)&space;\wedge&space;(\forall&space;z_1&space;:&space;P(x,y_0,z_1)&space;\Rightarrow&space;z_1&space;=&space;z)&space;\wedge&space;P(x,y,z_0)&space;\wedge&space;(\forall&space;y_1&space;:&space;P(x,y_1,z_0)&space;\Rightarrow&space;y_1&space;=&space;y)&space;\\&space;\Rightarrow&space;P(x,y_0,&space;z)&space;\wedge&space;P(x,y,&space;z_0)&space;\wedge&space;z_0=z&space;\wedge&space;y_0=y)&space;\\&space;\Rightarrow&space;P(x,y,z)
+
+Homework 23. P64
+No idea what needs to be solved.
+
+Homework 24. P69
+Some other induction processes:
+R := (empty)
+R := R u {a}      (base rule)
+R := R u {e}      (inductive rule)
+R := R u {b}      (inductive rule)
+R := R u {c}      (inductive rule)
+Saturation: every rule is satisfied.
+R := (empty)
+R := R u {a}      (base rule)
+R := R u {b}      (inductive rule)
+R := R u {e}      (inductive rule)
+R := R u {c}      (inductive rule)
+Saturation: every rule is satisfied.
+The above induction processes are all valid processes that are different from the one given in the book. They both have the same outcome:
+R := {a, b, c, e}
+This is the same outcome as the one in the book.
+
+Other answer:
+As our base case stays the same due to R(A) <-
+R := PHI
+R := R Union {a} (base rule)
+R := R Union {e} (inductive rule, since a element of R, edge a -> e)
+R := R Union {b} (inductive rule, since a element of R, edge a -> b)
+R := R Union {c} (inductive rule, since b element of R, edge b -> c)
+Saturation: every rule is satisfied.
+Same result: R = {a,b,c,e}. Set of nodes that can be reached from A^U = a with a finite path. In this case, d is also the only vertex that cannot be reached. As you have to start with a, you can only change it in this way. As b has to be added to R before c can be added. 
+
+Homework 25. P72
+There are no values for Parent that satisfy the definition.
+There exist n*n values for Parent that satisfy the material implications, because if the premises are false (which is the case, because Father and Mother are empty), then all the conclusions are arbitrary. 
+Other answer: 
+Using definitional implications, only one value for Parent is possible: the empty set, since the conditions of both rules are false so neither can ever be applied.
+Using material implications, because the conditions are always false, there are no constraints to Parent at all! Therefore, with a domain of n elements (so n^2 pairs of elements which each can be or not be part of the relation), there are 2^(n^2) possible values for Parent.
+-> Shouldn't it be 2*(n^2)-n possible values for Parent instead of 2^(n^2)?
+n^2 pairs of elements, times 2 because of symmetry and -n because there are n pairs of an element with itself, so switching places doesn't make it a new value.
+
+Homework 26. P73
+{ Instructor(Ray, CS230) <-, Instructor(Hec, CS230) <-, Instructor(Wal, HD87) <-, Instructor(Mar, HD88) <-}
+->
+{! x,y (Instructor(x,y) <- x=Ray & y=CS230), ! x,y (Instructor(x,y) <- x=Hec & y=CS230), ! x,y (Instructor(x,y) <- x=Wal & y=HD87), ! x,y (Instructor(x,y) <- x=Mar & y=HD88)}
+->
+! x,y (Instructor(x,y) <=> (x = Ray & y = CS230) | (x = Hec & y = CS230) | (x = Wal & y = HD87) | (x = Mar & y = HD88)  
+
+For Uncle, the first step is already done. The second and third steps give:
+! x,u (Uncle(x,u) <=> (? y : Parent(x,y) & Brother(y,u)) | (? y,s : Parent(x,y) & Sister(y,s) & Married(s,u)))
+
+Homework 27. P74
+W[x:2] |= R(x) <=> x = A | ?y(R(y) & G(y,x))
+   R(2) <=> 2 = 1 | ?y(R(y)&G(y,2))
+          R(2) <= 2 = 1 | ?y(R(y)&G(y,2)) &
+            R(2) => 2 = 1 | ?y(R(y)&G(y,2))
+If the premise is false then the material implication is always true, and the conclusion (R(2)) can be true. So the instance is satisfied.
+
+Homework 28. P74
+Using the definition we get 1 model:
+ structure : V {
+ Node = { "a"; "b" }
+ G = { "a","a"; "b","b" }
+ R = { "a" }
+ A = "a"
+ }
+
+Using the completion we get 2 models:
+ Model 1
+ =======
+ structure : V {
+ Node = { "a"; "b" }
+ G = { "a","a"; "b","b" }
+ R = { "a" }
+ A = "a"
+ }
+ Model 2
+ =======
+ structure : V {
+ Node = { "a"; "b" }
+ G = { "a","a"; "b","b" }
+ R = { "a"; "b" }
+ A = "a"
+ }
+In the second model, the completion is true when x and y are both assigned to 2 which cannot happen in the inductive interpretation of the definition
+
+Homework 29. P74
+We first express with Phi[P] that P is the set of all reachable vertices from vertex A in graph G:
+Phi[P] : P(A) & (! x y : P(x) & G(x,y) => P(y))
+R is the least set that satisfies Phi, so it is a subset of every relation P that satisfies Phi:
+! P : Phi[P] => ! x : R(x) => P(x)          (1)
+R satisfies Phi and (1). This gives the SO formula:
+(R(A) & (! x y : R(x) & G(x,y) => R(y)))   &   ((! P : Phi[P])    =>    ! x : R(x) => P(x))
+(R(A) & (! x y : R(x) & G(x,y) => R(y)))   &   (! P : ( (P(A) & (! x y : P(x) & G(x,y) => P(y)))    =>    ! x : R(x) => P(x) ))
+Other answer:
+How about something like:
+ !a: R(a) <=> (!P: (!x,y: P(x) & G(x,y) => P(y)) => P(a))
+ (i.e. a is in R iff a is in all sets satisfying the reachability criterion) 
+
+Homework 30. P76
+The IDP specification is:
+
+vocabulary V{
+    type Node
+    G(Node,Node)
+    R(Node)
+    A:Node
+    Road(Node, Node)
+}
+theory T: V{
+    {
+        R(A).
+        ! x: R(x) <- ?y: G(y,x) & R(y).
+    }
+    !x: R(x).
+    !x,y: (G(x, y) => Road(x, y)).
+    ?1 y: G(A,y).
+    !x [Node]: #{y [Node]: G(x,y)} =< 1 & #{y [Node]: G(y,x)} =< 1.
+
+}
+structure S:V{
+    Node={a;b}
+    A=a
+    // G={a,a; b,b}   
+}
+procedure main(){
+    printmodels(allmodels(T,S))
+}
+
+Homework 31. P76
+When adding the G={a,a; b,b} value to the structure, there are no models found and the theory is unsatisfiable. This is correct; the formula !x: R(x) can not be satisfied from the given value of G. Node b is not reachable from the root A^U = a.
+
+Homework 32. P76
+TODO
+
+Homework 33. P77
+TODO
+
+Homework 34. P78
+The code doesn't entail that mike is not female. The only thing we can say about the gender of the persons is that trude is female, because
+female(trude).
+seen as a material implication would be equivalent to
+female(trude) <= t
+This doesn't imply that all other persons are not female and thus doesn't entail 
+father_child(mike,tom).
+
+Homework 35. P79
+for father_child(mike,tom)
+to be false, at least one of the operands in the conjuction must be false:
+parent_child(mike,tom), not female(mike).
+Since the first operand is explicitely defined as true, the second must be false. But since we see the Prolog rules as definitions in FO(ID), all 'objects' other than trude are not female. Without UNA, stating that different constants denote different objects, is this possible: when mike = trude. 
+
+Homework 36. P81
+TODO
+
+Homework 37. P81
+TODO
+
+Homework 38. P81
+We see a given steel oven problem as the "theory", thus as output we wish to compute a (or multiple) models (i.e. correct schedule) that satisfy the theory (i.e. the steel oven problem). Hence, I believe, this is a 'model generation inference problem'.
+
+Homework 39. P88
+I labeled all given structures 1 to 6 from top left to bottom right.
+1)   - DCA is satisfied, there are no objects that are not 0 or S^n(0)
+      - UNA is violated as S(0) is the same as S^6(0)
+2)   - DCA is violated as there are two elements outside S^n(0)
+      - UNA is violated both by the same reason as (1) and by the two elements outside DCA
+3)   - UNA and DCA are satisfied.
+4)   - DCA is violated as the upper row of elements isn't expressible by S^n(0)
+      - UNA is satisfied.
+5)   - DCA is violated, there is one elements outside S^n(0)
+      - UNA is violated, the element that violates DCA also violates UNA
+6)   - DCA is violated both by the upper row as in (4) and by all elements before 0.
+      - UNA is satisfied. 
+Other answer: 
+1 Satisfies Domain closure and does not satisfy UNA
+The first UNA-axiom is not satisfied because S(O) = S(S(S(S(S(S(O)))))).
+2. Does not satisfy domain closure and does not satisfy UNA.
+It does not satisfy domain closure because of the loop on the right. 
+The first UNA-axiom is not satisfied two times: 
+In the left loop where S(O) = S(S(S(S(S(S(O)))))) 
+In the right loop where for the two elements x,y S(x) = y and S(y) = x.
+3. Satisfies Domain closure and satisfies UNA.
+4. Does not satisfy DCA and satisfies UNA. 
+It does not satisfy DCA because the two lines are not connected.
+5. Does not satisfy DCA and does not satisfy UNA. 
+It does not satisfy domain closure because the loop at the top is not connected to the rest. 
+The first UNA-axiom is not satisfied because of the loop at the top.
+6. Does not satisfy DCA and does not satisfy UNA. 
+It does not satisfy DCA because the two lines are not connected. 
+The first UNA-axiom is not satisfied because there exists an element x for which O = S(x).
+Homework 40. P89
+TODO
+
+Homework 41. P91
+Suppose there is an object that we will call "Counter".
+Let Cons(Counter,Nil)=Counter (in fact, let Cons(Counter,A)=Cons(A,Counter)=Counter for every A).
+We now have an object that is allowed by your infinite formula, but cannot be written by only using Cons and Nil.
+Your SO theorem has even bigger problems.
+Let N be a predicate that accepts only accepts lists filles with Nil.
+The premise of the main implication of your SO theorem is then met.
+The conclusion of that implication must as a result also hold.
+This means that N accepts every object.
+Because N only accepts lists filled with Nil, this constraint is much too restrictive.
+A solution in FO(ID), using an auxiliary predicate "Dom", would be:
+{
+    Dom(Nil).
+    !x y z: Dom(x) <- Dom(y) & Dom(z) & Cons(y,z)=x.
+}
+
+A solution in SO would be:
+!Dom/1: Dom(Nil) & (!x y: Dom(x) & Dom(y) => Dom(Cons(x,y))) => !x: Dom(x).
+
+->  I think your constructions make more sense but I don't see how you handled the difference between t and list in Cons: t x list -> list.
+    I think your counterexample and both formulas are valid for Cons: list x list -> list.
+-> Oh, I didn't get that this homework is working with typed FO.
+In that case, the homework seems to be a bit ambiguous.
+Clearly, they want you to express the DCA for lists of elements of type t, but what should the DCA say about t?
+I'll assume t is a type with a fixed interpretation, which suffers no constraints as a result of the above DCA.
+In that case, your infinite formula would have been correct if you had typed x to be a list.
+The same problem still persists in your second order theory.
+My solutions would need to be changed as follows (I previously forgot a line, which I added here):
+A solution in FO(ID), using an auxiliary predicate "Dom" of type "list -> BOOLEAN", would be:
+{
+    Dom(Nil).
+    !x[list]a[t]: Dom(Cons(a,x)) <- Dom(x).
+}
+!x[list]: Dom(x).
+
+A solution in SO would be:
+!Dom[list->BOOLEAN]: Dom(Nil) & (!x[list]a[t]: Dom(x) => Dom(Cons(a,x))) => !x[list]: Dom(x).
+
+Homework 42. P97
+TODO
+
+Homework 43. P97
+TODO
+
+Homework 44. P105
+ Model 1
+ =======
+ structure : V_Book {
+ Time = { 0..1 }
+ CF_Owns = { Bob,B1,0; John,B2,0; Mary,B3,0 }
+ CT_Owns = { Bob,B1,0; Bob,B2,0; Bob,B3,0 }
+ Gives = { Bob,B1,Bob,0; John,B2,Bob,0; Mary,B3,Bob,0 }
+ I_Owns = { Bob,B1; John,B2; Mary,B3 }
+ Owns = { Bob,B1,0; Bob,B1,1; Bob,B2,1; Bob,B3,1; John,B2,0; Mary,B3,0 }
+ }
+
+Both CF_Owns and CT_Owns contain "Bob,B1,0". This is because Gives(Bob,B1,Bob,0) and
+! g b r t: CT_Owns(r,b,t) <- Gives(g,b,r,t).
+! g b r t: CF_Owns(g,b,t) <- Gives(g,b,r,t).
+So, because Bob is able to give the book to himself, "Bob,B1,0" is both CT and CF.
+
+Homework 45. P105
+I extended the action precondition axiom of Gives to:
+! g b r t: Gives(g,b,r,t) => Owns(g,b,t) & g ~= r.
+so no person can give a book to himself.
+I also added the no-concurrency axiom to get a nice model.
+! t : (#{g b r : Gives(g,b,r,t)} = 1).
+ Model 1
+ =======
+ structure : V_Book {
+ Time = { 0..1 }
+ CF_Owns = { John,B3,1; Mary,B3,0 }
+ CT_Owns = { Bob,B3,1; John,B3,0 }
+ Gives = { John,B3,Bob,1; Mary,B3,John,0 }
+ I_Owns = { Bob,B1; John,B2; Mary,B3 }
+ Owns = { Bob,B1,0; Bob,B1,1; John,B2,0; John,B2,1; John,B3,1; Mary,B3,0 }
+ }
+
+If I_Owns would not have been defined in the theorem or if books would not have been defined using "constructed from", I would have argued that you also need to consider the case in which multiple people own the same book.
+In theory, can't you solve this homework by just simply adding the proposition that needs to be entailed to the theory though?
+The addition for the case in which multiple people own the same book:
+! p1 p2 b t: Owns(p1,b,t) & Owns(p2,b,t) => p1=p2.
+And you're right,  you can simply add the requested proposition and it will return a correct model.
+Other answer:
+It is possible that an action has a contradictory effect: that it causes a fluent to become true and to become false at the same time. This is when two atoms CF_P(x, t), CT_P(x, t) are true simultaneously. E.g., action Gives(g, b, g, t) (g gives b to herself g) leads to CT_Owns(g, b, t), CF_Owns(g, b, t). In such a case, the positive effect dominates the negative effect and P(x, t) is derived due to the second rule of the frame definition. Homework 5: Explain this."
+
+The rule "!x !t: P(x, t + 1) <- P(x, t) & ~CF_P(x, t)" doesn't enforce that ~P(x, t + 1) whenever CF_P(x, t), it simply enforces inertia: if nothing causes P(x, t) to be false, P(x, t) stays in its current state. Since in this case CF_P(x, t) is true, this rule will simply not be applied and P(x, t + 1) will not necessarily be true. The rule "!x !t: P(x, t + 1) <- CT_P(x, t)" however still applies as CT_P(x, t) is true and therefore P(x, t + 1) will be true, not false.
+
+Your explanation is almost perfect.
+The only part I disagree with is this: "if nothing causes P(x, t) to be false, P(x, t) stays in its current state".
+It could be that nothing causes P(x,t) to become false, but that P(x,t) is already false and something causes P(x,t) to become true, so that P(x,t) does change its state.
+
+Homework 46. P105
+If we reuse the book giving example, if Gives(bob, book1, bob, t) then bob gives himself book1 at t. This model allows contradictory causations since this situation causes CT_P and CT_F at the same time. This example contradicts  !x !t (CF_P(x,t) ⇒ ¬P(x,t + 1)) because bob still had book1 at time t+1. And thus proves that contradictory causations do not entail the implications.
+Does it entail both positive and negative inertial laws? !x !t (P(x,t) ∧ ¬CF P(x,t) ⇒ P(x,t + 1)).  !x !t (¬P(x,t) ∧ ¬CT P(x,t) ⇒ ¬P(x,t + 1)).
+It does but the inertial laws don't give us information about some cases like when both CT_P and CT_F happen at the same time.
+
+Sounds like a good answer to me.
+However, you can prove that theories allowing contradictory causations never entail those 2 material implications.
+The fact that they allow contradictory causations means that there exists a model 2l and an interpretation for xc and tc such that 2l satisfies the theory and (xc^2l, tc^2l) is an element of CT_P^2l and of CF_P^2l.
+In other words, we know that in 2l the following holds: ?xc ?tc (CT_P(xc,tc) & CT_F(xc,tc)).
+We provide a proof by contradiction.
+Suppose some theory allowing contradictory causations would entail the 2 material implications.
+From the first implication we derive the following by letting x=xc and t=tc: CT_P(xc,tc) => P(xc,tc+1).
+We know CT_P(xc,tc) is true, so we derive from the above the following: P(xc,tc+1).
+Analogously we derive from the second implication that: ~P(x,t+1).
+We have now derived both P(xc,tc+1) and ~P(xc,tc+1), which cannot be satisfied by any model (you would need (xc^2l,+^2l(tc^2l,1^2l)) to both be an element and not be an element of P^2l at the same time, which is of course impossible).
+This gives us a contradiction (the theory has a model, but the theory union the 2 material implications does not have a theory, which is impossible if T entails the material implications), which completes the proof.
+We can also prove that the inertial laws are entailed (done less formally than the former proof).
+Of any valid LTC-theory (regardless of whether contradictory causations are allowed), we are certain that the following properties hold for P:
+!t !x (~CT_P(x,t) & ~CF_P(x,t) => (P(x,t+1) <=> P(x,t))).
+!t !x (~CT_P(x,t) & CF_P(x,t) => ~P(x,t+1)).
+!t !x (CT_P(x,t) & ~CF_P(x,t) => P(x,t+1)).
+For any value of x and t, we make the following case distinction.
+Either CT_P(x,t) is true, in which case the third property from the list above is equivalent to ~CF_P(x,t) => P(x,t+1), which entails P(x,t) & ~CF_P(x,t) => P(x,t+1), which is equivalent to the positive inertial law.
+Or either CT_P(x,t) is false, in which case the first property from the list above is equivalent to ~CF_P(x,t) => (P(x,t+1) <=> P(x,t)), which entails P(x,t) & ~CF_P(x,t) => P(x,t+1), which is equivalent to the positive inertial law.
+As a result, the first and third properties from the list above entail the positive inertial law.
+Analogously, the first and second properties from the list above entail the negative inertial law.
+
+Homework 47. P111
+"!p !b !t: CT_Owns_Lott(p, b, t) => Lottery(b, t)
+!b !t: Lottery(b, t) => #{p : CT_Owns_Lott(p, b, t)} = 1
+
+Do a possible world analysis to show that the following sentence is not equivalent to the implications on the previous slide and admits unintended models.
+!p !b !t: Lottery(b, t) <=> #{p : CT_Owns_Lott(p, b, t)} = 1
+Hint: find a model in which there are 2 or more persons at some time t satisfying CT_Owns_Lott but there is no lottery at t."
+
+Consider the following structure:
+CT_Owns_Lott = {(P1, B, T), (P2, B, T)}
+Lottery = {}
+The first theory isn't true for this structure, since the first formula is false:
+!p !b !t: CT_Owns_Lott(p, b, t) => Lottery(b, t)
+If we substitute the quantifications using p = P1, b = B, t = T, then we get CT_Owns_Lott(P1, B, T) => Lottery(B, T), which is false since CT_Owns_Lott(P1, B, T) is true but Lottery(B, T) is false. However, the second theory is true for this structure:
+!p !b !t: Lottery(b, t) <=> #{p : CT_Owns_Lott(p, b, t)} = 1
+Since the p being universally quantified is never used (it's overridden by the internal p used for counting the set size), we can drop it and end up with the following equivalent formula:
+!b !t: Lottery(b, t) <=> #{p : CT_Owns_Lott(p, b, t)} = 1
+Since Lottery = {}, the left side will always be false. This is fine since the right side will be false as well for all substitutions of (b, t):
+(b, t) ~= (B, T) => #{p : CT_Owns_Lott(p, b, t)} = 0 (all elements of CT_Owns_Lott end in (B, T))
+(b, t) = (B, T) => #{p : CT_Owns_Lott(p, b, t)} = 2 (there are two elements of CT_Owns_Lott ending in (B, T): (P1, B, T) and (P2, B, T))
+Therefore the second theory is true for this structure unlike the first one.
+Perfect answer!
+Basically, the first theory is equivalent with:
+!b !t: (?p: CT_Owns_Lott(p, b, t)) => Lottery(b, t)
+!b !t: Lottery(b, t) => #{p : CT_Owns_Lott(p, b, t)} = 1
+which is equivalent with:
+!b !t: #{p : CT_Owns_Lott(p, b, t)} >= 1 => Lottery(b, t)
+!b !t: Lottery(b, t) => #{p : CT_Owns_Lott(p, b, t)} = 1
+which is again equivalent with:
+!b !t: ~Lottery(b, t) => #{p : CT_Owns_Lott(p, b, t)} < 1
+!b !t: Lottery(b, t) => #{p : CT_Owns_Lott(p, b, t)} = 1
+while the second theory is equivalent with:
+!b !t: ~Lottery(b, t) => #{p : CT_Owns_Lott(p, b, t)} ~= 1
+!b !t: Lottery(b, t) => #{p : CT_Owns_Lott(p, b, t)} = 1
+The difference is that if some book b is not being reassigned a new owner at time t,
+then the first theory disallows anyone to own b as a result of a lottery
+while the second theory allows multiple people to get the book as a result of a lottery.
+
+Homework 48. P111
+
+vocabulary V{
+  type Book 
+  type Time isa int
+    type Person
+    Owns(Person,Book,Time)
+	CT_Owns(Person,Book,Time)
+    CT_Owns_Lott(Person,Book,Time)
+    Lottery(Book,Time)
+    partial Next(Time):Time
+     Start:Time
+}
+theory T:V{
+    {
+		Start = MIN[:Time].
+		!t: Next(t) = t+1 <- Time(t+1).
+	}
+    { 
+		// Successor State Action Axiom & Inertia
+		! p b t : Owns(p,b,Next(t)) <- CT_Owns(p,b,t).
+        ! p b t : Owns(p,b,Next(t)) <- Owns(p,b,t).
+	}
+   {!p b t:CT_Owns(p, b,t) <- CT_Owns_Lott(p, b,t).}
+   // !p b t:CT_Owns_Lott(p, b,t) => Lottery(b,t).
+	//! b t:Lottery(b,t) => #{p : CT_Owns_Lott(p, b,t)} = 1.
+    !b t : Lottery(b,t) => #{p : CT_Owns_Lott(p, b,t)} = 1.
+  !b t :  #{p : CT_Owns_Lott(p, b,t)} = 1 =>  Lottery(b,t).
+   }
+
+structure S:V{
+    Time = {0..5}
+    Book={B1;B2}
+    Person={P1;P2}
+    Lottery={}
+    CT_Owns_Lott={P1,B1,2;P2,B1,2}
+}
+
+procedure main(){
+    	stdoptions.nbmodels = 1
+	printmodels(modelexpand(T,S))
+}
+
+Homework 49. P111
+TODO
+
+Homework 50. P113
+Suppose the turkey is shot with a loaded gun and at the same time the turkey starts to walk, let's take a look at the following three rules:
+https://latex.codecogs.com/gif.latex?\left\{&space;\begin{align*}&space;\forall&space;t&space;(CT\_Walking(t)&space;&\leftarrow&space;Walk(t))&space;\\&space;\forall&space;t&space;(CF\_Alive(t)&space;&\leftarrow&space;Shoot(t)&space;\land&space;Loaded(t))\\&space;\forall&space;t&space;(CF\_Walking(t)&space;&\leftarrow&space;CF\_Alive(t))&space;\end{align*}&space;\right\}
+We see that CT_Walking and CF_Walking are true simultaneously (contradictory causation). One possible solution is to add a relaxed no-concurrency axiom, which states that the turkey can not be shot in the same time as it starts walking. However, this is not a perfect adherence to the given problem. Another possible solution would be to add a prevoyant axiom stating that the turkey can not start moving at time t if it will be shot at time t+1. 
+
+Other answer:
+We got here the problem of contradictory causations, walking is in this situation caused to be true and false at the same time. 
+In case of contradictory causations, CT wins from CF, so in this case the turkey will start walking in place of dropping dead.
+The solution is changing the 2e frame definition into:  ! t (Walking(t+1) <- CT_Walking(t+1) & (CF_Walking(t+1) => Walking(t)))
+
+Homework 51. P113
+We have to add a different type of shooting action, let's call this Shoot_2(t) which is non-deterministic. (instead of the current Shoot(t) which is deterministic).
+
+In the definitions we have to add a definitional rule:
+{ 
+! t (CF_Alive(t) <- CF_Alive_Chance(t)) 
+}
+Then express what the effect of Shoot_2 is:
+!t (CF_Alive_Chance(t) => Shoot_2(t)) 
+
+Homework 52. P114
+TODO
+
+Homework 53. P115
+TODO
+
+Homework 54. P116
+TODO
+
+Homework 55. P117
+TODO
+
+Homework 56. P119
+TODO
+
+Homework 57. P121
+TODO
+
+Homework 58. P126
+TODO
+
+Homework 59. P126
+TODO
+
+Homework 60. P128
+First of all, it seems to be lacking a way for a user to interact with the model. Right now, it generates a model that adheres to the theory. There is no way for a user to indicate that he has borrowed a book without adding this to the theory for example. This could be done through an interface, which could be embedded into the theory. An example of this is a graphical interface using fluents (Menu(T), form(T)) together with pulse atoms (buttons, ...) as explained in the LogicBlox section.
+
+Following this, since changing the theory cannot be done at runtime, there doesn't seem to be a good way to allow for progression of the system. This is necessary so that when a book is borrowed, the current (valid) model is extended and persisted so that it can be used in the next update. I don't think, but neither do I know for sure, that persisting models is currently possible in IDP.
+
+Exercise 5.2.1
+(psi W phi)^t=(?t_1(t_1 >= t & !t_2((t=<t_2 <t_1)=>psi^t_2)&phi^t_1)) | (!t_3(t_3>=t=>psi^t_3))
+(psi R phi)^t=(?t_1(t_1 >= t & !t_2((t=<t_2 =<t_1)=>phi^t_2)&psi^t_1)) | (!t_3(t_3>=t=>phi^t_3))
+
+
+Homework 61. P152
+Proof
+π is fair with respect to ϕ
+=> there are infinitely many i ∈ N such that π^i |= ϕ. (Def 5.3.1)
+<=>  there are infinitely many i >=0 such that π^i |= ϕ.
+<=> for all j >=0, there exists an i >=j such that π^i |= ϕ. (if not, then there would be maximally j i's such that π^i |= ϕ, which contradicts there being infinitely many
+<=> for all j >=0, there exists an i >=0 such that (π^j)^i |= ϕ. (Definition of path suffix)
+<=> for all j >=0, π^j |= Fϕ (Def 5.2.3)
+<=> π|=G(Fϕ). (Def 5.2.3)
+=> π|=GFϕ.
+QED
+
+Exercise 5.5.2
+AF AG p is false in the first state and FG p is true in the first state.
+
+An example of a path for which AF AG p is false, is the path which keeps on looping over the first state infinitely often, because in this path, the only possible selection for a future state is the first state and in this state AG p is false, because from this state you could take the path (first state, second state, third state, third state, third state ...), in which p isn't true in the second state.
+
+To see why FG p is true, note that there are 2 possibilities for paths: 1) paths that keep on looping over the first state infinitely often 2) paths that loop a finite amount of times over the first state, then visit the second state and then keep on looping over the third state infinitely often. For an LTL formula of the form F (phi) to be true in a state, we need to be able to select for every path starting from that state a suffix of the path such that phi is true in the suffix. For paths of the first form, in every suffix G p is true. For paths of the second form, we can select any suffix in which its first state is the third state from the picture. Hence, for both possibilities FG p is true.
+
+Exercise 5.5.3
+F X p, X F p and AX AF p express that p will be true in the future starting from the next state. AF AX p expresses that all paths should have a state where all next states satisfy p.
+
+Exercise 5.5.4
+    P<>
+->O
+    ~P<>
+
+Homework 62. P193
+Hint, no solution:You're supposed to write a theorem in FO, for every natural number N, expressing that there are at most N objects in the universe.
+You can do so as follows:
+!x_0!x_1!x_2...!x_N(x_0=x_1 | x_0=x_2 | ... | x_0=x_N)
+
+Homework 63. P194
+! x (x = C1 | x = C2 | ... | x = Cn)
+
+Homework 64. P195
+If τ does not contain a function symbol of arity > 0, the theory T_a of the proof is not infinite, as S_τ is not infinite. S_τ can only be infinite if we can generate terms by infinite application of at least one function symbol on at least one constant symbol.
+-> This explains where and how the proof uses the fact that there must be at least one function symbol of arity > 0.
+However, you should show that there is a counter example when there is a function symbol of arity = 0.
+Just simply let tau consist of 1 function symbol with arity 0 only (we'll call it Const).
+The domain closure axiom over this tau is satisfied in a model with a domain consisting of a single object, which is the interpretation of Const.
+This model is finite, so this is a counter example.
+-> I believe that the answer given by Emiel should be sufficient. The question is to explain that the proof is not correct, not that there exists no such proof. Stating that "If τ does not contain a function symbol of arity > 0, the theory T_a of the proof is not infinite", is sufficient because the proof depends on the fact that it is.
+
+Homework 65. P197
+Exam! 
+1) Theory T that expresses that the graph G is acyclic:
+{~?x : G(x,x) ; ~?x x1 : G(x,x1) & G(x1,x) ; ... ; ~?x x1 x2 ... xn : G(x,x1) & G(x1,x2) & ... & G(xn,x)}
+2) The graph G is cyclic?
+Check the two conditions of the inexpressivity theorem. Let C be the class of structures that express a cyclic graph, and the infinite theory be the theory T above:
+- T is inconsistent with C:
+T has a class of models of acyclic graphs. The intersection with the class of cyclic graphs is obviously empty.
+    => True
+- Each finite subset of T is consistent with C:
+Take away one axiom of T that expresses that there cannot be a cycle consisting of n nodes. The class of models of T contains structures that express a graph with a cycle of n nodes, as does the class C. The intersection of the modified theory and C thus contains structures that make up graphs with a cycle of n nodes, so this intersection is not empty.
+    => True
+We apply the inexpressivity theorem and conclude that C (The models of "The graph G is cyclic") is not expressible in FO.
+(Verfified) -> Your reasoning is correct, but I initially thought you defined T to be a finite theorem.
+Be sure to make it clear that T is a set of an infinite amount of sentences (e.g. by adding an additional ;... after all the sentences).
+-> I think your logic is flawed. You "take away one axiom of T that expresses that there cannot be a cycle consisting of n nodes", but leave the axioms expressing that there cannot be cycles consisting of n*i nodes, for i = 1, 2, ... A cycle of n nodes, will always be detected by such axioms as well, because of the nature of a cycle. For example, a loop x->x1->x2->x that should be allowed because of the absence of (~?x x1 x2 : G(x,x1) & G(x1,x2) & G(x2,x)) will also lead to a possible path x->x1->x2->x->x1->x2->x which is not allowed because of the presence of (~?x x1 x2 x3 x4 x5 : G(x,x1) & G(x1,x2) & G(x2,x3) & G(x3,x4) & G(x4,x5) & G(x5,x)).
+A better way of proving that each finite subset of T is consistent with C is to say that if T' is any finite subset of T, with n the maximum number of loops prohibited by axioms in T', then at least any structure with a minimum loop size larger than n, is a model of T', so T' is consistent with C.
+Alternatively, if you want to stick to infinite subsets, like you did, you could take away all axioms that prevent loops with length i*n, but I believe the method proposed above is simpler.
+
+Homework 66. P223
+We know that validity is semi-decidable, this means that unsatisfiability is also semi-decidable. This is because if phi is unsatisfiable, this means that not(phi) is valid.
+Now let's assume satisfiability is indeed semi-decidable. This would mean that satisfiability and unsatisfiability are semi-decidable, however this would actually mean that combining the theoretical algorithms of these two, we would actually have a decidable algorithm, which is obviously impossible. This means that satisfiability cannot be semi-decidable.
+-> To be completely formal, you would have to specify how you'd combine both algorithms though (and you would need to refer to some theorem instead of stating that it is obvious that a decidable algorithm for satisfiability is impossible). That seems like overkill for this homework anyway.
+
+Homework 67. P225
+https://latex.codecogs.com/gif.latex?(\psi_1&space;\land&space;\phi_1)&space;\lor&space;(\psi_2&space;\land&space;\phi_2)&space;\lor&space;\cdots&space;\lor&space;(\psi_n&space;\land&space;\phi_n)
+
+
+If we apply the conversion algorithm we get:
+https://latex.codecogs.com/gif.latex?\dpi{100}&space;\begin{align*}&space;(\psi_1&space;\lor&space;\psi_2&space;\lor&space;\cdots&space;\lor&space;\psi_n)&space;&\land&space;(\phi_1&space;\lor&space;\psi_2&space;\lor&space;\cdots&space;\lor&space;\psi_n)&space;\\&\land&space;(\psi_1&space;\lor&space;\phi_2&space;\lor&space;\cdots&space;\lor&space;\psi_n)&space;\\&\land&space;(\phi_1&space;\lor&space;\phi_2&space;\lor&space;\cdots&space;\lor&space;\psi_n)&space;\\&\land&space;\cdots&space;\\&\land&space;(\phi_1&space;\lor&space;\phi_2&space;\lor&space;\cdots&space;\lor&space;\phi_n)&space;\end{align*}
+We get 2^n clauses, where each clause contains phi_i or psi_i for every i.
+
+Homework 68. P233
+Starting with the following clauses:
+- P \/ Q \/ R
+- S \/ T \/ Q
+- ~Q \/ R
+- P \/ ~Q \/ ~R
+- ~S \/ R
+and learned clause: P \/ ~Q
+This model was just found: {~P, ~Q, R, ~S, T}
+continuing execution:
+|   | - Backtrack: S
+|   |   | - Propagate T --> Model: {~P, ~Q, R, S, T}
+Backtrack: P
+| - Choice: ~S
+|   | - Choice: ~T
+|   |   | - Propagate: Q
+|   |   | - Propagate: R --> Model: {P, ~S, ~T, Q, R}
+|   | - Backtrack: T
+|   |   | - Choice: ~Q
+|   |   |   | - Choice: ~R --> Model: {P, ~S, T, ~Q, ~R}
+|   |   |   | - Backtrack: R --> Model: {P, ~S, T, ~Q, R}
+|   |   | - Backtrack: Q
+|   |   |   | - Propagate: R --> Model: {P, ~S, T, Q, R}
+| - Backtrack: S
+|   | - Propagate R --> 4 Models: {P, S, _, _, R} with T en Q "don't cares".
+
+Homework 69. P244
+We don't have to loop over the full set {s|s->s'} for each element of S'psi':
+In the algorithm,
+    we first search all states s' in which 'psi' holds. O(V) (cfr. point 2).  After this, check O(1) for all edges s->s' O(E) if they are in the previously created set. If so, add s to S O(1). 
+The complexity is thus O(V+E)
+
+Homework 70. P246
+M,s |= EG psi means: there exists an infinite path from state s where psi holds .
+In the first part of the algorithm, we throw away all states in which psi is false. Only states where psi holds remain.
+
+There certainly exists an infinite path starting from a state in an SCC. We can always move from one state in the SCC to another state in the SCC. So there also exists an infinite path starting from a state from which we can reach an SCC.
+
+Homework 71. P248
+TODO
+
+Homework 72. P252
+TODO
+
+Homework 73. P252
+TODO
+
+Homework 74. P255
+TODO

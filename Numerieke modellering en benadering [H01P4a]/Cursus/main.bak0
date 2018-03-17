@@ -1,0 +1,68 @@
+\documentclass[11pt]{book}
+
+% Essential
+\usepackage[dutch]{babel}
+\usepackage{titling}
+\usepackage{tikz}
+%\usetikzlibrary{scopes,chains,shapes,positioning}
+\usetikzlibrary{mindmap}
+% Optional
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{graphicx}
+
+% Titleplage
+\newcommand{\theauthors}{Seppe Duw\'e}
+\newcommand{\thecontributors}{Xavier Dejager}
+\newcommand{\theprofs}{S. Vandewalle, M. Van Barel}
+
+\title{Numerieke modellering en benadering \\ (B-KUL-H01P4a)}
+\date{\today}
+\author{\theauthors}
+
+% Margins
+\setlength{\topmargin}{0in}
+\setlength{\footskip}{0.5in}
+\setlength{\textwidth}{6.5in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textheight}{8.5in}
+
+% Image folder
+\graphicspath{{figures/}{../figures/}}
+
+% Theorem styles
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{conj}{Conjecture}[section]
+\newtheorem{exmp}{Example}[section]
+
+\begin{document}
+\frontmatter
+% Title Page
+\include{titlepage}
+% Table of Contents Page
+\tableofcontents
+\include{preface}
+\listoffigures
+\listoftables
+
+\mainmatter
+\include{chapters/1_Inleiding}
+\include{chapters/2_EnkeleBegrippenUitDeBenaderingsTheorie}
+\include{chapters/3_Veeltermbenadering}
+\include{chapters/4_TrigonometrischeBenadering}
+\include{chapters/5_BenaderenMetSplineFuncties}
+\include{chapters/6_GeometrischeModellering}
+
+% Appendix
+\appendix
+
+% References
+\bibliographystyle{plain}
+\bibliography{bibliography}
+\nocite{*}
+
+\end{document}
+
